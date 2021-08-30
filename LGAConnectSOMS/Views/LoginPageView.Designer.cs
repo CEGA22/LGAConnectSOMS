@@ -36,12 +36,14 @@ namespace LGAConnectSOMS.Views
             this.txtAccountID = new System.Windows.Forms.TextBox();
             this.lblID = new System.Windows.Forms.Label();
             this.lblLogInTitle = new System.Windows.Forms.Label();
-            this.btnClose = new System.Windows.Forms.Button();
+            this.DragWindowsPanel = new System.Windows.Forms.Panel();
             this.btnMaximize = new System.Windows.Forms.Button();
             this.btnMinimize = new System.Windows.Forms.Button();
-            this.DragWindowsPanel = new System.Windows.Forms.Panel();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.LGAConnectSOMSLogo = new System.Windows.Forms.PictureBox();
             this.LoginPanel.SuspendLayout();
             this.DragWindowsPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.LGAConnectSOMSLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // LoginPanel
@@ -114,9 +116,9 @@ namespace LGAConnectSOMS.Views
             this.lblID.Font = new System.Drawing.Font("Tw Cen MT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblID.Location = new System.Drawing.Point(35, 185);
             this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(226, 22);
+            this.lblID.Size = new System.Drawing.Size(227, 22);
             this.lblID.TabIndex = 1;
-            this.lblID.Text = "Teacher id / Administrator ID";
+            this.lblID.Text = "Teacher ID / Administrator ID";
             // 
             // lblLogInTitle
             // 
@@ -129,18 +131,20 @@ namespace LGAConnectSOMS.Views
             this.lblLogInTitle.TabIndex = 0;
             this.lblLogInTitle.Text = "Log in";
             // 
-            // btnClose
+            // DragWindowsPanel
             // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.FlatAppearance.BorderSize = 0;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Image = global::LGAConnectSOMS.Properties.Resources.CloseBlack;
-            this.btnClose.Location = new System.Drawing.Point(676, 6);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(20, 20);
-            this.btnClose.TabIndex = 13;
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.DragWindowsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DragWindowsPanel.BackColor = System.Drawing.Color.Transparent;
+            this.DragWindowsPanel.Controls.Add(this.btnMaximize);
+            this.DragWindowsPanel.Controls.Add(this.btnMinimize);
+            this.DragWindowsPanel.Controls.Add(this.btnClose);
+            this.DragWindowsPanel.Location = new System.Drawing.Point(592, 0);
+            this.DragWindowsPanel.Name = "DragWindowsPanel";
+            this.DragWindowsPanel.Size = new System.Drawing.Size(709, 30);
+            this.DragWindowsPanel.TabIndex = 16;
+            this.DragWindowsPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DragWindowsPanel_MouseDown_1);
+            this.DragWindowsPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DragWindowsPanel_MouseMove);
             // 
             // btnMaximize
             // 
@@ -169,20 +173,31 @@ namespace LGAConnectSOMS.Views
             this.btnMinimize.UseVisualStyleBackColor = true;
             this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
             // 
-            // DragWindowsPanel
+            // btnClose
             // 
-            this.DragWindowsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Image = global::LGAConnectSOMS.Properties.Resources.CloseBlack;
+            this.btnClose.Location = new System.Drawing.Point(676, 6);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(20, 20);
+            this.btnClose.TabIndex = 13;
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // LGAConnectSOMSLogo
+            // 
+            this.LGAConnectSOMSLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DragWindowsPanel.BackColor = System.Drawing.Color.Transparent;
-            this.DragWindowsPanel.Controls.Add(this.btnMaximize);
-            this.DragWindowsPanel.Controls.Add(this.btnMinimize);
-            this.DragWindowsPanel.Controls.Add(this.btnClose);
-            this.DragWindowsPanel.Location = new System.Drawing.Point(592, 0);
-            this.DragWindowsPanel.Name = "DragWindowsPanel";
-            this.DragWindowsPanel.Size = new System.Drawing.Size(709, 30);
-            this.DragWindowsPanel.TabIndex = 16;
-            this.DragWindowsPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DragWindowsPanel_MouseDown_1);
-            this.DragWindowsPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DragWindowsPanel_MouseMove);
+            this.LGAConnectSOMSLogo.Image = global::LGAConnectSOMS.Properties.Resources.LGA_Connect_SOMS;
+            this.LGAConnectSOMSLogo.Location = new System.Drawing.Point(633, 66);
+            this.LGAConnectSOMSLogo.Name = "LGAConnectSOMSLogo";
+            this.LGAConnectSOMSLogo.Size = new System.Drawing.Size(600, 555);
+            this.LGAConnectSOMSLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.LGAConnectSOMSLogo.TabIndex = 17;
+            this.LGAConnectSOMSLogo.TabStop = false;
             // 
             // LoginPageView
             // 
@@ -190,6 +205,7 @@ namespace LGAConnectSOMS.Views
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
             this.ClientSize = new System.Drawing.Size(1300, 700);
+            this.Controls.Add(this.LGAConnectSOMSLogo);
             this.Controls.Add(this.DragWindowsPanel);
             this.Controls.Add(this.LoginPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -201,6 +217,7 @@ namespace LGAConnectSOMS.Views
             this.LoginPanel.ResumeLayout(false);
             this.LoginPanel.PerformLayout();
             this.DragWindowsPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.LGAConnectSOMSLogo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -218,5 +235,6 @@ namespace LGAConnectSOMS.Views
         private System.Windows.Forms.Button btnMaximize;
         private System.Windows.Forms.Button btnMinimize;
         private System.Windows.Forms.Panel DragWindowsPanel;
+        private System.Windows.Forms.PictureBox LGAConnectSOMSLogo;
     }
 }

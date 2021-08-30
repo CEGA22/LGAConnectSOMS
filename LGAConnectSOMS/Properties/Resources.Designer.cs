@@ -163,6 +163,16 @@ namespace LGAConnectSOMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap LGA_Connect_SOMS {
+            get {
+                object obj = ResourceManager.GetObject("LGA Connect SOMS", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap LGASCHOOLLOGO {
             get {
                 object obj = ResourceManager.GetObject("LGASCHOOLLOGO", resourceCulture);
