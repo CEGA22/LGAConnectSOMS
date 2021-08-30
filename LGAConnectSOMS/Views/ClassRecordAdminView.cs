@@ -26,12 +26,8 @@ namespace LGAConnectSOMS.Views
         {
             this.RestoreWindowPosition();
             MaximizeIcon();
-            var db = new DataAccess();
-            students = db.GetStudents();
-            ClassRecordDataGridView.DataSource = students;
-            ClassRecordDataGridView.CurrentCell.Selected = false;
+            DisplayClassRecordData();                    
         }
-
 
         //NavigationToOtherForm
 
@@ -41,6 +37,26 @@ namespace LGAConnectSOMS.Views
             var HVA = new HomeViewAdmin();
             HVA.Show();          
             this.Hide();
+        }
+
+        //Commands
+
+        public void DisplayClassRecordData()
+        {
+            var db = new DataAccess();
+            students = db.GetStudents();
+            ClassRecordDataGridView.DataSource = students;
+            ClassRecordDataGridView.CurrentCell.Selected = false;
+        }
+        private void txtSearchStudent_TextChanged(object sender, EventArgs e)
+        {
+            var db = new DataAccess();
+            students = db.GetStudentsByLastname(txtSearchStudent.Text);
+            ClassRecordDataGridView.DataSource = students;
+            if (string.IsNullOrWhiteSpace(txtSearchStudent.Text))
+            {
+                DisplayClassRecordData();
+            }
         }
 
 
@@ -156,6 +172,10 @@ namespace LGAConnectSOMS.Views
             }
         }
 
-        
+        private void btnAddStudent_Click(object sender, EventArgs e)
+        {
+            //var db = new DataAccess();
+            //db.AddStudent(txtLastname.Text, txtFirstname.Text,txtMiddlename.Text, txtGender.Text, Convert.ToInt32(txtGradeLevel.Text));
+        }
     }
 }

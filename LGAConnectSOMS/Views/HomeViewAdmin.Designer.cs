@@ -36,7 +36,7 @@ namespace LGAConnectSOMS
             this.btnClassSchedule = new System.Windows.Forms.Button();
             this.btnClassRecords = new System.Windows.Forms.Button();
             this.btnHome = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.LGAConnectLogo = new System.Windows.Forms.PictureBox();
             this.DragWindowsPanel = new System.Windows.Forms.Panel();
             this.btnMaximize = new System.Windows.Forms.Button();
             this.btnMinimize = new System.Windows.Forms.Button();
@@ -55,7 +55,7 @@ namespace LGAConnectSOMS
             this.lblUserRole = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
             this.SideBarPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LGAConnectLogo)).BeginInit();
             this.DragWindowsPanel.SuspendLayout();
             this.NewsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NewsImage)).BeginInit();
@@ -72,7 +72,7 @@ namespace LGAConnectSOMS
             this.SideBarPanel.Controls.Add(this.btnClassSchedule);
             this.SideBarPanel.Controls.Add(this.btnClassRecords);
             this.SideBarPanel.Controls.Add(this.btnHome);
-            this.SideBarPanel.Controls.Add(this.pictureBox1);
+            this.SideBarPanel.Controls.Add(this.LGAConnectLogo);
             this.SideBarPanel.Location = new System.Drawing.Point(-2, 0);
             this.SideBarPanel.Name = "SideBarPanel";
             this.SideBarPanel.Size = new System.Drawing.Size(265, 700);
@@ -186,15 +186,15 @@ namespace LGAConnectSOMS
             this.btnHome.MouseEnter += new System.EventHandler(this.btnHome_MouseEnter);
             this.btnHome.MouseLeave += new System.EventHandler(this.btnHome_MouseLeave);
             // 
-            // pictureBox1
+            // LGAConnectLogo
             // 
-            this.pictureBox1.Image = global::LGAConnectSOMS.Properties.Resources.LGASCHOOLLOGO;
-            this.pictureBox1.Location = new System.Drawing.Point(75, 33);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 100);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
+            this.LGAConnectLogo.Image = global::LGAConnectSOMS.Properties.Resources.LGASCHOOLLOGO;
+            this.LGAConnectLogo.Location = new System.Drawing.Point(75, 33);
+            this.LGAConnectLogo.Name = "LGAConnectLogo";
+            this.LGAConnectLogo.Size = new System.Drawing.Size(100, 100);
+            this.LGAConnectLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.LGAConnectLogo.TabIndex = 6;
+            this.LGAConnectLogo.TabStop = false;
             // 
             // DragWindowsPanel
             // 
@@ -450,7 +450,7 @@ namespace LGAConnectSOMS
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HomeViewAdmin_FormClosing);
             this.Load += new System.EventHandler(this.HomeView_Load);
             this.SideBarPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LGAConnectLogo)).EndInit();
             this.DragWindowsPanel.ResumeLayout(false);
             this.NewsPanel.ResumeLayout(false);
             this.NewsPanel.PerformLayout();
@@ -476,7 +476,7 @@ namespace LGAConnectSOMS
         private System.Windows.Forms.Label lblAccountName;
         private System.Windows.Forms.Label lblTitleNewsPanel;
         private System.Windows.Forms.Label lblvViewMoreNews;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox LGAConnectLogo;
         private System.Windows.Forms.Button btnHome;
         private System.Windows.Forms.Button btnClassRecords;
         private System.Windows.Forms.Button btnClassSchedule;
