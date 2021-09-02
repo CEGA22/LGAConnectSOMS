@@ -19,7 +19,8 @@ namespace LGAConnectSOMS
         {
             this.RestoreWindowPosition();
             MaximizeIcon();
-            
+            btnHome.ForeColor = Color.FromArgb(255, 246, 143);
+
         }
 
 
@@ -55,12 +56,12 @@ namespace LGAConnectSOMS
         //Buttons Forecolor and background Styles
         private void btnHome_MouseEnter(object sender, EventArgs e)
         {
-            btnHome.ForeColor = Color.FromArgb(255, 246, 143);           
+            //btnHome.ForeColor = Color.FromArgb(255, 246, 143);           
         }
 
         private void btnHome_MouseLeave(object sender, EventArgs e)
         {
-            btnHome.ForeColor = Color.White;
+            //btnHome.ForeColor = Color.White;
         }
 
         private void btnClassRecords_MouseEnter(object sender, EventArgs e)
