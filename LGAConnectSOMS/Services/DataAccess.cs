@@ -22,28 +22,58 @@ namespace LGAConnectSOMS.Services
             }
         }
 
-        ////ReadandDisplayStudentsDataByLastname
+        public List<GradeLevelModel> GetStudentsByGradeLevel()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LGAConnectDB")))
+            {
+                return connection.Query<GradeLevelModel>($"SELECT Grade_Level FROM GradeLevel").ToList();
+            }
+        }
+
+        public List<GradeLevelModel> GetStudentsBySection()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LGAConnectDB")))
+            {
+                return connection.Query<GradeLevelModel>($"SELECT Section FROM GradeLevel").ToList();
+            }
+        }
+
+        ////SearchStudentsDataByLastname
         public List<Students> GetStudentsByLastname(string Lastname)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LGAConnectDB")))
             {
-                return connection.Query<Students>($"SELECT Students.Lastname, Students.Firstname, Students.Middlename, Students.GradeLevel, GradeLevel.Section FROM Students JOIN GradeLevel ON Students.GradeLevel = GradeLevel.ID  WHERE Students.Lastname = '{Lastname}'").ToList();
+                return connection.Query<Students>($"SELECT Students.Lastname, Students.Firstname, Students.Middlename, Students.Gender, Students.GradeLevel, GradeLevel.Section FROM Students JOIN GradeLevel ON Students.GradeLevel = GradeLevel.ID  WHERE Students.Lastname = '{Lastname}'").ToList();
             }
         }
 
-        //public void AddStudent(string lastname, string firstname, string middlename, string gender, int gradeLevel)
-        //{
+        //FilterbyGradeandSection
+        public List<Students> FilterByGrade(string gradelevel)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LGAConnectDB")))
+            {
+                return connection.Query<Students>($"SELECT Students.Lastname, Students.Firstname, Students.Middlename, Students.Gender, GradeLevel.Grade_Level, GradeLevel.Section FROM Students JOIN GradeLevel ON Students.GradeLevel = GradeLevel.ID  WHERE GradeLevel.Grade_Level = '{gradelevel}'").ToList();
+            }
+        }
 
-        //    using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LGAConnectDB")))
-        //    {
-        //        List<Students> addstudents = new List<Students>();
-        //        addstudents.Add(new Students { Lastname = lastname, Firstname = firstname, Middlename = middlename, Gender = gender, GradeLevel = gradeLevel });
-        //        connection.Execute($"INSERT INTO Students VALUES(@Lastname, @Firstname, @Middlename, @Gender, @GradeLevel)", addstudents);
-        //        MessageBox.Show("Added Student Successfully!");
-        //    }
+        public List<Students> FilterBySection(string section)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LGAConnectDB")))
+            {
+                return connection.Query<Students>($"SELECT Students.Lastname, Students.Firstname, Students.Middlename, Students.Gender, GradeLevel.Grade_Level, GradeLevel.Section FROM Students JOIN GradeLevel ON Students.GradeLevel = GradeLevel.ID  WHERE GradeLevel.Section = '{section}'").ToList();
+            }
+        }
 
-
-
-        //}
+        //AddNewStudent
+        public void AddStudent(string lastname, string firstname, string middlename, string gender, int gradeLevel)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("LGAConnectDB")))
+            {
+                List<StudentDetailsModel> addstudents = new List<StudentDetailsModel>();
+                addstudents.Add(new StudentDetailsModel { Lastname = lastname, Firstname = firstname, Middlename = middlename, Gender = gender, GradeLevel = gradeLevel });
+                connection.Execute($"INSERT INTO Students VALUES(@Lastname, @Firstname, @Middlename, @Gender, @GradeLevel)", addstudents);
+                MessageBox.Show("Added New Student Successfully! \n Check the newly added Student in List of Students tab", "New Student Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
     }
 }

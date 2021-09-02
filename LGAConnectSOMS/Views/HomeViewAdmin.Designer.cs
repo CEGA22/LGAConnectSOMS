@@ -168,6 +168,7 @@ namespace LGAConnectSOMS
             // 
             // btnHome
             // 
+            this.btnHome.BackColor = System.Drawing.Color.LightGray;
             this.btnHome.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnHome.FlatAppearance.BorderSize = 0;
             this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -178,11 +179,11 @@ namespace LGAConnectSOMS
             this.btnHome.Location = new System.Drawing.Point(0, 197);
             this.btnHome.Name = "btnHome";
             this.btnHome.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnHome.Size = new System.Drawing.Size(256, 41);
+            this.btnHome.Size = new System.Drawing.Size(265, 41);
             this.btnHome.TabIndex = 7;
             this.btnHome.Text = " Home";
             this.btnHome.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnHome.UseVisualStyleBackColor = true;
+            this.btnHome.UseVisualStyleBackColor = false;
             this.btnHome.MouseEnter += new System.EventHandler(this.btnHome_MouseEnter);
             this.btnHome.MouseLeave += new System.EventHandler(this.btnHome_MouseLeave);
             // 

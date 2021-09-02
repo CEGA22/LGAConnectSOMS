@@ -16,6 +16,8 @@ namespace LGAConnectSOMS.Views
     public partial class ClassRecordAdminView : Form
     {
         List<Students> students = new List<Students>();
+        List<GradeLevelModel> gradelevel = new List<GradeLevelModel>();
+        List<GradeLevelModel> section = new List<GradeLevelModel>();
         public ClassRecordAdminView()
         {
             InitializeComponent();
@@ -26,7 +28,9 @@ namespace LGAConnectSOMS.Views
         {
             this.RestoreWindowPosition();
             MaximizeIcon();
-            DisplayClassRecordData();                    
+            DisplayClassRecordData();
+            ClassRecordDataGridView.CurrentCell = null;
+                   
         }
 
         //NavigationToOtherForm
@@ -40,24 +44,89 @@ namespace LGAConnectSOMS.Views
         }
 
         //Commands
-
         public void DisplayClassRecordData()
         {
             var db = new DataAccess();
             students = db.GetStudents();
-            ClassRecordDataGridView.DataSource = students;
-            ClassRecordDataGridView.CurrentCell.Selected = false;
+            ClassRecordDataGridView.DataSource = students;                 
         }
         private void txtSearchStudent_TextChanged(object sender, EventArgs e)
         {
             var db = new DataAccess();
             students = db.GetStudentsByLastname(txtSearchStudent.Text);
             ClassRecordDataGridView.DataSource = students;
+            CBGradeLevel.SelectedIndex = -1;
+            CBSection.SelectedIndex = -1;
+            ClassRecordDataGridView.CurrentCell = null;
             if (string.IsNullOrWhiteSpace(txtSearchStudent.Text))
             {
                 DisplayClassRecordData();
             }
         }
+        private void btnAddStudent_Click_1(object sender, EventArgs e)
+        {
+            var db = new DataAccess();
+            db.AddStudent(txtLastname.Text, txtFirstname.Text, txtMiddlename.Text, txtGender.Text, Convert.ToInt32(txtGradeLevel.Text));
+        }
+
+        private void CBGradeLevel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CBGradeLevel.SelectedIndex == -1)
+            {
+                DisplayClassRecordData();
+            }
+            else
+            {
+                var db = new DataAccess();
+                var selectedgrade = CBGradeLevel.Text;
+                students = db.FilterByGrade(selectedgrade.ToString());
+                ClassRecordDataGridView.DataSource = students;
+                CBSection.SelectedIndex = -1;
+                ClassRecordDataGridView.CurrentCell = null;
+
+            }     
+        }
+
+        private void CBGradeLevel_DropDown(object sender, EventArgs e)
+        {
+            var db = new DataAccess();
+            gradelevel = db.GetStudentsByGradeLevel();
+            CBGradeLevel.DataSource = gradelevel;
+            CBGradeLevel.DisplayMember = "Grade_Level";
+            CBGradeLevel.Text = "Grade Level";
+            CBGradeLevel.SelectedIndex = -1;
+            ClassRecordDataGridView.CurrentCell = null;
+        }
+
+        private void CBSection_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CBSection.SelectedIndex == -1)
+            {
+                DisplayClassRecordData();
+            }
+            else
+            {
+                var db = new DataAccess();
+                var selectsection = CBSection.Text;
+                students = db.FilterBySection(selectsection.ToString());
+                ClassRecordDataGridView.DataSource = students;
+                CBGradeLevel.SelectedIndex = -1;
+                ClassRecordDataGridView.CurrentCell = null;
+
+            }
+        }
+
+        private void CBSection_DropDown(object sender, EventArgs e)
+        {
+            var db = new DataAccess();
+            section = db.GetStudentsBySection();
+            CBSection.DataSource = section;
+            CBSection.DisplayMember = "Section";
+            CBSection.Text = "Grade Level";
+            CBSection.SelectedIndex = -1;
+            ClassRecordDataGridView.CurrentCell = null;
+        }
+
 
 
         //Buttons Forecolor and background Styles
@@ -170,12 +239,6 @@ namespace LGAConnectSOMS.Views
             {
                 btnMaximize.Image = LGAConnectSOMS.Properties.Resources.FullScreenBlack;
             }
-        }
-
-        private void btnAddStudent_Click(object sender, EventArgs e)
-        {
-            //var db = new DataAccess();
-            //db.AddStudent(txtLastname.Text, txtFirstname.Text,txtMiddlename.Text, txtGender.Text, Convert.ToInt32(txtGradeLevel.Text));
-        }
+        }  
     }
 }
