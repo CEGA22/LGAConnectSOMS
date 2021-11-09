@@ -1,7 +1,12 @@
-﻿using LGAConnectSOMS.Properties;
+﻿using LGAConnectSOMS.Models;
+using LGAConnectSOMS.Properties;
 using LGAConnectSOMS.Views;
 using System;
 using System.Drawing;
+using System.Drawing.Text;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -9,19 +14,64 @@ namespace LGAConnectSOMS
 {
     public partial class HomeViewAdmin : Form
     {
+       
         public HomeViewAdmin()
         {
+            
             InitializeComponent();
+                 
         }
 
         //Load
         private void HomeView_Load(object sender, EventArgs e)
         {
+            DynamicHomeViewAdminPanel();
             this.RestoreWindowPosition();
             MaximizeIcon();
             btnHome.ForeColor = Color.FromArgb(255, 246, 143);
-
+            //CustomFont();
+            lblAccountName.Text = Settings.Default.Fullname;
+            lblTitle.Text = "Good Day, " + Settings.Default.Firstname;
+            panel1.Hide();          
         }
+
+
+        //public void CustomFont()
+        //{
+        //    //Create your private font collection object.
+        //    PrivateFontCollection pfc = new PrivateFontCollection();
+
+        //    //Select your font from the resources.
+        //    //My font here is "Digireu.ttf"
+        //    int fontLength = Properties.Resources.Montserrat_Medium.Length;
+            
+
+        //    // create a buffer to read in to
+        //    byte[] fontdata = Properties.Resources.Montserrat_Medium;
+            
+        //    // create an unsafe memory block for the font data
+        //    System.IntPtr data = Marshal.AllocCoTaskMem(fontLength);
+          
+
+        //    // copy the bytes to the unsafe memory block
+        //    Marshal.Copy(fontdata, 0, data, fontLength);       
+
+        //    // pass the font to the font collection
+        //    pfc.AddMemoryFont(data, fontLength);            
+
+        //    lblTitle.Font = new Font(pfc.Families[0], 20);          
+        //    lblAccountName.Font = new Font(pfc.Families[0], 10);
+        //    lblUserRole.Font = new Font(pfc.Families[0], 10);
+        //    btnHome.Font = new Font(pfc.Families[0], 12);
+        //    btnClassRecords.Font = new Font(pfc.Families[0], 12);
+        //    btnClassSchedule.Font = new Font(pfc.Families[0], 12);
+        //    btnManageNews.Font = new Font(pfc.Families[0], 12);
+        //    btnPaymentRecords.Font = new Font(pfc.Families[0], 12);
+        //    lblTitleNewsPanel.Font = new Font(pfc.Families[0], 10);
+        //    lblvViewMoreNews.Font = new Font(pfc.Families[0], 8);
+        //    lblArticleTitle.Font = new Font(pfc.Families[0], 12);
+        //    lblArticelDescription.Font = new Font(pfc.Families[0], 10);
+        //}
 
 
         //NavigationToOtherForm
@@ -51,6 +101,53 @@ namespace LGAConnectSOMS
             var PRV = new PaymentRecordsView();
             PRV.Show();
             this.Hide();
+        }
+
+        //Commands
+
+        public void DynamicHomeViewAdminPanel()
+        {
+            Panel EnrolledStudentsPanel = new Panel();
+            Panel FileRequestPanel = new Panel();
+            EnrolledStudentsPanel.Size = new System.Drawing.Size(219, 188);
+            EnrolledStudentsPanel.Location = new System.Drawing.Point(1069, 121);
+            EnrolledStudentsPanel.BackColor = Color.FromArgb(233, 77, 144);
+            EnrolledStudentsPanel.TabIndex = 0;
+            FileRequestPanel.Size = new System.Drawing.Size(219, 188);
+            FileRequestPanel.Location = new System.Drawing.Point(1069, 326);
+            FileRequestPanel.BackColor = Color.FromArgb(33, 209, 255);
+            FileRequestPanel.TabIndex = 0;
+            Controls.Add(EnrolledStudentsPanel);
+            Controls.Add(FileRequestPanel);
+            Label lblEnrolledStudents = new Label();
+            Label lblEnrolledStudentsCount = new Label();
+            Label lblFileRequestCount = new Label();
+            lblEnrolledStudents.Text = "Enrolled\nStudents";
+            lblEnrolledStudents.ForeColor = Color.White;
+            lblEnrolledStudents.Font = new Font("Tw Cen MT", 14);
+            lblEnrolledStudents.AutoSize = true;
+            lblEnrolledStudentsCount.Text = "100";
+            lblEnrolledStudentsCount.ForeColor = Color.White;
+            lblEnrolledStudentsCount.Font = new Font("Tw Cen MT", 36);
+            lblEnrolledStudentsCount.AutoSize = true;
+            lblEnrolledStudentsCount.Location = new System.Drawing.Point(0,130);
+            Label lblFileRequest = new Label();
+            lblFileRequest.Text = "File\nRequest";
+            lblFileRequest.ForeColor = Color.White;
+            lblFileRequest.Font = new Font("Tw Cen MT", 14);
+            lblFileRequest.AutoSize = true;
+            lblFileRequestCount.Text = "10";
+            lblFileRequestCount.ForeColor = Color.White;
+            lblFileRequestCount.Font = new Font("Tw Cen MT", 36);
+            lblFileRequestCount.AutoSize = true;
+            lblFileRequestCount.Location = new System.Drawing.Point(0, 130);
+            EnrolledStudentsPanel.Controls.Add(lblEnrolledStudents);
+            EnrolledStudentsPanel.Controls.Add(lblEnrolledStudentsCount);
+            FileRequestPanel.Controls.Add(lblFileRequest);
+            FileRequestPanel.Controls.Add(lblFileRequestCount);
+            EnrolledStudentsPanel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            FileRequestPanel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            EnrolledStudentsPanel.Cursor = Cursors.Hand;
         }
 
         //Buttons Forecolor and background Styles
@@ -111,59 +208,104 @@ namespace LGAConnectSOMS
         private void RestoreWindowPosition()
         {
             
-            if (Settings.Default.HasSetDefault)
+            try
             {
-                this.WindowState = Settings.Default.WindowState;
-                this.Location = Settings.Default.Location;
-                this.Size = Settings.Default.Size;  
-                
+                if (Settings.Default.HasSetDefault)
+                {
+                    this.WindowState = Settings.Default.WindowState;
+                    this.Location = Settings.Default.Location;
+                    this.Size = Settings.Default.Size;
+                   
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
             }
         }
 
         private void HomeViewAdmin_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.SaveWindowPosition();
+            try
+            {
+                this.SaveWindowPosition();
+                
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         private void SaveWindowPosition()
-        {        
-            Settings.Default.WindowState = this.WindowState;
-
-            if (this.WindowState == FormWindowState.Normal)
+        {
+            try
             {
-                Settings.Default.Location = this.Location;
-                Settings.Default.Size = this.Size;
-                
+                Settings.Default.WindowState = this.WindowState;
+
+                if (this.WindowState == FormWindowState.Normal)
+                {
+                    Settings.Default.Location = this.Location;
+                    Settings.Default.Size = this.Size;
+                   
+
+                }
+                else
+                {
+                    Settings.Default.Location = this.RestoreBounds.Location;
+                    Settings.Default.Size = this.RestoreBounds.Size;
+                }
+
+                Settings.Default.HasSetDefault = true;
+
+                Settings.Default.Save();
             }
-            else
+            catch (Exception)
             {
-                Settings.Default.Location = this.RestoreBounds.Location;
-                Settings.Default.Size = this.RestoreBounds.Size;             
+
+                throw;
             }
-
-            Settings.Default.HasSetDefault = true;
-
-            Settings.Default.Save();
         }
-
 
         private void btnMinimize_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Minimized;
+            try
+            {
+                this.WindowState = FormWindowState.Minimized;
+                
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         private void btnMaximize_Click(object sender, EventArgs e)
         {
-            if (this.WindowState == FormWindowState.Normal)
+            try
             {
-                this.WindowState = FormWindowState.Maximized;
-                btnMaximize.Image = LGAConnectSOMS.Properties.Resources.NormalBlack;
-            }
+                if (this.WindowState == FormWindowState.Normal)
+                {
+                    this.WindowState = FormWindowState.Maximized;
+                    btnMaximize.Image = LGAConnectSOMS.Properties.Resources.NormalBlack;
+                    
+                }
 
-            else
+                else
+                {
+                    this.WindowState = FormWindowState.Normal;
+                    btnMaximize.Image = LGAConnectSOMS.Properties.Resources.FullScreenBlack;
+                   
+                }
+            }
+            catch (Exception)
             {
-                this.WindowState = FormWindowState.Normal;
-                btnMaximize.Image = LGAConnectSOMS.Properties.Resources.FullScreenBlack;
+
+                throw;
             }
 
         }
@@ -179,34 +321,125 @@ namespace LGAConnectSOMS
 
         private void DragWindowsPanel_MouseDown(object sender, MouseEventArgs e)
         {
-            if (this.WindowState == FormWindowState.Maximized)
+
+            try
             {
-                this.WindowState = FormWindowState.Normal;              
+                if (this.WindowState == FormWindowState.Maximized)
+                {
+                    this.WindowState = FormWindowState.Normal;
+                    btnMaximize.Image = LGAConnectSOMS.Properties.Resources.FullScreenBlack;
+
+                }
+                _mouseLoc = e.Location;
             }
-            _mouseLoc = e.Location;
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         private void DragWindowsPanel_MouseMove(object sender, MouseEventArgs e)
-        {           
+        {
+
+            try
+            {
                 if (e.Button == MouseButtons.Left)
                 {
                     int dx = e.Location.X - _mouseLoc.X;
                     int dy = e.Location.Y - _mouseLoc.Y;
                     this.Location = new Point(this.Location.X + dx, this.Location.Y + dy);
-                }                 
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public void MaximizeIcon()
         {
-            if (this.WindowState == FormWindowState.Maximized)
+
+            try
             {
-                btnMaximize.Image = LGAConnectSOMS.Properties.Resources.NormalBlack;
+                if (this.WindowState == FormWindowState.Maximized)
+                {
+                    btnMaximize.Image = LGAConnectSOMS.Properties.Resources.NormalBlack;
+                }
+
+                else if (this.WindowState == FormWindowState.Normal)
+                {
+                    btnMaximize.Image = LGAConnectSOMS.Properties.Resources.FullScreenBlack;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        private void btnAccount_Click(object sender, EventArgs e)
+        {                      
+            IsMenuVisible();
+        }
+
+        public void IsMenuVisible()
+        {
+            if (panel1.Visible == false)
+            {
+                panel1.Show();
             }
 
-            else if(this.WindowState == FormWindowState.Normal)
+            else if(panel1.Visible == true)
             {
-                btnMaximize.Image = LGAConnectSOMS.Properties.Resources.FullScreenBlack;
+                panel1.Hide();
             }
-        }      
+        }
+
+        public const int Form_DropShadow = 0x00020000;
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= Form_DropShadow;
+                return cp;
+            }
+        }
+
+        private void HomeViewAdmin_Click(object sender, EventArgs e)
+        {
+            panel1.Hide();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            SaveWindowPosition();
+            Settings.Default.ID = 0;
+            Settings.Default.Firstname = null;
+            Settings.Default.Lastname = null;
+            Settings.Default.Fullname = null;
+            LoginPageView loginPageView = new LoginPageView();
+            loginPageView.Show();
+            this.Hide();
+        }
+
+        private void btnUserSettings_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAbout_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

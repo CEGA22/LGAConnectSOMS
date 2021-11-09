@@ -31,35 +31,38 @@ namespace LGAConnectSOMS
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomeViewAdmin));
             this.SideBarPanel = new System.Windows.Forms.Panel();
+            this.DragWindowsPanel = new System.Windows.Forms.Panel();
+            this.NewsPanel = new System.Windows.Forms.Panel();
+            this.lblArticelDescription = new System.Windows.Forms.Label();
+            this.lblArticleTitle = new System.Windows.Forms.Label();
+            this.NewsPanelYellow = new System.Windows.Forms.Panel();
+            this.lblvViewMoreNews = new System.Windows.Forms.Label();
+            this.lblTitleNewsPanel = new System.Windows.Forms.Label();
+            this.btnAccount = new System.Windows.Forms.Button();
+            this.lblAccountName = new System.Windows.Forms.Label();
+            this.lblUserRole = new System.Windows.Forms.Label();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnLogout = new System.Windows.Forms.Button();
+            this.btnAbout = new System.Windows.Forms.Button();
+            this.btnUserSettings = new System.Windows.Forms.Button();
+            this.btnMaximize = new System.Windows.Forms.Button();
+            this.btnMinimize = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.NewsImage = new System.Windows.Forms.PictureBox();
             this.btnPaymentRecords = new System.Windows.Forms.Button();
             this.btnManageNews = new System.Windows.Forms.Button();
             this.btnClassSchedule = new System.Windows.Forms.Button();
             this.btnClassRecords = new System.Windows.Forms.Button();
             this.btnHome = new System.Windows.Forms.Button();
             this.LGAConnectLogo = new System.Windows.Forms.PictureBox();
-            this.DragWindowsPanel = new System.Windows.Forms.Panel();
-            this.btnMaximize = new System.Windows.Forms.Button();
-            this.btnMinimize = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.NewsPanel = new System.Windows.Forms.Panel();
-            this.lblArticelDescription = new System.Windows.Forms.Label();
-            this.lblArticleTitle = new System.Windows.Forms.Label();
-            this.NewsImage = new System.Windows.Forms.PictureBox();
-            this.NewsPanelYellow = new System.Windows.Forms.Panel();
-            this.lblvViewMoreNews = new System.Windows.Forms.Label();
-            this.lblTitleNewsPanel = new System.Windows.Forms.Label();
-            this.btnEnrolledStudents = new System.Windows.Forms.Button();
-            this.btnFileRequest = new System.Windows.Forms.Button();
-            this.btnAccount = new System.Windows.Forms.Button();
-            this.lblAccountName = new System.Windows.Forms.Label();
-            this.lblUserRole = new System.Windows.Forms.Label();
-            this.lblTitle = new System.Windows.Forms.Label();
             this.SideBarPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.LGAConnectLogo)).BeginInit();
             this.DragWindowsPanel.SuspendLayout();
             this.NewsPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NewsImage)).BeginInit();
             this.NewsPanelYellow.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NewsImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LGAConnectLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // SideBarPanel
@@ -78,125 +81,6 @@ namespace LGAConnectSOMS
             this.SideBarPanel.Size = new System.Drawing.Size(265, 700);
             this.SideBarPanel.TabIndex = 0;
             // 
-            // btnPaymentRecords
-            // 
-            this.btnPaymentRecords.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPaymentRecords.FlatAppearance.BorderSize = 0;
-            this.btnPaymentRecords.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPaymentRecords.Font = new System.Drawing.Font("Tw Cen MT", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPaymentRecords.ForeColor = System.Drawing.Color.White;
-            this.btnPaymentRecords.Image = global::LGAConnectSOMS.Properties.Resources.Payment_Records;
-            this.btnPaymentRecords.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPaymentRecords.Location = new System.Drawing.Point(0, 478);
-            this.btnPaymentRecords.Name = "btnPaymentRecords";
-            this.btnPaymentRecords.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnPaymentRecords.Size = new System.Drawing.Size(256, 51);
-            this.btnPaymentRecords.TabIndex = 11;
-            this.btnPaymentRecords.Text = "Payment Records";
-            this.btnPaymentRecords.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPaymentRecords.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnPaymentRecords.UseVisualStyleBackColor = true;
-            this.btnPaymentRecords.Click += new System.EventHandler(this.btnPaymentRecords_Click);
-            this.btnPaymentRecords.MouseEnter += new System.EventHandler(this.btnPaymentRecords_MouseEnter);
-            this.btnPaymentRecords.MouseLeave += new System.EventHandler(this.btnPaymentRecords_MouseLeave);
-            // 
-            // btnManageNews
-            // 
-            this.btnManageNews.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnManageNews.FlatAppearance.BorderSize = 0;
-            this.btnManageNews.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnManageNews.Font = new System.Drawing.Font("Tw Cen MT", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnManageNews.ForeColor = System.Drawing.Color.White;
-            this.btnManageNews.Image = global::LGAConnectSOMS.Properties.Resources.envelope;
-            this.btnManageNews.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnManageNews.Location = new System.Drawing.Point(0, 396);
-            this.btnManageNews.Name = "btnManageNews";
-            this.btnManageNews.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnManageNews.Size = new System.Drawing.Size(256, 66);
-            this.btnManageNews.TabIndex = 10;
-            this.btnManageNews.Text = "Manage News &&\r\nAnnouncements";
-            this.btnManageNews.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnManageNews.UseVisualStyleBackColor = true;
-            this.btnManageNews.Click += new System.EventHandler(this.btnManageNews_Click);
-            this.btnManageNews.MouseEnter += new System.EventHandler(this.btnManageNews_MouseEnter);
-            this.btnManageNews.MouseLeave += new System.EventHandler(this.btnManageNews_MouseLeave);
-            // 
-            // btnClassSchedule
-            // 
-            this.btnClassSchedule.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
-            this.btnClassSchedule.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnClassSchedule.FlatAppearance.BorderSize = 0;
-            this.btnClassSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClassSchedule.Font = new System.Drawing.Font("Tw Cen MT", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClassSchedule.ForeColor = System.Drawing.Color.White;
-            this.btnClassSchedule.Image = ((System.Drawing.Image)(resources.GetObject("btnClassSchedule.Image")));
-            this.btnClassSchedule.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClassSchedule.Location = new System.Drawing.Point(0, 330);
-            this.btnClassSchedule.Name = "btnClassSchedule";
-            this.btnClassSchedule.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnClassSchedule.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnClassSchedule.Size = new System.Drawing.Size(256, 41);
-            this.btnClassSchedule.TabIndex = 9;
-            this.btnClassSchedule.Text = "Class Schedule";
-            this.btnClassSchedule.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClassSchedule.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnClassSchedule.UseVisualStyleBackColor = false;
-            this.btnClassSchedule.MouseEnter += new System.EventHandler(this.btnClassSchedule_MouseEnter);
-            this.btnClassSchedule.MouseLeave += new System.EventHandler(this.btnClassSchedule_MouseLeave);
-            // 
-            // btnClassRecords
-            // 
-            this.btnClassRecords.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnClassRecords.FlatAppearance.BorderSize = 0;
-            this.btnClassRecords.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClassRecords.Font = new System.Drawing.Font("Tw Cen MT", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClassRecords.ForeColor = System.Drawing.Color.White;
-            this.btnClassRecords.Image = ((System.Drawing.Image)(resources.GetObject("btnClassRecords.Image")));
-            this.btnClassRecords.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClassRecords.Location = new System.Drawing.Point(0, 268);
-            this.btnClassRecords.Name = "btnClassRecords";
-            this.btnClassRecords.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnClassRecords.Size = new System.Drawing.Size(256, 41);
-            this.btnClassRecords.TabIndex = 8;
-            this.btnClassRecords.Text = "Class Records";
-            this.btnClassRecords.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClassRecords.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnClassRecords.UseVisualStyleBackColor = true;
-            this.btnClassRecords.Click += new System.EventHandler(this.btnClassRecords_Click);
-            this.btnClassRecords.MouseEnter += new System.EventHandler(this.btnClassRecords_MouseEnter);
-            this.btnClassRecords.MouseLeave += new System.EventHandler(this.btnClassRecords_MouseLeave);
-            // 
-            // btnHome
-            // 
-            this.btnHome.BackColor = System.Drawing.Color.LightGray;
-            this.btnHome.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnHome.FlatAppearance.BorderSize = 0;
-            this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHome.Font = new System.Drawing.Font("Tw Cen MT", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHome.ForeColor = System.Drawing.Color.White;
-            this.btnHome.Image = global::LGAConnectSOMS.Properties.Resources.Home;
-            this.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHome.Location = new System.Drawing.Point(0, 197);
-            this.btnHome.Name = "btnHome";
-            this.btnHome.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnHome.Size = new System.Drawing.Size(265, 41);
-            this.btnHome.TabIndex = 7;
-            this.btnHome.Text = " Home";
-            this.btnHome.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnHome.UseVisualStyleBackColor = false;
-            this.btnHome.MouseEnter += new System.EventHandler(this.btnHome_MouseEnter);
-            this.btnHome.MouseLeave += new System.EventHandler(this.btnHome_MouseLeave);
-            // 
-            // LGAConnectLogo
-            // 
-            this.LGAConnectLogo.Image = global::LGAConnectSOMS.Properties.Resources.LGASCHOOLLOGO;
-            this.LGAConnectLogo.Location = new System.Drawing.Point(75, 33);
-            this.LGAConnectLogo.Name = "LGAConnectLogo";
-            this.LGAConnectLogo.Size = new System.Drawing.Size(100, 100);
-            this.LGAConnectLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.LGAConnectLogo.TabIndex = 6;
-            this.LGAConnectLogo.TabStop = false;
-            // 
             // DragWindowsPanel
             // 
             this.DragWindowsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -207,50 +91,10 @@ namespace LGAConnectSOMS
             this.DragWindowsPanel.Controls.Add(this.btnClose);
             this.DragWindowsPanel.Location = new System.Drawing.Point(263, 0);
             this.DragWindowsPanel.Name = "DragWindowsPanel";
-            this.DragWindowsPanel.Size = new System.Drawing.Size(1037, 29);
+            this.DragWindowsPanel.Size = new System.Drawing.Size(1039, 29);
             this.DragWindowsPanel.TabIndex = 13;
             this.DragWindowsPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DragWindowsPanel_MouseDown);
             this.DragWindowsPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DragWindowsPanel_MouseMove);
-            // 
-            // btnMaximize
-            // 
-            this.btnMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMaximize.FlatAppearance.BorderSize = 0;
-            this.btnMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMaximize.Image = global::LGAConnectSOMS.Properties.Resources.FullScreenBlack;
-            this.btnMaximize.Location = new System.Drawing.Point(974, 6);
-            this.btnMaximize.Name = "btnMaximize";
-            this.btnMaximize.Size = new System.Drawing.Size(20, 20);
-            this.btnMaximize.TabIndex = 11;
-            this.btnMaximize.UseVisualStyleBackColor = true;
-            this.btnMaximize.Click += new System.EventHandler(this.btnMaximize_Click);
-            // 
-            // btnMinimize
-            // 
-            this.btnMinimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMinimize.FlatAppearance.BorderSize = 0;
-            this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMinimize.Image = global::LGAConnectSOMS.Properties.Resources.MinimizeBlack1;
-            this.btnMinimize.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnMinimize.Location = new System.Drawing.Point(944, 6);
-            this.btnMinimize.Name = "btnMinimize";
-            this.btnMinimize.Size = new System.Drawing.Size(20, 20);
-            this.btnMinimize.TabIndex = 12;
-            this.btnMinimize.UseVisualStyleBackColor = true;
-            this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
-            // 
-            // btnClose
-            // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.FlatAppearance.BorderSize = 0;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Image = global::LGAConnectSOMS.Properties.Resources.CloseBlack;
-            this.btnClose.Location = new System.Drawing.Point(1004, 6);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(20, 20);
-            this.btnClose.TabIndex = 10;
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // NewsPanel
             // 
@@ -276,35 +120,23 @@ namespace LGAConnectSOMS
             this.lblArticelDescription.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblArticelDescription.Location = new System.Drawing.Point(12, 401);
             this.lblArticelDescription.Name = "lblArticelDescription";
-            this.lblArticelDescription.Size = new System.Drawing.Size(712, 76);
+            this.lblArticelDescription.Size = new System.Drawing.Size(753, 75);
             this.lblArticelDescription.TabIndex = 5;
             this.lblArticelDescription.Text = resources.GetString("lblArticelDescription.Text");
+            this.lblArticelDescription.UseCompatibleTextRendering = true;
             // 
             // lblArticleTitle
             // 
             this.lblArticleTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblArticleTitle.AutoSize = true;
             this.lblArticleTitle.BackColor = System.Drawing.Color.Transparent;
             this.lblArticleTitle.Font = new System.Drawing.Font("Tw Cen MT", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblArticleTitle.Location = new System.Drawing.Point(12, 357);
             this.lblArticleTitle.Name = "lblArticleTitle";
-            this.lblArticleTitle.Size = new System.Drawing.Size(98, 24);
+            this.lblArticleTitle.Size = new System.Drawing.Size(96, 29);
             this.lblArticleTitle.TabIndex = 4;
             this.lblArticleTitle.Text = "News Title";
-            // 
-            // NewsImage
-            // 
-            this.NewsImage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.NewsImage.Image = global::LGAConnectSOMS.Properties.Resources.LastOfUsPartIIEllieWallpaper;
-            this.NewsImage.Location = new System.Drawing.Point(16, 50);
-            this.NewsImage.Name = "NewsImage";
-            this.NewsImage.Size = new System.Drawing.Size(747, 291);
-            this.NewsImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.NewsImage.TabIndex = 3;
-            this.NewsImage.TabStop = false;
+            this.lblArticleTitle.UseCompatibleTextRendering = true;
             // 
             // NewsPanelYellow
             // 
@@ -321,7 +153,6 @@ namespace LGAConnectSOMS
             // lblvViewMoreNews
             // 
             this.lblvViewMoreNews.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblvViewMoreNews.AutoSize = true;
             this.lblvViewMoreNews.BackColor = System.Drawing.Color.Transparent;
             this.lblvViewMoreNews.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblvViewMoreNews.Font = new System.Drawing.Font("Tw Cen MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -334,47 +165,15 @@ namespace LGAConnectSOMS
             // 
             // lblTitleNewsPanel
             // 
-            this.lblTitleNewsPanel.AutoSize = true;
             this.lblTitleNewsPanel.BackColor = System.Drawing.Color.Transparent;
             this.lblTitleNewsPanel.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitleNewsPanel.ForeColor = System.Drawing.Color.Black;
             this.lblTitleNewsPanel.Location = new System.Drawing.Point(9, 6);
             this.lblTitleNewsPanel.Name = "lblTitleNewsPanel";
-            this.lblTitleNewsPanel.Size = new System.Drawing.Size(84, 19);
+            this.lblTitleNewsPanel.Size = new System.Drawing.Size(212, 23);
             this.lblTitleNewsPanel.TabIndex = 6;
             this.lblTitleNewsPanel.Text = "Latest News";
-            // 
-            // btnEnrolledStudents
-            // 
-            this.btnEnrolledStudents.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEnrolledStudents.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(77)))), ((int)(((byte)(144)))));
-            this.btnEnrolledStudents.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEnrolledStudents.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEnrolledStudents.Font = new System.Drawing.Font("Tw Cen MT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEnrolledStudents.ForeColor = System.Drawing.Color.White;
-            this.btnEnrolledStudents.Location = new System.Drawing.Point(1069, 121);
-            this.btnEnrolledStudents.Name = "btnEnrolledStudents";
-            this.btnEnrolledStudents.Size = new System.Drawing.Size(219, 188);
-            this.btnEnrolledStudents.TabIndex = 2;
-            this.btnEnrolledStudents.Text = "Enrolled Students\r\n\r\n\r\n                      ";
-            this.btnEnrolledStudents.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnEnrolledStudents.UseVisualStyleBackColor = false;
-            // 
-            // btnFileRequest
-            // 
-            this.btnFileRequest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFileRequest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(209)))), ((int)(((byte)(255)))));
-            this.btnFileRequest.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFileRequest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFileRequest.Font = new System.Drawing.Font("Tw Cen MT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFileRequest.ForeColor = System.Drawing.Color.White;
-            this.btnFileRequest.Location = new System.Drawing.Point(1069, 326);
-            this.btnFileRequest.Name = "btnFileRequest";
-            this.btnFileRequest.Size = new System.Drawing.Size(219, 188);
-            this.btnFileRequest.TabIndex = 3;
-            this.btnFileRequest.Text = "File Request";
-            this.btnFileRequest.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnFileRequest.UseVisualStyleBackColor = false;
+            this.lblTitleNewsPanel.UseCompatibleTextRendering = true;
             // 
             // btnAccount
             // 
@@ -390,44 +189,296 @@ namespace LGAConnectSOMS
             this.btnAccount.TabIndex = 7;
             this.btnAccount.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnAccount.UseVisualStyleBackColor = false;
+            this.btnAccount.Click += new System.EventHandler(this.btnAccount_Click);
             // 
             // lblAccountName
             // 
             this.lblAccountName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblAccountName.AutoSize = true;
             this.lblAccountName.BackColor = System.Drawing.Color.Transparent;
             this.lblAccountName.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAccountName.ForeColor = System.Drawing.Color.Black;
-            this.lblAccountName.Location = new System.Drawing.Point(1160, 55);
+            this.lblAccountName.Location = new System.Drawing.Point(956, 55);
             this.lblAccountName.Name = "lblAccountName";
-            this.lblAccountName.Size = new System.Drawing.Size(72, 19);
+            this.lblAccountName.Size = new System.Drawing.Size(275, 23);
             this.lblAccountName.TabIndex = 8;
             this.lblAccountName.Text = "Username";
+            this.lblAccountName.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lblAccountName.UseCompatibleTextRendering = true;
             // 
             // lblUserRole
             // 
             this.lblUserRole.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblUserRole.AutoSize = true;
             this.lblUserRole.BackColor = System.Drawing.Color.Transparent;
             this.lblUserRole.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUserRole.ForeColor = System.Drawing.Color.Black;
-            this.lblUserRole.Location = new System.Drawing.Point(1140, 86);
+            this.lblUserRole.Location = new System.Drawing.Point(1059, 78);
             this.lblUserRole.Name = "lblUserRole";
-            this.lblUserRole.Size = new System.Drawing.Size(92, 19);
+            this.lblUserRole.Size = new System.Drawing.Size(170, 23);
             this.lblUserRole.TabIndex = 9;
             this.lblUserRole.Text = "Administrator";
+            this.lblUserRole.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lblUserRole.UseCompatibleTextRendering = true;
             // 
             // lblTitle
             // 
-            this.lblTitle.AutoSize = true;
             this.lblTitle.BackColor = System.Drawing.Color.Transparent;
             this.lblTitle.Font = new System.Drawing.Font("Tw Cen MT", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.Black;
             this.lblTitle.Location = new System.Drawing.Point(270, 47);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(227, 37);
+            this.lblTitle.Size = new System.Drawing.Size(466, 42);
             this.lblTitle.TabIndex = 13;
             this.lblTitle.Text = "Good Day, User";
+            this.lblTitle.UseCompatibleTextRendering = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.btnLogout);
+            this.panel1.Controls.Add(this.btnAbout);
+            this.panel1.Controls.Add(this.btnUserSettings);
+            this.panel1.Location = new System.Drawing.Point(1059, 111);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(229, 183);
+            this.panel1.TabIndex = 14;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.BackColor = System.Drawing.Color.Transparent;
+            this.btnLogout.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLogout.FlatAppearance.BorderSize = 0;
+            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogout.Font = new System.Drawing.Font("Tw Cen MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.Image = global::LGAConnectSOMS.Properties.Resources.logout;
+            this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLogout.Location = new System.Drawing.Point(0, 133);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(230, 50);
+            this.btnLogout.TabIndex = 2;
+            this.btnLogout.Text = "Log out";
+            this.btnLogout.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnLogout.UseVisualStyleBackColor = false;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
+            // btnAbout
+            // 
+            this.btnAbout.BackColor = System.Drawing.Color.Transparent;
+            this.btnAbout.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAbout.FlatAppearance.BorderSize = 0;
+            this.btnAbout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAbout.Font = new System.Drawing.Font("Tw Cen MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAbout.Image = global::LGAConnectSOMS.Properties.Resources.About;
+            this.btnAbout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAbout.Location = new System.Drawing.Point(0, 77);
+            this.btnAbout.Name = "btnAbout";
+            this.btnAbout.Size = new System.Drawing.Size(230, 50);
+            this.btnAbout.TabIndex = 1;
+            this.btnAbout.Text = "About";
+            this.btnAbout.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAbout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAbout.UseVisualStyleBackColor = false;
+            this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
+            // 
+            // btnUserSettings
+            // 
+            this.btnUserSettings.BackColor = System.Drawing.Color.Transparent;
+            this.btnUserSettings.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnUserSettings.FlatAppearance.BorderSize = 0;
+            this.btnUserSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUserSettings.Font = new System.Drawing.Font("Tw Cen MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUserSettings.Image = global::LGAConnectSOMS.Properties.Resources.UserSettings;
+            this.btnUserSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUserSettings.Location = new System.Drawing.Point(0, 15);
+            this.btnUserSettings.Name = "btnUserSettings";
+            this.btnUserSettings.Size = new System.Drawing.Size(230, 50);
+            this.btnUserSettings.TabIndex = 0;
+            this.btnUserSettings.Text = "Account Settings";
+            this.btnUserSettings.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnUserSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnUserSettings.UseVisualStyleBackColor = false;
+            this.btnUserSettings.Click += new System.EventHandler(this.btnUserSettings_Click);
+            // 
+            // btnMaximize
+            // 
+            this.btnMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMaximize.FlatAppearance.BorderSize = 0;
+            this.btnMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMaximize.Image = global::LGAConnectSOMS.Properties.Resources.FullScreenBlack;
+            this.btnMaximize.Location = new System.Drawing.Point(976, 6);
+            this.btnMaximize.Name = "btnMaximize";
+            this.btnMaximize.Size = new System.Drawing.Size(20, 20);
+            this.btnMaximize.TabIndex = 11;
+            this.btnMaximize.UseVisualStyleBackColor = true;
+            this.btnMaximize.Click += new System.EventHandler(this.btnMaximize_Click);
+            // 
+            // btnMinimize
+            // 
+            this.btnMinimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMinimize.FlatAppearance.BorderSize = 0;
+            this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMinimize.Image = global::LGAConnectSOMS.Properties.Resources.MinimizeBlack1;
+            this.btnMinimize.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnMinimize.Location = new System.Drawing.Point(946, 6);
+            this.btnMinimize.Name = "btnMinimize";
+            this.btnMinimize.Size = new System.Drawing.Size(20, 20);
+            this.btnMinimize.TabIndex = 12;
+            this.btnMinimize.UseVisualStyleBackColor = true;
+            this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Image = global::LGAConnectSOMS.Properties.Resources.CloseBlack;
+            this.btnClose.Location = new System.Drawing.Point(1006, 6);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(20, 20);
+            this.btnClose.TabIndex = 10;
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // NewsImage
+            // 
+            this.NewsImage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.NewsImage.Image = global::LGAConnectSOMS.Properties.Resources.Student;
+            this.NewsImage.Location = new System.Drawing.Point(16, 50);
+            this.NewsImage.Name = "NewsImage";
+            this.NewsImage.Size = new System.Drawing.Size(747, 291);
+            this.NewsImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.NewsImage.TabIndex = 3;
+            this.NewsImage.TabStop = false;
+            // 
+            // btnPaymentRecords
+            // 
+            this.btnPaymentRecords.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPaymentRecords.FlatAppearance.BorderSize = 0;
+            this.btnPaymentRecords.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPaymentRecords.Font = new System.Drawing.Font("Tw Cen MT", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPaymentRecords.ForeColor = System.Drawing.Color.White;
+            this.btnPaymentRecords.Image = global::LGAConnectSOMS.Properties.Resources.Payment_Records;
+            this.btnPaymentRecords.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnPaymentRecords.Location = new System.Drawing.Point(0, 478);
+            this.btnPaymentRecords.Name = "btnPaymentRecords";
+            this.btnPaymentRecords.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnPaymentRecords.Size = new System.Drawing.Size(265, 51);
+            this.btnPaymentRecords.TabIndex = 11;
+            this.btnPaymentRecords.Text = "Payment Records";
+            this.btnPaymentRecords.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btnPaymentRecords.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPaymentRecords.UseCompatibleTextRendering = true;
+            this.btnPaymentRecords.UseVisualStyleBackColor = true;
+            this.btnPaymentRecords.Click += new System.EventHandler(this.btnPaymentRecords_Click);
+            this.btnPaymentRecords.MouseEnter += new System.EventHandler(this.btnPaymentRecords_MouseEnter);
+            this.btnPaymentRecords.MouseLeave += new System.EventHandler(this.btnPaymentRecords_MouseLeave);
+            // 
+            // btnManageNews
+            // 
+            this.btnManageNews.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnManageNews.FlatAppearance.BorderSize = 0;
+            this.btnManageNews.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnManageNews.Font = new System.Drawing.Font("Tw Cen MT", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnManageNews.ForeColor = System.Drawing.Color.White;
+            this.btnManageNews.Image = global::LGAConnectSOMS.Properties.Resources.envelope;
+            this.btnManageNews.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnManageNews.Location = new System.Drawing.Point(0, 396);
+            this.btnManageNews.Name = "btnManageNews";
+            this.btnManageNews.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnManageNews.Size = new System.Drawing.Size(265, 66);
+            this.btnManageNews.TabIndex = 10;
+            this.btnManageNews.Text = "Manage News &&\r\nAnnouncements";
+            this.btnManageNews.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btnManageNews.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnManageNews.UseCompatibleTextRendering = true;
+            this.btnManageNews.UseVisualStyleBackColor = true;
+            this.btnManageNews.Click += new System.EventHandler(this.btnManageNews_Click);
+            this.btnManageNews.MouseEnter += new System.EventHandler(this.btnManageNews_MouseEnter);
+            this.btnManageNews.MouseLeave += new System.EventHandler(this.btnManageNews_MouseLeave);
+            // 
+            // btnClassSchedule
+            // 
+            this.btnClassSchedule.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
+            this.btnClassSchedule.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClassSchedule.FlatAppearance.BorderSize = 0;
+            this.btnClassSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClassSchedule.Font = new System.Drawing.Font("Tw Cen MT", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClassSchedule.ForeColor = System.Drawing.Color.White;
+            this.btnClassSchedule.Image = ((System.Drawing.Image)(resources.GetObject("btnClassSchedule.Image")));
+            this.btnClassSchedule.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnClassSchedule.Location = new System.Drawing.Point(0, 330);
+            this.btnClassSchedule.Name = "btnClassSchedule";
+            this.btnClassSchedule.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnClassSchedule.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnClassSchedule.Size = new System.Drawing.Size(265, 41);
+            this.btnClassSchedule.TabIndex = 9;
+            this.btnClassSchedule.Text = "Class Schedule";
+            this.btnClassSchedule.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btnClassSchedule.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnClassSchedule.UseCompatibleTextRendering = true;
+            this.btnClassSchedule.UseVisualStyleBackColor = false;
+            this.btnClassSchedule.MouseEnter += new System.EventHandler(this.btnClassSchedule_MouseEnter);
+            this.btnClassSchedule.MouseLeave += new System.EventHandler(this.btnClassSchedule_MouseLeave);
+            // 
+            // btnClassRecords
+            // 
+            this.btnClassRecords.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClassRecords.FlatAppearance.BorderSize = 0;
+            this.btnClassRecords.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClassRecords.Font = new System.Drawing.Font("Tw Cen MT", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClassRecords.ForeColor = System.Drawing.Color.White;
+            this.btnClassRecords.Image = ((System.Drawing.Image)(resources.GetObject("btnClassRecords.Image")));
+            this.btnClassRecords.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnClassRecords.Location = new System.Drawing.Point(0, 268);
+            this.btnClassRecords.Name = "btnClassRecords";
+            this.btnClassRecords.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnClassRecords.Size = new System.Drawing.Size(265, 41);
+            this.btnClassRecords.TabIndex = 8;
+            this.btnClassRecords.Text = "Student Records";
+            this.btnClassRecords.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btnClassRecords.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnClassRecords.UseCompatibleTextRendering = true;
+            this.btnClassRecords.UseVisualStyleBackColor = true;
+            this.btnClassRecords.Click += new System.EventHandler(this.btnClassRecords_Click);
+            this.btnClassRecords.MouseEnter += new System.EventHandler(this.btnClassRecords_MouseEnter);
+            this.btnClassRecords.MouseLeave += new System.EventHandler(this.btnClassRecords_MouseLeave);
+            // 
+            // btnHome
+            // 
+            this.btnHome.BackColor = System.Drawing.Color.LightGray;
+            this.btnHome.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnHome.FlatAppearance.BorderSize = 0;
+            this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHome.Font = new System.Drawing.Font("Tw Cen MT", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHome.ForeColor = System.Drawing.Color.White;
+            this.btnHome.Image = global::LGAConnectSOMS.Properties.Resources.Home;
+            this.btnHome.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnHome.Location = new System.Drawing.Point(0, 197);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnHome.Size = new System.Drawing.Size(265, 41);
+            this.btnHome.TabIndex = 7;
+            this.btnHome.Text = " Home";
+            this.btnHome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnHome.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnHome.UseCompatibleTextRendering = true;
+            this.btnHome.UseVisualStyleBackColor = false;
+            this.btnHome.MouseEnter += new System.EventHandler(this.btnHome_MouseEnter);
+            this.btnHome.MouseLeave += new System.EventHandler(this.btnHome_MouseLeave);
+            // 
+            // LGAConnectLogo
+            // 
+            this.LGAConnectLogo.Image = global::LGAConnectSOMS.Properties.Resources.LGASCHOOLLOGO;
+            this.LGAConnectLogo.Location = new System.Drawing.Point(75, 33);
+            this.LGAConnectLogo.Name = "LGAConnectLogo";
+            this.LGAConnectLogo.Size = new System.Drawing.Size(100, 100);
+            this.LGAConnectLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.LGAConnectLogo.TabIndex = 6;
+            this.LGAConnectLogo.TabStop = false;
             // 
             // HomeViewAdmin
             // 
@@ -435,13 +486,12 @@ namespace LGAConnectSOMS
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(242)))), ((int)(((byte)(245)))));
             this.ClientSize = new System.Drawing.Size(1300, 700);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.DragWindowsPanel);
             this.Controls.Add(this.lblUserRole);
             this.Controls.Add(this.lblAccountName);
             this.Controls.Add(this.btnAccount);
-            this.Controls.Add(this.btnFileRequest);
-            this.Controls.Add(this.btnEnrolledStudents);
             this.Controls.Add(this.NewsPanel);
             this.Controls.Add(this.SideBarPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -450,16 +500,16 @@ namespace LGAConnectSOMS
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HomeViewAdmin_FormClosing);
             this.Load += new System.EventHandler(this.HomeView_Load);
+            this.Click += new System.EventHandler(this.HomeViewAdmin_Click);
             this.SideBarPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.LGAConnectLogo)).EndInit();
             this.DragWindowsPanel.ResumeLayout(false);
             this.NewsPanel.ResumeLayout(false);
             this.NewsPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NewsImage)).EndInit();
             this.NewsPanelYellow.ResumeLayout(false);
-            this.NewsPanelYellow.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.NewsImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LGAConnectLogo)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -471,8 +521,6 @@ namespace LGAConnectSOMS
         private System.Windows.Forms.Label lblArticleTitle;
         private System.Windows.Forms.PictureBox NewsImage;
         private System.Windows.Forms.Panel NewsPanelYellow;
-        private System.Windows.Forms.Button btnEnrolledStudents;
-        private System.Windows.Forms.Button btnFileRequest;
         private System.Windows.Forms.Button btnAccount;
         private System.Windows.Forms.Label lblAccountName;
         private System.Windows.Forms.Label lblTitleNewsPanel;
@@ -489,6 +537,10 @@ namespace LGAConnectSOMS
         private System.Windows.Forms.Panel DragWindowsPanel;
         private System.Windows.Forms.Label lblTitle;
         public System.Windows.Forms.Button btnMaximize;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnUserSettings;
+        private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.Button btnAbout;
     }
 }
 
