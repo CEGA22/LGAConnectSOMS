@@ -22,6 +22,48 @@ namespace LGAConnectSOMS.Views
         {
             this.RestoreWindowPosition();
             MaximizeIcon();
+            Menu.Hide();
+            lblAccountName.Text = Settings.Default.Fullname;
+            lblTitle.Text = "Good Day, " + Settings.Default.Firstname;
+        }
+
+
+        //NavigationToOtherForm
+        private void btnClassRecords_Click(object sender, EventArgs e)
+        {
+            ClassRecordFacultyView classRecordFacultyView = new ClassRecordFacultyView();
+            classRecordFacultyView.Show();
+            this.Hide();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            SaveWindowPosition();
+            Settings.Default.ID = 0;
+            Settings.Default.Firstname = null;
+            Settings.Default.Lastname = null;
+            Settings.Default.Fullname = null;
+            LoginPageView loginPageView = new LoginPageView();
+            loginPageView.Show();
+            this.Hide();
+        }
+
+        private void btnAccount_Click(object sender, EventArgs e)
+        {
+            IsMenuVisible();
+        }
+
+        public void IsMenuVisible()
+        {
+            if (Menu.Visible == false)
+            {
+                Menu.Show();
+            }
+
+            else if (panel1.Visible == true)
+            {
+                Menu.Hide();
+            }
         }
 
         //TitleBarFunction
@@ -125,6 +167,8 @@ namespace LGAConnectSOMS.Views
                 btnMaximize.Image = LGAConnectSOMS.Properties.Resources.FullScreenBlack;
             }
         }
+
+        
 
 
     }

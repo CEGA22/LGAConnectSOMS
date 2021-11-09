@@ -1,7 +1,9 @@
-﻿using LGAConnectSOMS.Views;
+﻿using LGAConnectSOMS.Properties;
+using LGAConnectSOMS.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -17,7 +19,29 @@ namespace LGAConnectSOMS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginPageView());
+            //Settings.Default.ID = 0;
+            if(Settings.Default.ID != 0)
+            {
+                if(Settings.Default.IsAdmin == 1)
+                {
+                    Application.Run(new HomeViewAdmin());
+                }
+
+                else if(Settings.Default.IsAdmin == 0)
+                {
+                    Application.Run(new HomeViewTeacher());
+                }
+
+                
+            }
+
+            else if(Settings.Default.ID == 0)
+            {
+                Application.Run(new LoginPageView());
+            }
+                                               
         }
+
+       
     }
 }

@@ -1,4 +1,6 @@
-﻿using LGAConnectSOMS.Properties;
+﻿using LGAConnectSOMS.Models;
+using LGAConnectSOMS.Properties;
+using LGAConnectSOMS.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,30 +14,81 @@ using System.Windows.Forms;
 namespace LGAConnectSOMS.Views
 {
     public partial class LoginPageView : Form
-    {
-       
+    {       
         public LoginPageView()
         {
-            InitializeComponent();
-            
+            InitializeComponent();           
         }
 
         private void LoginPageView_Load(object sender, EventArgs e)
         {
             this.RestoreWindowPosition();
             MaximizeIcon();
+            txtPasswordSize();                 
         }
 
         //NavigationToOtherForm
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private async void btnLogin_Click(object sender, EventArgs e)
         {
-            this.SaveWindowPosition();
-            HomeViewAdmin HV = new HomeViewAdmin();      
-            HV.Show();         
-            this.Hide();         
+           
+            //await GetStudentAccountById(1);
+            //StudentService studentservice = new StudentService();
+            //var result = await studentservice.GetStudentAccountById(1);
+            //if (result != null)
+            //{
+            //    MessageBox.Show($"Welcome to LGAConnect {result.Lastname}");
+            //}
+                       
+                LoginService loginService = new LoginService();
+                var result = await loginService.AccountLogin(new LoginRequest
+                {
+                    Username = txtAccountID.Text,
+                    Password = txtPassword.Text
+                });              
+
+                if (result.IsSuccess)
+                {  
+                    if(result.IsAdmin == 1)
+                    {
+                    //save to persitence data
+                    SavePersistentData(result.ID, result.Firstname, result.Lastname, result.Fullname, result.IsAdmin);
+                    HomeViewAdmin homeViewAdmin = new HomeViewAdmin();
+                    homeViewAdmin.Show();
+                    this.Hide();
+                    }
+
+
+                    else
+                    {
+                        //save to persitence data
+                        SavePersistentData(result.ID, result.Firstname, result.Lastname, result.Fullname, result.IsAdmin);
+                        HomeViewTeacher homeViewTeacher = new HomeViewTeacher();
+                        homeViewTeacher.Show();
+                        this.Hide();
+                    }                 
+
+                 }
+                else
+                {
+                    MessageBox.Show("Login failed");
+                }                   
         }
 
+        public void SavePersistentData(int ID, string firstname, string lastname, string fullname, int isAdmin)
+        {
+            Settings.Default.ID = ID;
+            Settings.Default.Firstname = firstname;
+            Settings.Default.Lastname = lastname;
+            Settings.Default.Fullname = fullname;
+            Settings.Default.IsAdmin = isAdmin;
+        }
+        //private async Task<StudentAccount> GetStudentAccountById(int id)
+        //{
+        //    StudentService studentservice = new StudentService();
+        //    var result = await studentservice.GetStudentAccountById(id);
+        //    return result;
+        //}
 
         //TitleBarFunction
 
@@ -81,17 +134,17 @@ namespace LGAConnectSOMS.Views
 
         private void btnMaximize_Click(object sender, EventArgs e)
         {
-           
+
             if (this.WindowState == FormWindowState.Normal)
             {
                 this.WindowState = FormWindowState.Maximized;
-                btnMaximize.Image = LGAConnectSOMS.Properties.Resources.NormalBlack;
+                btnMaximize.Image = LGAConnectSOMS.Properties.Resources.NormalBlack;               
             }
 
             else
             {
                 this.WindowState = FormWindowState.Normal;
-                btnMaximize.Image = LGAConnectSOMS.Properties.Resources.FullScreenBlack;
+                btnMaximize.Image = LGAConnectSOMS.Properties.Resources.FullScreenBlack;                             
             }
         }
 
@@ -108,6 +161,7 @@ namespace LGAConnectSOMS.Views
             if (this.WindowState == FormWindowState.Maximized)
             {
                 this.WindowState = FormWindowState.Normal;
+                btnMaximize.Image = LGAConnectSOMS.Properties.Resources.FullScreenBlack;
             }
             _mouseLoc = e.Location;
         }
@@ -133,6 +187,56 @@ namespace LGAConnectSOMS.Views
             {
                 btnMaximize.Image = LGAConnectSOMS.Properties.Resources.FullScreenBlack;
             }
+        }
+
+        private void lblShowHide_Click(object sender, EventArgs e)
+        {  
+                if (lblShowHide.Text == "Show")
+                {
+                    lblShowHide.Text = "Hide";
+                    txtPassword.UseSystemPasswordChar = true;
+                }
+
+                else
+                {
+                    txtPassword.UseSystemPasswordChar = false;
+                    lblShowHide.Text = "Show";
+                }
+  
+        }
+
+        public void txtPasswordSize()
+        {
+            txtPassword.Size = new System.Drawing.Size(422, 43);
+            lblShowHide.Hide();
+        }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+            if(txtPassword.Text == string.Empty)
+            {
+                txtPasswordSize();
+            }
+
+            else
+            {
+                txtPassword.Size = new System.Drawing.Size(365, 43);
+                lblShowHide.Show();
+              
+            }
+            
+        }
+
+        private void btnClose_MouseEnter(object sender, EventArgs e)
+        {
+            btnClose.BackColor = Color.FromArgb(240, 52, 52);
+            btnClose.Image = LGAConnectSOMS.Properties.Resources.close_button;
+        }
+
+        private void btnClose_MouseLeave(object sender, EventArgs e)
+        {
+            btnClose.BackColor = Color.Transparent;
+            btnClose.Image = LGAConnectSOMS.Properties.Resources.CloseBlack;
         }
     }
 }

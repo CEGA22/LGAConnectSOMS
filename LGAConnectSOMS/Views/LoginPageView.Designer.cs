@@ -30,6 +30,7 @@ namespace LGAConnectSOMS.Views
         private void InitializeComponent()
         {
             this.LoginPanel = new System.Windows.Forms.Panel();
+            this.lblShowHide = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.lblPassword = new System.Windows.Forms.Label();
@@ -51,6 +52,7 @@ namespace LGAConnectSOMS.Views
             this.LoginPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.LoginPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(242)))), ((int)(((byte)(245)))));
+            this.LoginPanel.Controls.Add(this.lblShowHide);
             this.LoginPanel.Controls.Add(this.btnLogin);
             this.LoginPanel.Controls.Add(this.txtPassword);
             this.LoginPanel.Controls.Add(this.lblPassword);
@@ -62,6 +64,20 @@ namespace LGAConnectSOMS.Views
             this.LoginPanel.Size = new System.Drawing.Size(591, 703);
             this.LoginPanel.TabIndex = 0;
             // 
+            // lblShowHide
+            // 
+            this.lblShowHide.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblShowHide.AutoSize = true;
+            this.lblShowHide.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblShowHide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblShowHide.Font = new System.Drawing.Font("Tw Cen MT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblShowHide.Location = new System.Drawing.Point(413, 348);
+            this.lblShowHide.Name = "lblShowHide";
+            this.lblShowHide.Size = new System.Drawing.Size(51, 22);
+            this.lblShowHide.TabIndex = 6;
+            this.lblShowHide.Text = "Show";
+            this.lblShowHide.Click += new System.EventHandler(this.lblShowHide_Click);
+            // 
             // btnLogin
             // 
             this.btnLogin.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -70,9 +86,9 @@ namespace LGAConnectSOMS.Views
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Tw Cen MT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(348, 401);
+            this.btnLogin.Location = new System.Drawing.Point(42, 401);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(116, 43);
+            this.btnLogin.Size = new System.Drawing.Size(422, 43);
             this.btnLogin.TabIndex = 5;
             this.btnLogin.Text = "Log in";
             this.btnLogin.UseVisualStyleBackColor = false;
@@ -85,8 +101,10 @@ namespace LGAConnectSOMS.Views
             this.txtPassword.Location = new System.Drawing.Point(42, 336);
             this.txtPassword.Multiline = true;
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(425, 43);
+            this.txtPassword.PasswordChar = '.';
+            this.txtPassword.Size = new System.Drawing.Size(365, 43);
             this.txtPassword.TabIndex = 4;
+            this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
             // 
             // lblPassword
             // 
@@ -152,9 +170,9 @@ namespace LGAConnectSOMS.Views
             this.btnMaximize.FlatAppearance.BorderSize = 0;
             this.btnMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMaximize.Image = global::LGAConnectSOMS.Properties.Resources.FullScreenBlack;
-            this.btnMaximize.Location = new System.Drawing.Point(646, 6);
+            this.btnMaximize.Location = new System.Drawing.Point(646, -1);
             this.btnMaximize.Name = "btnMaximize";
-            this.btnMaximize.Size = new System.Drawing.Size(20, 20);
+            this.btnMaximize.Size = new System.Drawing.Size(33, 31);
             this.btnMaximize.TabIndex = 14;
             this.btnMaximize.UseVisualStyleBackColor = true;
             this.btnMaximize.Click += new System.EventHandler(this.btnMaximize_Click);
@@ -165,10 +183,10 @@ namespace LGAConnectSOMS.Views
             this.btnMinimize.FlatAppearance.BorderSize = 0;
             this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinimize.Image = global::LGAConnectSOMS.Properties.Resources.MinimizeBlack1;
-            this.btnMinimize.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnMinimize.Location = new System.Drawing.Point(616, 6);
+            this.btnMinimize.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnMinimize.Location = new System.Drawing.Point(616, -1);
             this.btnMinimize.Name = "btnMinimize";
-            this.btnMinimize.Size = new System.Drawing.Size(20, 20);
+            this.btnMinimize.Size = new System.Drawing.Size(25, 31);
             this.btnMinimize.TabIndex = 15;
             this.btnMinimize.UseVisualStyleBackColor = true;
             this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
@@ -179,12 +197,14 @@ namespace LGAConnectSOMS.Views
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Image = global::LGAConnectSOMS.Properties.Resources.CloseBlack;
-            this.btnClose.Location = new System.Drawing.Point(676, 6);
+            this.btnClose.Location = new System.Drawing.Point(676, -1);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(20, 20);
+            this.btnClose.Size = new System.Drawing.Size(33, 31);
             this.btnClose.TabIndex = 13;
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.btnClose.MouseEnter += new System.EventHandler(this.btnClose_MouseEnter);
+            this.btnClose.MouseLeave += new System.EventHandler(this.btnClose_MouseLeave);
             // 
             // LGAConnectSOMSLogo
             // 
@@ -236,5 +256,6 @@ namespace LGAConnectSOMS.Views
         private System.Windows.Forms.Button btnMinimize;
         private System.Windows.Forms.Panel DragWindowsPanel;
         private System.Windows.Forms.PictureBox LGAConnectSOMSLogo;
+        private System.Windows.Forms.Label lblShowHide;
     }
 }
