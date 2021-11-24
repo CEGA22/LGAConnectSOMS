@@ -18,8 +18,28 @@ namespace LGAConnectSOMS.Views
         }
 
 
+        //NavigationToOtherForm
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
+
         //Buttons Forecolor and background Styles
 
+        private void btnBack_MouseEnter(object sender, EventArgs e)
+        {
+            btnBack.Image = LGAConnectSOMS.Properties.Resources.BackArrowYellow24;
+        }
+
+        private void btnBack_MouseLeave(object sender, EventArgs e)
+        {
+            btnBack.Image = LGAConnectSOMS.Properties.Resources.BackArrow24;
+        }
+
+        
+
+        
 
         //TitleBarFunction
         private void btnClose_Click(object sender, EventArgs e)
@@ -39,18 +59,6 @@ namespace LGAConnectSOMS.Views
             e.Handled = true;
         }
 
-        private void btnClose_MouseEnter(object sender, EventArgs e)
-        {
-            btnClose.BackColor = Color.FromArgb(240, 52, 52);
-            btnClose.Image = LGAConnectSOMS.Properties.Resources.close_button;
-        }
-
-        private void btnClose_MouseLeave(object sender, EventArgs e)
-        {
-            btnClose.BackColor = Color.Transparent;          
-            btnClose.Image = LGAConnectSOMS.Properties.Resources.CloseBlack;
-        }
-
         public const int Form_DropShadow = 0x00020000;
 
         protected override CreateParams CreateParams
@@ -62,5 +70,7 @@ namespace LGAConnectSOMS.Views
                 return cp;
             }
         }
+
+        
     }
 }

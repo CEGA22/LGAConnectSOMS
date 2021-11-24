@@ -11,17 +11,46 @@ namespace LGAConnectSOMS.Services
     public class StudentService
     {
         public async Task<IEnumerable<StudentAccount>> GetStudentAccount()
-        {         
-            var apiGateway = new StudentAccountGateway();
-            var content = await apiGateway.GetStudentAccount();                     
-            return content;           
-        }
-
-        public async Task<StudentAccount> GetStudentAccountById(int id)
         {
             var apiGateway = new StudentAccountGateway();
-            var content = await apiGateway.GetStudentAccountById(id);
+            var content = await apiGateway.GetStudentAccount();
+            return content;
+        }
+
+        public async Task<IEnumerable<StudentAccount>> GetStudentAccountById(string lastname)
+        {
+            var apiGateway = new StudentAccountGateway();
+            var content = await apiGateway.GetStudentAccountById(lastname);
+            return content;
+        }
+
+        public async Task<IEnumerable<StudentAccount>> GetStudentAccountByGradeLevel(string gradelevel)
+        {
+            var apiGateway = new StudentAccountGateway();
+            var content = await apiGateway.GetStudentAccountByGradeLevel(gradelevel);
+            return content;
+        }
+
+        public async Task<IEnumerable<StudentAccount>> GetStudentByGradeLevelFilter()
+        {
+            var apiGateway = new StudentAccountGateway();
+            var content = await apiGateway.GetStudentAccountByGradeLevelFilter();
+            return content;
+        }
+
+        public async Task<IEnumerable<StudentAccount>> GetStudentAccountBySection(string section)
+        {
+            var apiGateway = new StudentAccountGateway();
+            var content = await apiGateway.GetStudentAccountBySection(section);
+            return content;
+        }
+
+        public async Task<IEnumerable<StudentAccount>> GetStudentBySectionFilter()
+        {
+            var apiGateway = new StudentAccountGateway();
+            var content = await apiGateway.GetStudentAccountBySectionFilter();
             return content;
         }
     }
 }
+

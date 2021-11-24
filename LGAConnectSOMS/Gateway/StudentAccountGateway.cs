@@ -12,7 +12,7 @@ namespace LGAConnectSOMS.Gateway
 {
     public class StudentAccountGateway
     {
-        static string BaseUrl = "http://localhost:2195/api/lga/student";
+        static string BaseUrl = "http://ceejaygabrang-001-site1.itempurl.com/api/lga/student";
 
         public async Task<IEnumerable<StudentAccount>> GetStudentAccount()
         {
@@ -29,13 +29,13 @@ namespace LGAConnectSOMS.Gateway
             }
         }
 
-        public async Task<StudentAccount> GetStudentAccountById(int id)
+        public async Task<IEnumerable<StudentAccount>> GetStudentAccountById(string lastname)
         {
             try
             {
-                string url = $"{BaseUrl}/get_by_id/{id}";
+                string url = $"{BaseUrl}/get_by_id/{lastname}";
                 var content = await WebMethods.MakeGetRequest(url);
-                var result = JsonConvert.DeserializeObject<StudentAccount>(content);
+                var result = JsonConvert.DeserializeObject<IEnumerable<StudentAccount>>(content);
                 return result;
             }
             catch
@@ -43,5 +43,67 @@ namespace LGAConnectSOMS.Gateway
                 return null;
             }
         }
+
+        public async Task<IEnumerable<StudentAccount>> GetStudentAccountByGradeLevel(string gradelevel)
+        {
+            try
+            {
+                string url = $"{BaseUrl}/get_by_gradelevel/{gradelevel}";
+                var content = await WebMethods.MakeGetRequest(url);
+                var result = JsonConvert.DeserializeObject<IEnumerable<StudentAccount>>(content);
+                return result;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public async Task<IEnumerable<StudentAccount>> GetStudentAccountByGradeLevelFilter()
+        {
+            try
+            {
+                string url = $"{BaseUrl}/get_by_gradelevelFilter";
+                var content = await WebMethods.MakeGetRequest(url);
+                var result = JsonConvert.DeserializeObject<IEnumerable<StudentAccount>>(content);
+                return result;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public async Task<IEnumerable<StudentAccount>> GetStudentAccountBySection(string section)
+        {
+            try
+            {
+                string url = $"{BaseUrl}/get_by_section/{section}";
+                var content = await WebMethods.MakeGetRequest(url);
+                var result = JsonConvert.DeserializeObject<IEnumerable<StudentAccount>>(content);
+                return result;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public async Task<IEnumerable<StudentAccount>> GetStudentAccountBySectionFilter()
+        {
+            try
+            {
+                string url = $"{BaseUrl}/get_by_sectionFilter";
+                var content = await WebMethods.MakeGetRequest(url);
+                var result = JsonConvert.DeserializeObject<IEnumerable<StudentAccount>>(content);
+                return result;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+
     }
 }

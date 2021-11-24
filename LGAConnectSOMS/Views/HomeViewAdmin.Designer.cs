@@ -69,7 +69,7 @@ namespace LGAConnectSOMS
             // 
             this.SideBarPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.SideBarPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
+            this.SideBarPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(167)))), ((int)(((byte)(240)))));
             this.SideBarPanel.Controls.Add(this.btnPaymentRecords);
             this.SideBarPanel.Controls.Add(this.btnManageNews);
             this.SideBarPanel.Controls.Add(this.btnClassSchedule);
@@ -242,7 +242,6 @@ namespace LGAConnectSOMS
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(229, 183);
             this.panel1.TabIndex = 14;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // btnLogout
             // 
@@ -280,7 +279,6 @@ namespace LGAConnectSOMS
             this.btnAbout.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAbout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAbout.UseVisualStyleBackColor = false;
-            this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
             // 
             // btnUserSettings
             // 
@@ -299,7 +297,6 @@ namespace LGAConnectSOMS
             this.btnUserSettings.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnUserSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnUserSettings.UseVisualStyleBackColor = false;
-            this.btnUserSettings.Click += new System.EventHandler(this.btnUserSettings_Click);
             // 
             // btnMaximize
             // 
@@ -346,7 +343,7 @@ namespace LGAConnectSOMS
             this.NewsImage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.NewsImage.Image = global::LGAConnectSOMS.Properties.Resources.Student;
+            this.NewsImage.Image = global::LGAConnectSOMS.Properties.Resources.StudentKids;
             this.NewsImage.Location = new System.Drawing.Point(16, 50);
             this.NewsImage.Name = "NewsImage";
             this.NewsImage.Size = new System.Drawing.Size(747, 291);
@@ -361,7 +358,7 @@ namespace LGAConnectSOMS
             this.btnPaymentRecords.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPaymentRecords.Font = new System.Drawing.Font("Tw Cen MT", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPaymentRecords.ForeColor = System.Drawing.Color.White;
-            this.btnPaymentRecords.Image = global::LGAConnectSOMS.Properties.Resources.Payment_Records;
+            this.btnPaymentRecords.Image = global::LGAConnectSOMS.Properties.Resources.credit_card;
             this.btnPaymentRecords.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnPaymentRecords.Location = new System.Drawing.Point(0, 478);
             this.btnPaymentRecords.Name = "btnPaymentRecords";
@@ -402,7 +399,7 @@ namespace LGAConnectSOMS
             // 
             // btnClassSchedule
             // 
-            this.btnClassSchedule.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
+            this.btnClassSchedule.BackColor = System.Drawing.Color.Transparent;
             this.btnClassSchedule.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClassSchedule.FlatAppearance.BorderSize = 0;
             this.btnClassSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -421,6 +418,7 @@ namespace LGAConnectSOMS
             this.btnClassSchedule.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnClassSchedule.UseCompatibleTextRendering = true;
             this.btnClassSchedule.UseVisualStyleBackColor = false;
+            this.btnClassSchedule.Click += new System.EventHandler(this.btnClassSchedule_Click);
             this.btnClassSchedule.MouseEnter += new System.EventHandler(this.btnClassSchedule_MouseEnter);
             this.btnClassSchedule.MouseLeave += new System.EventHandler(this.btnClassSchedule_MouseLeave);
             // 
@@ -472,10 +470,10 @@ namespace LGAConnectSOMS
             // 
             // LGAConnectLogo
             // 
-            this.LGAConnectLogo.Image = global::LGAConnectSOMS.Properties.Resources.LGASCHOOLLOGO;
-            this.LGAConnectLogo.Location = new System.Drawing.Point(75, 33);
+            this.LGAConnectLogo.Image = global::LGAConnectSOMS.Properties.Resources.LGA_Connect_SOMS;
+            this.LGAConnectLogo.Location = new System.Drawing.Point(37, 12);
             this.LGAConnectLogo.Name = "LGAConnectLogo";
-            this.LGAConnectLogo.Size = new System.Drawing.Size(100, 100);
+            this.LGAConnectLogo.Size = new System.Drawing.Size(200, 200);
             this.LGAConnectLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.LGAConnectLogo.TabIndex = 6;
             this.LGAConnectLogo.TabStop = false;

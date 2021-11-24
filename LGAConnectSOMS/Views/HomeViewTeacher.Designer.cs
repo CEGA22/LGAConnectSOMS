@@ -31,6 +31,10 @@ namespace LGAConnectSOMS.Views
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomeViewTeacher));
             this.SideBarPanel = new System.Windows.Forms.Panel();
+            this.btnClassSchedule = new System.Windows.Forms.Button();
+            this.btnClassRecords = new System.Windows.Forms.Button();
+            this.btnHome = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblUserRole = new System.Windows.Forms.Label();
             this.lblAccountName = new System.Windows.Forms.Label();
@@ -45,28 +49,24 @@ namespace LGAConnectSOMS.Views
             this.lblvViewMoreNews = new System.Windows.Forms.Label();
             this.lblTitleNewsPanel = new System.Windows.Forms.Label();
             this.NewsPanel = new System.Windows.Forms.Panel();
+            this.NewsImage = new System.Windows.Forms.PictureBox();
             this.lblArticelDescription = new System.Windows.Forms.Label();
             this.lblArticleTitle = new System.Windows.Forms.Label();
             this.DragWindowsPanel = new System.Windows.Forms.Panel();
             this.btnMinimize = new System.Windows.Forms.Button();
             this.btnMaximize = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            this.NewsImage = new System.Windows.Forms.PictureBox();
-            this.btnClassSchedule = new System.Windows.Forms.Button();
-            this.btnClassRecords = new System.Windows.Forms.Button();
-            this.btnHome = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Menu = new System.Windows.Forms.Panel();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnAbout = new System.Windows.Forms.Button();
             this.btnUserSettings = new System.Windows.Forms.Button();
             this.SideBarPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.NewsPanel.SuspendLayout();
-            this.DragWindowsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NewsImage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.DragWindowsPanel.SuspendLayout();
             this.Menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -74,7 +74,7 @@ namespace LGAConnectSOMS.Views
             // 
             this.SideBarPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.SideBarPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
+            this.SideBarPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(167)))), ((int)(((byte)(240)))));
             this.SideBarPanel.Controls.Add(this.btnClassSchedule);
             this.SideBarPanel.Controls.Add(this.btnClassRecords);
             this.SideBarPanel.Controls.Add(this.btnHome);
@@ -83,6 +83,76 @@ namespace LGAConnectSOMS.Views
             this.SideBarPanel.Name = "SideBarPanel";
             this.SideBarPanel.Size = new System.Drawing.Size(265, 700);
             this.SideBarPanel.TabIndex = 7;
+            // 
+            // btnClassSchedule
+            // 
+            this.btnClassSchedule.BackColor = System.Drawing.Color.Transparent;
+            this.btnClassSchedule.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClassSchedule.FlatAppearance.BorderSize = 0;
+            this.btnClassSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClassSchedule.Font = new System.Drawing.Font("Tw Cen MT", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClassSchedule.ForeColor = System.Drawing.Color.White;
+            this.btnClassSchedule.Image = ((System.Drawing.Image)(resources.GetObject("btnClassSchedule.Image")));
+            this.btnClassSchedule.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClassSchedule.Location = new System.Drawing.Point(0, 330);
+            this.btnClassSchedule.Name = "btnClassSchedule";
+            this.btnClassSchedule.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnClassSchedule.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnClassSchedule.Size = new System.Drawing.Size(256, 41);
+            this.btnClassSchedule.TabIndex = 12;
+            this.btnClassSchedule.Text = "Class Schedule";
+            this.btnClassSchedule.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClassSchedule.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnClassSchedule.UseVisualStyleBackColor = false;
+            this.btnClassSchedule.Click += new System.EventHandler(this.btnClassSchedule_Click);
+            // 
+            // btnClassRecords
+            // 
+            this.btnClassRecords.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClassRecords.FlatAppearance.BorderSize = 0;
+            this.btnClassRecords.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClassRecords.Font = new System.Drawing.Font("Tw Cen MT", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClassRecords.ForeColor = System.Drawing.Color.White;
+            this.btnClassRecords.Image = ((System.Drawing.Image)(resources.GetObject("btnClassRecords.Image")));
+            this.btnClassRecords.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClassRecords.Location = new System.Drawing.Point(0, 268);
+            this.btnClassRecords.Name = "btnClassRecords";
+            this.btnClassRecords.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnClassRecords.Size = new System.Drawing.Size(256, 41);
+            this.btnClassRecords.TabIndex = 11;
+            this.btnClassRecords.Text = "Class Records";
+            this.btnClassRecords.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClassRecords.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnClassRecords.UseVisualStyleBackColor = true;
+            this.btnClassRecords.Click += new System.EventHandler(this.btnClassRecords_Click);
+            // 
+            // btnHome
+            // 
+            this.btnHome.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnHome.FlatAppearance.BorderSize = 0;
+            this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHome.Font = new System.Drawing.Font("Tw Cen MT", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHome.ForeColor = System.Drawing.Color.White;
+            this.btnHome.Image = global::LGAConnectSOMS.Properties.Resources.Home;
+            this.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHome.Location = new System.Drawing.Point(0, 197);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnHome.Size = new System.Drawing.Size(256, 41);
+            this.btnHome.TabIndex = 10;
+            this.btnHome.Text = " Home";
+            this.btnHome.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnHome.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::LGAConnectSOMS.Properties.Resources.LGA_Connect_SOMS;
+            this.pictureBox1.Location = new System.Drawing.Point(37, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(200, 200);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
             // 
             // lblTitle
             // 
@@ -273,6 +343,19 @@ namespace LGAConnectSOMS.Views
             this.NewsPanel.Size = new System.Drawing.Size(779, 295);
             this.NewsPanel.TabIndex = 17;
             // 
+            // NewsImage
+            // 
+            this.NewsImage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.NewsImage.Image = global::LGAConnectSOMS.Properties.Resources.StudentKids;
+            this.NewsImage.Location = new System.Drawing.Point(16, 39);
+            this.NewsImage.Name = "NewsImage";
+            this.NewsImage.Size = new System.Drawing.Size(747, 122);
+            this.NewsImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.NewsImage.TabIndex = 8;
+            this.NewsImage.TabStop = false;
+            // 
             // lblArticelDescription
             // 
             this.lblArticelDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -352,88 +435,6 @@ namespace LGAConnectSOMS.Views
             this.btnClose.TabIndex = 21;
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // NewsImage
-            // 
-            this.NewsImage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.NewsImage.Image = global::LGAConnectSOMS.Properties.Resources.Student;
-            this.NewsImage.Location = new System.Drawing.Point(16, 39);
-            this.NewsImage.Name = "NewsImage";
-            this.NewsImage.Size = new System.Drawing.Size(747, 122);
-            this.NewsImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.NewsImage.TabIndex = 8;
-            this.NewsImage.TabStop = false;
-            // 
-            // btnClassSchedule
-            // 
-            this.btnClassSchedule.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
-            this.btnClassSchedule.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnClassSchedule.FlatAppearance.BorderSize = 0;
-            this.btnClassSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClassSchedule.Font = new System.Drawing.Font("Tw Cen MT", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClassSchedule.ForeColor = System.Drawing.Color.White;
-            this.btnClassSchedule.Image = ((System.Drawing.Image)(resources.GetObject("btnClassSchedule.Image")));
-            this.btnClassSchedule.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClassSchedule.Location = new System.Drawing.Point(0, 330);
-            this.btnClassSchedule.Name = "btnClassSchedule";
-            this.btnClassSchedule.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnClassSchedule.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnClassSchedule.Size = new System.Drawing.Size(256, 41);
-            this.btnClassSchedule.TabIndex = 12;
-            this.btnClassSchedule.Text = "Class Schedule";
-            this.btnClassSchedule.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClassSchedule.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnClassSchedule.UseVisualStyleBackColor = false;
-            // 
-            // btnClassRecords
-            // 
-            this.btnClassRecords.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnClassRecords.FlatAppearance.BorderSize = 0;
-            this.btnClassRecords.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClassRecords.Font = new System.Drawing.Font("Tw Cen MT", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClassRecords.ForeColor = System.Drawing.Color.White;
-            this.btnClassRecords.Image = ((System.Drawing.Image)(resources.GetObject("btnClassRecords.Image")));
-            this.btnClassRecords.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClassRecords.Location = new System.Drawing.Point(0, 268);
-            this.btnClassRecords.Name = "btnClassRecords";
-            this.btnClassRecords.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnClassRecords.Size = new System.Drawing.Size(256, 41);
-            this.btnClassRecords.TabIndex = 11;
-            this.btnClassRecords.Text = "Class Records";
-            this.btnClassRecords.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClassRecords.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnClassRecords.UseVisualStyleBackColor = true;
-            this.btnClassRecords.Click += new System.EventHandler(this.btnClassRecords_Click);
-            // 
-            // btnHome
-            // 
-            this.btnHome.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnHome.FlatAppearance.BorderSize = 0;
-            this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHome.Font = new System.Drawing.Font("Tw Cen MT", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHome.ForeColor = System.Drawing.Color.White;
-            this.btnHome.Image = global::LGAConnectSOMS.Properties.Resources.Home;
-            this.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHome.Location = new System.Drawing.Point(0, 197);
-            this.btnHome.Name = "btnHome";
-            this.btnHome.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnHome.Size = new System.Drawing.Size(256, 41);
-            this.btnHome.TabIndex = 10;
-            this.btnHome.Text = " Home";
-            this.btnHome.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnHome.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::LGAConnectSOMS.Properties.Resources.LGASCHOOLLOGO;
-            this.pictureBox1.Location = new System.Drawing.Point(75, 33);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 100);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
             // 
             // Menu
             // 
@@ -527,15 +528,15 @@ namespace LGAConnectSOMS.Views
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HomeViewTeacher_FormClosing);
             this.Load += new System.EventHandler(this.HomeViewTeacher_Load);
             this.SideBarPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.NewsPanel.ResumeLayout(false);
             this.NewsPanel.PerformLayout();
-            this.DragWindowsPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.NewsImage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.DragWindowsPanel.ResumeLayout(false);
             this.Menu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
