@@ -10,7 +10,7 @@ namespace LGAConnectSOMS.Gateway
 {
     public class LoginGateway
     {
-        static string BaseUrl = "http://localhost:2195/api/lga/account";
+        static string BaseUrl = "http://ceejaygabrang-001-site1.itempurl.com/api/lga/account";
 
         public async Task<string> AccountLogin(LoginRequest request)
         {

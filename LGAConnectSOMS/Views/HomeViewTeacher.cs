@@ -36,6 +36,13 @@ namespace LGAConnectSOMS.Views
             this.Hide();
         }
 
+        private void btnClassSchedule_Click(object sender, EventArgs e)
+        {
+            ClassScheduleFacultyView classScheduleFacultyView = new ClassScheduleFacultyView();
+            classScheduleFacultyView.Show();
+            this.Hide();
+        }
+
         private void btnLogout_Click(object sender, EventArgs e)
         {
             SaveWindowPosition();
@@ -169,7 +176,5 @@ namespace LGAConnectSOMS.Views
         }
 
         
-
-
     }
 }

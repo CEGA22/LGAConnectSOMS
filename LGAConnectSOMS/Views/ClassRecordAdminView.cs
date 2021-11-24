@@ -21,16 +21,17 @@ namespace LGAConnectSOMS.Views
         //List<GradeLevelModel> section = new List<GradeLevelModel>();
         public ClassRecordAdminView()
         {
-            InitializeComponent();
+            InitializeComponent();          
+            
         }
 
         //Load
-        private void ClassRecordAdminView_Load(object sender, EventArgs e)
+        private async void ClassRecordAdminView_Load(object sender, EventArgs e)
         {
             this.RestoreWindowPosition();
             MaximizeIcon();
-            DisplayClassRecordData();
-            ClassRecordDataGridView.CurrentCell = null;   
+            await DisplayClassRecordData();
+            ClassRecordDataGridView.CurrentCell = null; 
         }
 
         //NavigationToOtherForm
@@ -44,29 +45,38 @@ namespace LGAConnectSOMS.Views
         }
 
         //Commands
-        public async void DisplayClassRecordData()
-        {
-            //var db = new DataAccess();
-            //students = db.GetStudents();
-            //ClassRecordDataGridView.DataSource = students;
-            //ClassRecordDataGridView.Columns[0].Visible = false;
+        public async Task DisplayClassRecordData()
+        {           
             StudentService studentService = new StudentService();
-            var students = studentService.GetStudentAccount();
-            ClassRecordDataGridView.DataSource = await students;
+            var students = await studentService.GetStudentAccount();
+            var studentsList = students.ToList();
+
+            studentsList.Insert(0, new StudentAccount
+            {
+                
+            });
+
+            
+
+            ClassRecordDataGridView.DataSource =  students;
             ClassRecordDataGridView.CurrentCell = null;
         }
-        private void txtSearchStudent_TextChanged(object sender, EventArgs e)
-        {
-            //var db = new DataAccess();
-            //students = db.GetStudentsByLastname(txtSearchStudent.Text);
-            //ClassRecordDataGridView.DataSource = students;
-            //CBGradeLevel.SelectedIndex = -1;
-            //CBSection.SelectedIndex = -1;
-            //ClassRecordDataGridView.CurrentCell = null;
-            //if (string.IsNullOrWhiteSpace(txtSearchStudent.Text))
-            //{
-            //    DisplayClassRecordData();
-            //}
+        private async void txtSearchStudent_TextChanged(object sender, EventArgs e)
+        {                      
+            if (!string.IsNullOrWhiteSpace(txtSearchStudent.Text))
+            {
+                StudentService studentService = new StudentService();
+                var students = studentService.GetStudentAccountById(txtSearchStudent.Text);
+                ClassRecordDataGridView.DataSource = await students;
+                CBGradeLevel.SelectedIndex = -1;
+                CBSection.SelectedIndex = -1;
+                ClassRecordDataGridView.CurrentCell = null;               
+            }
+
+            else
+            {
+                await DisplayClassRecordData();
+            }
         }
         private void btnAddStudent_Click_1(object sender, EventArgs e)
         {
@@ -75,67 +85,70 @@ namespace LGAConnectSOMS.Views
         }
         
 
-        private void CBGradeLevel_SelectedIndexChanged(object sender, EventArgs e)
+        private async void CBGradeLevel_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //if (CBGradeLevel.SelectedIndex == -1)
-            //{
-            //    DisplayClassRecordData();
-            //}
-            //else
-            //{
-            //    var db = new DataAccess();
-            //    var selectedgrade = CBGradeLevel.Text;
-            //    students = db.FilterByGrade(selectedgrade.ToString());
-            //    ClassRecordDataGridView.DataSource = students;
-            //    CBSection.SelectedIndex = -1;
-            //    ClassRecordDataGridView.CurrentCell = null;
-
-            //}
-
-
+            if (CBGradeLevel.SelectedIndex == -1)
+            {
+                await DisplayClassRecordData();              
+            }
+            else
+            {              
+                var selectedgrade = CBGradeLevel.Text;              
+                StudentService studentService = new StudentService();
+                var students = studentService.GetStudentAccountByGradeLevel(selectedgrade.ToString());
+                ClassRecordDataGridView.DataSource = await students;
+                CBSection.SelectedIndex = -1;
+                ClassRecordDataGridView.CurrentCell = null;
+            }
         }
 
         private async void CBGradeLevel_DropDown(object sender, EventArgs e)
         {
             //var db = new DataAccess();
             //gradelevel = db.GetStudentsByGradeLevel();
-            //CBGradeLevel.DataSource = gradelevel;
-            StudentService studentService = new StudentService();
-            var students = studentService.GetStudentAccount();
-            CBGradeLevel.DataSource = await students;
-            CBGradeLevel.DisplayMember = "Grade_Level";
+            //CBGradeLevel.DataSource = gradelevel;           
+             StudentService studentService = new StudentService();
+             var students = studentService.GetStudentByGradeLevelFilter();
+             CBGradeLevel.DataSource = await students;
+             CBGradeLevel.DisplayMember = "Grade_Level";
             CBGradeLevel.Text = "Grade Level";
             CBGradeLevel.SelectedIndex = -1;
-            ClassRecordDataGridView.CurrentCell = null;
+             ClassRecordDataGridView.CurrentCell = null;                    
         }
 
-        private void CBSection_SelectedIndexChanged(object sender, EventArgs e)
+        private async void CBSection_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //if (CBSection.SelectedIndex == -1)
-            //{
-            //    DisplayClassRecordData();
-            //}
-            //else
-            //{
-            //    var db = new DataAccess();
-            //    var selectsection = CBSection.Text;
-            //    students = db.FilterBySection(selectsection.ToString());
-            //    ClassRecordDataGridView.DataSource = students;
-            //    CBGradeLevel.SelectedIndex = -1;
-            //    ClassRecordDataGridView.CurrentCell = null;
+            if (CBSection.SelectedIndex == -1)
+            {
+                await DisplayClassRecordData();
+            }
+            else
+            {
+                //var db = new DataAccess();
+                //var selectsection = CBSection.Text;
+                //students = db.FilterBySection(selectsection.ToString());
+                var selectedsection = CBSection.Text;
+                StudentService studentService = new StudentService();
+                var students = studentService.GetStudentAccountBySection(selectedsection.ToString());
+                ClassRecordDataGridView.DataSource = await students;            
+                CBGradeLevel.SelectedIndex = -1;
+                ClassRecordDataGridView.CurrentCell = null;
 
-            //}
+            }
         }
 
-        private void CBSection_DropDown(object sender, EventArgs e)
+        private async void CBSection_DropDown(object sender, EventArgs e)
         {
             //var db = new DataAccess();
             //section = db.GetStudentsBySection();
             //CBSection.DataSource = section;
-            //CBSection.DisplayMember = "Section";
-            //CBSection.Text = "Grade Level";
-            //CBSection.SelectedIndex = -1;
-            //ClassRecordDataGridView.CurrentCell = null;
+            StudentService studentService = new StudentService();
+            var students = studentService.GetStudentBySectionFilter();
+            CBSection.DataSource = await students;
+            CBSection.DisplayMember = "SectionName";
+            CBSection.Text = "Section Name";
+            CBSection.SelectedIndex = -1;
+            ClassRecordDataGridView.CurrentCell = null;
         }
 
         private void ClassRecordDataGridView_Click(object sender, EventArgs e)
@@ -147,6 +160,11 @@ namespace LGAConnectSOMS.Views
             ESDV.txtMiddlename.Text = ClassRecordDataGridView.CurrentRow.Cells[3].Value.ToString();
             ESDV.cbGender.Text = ClassRecordDataGridView.CurrentRow.Cells[4].Value.ToString();
             ESDV.txtGradeLevel.Text = ClassRecordDataGridView.CurrentRow.Cells[5].Value.ToString();
+            ESDV.txtSection.Text = ClassRecordDataGridView.CurrentRow.Cells[6].Value.ToString();
+            ESDV.txtStudentNumber.Text = ClassRecordDataGridView.CurrentRow.Cells[7].Value.ToString();
+            ESDV.txtPassword.Text = ClassRecordDataGridView.CurrentRow.Cells[8].Value.ToString();
+            ESDV.txtSchoolYearStart.Text = ClassRecordDataGridView.CurrentRow.Cells[9].Value.ToString();
+            ESDV.txtSchoolYearEnd.Text = ClassRecordDataGridView.CurrentRow.Cells[10].Value.ToString();
             ESDV.ShowDialog();
         }
 
@@ -156,12 +174,12 @@ namespace LGAConnectSOMS.Views
 
         private void btnBack_MouseEnter(object sender, EventArgs e)
         {
-            btnBack.Image = LGAConnectSOMS.Properties.Resources.BackArrowYellow;
+            btnBack.Image = LGAConnectSOMS.Properties.Resources.BackArrowYellow24;
         }
 
         private void btnBack_MouseLeave(object sender, EventArgs e)
         {
-            btnBack.Image = LGAConnectSOMS.Properties.Resources.BackArrow;
+            btnBack.Image = LGAConnectSOMS.Properties.Resources.BackArrow24;
         }
 
         //TitleBarFunction
@@ -277,8 +295,10 @@ namespace LGAConnectSOMS.Views
             }
         }
 
-
-
-
+        private async void button1_Click(object sender, EventArgs e)
+        {
+            
+        }
+      
     }
 }

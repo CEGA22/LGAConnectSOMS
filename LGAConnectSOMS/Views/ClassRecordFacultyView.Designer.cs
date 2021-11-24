@@ -29,7 +29,6 @@ namespace LGAConnectSOMS.Views
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClassRecordFacultyView));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -45,13 +44,13 @@ namespace LGAConnectSOMS.Views
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.FirstGradingGradebook = new System.Windows.Forms.DataGridView();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.CBSection = new System.Windows.Forms.ComboBox();
             this.lblSection = new System.Windows.Forms.Label();
             this.CBGradeLevel = new System.Windows.Forms.ComboBox();
             this.lblGradeLevel = new System.Windows.Forms.Label();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.StudentName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WW = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WW1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -150,7 +149,7 @@ namespace LGAConnectSOMS.Views
             this.btnBack.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnBack.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBack.Image = ((System.Drawing.Image)(resources.GetObject("btnBack.Image")));
+            this.btnBack.Image = global::LGAConnectSOMS.Properties.Resources.BackArrow24;
             this.btnBack.Location = new System.Drawing.Point(25, 25);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(36, 36);
@@ -281,6 +280,36 @@ namespace LGAConnectSOMS.Views
             this.FirstGradingGradebook.Size = new System.Drawing.Size(1268, 474);
             this.FirstGradingGradebook.TabIndex = 26;
             this.FirstGradingGradebook.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.FirstGradingGradebook_CellEndEdit);
+            this.FirstGradingGradebook.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.FirstGradingGradebook_EditingControlShowing);
+            this.FirstGradingGradebook.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FirstGradingGradebook_KeyPress);
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage2.Location = new System.Drawing.Point(4, 28);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1268, 470);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Second Grading";
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage3.Location = new System.Drawing.Point(4, 28);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(1268, 470);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Third Grading";
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage4.Location = new System.Drawing.Point(4, 28);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(1268, 470);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Fourth Grading";
             // 
             // CBSection
             // 
@@ -329,110 +358,92 @@ namespace LGAConnectSOMS.Views
             this.lblGradeLevel.TabIndex = 37;
             this.lblGradeLevel.Text = "Grade Level: ";
             // 
-            // tabPage3
-            // 
-            this.tabPage3.BackColor = System.Drawing.Color.Transparent;
-            this.tabPage3.Location = new System.Drawing.Point(4, 28);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1268, 470);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Third Grading";
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.BackColor = System.Drawing.Color.Transparent;
-            this.tabPage4.Location = new System.Drawing.Point(4, 28);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1268, 470);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Fourth Grading";
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.BackColor = System.Drawing.Color.Transparent;
-            this.tabPage2.Location = new System.Drawing.Point(4, 28);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1268, 470);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Second Grading";
-            // 
             // StudentName
             // 
             this.StudentName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.StudentName.HeaderText = "Learner\'s Name";
             this.StudentName.Name = "StudentName";
-            this.StudentName.Width = 122;
+            this.StudentName.Width = 133;
             // 
             // WW
             // 
             this.WW.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.WW.HeaderText = "WW #1";
             this.WW.Name = "WW";
-            this.WW.Width = 83;
+            this.WW.ToolTipText = "Written Work 1";
+            this.WW.Width = 90;
             // 
             // WW1
             // 
             this.WW1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.WW1.HeaderText = "WW #2";
             this.WW1.Name = "WW1";
-            this.WW1.Width = 83;
+            this.WW1.ToolTipText = "Written Work 2";
+            this.WW1.Width = 90;
             // 
             // WW2
             // 
             this.WW2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.WW2.HeaderText = "WW #3";
             this.WW2.Name = "WW2";
-            this.WW2.Width = 83;
+            this.WW2.ToolTipText = "Written Work 3";
+            this.WW2.Width = 90;
             // 
             // WW3
             // 
             this.WW3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.WW3.HeaderText = "WW #4";
             this.WW3.Name = "WW3";
-            this.WW3.Width = 83;
+            this.WW3.ToolTipText = "Written Work 4";
+            this.WW3.Width = 90;
             // 
             // WW4
             // 
             this.WW4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.WW4.HeaderText = "WW #5";
             this.WW4.Name = "WW4";
-            this.WW4.Width = 83;
+            this.WW4.ToolTipText = "Written Work 5";
+            this.WW4.Width = 90;
             // 
             // WW5
             // 
             this.WW5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.WW5.HeaderText = "WW #6";
             this.WW5.Name = "WW5";
-            this.WW5.Width = 83;
+            this.WW5.ToolTipText = "Written Work 6";
+            this.WW5.Width = 90;
             // 
             // WW6
             // 
             this.WW6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.WW6.HeaderText = "WW  #7";
             this.WW6.Name = "WW6";
-            this.WW6.Width = 69;
+            this.WW6.ToolTipText = "Written Work 7";
+            this.WW6.Width = 94;
             // 
             // WW7
             // 
             this.WW7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.WW7.HeaderText = "WW #8";
             this.WW7.Name = "WW7";
-            this.WW7.Width = 83;
+            this.WW7.ToolTipText = "Written Work 8";
+            this.WW7.Width = 90;
             // 
             // WW8
             // 
             this.WW8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.WW8.HeaderText = "WW #9";
             this.WW8.Name = "WW8";
-            this.WW8.Width = 83;
+            this.WW8.ToolTipText = "Written Work 9";
+            this.WW8.Width = 90;
             // 
             // WW9
             // 
             this.WW9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.WW9.HeaderText = "WW #10";
             this.WW9.Name = "WW9";
-            this.WW9.Width = 91;
+            this.WW9.ToolTipText = "Written Work 10";
+            this.WW9.Width = 99;
             // 
             // WWTotal
             // 
@@ -446,6 +457,7 @@ namespace LGAConnectSOMS.Views
             this.WWPercentage.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.WWPercentage.HeaderText = "WS";
             this.WWPercentage.Name = "WWPercentage";
+            this.WWPercentage.ToolTipText = "Written Work Percentage";
             this.WWPercentage.Width = 58;
             // 
             // TP
@@ -453,76 +465,87 @@ namespace LGAConnectSOMS.Views
             this.TP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.TP.HeaderText = "TP #1";
             this.TP.Name = "TP";
-            this.TP.Width = 68;
+            this.TP.ToolTipText = "Task Performance 1";
+            this.TP.Width = 73;
             // 
             // TP1
             // 
             this.TP1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.TP1.HeaderText = "TP2";
+            this.TP1.HeaderText = "TP #2";
             this.TP1.Name = "TP1";
-            this.TP1.Width = 58;
+            this.TP1.ToolTipText = "Task Performance 2";
+            this.TP1.Width = 73;
             // 
             // TP2
             // 
             this.TP2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.TP2.HeaderText = "TP #3";
             this.TP2.Name = "TP2";
-            this.TP2.Width = 68;
+            this.TP2.ToolTipText = "Task Performance 3";
+            this.TP2.Width = 73;
             // 
             // TP3
             // 
             this.TP3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.TP3.HeaderText = "TP #4";
             this.TP3.Name = "TP3";
-            this.TP3.Width = 68;
+            this.TP3.ToolTipText = "Task Performance 4";
+            this.TP3.Width = 73;
             // 
             // TP4
             // 
             this.TP4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.TP4.HeaderText = "TP #5";
             this.TP4.Name = "TP4";
-            this.TP4.Width = 68;
+            this.TP4.ToolTipText = "Task Performance 5";
+            this.TP4.Width = 73;
             // 
             // TP5
             // 
             this.TP5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.TP5.HeaderText = "TP #6";
             this.TP5.Name = "TP5";
-            this.TP5.Width = 68;
+            this.TP5.ToolTipText = "Task Performance 6";
+            this.TP5.Width = 73;
             // 
             // TP6
             // 
             this.TP6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.TP6.HeaderText = "TP #7";
             this.TP6.Name = "TP6";
-            this.TP6.Width = 68;
+            this.TP6.ToolTipText = "Task Performance 7";
+            this.TP6.Width = 73;
             // 
             // TP7
             // 
             this.TP7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.TP7.HeaderText = "TP #8";
             this.TP7.Name = "TP7";
-            this.TP7.Width = 68;
+            this.TP7.ToolTipText = "Task Performance 8";
+            this.TP7.Width = 73;
             // 
             // TP8
             // 
             this.TP8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.TP8.HeaderText = "TP #9";
             this.TP8.Name = "TP8";
-            this.TP8.Width = 68;
+            this.TP8.ToolTipText = "Task Performance 9";
+            this.TP8.Width = 73;
             // 
             // TP9
             // 
             this.TP9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.TP9.HeaderText = "TP #10";
             this.TP9.Name = "TP9";
-            this.TP9.Width = 76;
+            this.TP9.ToolTipText = "Task Performance 10";
+            this.TP9.Width = 82;
             // 
             // TPTotal
             // 
             this.TPTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.TPTotal.HeaderText = "Total";
             this.TPTotal.Name = "TPTotal";
+            this.TPTotal.ToolTipText = "Task Performance Percentage";
             this.TPTotal.Width = 65;
             // 
             // TPPercentage
@@ -537,7 +560,7 @@ namespace LGAConnectSOMS.Views
             this.InitialGrade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.InitialGrade.HeaderText = "Initial Grade";
             this.InitialGrade.Name = "InitialGrade";
-            this.InitialGrade.Width = 105;
+            this.InitialGrade.Width = 114;
             // 
             // QuarterlyGrade
             // 

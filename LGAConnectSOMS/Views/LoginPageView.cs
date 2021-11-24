@@ -30,49 +30,39 @@ namespace LGAConnectSOMS.Views
         //NavigationToOtherForm
 
         private async void btnLogin_Click(object sender, EventArgs e)
-        {
-           
-            //await GetStudentAccountById(1);
-            //StudentService studentservice = new StudentService();
-            //var result = await studentservice.GetStudentAccountById(1);
-            //if (result != null)
-            //{
-            //    MessageBox.Show($"Welcome to LGAConnect {result.Lastname}");
-            //}
-                       
-                LoginService loginService = new LoginService();
-                var result = await loginService.AccountLogin(new LoginRequest
-                {
-                    Username = txtAccountID.Text,
-                    Password = txtPassword.Text
-                });              
+        {         
+            LoginService loginService = new LoginService();
+            var result = await loginService.AccountLogin(new LoginRequest
+            {
+                Username = txtAccountID.Text,
+                Password = txtPassword.Text
+            });
 
-                if (result.IsSuccess)
-                {  
-                    if(result.IsAdmin == 1)
-                    {
+            if (result.IsSuccess)
+            {
+                if (result.IsAdmin == 1)
+                {
                     //save to persitence data
                     SavePersistentData(result.ID, result.Firstname, result.Lastname, result.Fullname, result.IsAdmin);
                     HomeViewAdmin homeViewAdmin = new HomeViewAdmin();
                     homeViewAdmin.Show();
                     this.Hide();
-                    }
+                }
 
-
-                    else
-                    {
-                        //save to persitence data
-                        SavePersistentData(result.ID, result.Firstname, result.Lastname, result.Fullname, result.IsAdmin);
-                        HomeViewTeacher homeViewTeacher = new HomeViewTeacher();
-                        homeViewTeacher.Show();
-                        this.Hide();
-                    }                 
-
-                 }
                 else
                 {
-                    MessageBox.Show("Login failed");
-                }                   
+                    //save to persitence data
+                    SavePersistentData(result.ID, result.Firstname, result.Lastname, result.Fullname, result.IsAdmin);
+                    HomeViewTeacher homeViewTeacher = new HomeViewTeacher();
+                    homeViewTeacher.Show();
+                    this.Hide();
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Login failed");
+            }
         }
 
         public void SavePersistentData(int ID, string firstname, string lastname, string fullname, int isAdmin)

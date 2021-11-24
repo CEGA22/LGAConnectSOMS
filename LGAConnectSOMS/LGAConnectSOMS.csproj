@@ -89,16 +89,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\EditStudentDetailsController.cs" />
+    <Compile Include="Gateway\ClassScheduleGateway.cs" />
     <Compile Include="Gateway\LoginGateway.cs" />
     <Compile Include="Gateway\StudentAccountGateway.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="Helpers\WebMethods.cs" />
+    <Compile Include="Models\ClassSchedule.cs" />
     <Compile Include="Models\GradeLevelModel.cs" />
     <Compile Include="Models\LoginRequest.cs" />
     <Compile Include="Models\LoginResult.cs" />
     <Compile Include="Models\StudentAccount.cs" />
     <Compile Include="Models\StudentDetailsModel.cs" />
     <Compile Include="Models\Students.cs" />
+    <Compile Include="Services\ClassScheduleService.cs" />
     <Compile Include="Services\DataAccess.cs" />
     <Compile Include="Services\LoginService.cs" />
     <Compile Include="Services\StudentService.cs" />
@@ -113,6 +116,18 @@
     </Compile>
     <Compile Include="Views\ClassRecordFacultyView.Designer.cs">
       <DependentUpon>ClassRecordFacultyView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ClassScheduleFacultyView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ClassScheduleFacultyView.Designer.cs">
+      <DependentUpon>ClassScheduleFacultyView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ClassScheduleView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ClassScheduleView.Designer.cs">
+      <DependentUpon>ClassScheduleView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\EditStudentDetailsView.cs">
       <SubType>Form</SubType>
@@ -163,6 +178,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ClassRecordFacultyView.resx">
       <DependentUpon>ClassRecordFacultyView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ClassScheduleFacultyView.resx">
+      <DependentUpon>ClassScheduleFacultyView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ClassScheduleView.resx">
+      <DependentUpon>ClassScheduleView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\EditStudentDetailsView.resx">
       <DependentUpon>EditStudentDetailsView.cs</DependentUpon>
@@ -326,6 +347,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\BackArrowYellow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BackArrow24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BackArrowYellow24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CollegeStudents.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\StudentKids.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\credit-card.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\credit-card1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Subject.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dropdown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dropdown16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FreeSchedule.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

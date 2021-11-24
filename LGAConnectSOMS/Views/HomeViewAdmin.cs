@@ -1,9 +1,11 @@
 ﻿using LGAConnectSOMS.Models;
 using LGAConnectSOMS.Properties;
+using LGAConnectSOMS.Services;
 using LGAConnectSOMS.Views;
 using System;
 using System.Drawing;
 using System.Drawing.Text;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
@@ -16,23 +18,21 @@ namespace LGAConnectSOMS
     {
        
         public HomeViewAdmin()
-        {
-            
-            InitializeComponent();
-                 
+        {            
+            InitializeComponent();          
         }
 
         //Load
         private void HomeView_Load(object sender, EventArgs e)
         {
-            DynamicHomeViewAdminPanel();
-            this.RestoreWindowPosition();
-            MaximizeIcon();
+             DynamicHomeViewAdminPanel();            
             btnHome.ForeColor = Color.FromArgb(255, 246, 143);
             //CustomFont();
             lblAccountName.Text = Settings.Default.Fullname;
             lblTitle.Text = "Good Day, " + Settings.Default.Firstname;
-            panel1.Hide();          
+            this.RestoreWindowPosition();
+            panel1.Hide();           
+            MaximizeIcon();
         }
 
 
@@ -103,9 +103,16 @@ namespace LGAConnectSOMS
             this.Hide();
         }
 
+        private void btnClassSchedule_Click(object sender, EventArgs e)
+        {
+            var CSV = new ClassScheduleView();
+            CSV.Show();
+            this.Hide();
+        }
+
         //Commands
 
-        public void DynamicHomeViewAdminPanel()
+        public async Task DynamicHomeViewAdminPanel()
         {
             Panel EnrolledStudentsPanel = new Panel();
             Panel FileRequestPanel = new Panel();
@@ -125,8 +132,7 @@ namespace LGAConnectSOMS
             lblEnrolledStudents.Text = "Enrolled\nStudents";
             lblEnrolledStudents.ForeColor = Color.White;
             lblEnrolledStudents.Font = new Font("Tw Cen MT", 14);
-            lblEnrolledStudents.AutoSize = true;
-            lblEnrolledStudentsCount.Text = "100";
+            lblEnrolledStudents.AutoSize = true;            
             lblEnrolledStudentsCount.ForeColor = Color.White;
             lblEnrolledStudentsCount.Font = new Font("Tw Cen MT", 36);
             lblEnrolledStudentsCount.AutoSize = true;
@@ -148,6 +154,10 @@ namespace LGAConnectSOMS
             EnrolledStudentsPanel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             FileRequestPanel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             EnrolledStudentsPanel.Cursor = Cursors.Hand;
+            StudentService studentService = new StudentService();
+            var students = await studentService.GetStudentAccount();
+            var studentsList = students.ToList();
+            lblEnrolledStudentsCount.Text = studentsList.Count.ToString();         
         }
 
         //Buttons Forecolor and background Styles
@@ -425,21 +435,6 @@ namespace LGAConnectSOMS
             LoginPageView loginPageView = new LoginPageView();
             loginPageView.Show();
             this.Hide();
-        }
-
-        private void btnUserSettings_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnAbout_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+        }            
     }
 }
