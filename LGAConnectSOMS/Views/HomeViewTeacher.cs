@@ -175,6 +175,12 @@ namespace LGAConnectSOMS.Views
             }
         }
 
-        
+        private void btnAbout_Click(object sender, EventArgs e)
+        {
+            this.SaveWindowPosition();
+            AboutPageView aboutPageView = new AboutPageView();
+            aboutPageView.Show();
+            this.Hide();
+        }
     }
 }

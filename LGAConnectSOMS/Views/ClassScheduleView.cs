@@ -15,7 +15,7 @@ namespace LGAConnectSOMS.Views
 {
     public partial class ClassScheduleView : Form
     {       
-        public List<ClassSchedule>schedulelist;
+        
         public ClassScheduleView()
         {
             InitializeComponent();
@@ -41,6 +41,7 @@ namespace LGAConnectSOMS.Views
         }
 
         //Commands
+        public List<ClassSchedule> schedulelist;
         public async Task ClassSchedules()
         {
             var number = 1;
@@ -109,7 +110,7 @@ namespace LGAConnectSOMS.Views
                     dynamicPanel.Name = "Panel1";
                     dynamicPanel.Size = new System.Drawing.Size(700, 94);
                     dynamicPanel.BackColor = Color.LightBlue;
-                    Controls.Add(dynamicPanel);
+                    //Controls.Add(dynamicPanel);
 
                     dynamicPanel.Controls.Add(Subject);
                     dynamicPanel.Controls.Add(Teacher);

@@ -43,11 +43,11 @@ namespace LGAConnectSOMS.Gateway
             }
         }
 
-        public async Task<IEnumerable<ClassSchedule>> GetClassScheduleWeekFaculty(int ID)
+        public async Task<IEnumerable<ClassSchedule>> GetClassScheduleWeekFaculty(int ID, string weekday)
         {
             try
             {
-                string url = $"{BaseUrl}/get_by_Week_Faculty/{ID}";
+                string url = $"{BaseUrl}/get_by_Week_Faculty/{ID}/{weekday}";
                 var content = await WebMethods.MakeGetRequest(url);
                 var result = JsonConvert.DeserializeObject<IEnumerable<ClassSchedule>>(content);
                 return result;

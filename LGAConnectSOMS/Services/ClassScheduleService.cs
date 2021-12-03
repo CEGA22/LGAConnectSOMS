@@ -24,10 +24,10 @@ namespace LGAConnectSOMS.Services
             return content;
         }
 
-        public async Task<IEnumerable<ClassSchedule>> GetClassScheduleWeekFacultyDetails(int ID)
+        public async Task<IEnumerable<ClassSchedule>> GetClassScheduleWeekFacultyDetails(int ID, string weekday)
         {
             var apiGateway = new ClassScheduleGateway();
-            var content = await apiGateway.GetClassScheduleWeekFaculty(ID);
+            var content = await apiGateway.GetClassScheduleWeekFaculty(ID, weekday);
             return content;
         }
 

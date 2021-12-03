@@ -37,10 +37,6 @@ namespace LGAConnectSOMS.Views
             btnBack.Image = LGAConnectSOMS.Properties.Resources.BackArrow24;
         }
 
-        
-
-        
-
         //TitleBarFunction
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -71,6 +67,9 @@ namespace LGAConnectSOMS.Views
             }
         }
 
-        
+        private void btnSaveChanges_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
