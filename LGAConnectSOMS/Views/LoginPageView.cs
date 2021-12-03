@@ -134,7 +134,7 @@ namespace LGAConnectSOMS.Views
             else
             {
                 this.WindowState = FormWindowState.Normal;
-                btnMaximize.Image = LGAConnectSOMS.Properties.Resources.FullScreenBlack;                             
+                btnMaximize.Image = LGAConnectSOMS.Properties.Resources.FullScreenBlack;               
             }
         }
 
@@ -170,12 +170,12 @@ namespace LGAConnectSOMS.Views
         {
             if (this.WindowState == FormWindowState.Maximized)
             {
-                btnMaximize.Image = LGAConnectSOMS.Properties.Resources.NormalBlack;
+                btnMaximize.Image = LGAConnectSOMS.Properties.Resources.NormalBlack;                
             }
 
             else if (this.WindowState == FormWindowState.Normal)
             {
-                btnMaximize.Image = LGAConnectSOMS.Properties.Resources.FullScreenBlack;
+                btnMaximize.Image = LGAConnectSOMS.Properties.Resources.FullScreenBlack;              
             }
         }
 

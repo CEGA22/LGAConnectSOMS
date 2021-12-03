@@ -15,23 +15,72 @@ using System.Windows.Forms;
 namespace LGAConnectSOMS.Views
 {
     public partial class ClassRecordAdminView : Form
-    {
-        //List<StudentAccount> students = new List<StudentAccount>();
-        //List<GradeLevelModel> gradelevel = new List<GradeLevelModel>();
-        //List<GradeLevelModel> section = new List<GradeLevelModel>();
+    {      
+        
+
         public ClassRecordAdminView()
         {
-            InitializeComponent();          
+            InitializeComponent();
+
+            //gradeLevelSections.Add(new GradeLevelSection
+            //{
+            //    Id = 1,
+            //    GradeLevel = 1,
+            //    SectionName = "Amber"
+            //});
+
+            //gradeLevelSections.Add(new GradeLevelSection
+            //{
+            //    Id = 2,
+            //    GradeLevel = 2,
+            //    SectionName = "Amethyst"
+            //});
+
+            //gradeLevelSections.Add(new GradeLevelSection
+            //{
+            //    Id = 10,
+            //    GradeLevel = 10,
+            //    SectionName = "Citrine"
+            //});
+
+            //gradeLevelSections.Add(new GradeLevelSection
+            //{
+            //    Id = 12,
+            //    GradeLevel = 10,
+            //    SectionName = "Blue Sapphire"
+            //});            
+        }
             
+        //Load
+        IEnumerable<GradeLevelSection> gradeLevelSections = new List<GradeLevelSection>();
+        private async Task LoadGradeLevels()
+        {
+            GradeLevelSectionService gradeLevelSectionService = new GradeLevelSectionService();
+            gradeLevelSections = await gradeLevelSectionService.GetGradeLevel();
+            var gradelevelslist = gradeLevelSections.Select(x => x.GradeLevel).Distinct();
+            cmbGradeLevels.DataSource = gradelevelslist.ToList();
+        }
+        private void LoadYear()
+        {
+            var datetime = DateTime.Now.ToString("yyyy");
+            for (int year = 2015; year <= DateTime.UtcNow.Year; ++year)
+            {
+                cmbSYStart.Items.Add(year);
+            }
         }
 
-        //Load
-        private async void ClassRecordAdminView_Load(object sender, EventArgs e)
+        private async Task LoadData()
+        {
+            await DisplayClassRecordData();          
+            await LoadGradeLevels();
+            LoadYear();           
+        }
+        private void ClassRecordAdminView_Load(object sender, EventArgs e)
         {
             this.RestoreWindowPosition();
             MaximizeIcon();
-            await DisplayClassRecordData();
-            ClassRecordDataGridView.CurrentCell = null; 
+            LoadData();           
+            ClassRecordDataGridView.CurrentCell = null;           
         }
 
         //NavigationToOtherForm
@@ -46,21 +95,18 @@ namespace LGAConnectSOMS.Views
 
         //Commands
         public async Task DisplayClassRecordData()
-        {           
+         {           
             StudentService studentService = new StudentService();
             var students = await studentService.GetStudentAccount();
             var studentsList = students.ToList();
-
             studentsList.Insert(0, new StudentAccount
             {
                 
-            });
-
-            
-
+            });         
             ClassRecordDataGridView.DataSource =  students;
             ClassRecordDataGridView.CurrentCell = null;
         }
+
         private async void txtSearchStudent_TextChanged(object sender, EventArgs e)
         {                      
             if (!string.IsNullOrWhiteSpace(txtSearchStudent.Text))
@@ -78,13 +124,51 @@ namespace LGAConnectSOMS.Views
                 await DisplayClassRecordData();
             }
         }
-        private void btnAddStudent_Click_1(object sender, EventArgs e)
+
+        private async void btnAddStudent_Click_1(object sender, EventArgs e)
         {
             //var db = new DataAccess();
             //db.AddStudent(txtLastname.Text, txtFirstname.Text, txtMiddlename.Text, txtGender.Text, Convert.ToInt32(txtGradeLevel.Text));
-        }
-        
+            var selectedGradeLevel = (int)cmbGradeLevels.SelectedItem;
+            var selectedSection = (string)cmbSections.SelectedItem;
 
+            var gradeLevelId = gradeLevelSections.First(x => x.GradeLevel == selectedGradeLevel && x.SectionName == selectedSection).Id;
+
+            try
+            {
+                StudentRequestService studentRequestService = new StudentRequestService();
+                var IsSucess = await studentRequestService.CreateStudentRequest(new StudentRequest
+                {
+                    Lastname = txtLastname.Text,
+                    Middlename = txtMiddlename.Text,
+                    Firstname = txtFirstname.Text,
+                    StudentNumber = txtStudentNumber.Text,
+                    Password = txtPassword.Text,
+                    MobileNumber = Convert.ToInt64(txtMobileNumber.Text),
+                    Gender = cbGender.Text,
+                    GradeLevelId = gradeLevelId,
+                    SchoolYearStart = int.Parse(cmbSYStart.Text),
+                    SchoolYearEnd = int.Parse(txtSchoolYearEnd.Text)
+                });
+
+                if (IsSucess)
+                {
+                    MessageBox.Show("Added new Student Successfully");
+                }
+
+                else
+                {
+                    MessageBox.Show("Added new Student Not Successfull");                   
+                }
+
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show(x.Message);
+            }
+            
+        }
+       
         private async void CBGradeLevel_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (CBGradeLevel.SelectedIndex == -1)
@@ -151,25 +235,37 @@ namespace LGAConnectSOMS.Views
             ClassRecordDataGridView.CurrentCell = null;
         }
 
+        private void cmbSYStart_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var selectedYear = (int)cmbSYStart.SelectedItem + 1;
+            txtSchoolYearEnd.Text = selectedYear.ToString();
+        }
+
+        private void cmbGradeLevels_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var selectedGradeLevel = (int)cmbGradeLevels.SelectedItem;
+            var gradelevelslist = gradeLevelSections.Where(x => x.GradeLevel == selectedGradeLevel).Select(x => x.SectionName);
+            cmbSections.DataSource = gradelevelslist.ToList();
+        }
+
         private void ClassRecordDataGridView_Click(object sender, EventArgs e)
         {
             var ESDV = new EditStudentDetailsView();
             ESDV.txtID.Text = ClassRecordDataGridView.CurrentRow.Cells[0].Value.ToString();
             ESDV.txtLastname.Text = ClassRecordDataGridView.CurrentRow.Cells[1].Value.ToString();
-            ESDV.txtFirstname.Text = ClassRecordDataGridView.CurrentRow.Cells[2].Value.ToString();
-            ESDV.txtMiddlename.Text = ClassRecordDataGridView.CurrentRow.Cells[3].Value.ToString();
-            ESDV.cbGender.Text = ClassRecordDataGridView.CurrentRow.Cells[4].Value.ToString();
-            ESDV.txtGradeLevel.Text = ClassRecordDataGridView.CurrentRow.Cells[5].Value.ToString();
-            ESDV.txtSection.Text = ClassRecordDataGridView.CurrentRow.Cells[6].Value.ToString();
+            ESDV.txtMiddlename.Text = ClassRecordDataGridView.CurrentRow.Cells[2].Value.ToString();
+            ESDV.txtFirstname.Text = ClassRecordDataGridView.CurrentRow.Cells[3].Value.ToString();
+            ESDV.cbGender.Text = ClassRecordDataGridView.CurrentRow.Cells[4].Value.ToString();          
+            ESDV.cmbGradeLevel.Text = ClassRecordDataGridView.CurrentRow.Cells[5].Value.ToString();
+            ESDV.cmbSection.Text = ClassRecordDataGridView.CurrentRow.Cells[6].Value.ToString();
             ESDV.txtStudentNumber.Text = ClassRecordDataGridView.CurrentRow.Cells[7].Value.ToString();
-            ESDV.txtPassword.Text = ClassRecordDataGridView.CurrentRow.Cells[8].Value.ToString();
-            ESDV.txtSchoolYearStart.Text = ClassRecordDataGridView.CurrentRow.Cells[9].Value.ToString();
-            ESDV.txtSchoolYearEnd.Text = ClassRecordDataGridView.CurrentRow.Cells[10].Value.ToString();
+            ESDV.txtPassword.Text = ClassRecordDataGridView.CurrentRow.Cells[8].Value.ToString();           
+            ESDV.txtMobileNumber.Text = ClassRecordDataGridView.CurrentRow.Cells[9].Value.ToString();                                        
+            ESDV.cmbSY.Text = ClassRecordDataGridView.CurrentRow.Cells[10].Value.ToString();
+            ESDV.txtSchoolYearEnd.Text = ClassRecordDataGridView.CurrentRow.Cells[11].Value.ToString();
             ESDV.ShowDialog();
         }
-
-
-
+    
         //Buttons Forecolor and background Styles
 
         private void btnBack_MouseEnter(object sender, EventArgs e)
@@ -180,6 +276,31 @@ namespace LGAConnectSOMS.Views
         private void btnBack_MouseLeave(object sender, EventArgs e)
         {
             btnBack.Image = LGAConnectSOMS.Properties.Resources.BackArrow24;
+        }
+
+        private void cbGender_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void cmbGradeLevels_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void cmbSections_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void txtSchoolYearEnd_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void cmbSYStart_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
         }
 
         //TitleBarFunction
@@ -282,7 +403,6 @@ namespace LGAConnectSOMS.Views
             }
         }
 
-
         public const int Form_DropShadow = 0x00020000;
 
         protected override CreateParams CreateParams
@@ -298,7 +418,6 @@ namespace LGAConnectSOMS.Views
         private async void button1_Click(object sender, EventArgs e)
         {
             
-        }
-      
+        }        
     }
 }

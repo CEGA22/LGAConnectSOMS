@@ -105,10 +105,20 @@ namespace LGAConnectSOMS
 
         private void btnClassSchedule_Click(object sender, EventArgs e)
         {
+            this.SaveWindowPosition();
             var CSV = new ClassScheduleView();
             CSV.Show();
             this.Hide();
         }
+
+        private void btnFacultyAdmin_Click(object sender, EventArgs e)
+        {
+            this.SaveWindowPosition();
+            FacultyAdminRecords facultyAdminRecords = new FacultyAdminRecords();
+            facultyAdminRecords.Show();
+            this.Hide();
+        }
+
 
         //Commands
 
@@ -331,7 +341,6 @@ namespace LGAConnectSOMS
 
         private void DragWindowsPanel_MouseDown(object sender, MouseEventArgs e)
         {
-
             try
             {
                 if (this.WindowState == FormWindowState.Maximized)
@@ -435,6 +444,13 @@ namespace LGAConnectSOMS
             LoginPageView loginPageView = new LoginPageView();
             loginPageView.Show();
             this.Hide();
-        }            
+        }
+
+        private void btnAbout_Click(object sender, EventArgs e)
+        {
+            AboutPageView aboutPageView = new AboutPageView();
+            aboutPageView.Show();
+            this.Hide();
+        }       
     }
 }

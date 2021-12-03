@@ -29,6 +29,8 @@ namespace LGAConnectSOMS.Models
 
         public string Password { get; set; }
 
+        public string MobileNumber { get; set; }
+
         public string SchoolYearStart { get; set; }
 
         public string SchoolYearEnd { get; set; }

@@ -21,13 +21,18 @@ namespace LGAConnectSOMS.Views
             InitializeComponent();
         }
 
-        private async void ClassScheduleFacultyView_Load(object sender, EventArgs e)
+        private void ClassScheduleFacultyView_Load(object sender, EventArgs e)
         {
             this.RestoreWindowPosition();
             MaximizeIcon();
             ClassDaysPanel.Hide();
-            await ClassSchedulesFaculty();
+            loadData();
             
+        }
+
+        public async void loadData()
+        {
+            await ClassSchedulesFaculty();
         }
 
 
@@ -46,15 +51,30 @@ namespace LGAConnectSOMS.Views
         {
             var number = 1;
             var ID = Settings.Default.ID;
+            DateTime todaysDate = DateTime.UtcNow;          
+            var weekday = todaysDate.DayOfWeek.ToString();
             ClassScheduleService classScheduleService = new ClassScheduleService();
-            var schedules = await classScheduleService.GetClassScheduleWeekFacultyDetails(ID);
+            var schedules = await classScheduleService.GetClassScheduleWeekFacultyDetails(ID, weekday);
             schedulelist = schedules.ToList();
             var count = schedulelist.Count();
             if(count == 0)
             {
                 Label FreeSchedule = new Label();
+                Panel FreeSchedulePanel = new Panel();
+                PictureBox FreeSchedulePicture = new PictureBox();
+                FreeSchedulePanel.Size = new System.Drawing.Size(736, 478);
                 FreeSchedule.Text = "No Schedule For Today";
-                ClassSchedulePanel.Controls.Add(FreeSchedule);
+                FreeSchedule.AutoSize = true;
+                FreeSchedule.Font = new Font("TW Cen MT", 24);
+                FreeSchedulePicture.Image = LGAConnectSOMS.Properties.Resources.FreeSchedule;
+                FreeSchedulePicture.SizeMode = PictureBoxSizeMode.Zoom;
+                FreeSchedule.Location = new System.Drawing.Point(200, 200);
+                FreeSchedulePicture.Location = new System.Drawing.Point(300, 120);
+                FreeSchedule.ForeColor = Color.White;
+                ClassSchedulePanel.Controls.Add(FreeSchedulePanel);
+                FreeSchedulePanel.Controls.Add(FreeSchedulePicture);
+                FreeSchedulePanel.Controls.Add(FreeSchedule);
+                label1.Text = weekday;
             }
 
             else

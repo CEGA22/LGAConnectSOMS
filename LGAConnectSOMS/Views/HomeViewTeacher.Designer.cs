@@ -86,7 +86,7 @@ namespace LGAConnectSOMS.Views
             // 
             // btnClassSchedule
             // 
-            this.btnClassSchedule.BackColor = System.Drawing.Color.Transparent;
+            this.btnClassSchedule.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(167)))), ((int)(((byte)(240)))));
             this.btnClassSchedule.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClassSchedule.FlatAppearance.BorderSize = 0;
             this.btnClassSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -98,7 +98,7 @@ namespace LGAConnectSOMS.Views
             this.btnClassSchedule.Name = "btnClassSchedule";
             this.btnClassSchedule.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.btnClassSchedule.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnClassSchedule.Size = new System.Drawing.Size(256, 41);
+            this.btnClassSchedule.Size = new System.Drawing.Size(265, 41);
             this.btnClassSchedule.TabIndex = 12;
             this.btnClassSchedule.Text = "Class Schedule";
             this.btnClassSchedule.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -118,7 +118,7 @@ namespace LGAConnectSOMS.Views
             this.btnClassRecords.Location = new System.Drawing.Point(0, 268);
             this.btnClassRecords.Name = "btnClassRecords";
             this.btnClassRecords.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnClassRecords.Size = new System.Drawing.Size(256, 41);
+            this.btnClassRecords.Size = new System.Drawing.Size(265, 41);
             this.btnClassRecords.TabIndex = 11;
             this.btnClassRecords.Text = "Class Records";
             this.btnClassRecords.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -138,7 +138,7 @@ namespace LGAConnectSOMS.Views
             this.btnHome.Location = new System.Drawing.Point(0, 197);
             this.btnHome.Name = "btnHome";
             this.btnHome.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnHome.Size = new System.Drawing.Size(256, 41);
+            this.btnHome.Size = new System.Drawing.Size(265, 41);
             this.btnHome.TabIndex = 10;
             this.btnHome.Text = " Home";
             this.btnHome.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -484,6 +484,7 @@ namespace LGAConnectSOMS.Views
             this.btnAbout.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAbout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAbout.UseVisualStyleBackColor = false;
+            this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
             // 
             // btnUserSettings
             // 
