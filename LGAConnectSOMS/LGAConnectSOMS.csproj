@@ -92,39 +92,65 @@
     <Compile Include="Gateway\AboutGateway.cs" />
     <Compile Include="Gateway\ClassRecordsGateway.cs" />
     <Compile Include="Gateway\ClassScheduleGateway.cs" />
+    <Compile Include="Gateway\GradeLevelGateway.cs" />
+    <Compile Include="Gateway\GradeLevelRequestGateway.cs" />
     <Compile Include="Gateway\GradeLevelSectionGateway.cs" />
     <Compile Include="Gateway\LoginGateway.cs" />
+    <Compile Include="Gateway\PaymentSchemeGateway.cs" />
     <Compile Include="Gateway\SchoolAccountGateway.cs" />
+    <Compile Include="Gateway\SchoolAccountRequestGateway.cs" />
     <Compile Include="Gateway\StudentAccountGateway.cs" />
+    <Compile Include="Gateway\StudentBalanceGateway.cs" />
     <Compile Include="Gateway\StudentRequestGateway.cs" />
+    <Compile Include="Gateway\TransactionHistoryGateway.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="Helpers\WebMethods.cs" />
     <Compile Include="Models\About.cs" />
     <Compile Include="Models\ClassRecords.cs" />
     <Compile Include="Models\ClassSchedule.cs" />
+    <Compile Include="Models\GradeLevel.cs" />
     <Compile Include="Models\GradeLevelModel.cs" />
+    <Compile Include="Models\GradeLevelRequest.cs" />
     <Compile Include="Models\GradeLevelSection.cs" />
     <Compile Include="Models\LoginRequest.cs" />
     <Compile Include="Models\LoginResult.cs" />
+    <Compile Include="Models\PaymentScheme.cs" />
     <Compile Include="Models\SchoolAccount.cs" />
+    <Compile Include="Models\SchoolAccountRequest.cs" />
     <Compile Include="Models\StudentAccount.cs" />
+    <Compile Include="Models\StudentBalance.cs" />
+    <Compile Include="Models\StudentBalanceRequest.cs" />
     <Compile Include="Models\StudentDetailsModel.cs" />
     <Compile Include="Models\StudentRequest.cs" />
     <Compile Include="Models\Students.cs" />
+    <Compile Include="Models\TransactionHistory.cs" />
     <Compile Include="Services\AboutServices.cs" />
     <Compile Include="Services\ClassRecordsService.cs" />
     <Compile Include="Services\ClassScheduleService.cs" />
     <Compile Include="Services\DataAccess.cs" />
+    <Compile Include="Services\GradeLevelRequestService.cs" />
     <Compile Include="Services\GradeLevelSectionService.cs" />
+    <Compile Include="Services\GradeLevelService.cs" />
     <Compile Include="Services\LoginService.cs" />
+    <Compile Include="Services\PaymentSchemeService.cs" />
+    <Compile Include="Services\SchoolAccountRequestService.cs" />
     <Compile Include="Services\SchoolAccountService.cs" />
+    <Compile Include="Services\StudentBalanceRequestService.cs" />
+    <Compile Include="Services\StudentBalanceService.cs" />
     <Compile Include="Services\StudentRequestService.cs" />
     <Compile Include="Services\StudentService.cs" />
+    <Compile Include="Services\TransactionHistoryService.cs" />
     <Compile Include="Views\AboutPageView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\AboutPageView.Designer.cs">
       <DependentUpon>AboutPageView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddGradeLevelView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AddGradeLevelView.Designer.cs">
+      <DependentUpon>AddGradeLevelView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ClassRecordAdminView.cs">
       <SubType>Form</SubType>
@@ -149,6 +175,18 @@
     </Compile>
     <Compile Include="Views\ClassScheduleView.Designer.cs">
       <DependentUpon>ClassScheduleView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditSchoolAccountDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\EditSchoolAccountDetails.Designer.cs">
+      <DependentUpon>EditSchoolAccountDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditSchoolFacultyAccountDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\EditSchoolFacultyAccountDetails.Designer.cs">
+      <DependentUpon>EditSchoolFacultyAccountDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\EditStudentDetailsView.cs">
       <SubType>Form</SubType>
@@ -176,6 +214,12 @@
     <Compile Include="Views\HomeViewTeacher.Designer.cs">
       <DependentUpon>HomeViewTeacher.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\LoginLoadingView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\LoginLoadingView.Designer.cs">
+      <DependentUpon>LoginLoadingView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\LoginPageView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,8 +244,17 @@
     <Compile Include="Views\PaymentRecordsView.Designer.cs">
       <DependentUpon>PaymentRecordsView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\PaymentTransactionView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\PaymentTransactionView.Designer.cs">
+      <DependentUpon>PaymentTransactionView.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Views\AboutPageView.resx">
       <DependentUpon>AboutPageView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AddGradeLevelView.resx">
+      <DependentUpon>AddGradeLevelView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ClassRecordAdminView.resx">
       <DependentUpon>ClassRecordAdminView.cs</DependentUpon>
@@ -214,6 +267,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ClassScheduleView.resx">
       <DependentUpon>ClassScheduleView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EditSchoolAccountDetails.resx">
+      <DependentUpon>EditSchoolAccountDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EditSchoolFacultyAccountDetails.resx">
+      <DependentUpon>EditSchoolFacultyAccountDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\EditStudentDetailsView.resx">
       <DependentUpon>EditStudentDetailsView.cs</DependentUpon>
@@ -237,6 +296,9 @@
     <EmbeddedResource Include="Views\HomeViewTeacher.resx">
       <DependentUpon>HomeViewTeacher.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\LoginLoadingView.resx">
+      <DependentUpon>LoginLoadingView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\LoginPageView.resx">
       <DependentUpon>LoginPageView.cs</DependentUpon>
     </EmbeddedResource>
@@ -248,6 +310,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\PaymentRecordsView.resx">
       <DependentUpon>PaymentRecordsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\PaymentTransactionView.resx">
+      <DependentUpon>PaymentTransactionView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -416,6 +481,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\FacultyAdminRecords.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddButton16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddButtonTransaction.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

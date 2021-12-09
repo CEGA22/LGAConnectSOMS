@@ -24,54 +24,66 @@ namespace LGAConnectSOMS.Views
         {
             this.RestoreWindowPosition();
             MaximizeIcon();
-            txtPasswordSize();                 
+            txtPasswordSize();
+            panel1.Hide();
         }
 
         //NavigationToOtherForm
 
         private async void btnLogin_Click(object sender, EventArgs e)
-        {         
+        {
+                   
             LoginService loginService = new LoginService();
             var result = await loginService.AccountLogin(new LoginRequest
             {
                 Username = txtAccountID.Text,
                 Password = txtPassword.Text
             });
-
+            
             if (result.IsSuccess)
             {
+                panel1.Show();
+                await Task.Delay(2000);
                 if (result.IsAdmin == 1)
                 {
-                    //save to persitence data
-                    SavePersistentData(result.ID, result.Firstname, result.Lastname, result.Fullname, result.IsAdmin);
-                    HomeViewAdmin homeViewAdmin = new HomeViewAdmin();
+
+                    //save to persitence data                    
+                    SavePersistentData(result.ID, result.Firstname, result.Lastname, result.Fullname, result.IsAdmin, result.TeacherProfile);                   
+                    HomeViewAdmin homeViewAdmin = new HomeViewAdmin();                  
                     homeViewAdmin.Show();
                     this.Hide();
+                    panel1.Hide();
+
                 }
 
                 else
                 {
                     //save to persitence data
-                    SavePersistentData(result.ID, result.Firstname, result.Lastname, result.Fullname, result.IsAdmin);
+                    SavePersistentData(result.ID, result.Firstname, result.Lastname, result.Fullname, result.IsAdmin, result.TeacherProfile);
                     HomeViewTeacher homeViewTeacher = new HomeViewTeacher();
+                    panel1.Hide();
                     homeViewTeacher.Show();
                     this.Hide();
                 }
-
             }
             else
             {
-                MessageBox.Show("Login failed");
+                string message = "Incorrect password or ID";
+                string title = "Login failed";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                MessageBox.Show(message, title, buttons, MessageBoxIcon.Error);
             }
         }
 
-        public void SavePersistentData(int ID, string firstname, string lastname, string fullname, int isAdmin)
+        public void SavePersistentData(int ID, string firstname, string lastname, string fullname, int isAdmin, byte[] TeacherProfile)
         {
+            string teacherprofile = System.Convert.ToBase64String(TeacherProfile);
             Settings.Default.ID = ID;
             Settings.Default.Firstname = firstname;
             Settings.Default.Lastname = lastname;
             Settings.Default.Fullname = fullname;
             Settings.Default.IsAdmin = isAdmin;
+            Settings.Default.TeacherProfile =  teacherprofile;
         }
         //private async Task<StudentAccount> GetStudentAccountById(int id)
         //{

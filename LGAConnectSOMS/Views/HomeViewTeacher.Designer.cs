@@ -38,7 +38,6 @@ namespace LGAConnectSOMS.Views
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblUserRole = new System.Windows.Forms.Label();
             this.lblAccountName = new System.Windows.Forms.Label();
-            this.btnAccount = new System.Windows.Forms.Button();
             this.btnFileRequest = new System.Windows.Forms.Button();
             this.btnEnrolledStudents = new System.Windows.Forms.Button();
             this.SchedulePanel = new System.Windows.Forms.Panel();
@@ -60,14 +59,15 @@ namespace LGAConnectSOMS.Views
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnAbout = new System.Windows.Forms.Button();
             this.btnUserSettings = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.SideBarPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.NewsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NewsImage)).BeginInit();
-            this.DragWindowsPanel.SuspendLayout();
             this.Menu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // SideBarPanel
@@ -190,22 +190,6 @@ namespace LGAConnectSOMS.Views
             this.lblAccountName.TabIndex = 13;
             this.lblAccountName.Text = "Username";
             this.lblAccountName.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // btnAccount
-            // 
-            this.btnAccount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAccount.BackColor = System.Drawing.Color.Gray;
-            this.btnAccount.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAccount.Font = new System.Drawing.Font("Tw Cen MT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAccount.ForeColor = System.Drawing.Color.White;
-            this.btnAccount.Location = new System.Drawing.Point(1238, 55);
-            this.btnAccount.Name = "btnAccount";
-            this.btnAccount.Size = new System.Drawing.Size(50, 50);
-            this.btnAccount.TabIndex = 12;
-            this.btnAccount.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnAccount.UseVisualStyleBackColor = false;
-            this.btnAccount.Click += new System.EventHandler(this.btnAccount_Click);
             // 
             // btnFileRequest
             // 
@@ -386,12 +370,9 @@ namespace LGAConnectSOMS.Views
             // 
             this.DragWindowsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DragWindowsPanel.Controls.Add(this.btnMinimize);
-            this.DragWindowsPanel.Controls.Add(this.btnMaximize);
-            this.DragWindowsPanel.Controls.Add(this.btnClose);
             this.DragWindowsPanel.Location = new System.Drawing.Point(263, 0);
             this.DragWindowsPanel.Name = "DragWindowsPanel";
-            this.DragWindowsPanel.Size = new System.Drawing.Size(1037, 29);
+            this.DragWindowsPanel.Size = new System.Drawing.Size(912, 29);
             this.DragWindowsPanel.TabIndex = 21;
             this.DragWindowsPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DragWindowsPanel_MouseDown);
             this.DragWindowsPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DragWindowsPanel_MouseMove);
@@ -403,7 +384,7 @@ namespace LGAConnectSOMS.Views
             this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinimize.Image = global::LGAConnectSOMS.Properties.Resources.MinimizeBlack1;
             this.btnMinimize.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnMinimize.Location = new System.Drawing.Point(944, 6);
+            this.btnMinimize.Location = new System.Drawing.Point(1209, 6);
             this.btnMinimize.Name = "btnMinimize";
             this.btnMinimize.Size = new System.Drawing.Size(20, 20);
             this.btnMinimize.TabIndex = 23;
@@ -416,7 +397,7 @@ namespace LGAConnectSOMS.Views
             this.btnMaximize.FlatAppearance.BorderSize = 0;
             this.btnMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMaximize.Image = global::LGAConnectSOMS.Properties.Resources.FullScreenBlack;
-            this.btnMaximize.Location = new System.Drawing.Point(974, 6);
+            this.btnMaximize.Location = new System.Drawing.Point(1239, 6);
             this.btnMaximize.Name = "btnMaximize";
             this.btnMaximize.Size = new System.Drawing.Size(20, 20);
             this.btnMaximize.TabIndex = 22;
@@ -429,7 +410,7 @@ namespace LGAConnectSOMS.Views
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Image = global::LGAConnectSOMS.Properties.Resources.CloseBlack;
-            this.btnClose.Location = new System.Drawing.Point(1004, 6);
+            this.btnClose.Location = new System.Drawing.Point(1269, 6);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(20, 20);
             this.btnClose.TabIndex = 21;
@@ -504,12 +485,28 @@ namespace LGAConnectSOMS.Views
             this.btnUserSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnUserSettings.UseVisualStyleBackColor = false;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox2.Location = new System.Drawing.Point(1238, 55);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 24;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
             // HomeViewTeacher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1300, 700);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.btnMinimize);
+            this.Controls.Add(this.btnMaximize);
             this.Controls.Add(this.Menu);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.DragWindowsPanel);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.NewsPanel);
@@ -519,7 +516,6 @@ namespace LGAConnectSOMS.Views
             this.Controls.Add(this.SideBarPanel);
             this.Controls.Add(this.lblAccountName);
             this.Controls.Add(this.lblTitle);
-            this.Controls.Add(this.btnAccount);
             this.Controls.Add(this.btnEnrolledStudents);
             this.Controls.Add(this.btnFileRequest);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -537,8 +533,8 @@ namespace LGAConnectSOMS.Views
             this.NewsPanel.ResumeLayout(false);
             this.NewsPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NewsImage)).EndInit();
-            this.DragWindowsPanel.ResumeLayout(false);
             this.Menu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -551,7 +547,6 @@ namespace LGAConnectSOMS.Views
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label lblUserRole;
         private System.Windows.Forms.Label lblAccountName;
-        private System.Windows.Forms.Button btnAccount;
         private System.Windows.Forms.Button btnFileRequest;
         private System.Windows.Forms.Button btnEnrolledStudents;
         private System.Windows.Forms.Button btnClassSchedule;
@@ -576,5 +571,6 @@ namespace LGAConnectSOMS.Views
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Button btnAbout;
         private System.Windows.Forms.Button btnUserSettings;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

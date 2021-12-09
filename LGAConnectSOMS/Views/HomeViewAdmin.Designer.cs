@@ -49,7 +49,6 @@ namespace LGAConnectSOMS
             this.NewsPanelYellow = new System.Windows.Forms.Panel();
             this.lblvViewMoreNews = new System.Windows.Forms.Label();
             this.lblTitleNewsPanel = new System.Windows.Forms.Label();
-            this.btnAccount = new System.Windows.Forms.Button();
             this.lblAccountName = new System.Windows.Forms.Label();
             this.lblUserRole = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
@@ -57,13 +56,14 @@ namespace LGAConnectSOMS
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnAbout = new System.Windows.Forms.Button();
             this.btnUserSettings = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.SideBarPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LGAConnectLogo)).BeginInit();
-            this.DragWindowsPanel.SuspendLayout();
             this.NewsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NewsImage)).BeginInit();
             this.NewsPanelYellow.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // SideBarPanel
@@ -118,7 +118,7 @@ namespace LGAConnectSOMS
             this.btnPaymentRecords.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.btnPaymentRecords.Size = new System.Drawing.Size(265, 41);
             this.btnPaymentRecords.TabIndex = 11;
-            this.btnPaymentRecords.Text = "Payment Records";
+            this.btnPaymentRecords.Text = "Payment History";
             this.btnPaymentRecords.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.btnPaymentRecords.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPaymentRecords.UseCompatibleTextRendering = true;
@@ -152,7 +152,7 @@ namespace LGAConnectSOMS
             // 
             // btnClassSchedule
             // 
-            this.btnClassSchedule.BackColor = System.Drawing.Color.Transparent;
+            this.btnClassSchedule.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(167)))), ((int)(((byte)(240)))));
             this.btnClassSchedule.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClassSchedule.FlatAppearance.BorderSize = 0;
             this.btnClassSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -236,15 +236,13 @@ namespace LGAConnectSOMS
             this.DragWindowsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DragWindowsPanel.BackColor = System.Drawing.Color.Transparent;
-            this.DragWindowsPanel.Controls.Add(this.btnMaximize);
-            this.DragWindowsPanel.Controls.Add(this.btnMinimize);
-            this.DragWindowsPanel.Controls.Add(this.btnClose);
             this.DragWindowsPanel.Location = new System.Drawing.Point(263, 0);
             this.DragWindowsPanel.Name = "DragWindowsPanel";
-            this.DragWindowsPanel.Size = new System.Drawing.Size(1039, 29);
+            this.DragWindowsPanel.Size = new System.Drawing.Size(914, 29);
             this.DragWindowsPanel.TabIndex = 13;
             this.DragWindowsPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DragWindowsPanel_MouseDown);
             this.DragWindowsPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DragWindowsPanel_MouseMove);
+            this.DragWindowsPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DragWindowsPanel_MouseUp);
             // 
             // btnMaximize
             // 
@@ -252,7 +250,7 @@ namespace LGAConnectSOMS
             this.btnMaximize.FlatAppearance.BorderSize = 0;
             this.btnMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMaximize.Image = global::LGAConnectSOMS.Properties.Resources.FullScreenBlack;
-            this.btnMaximize.Location = new System.Drawing.Point(976, 6);
+            this.btnMaximize.Location = new System.Drawing.Point(1240, 5);
             this.btnMaximize.Name = "btnMaximize";
             this.btnMaximize.Size = new System.Drawing.Size(20, 20);
             this.btnMaximize.TabIndex = 11;
@@ -266,7 +264,7 @@ namespace LGAConnectSOMS
             this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinimize.Image = global::LGAConnectSOMS.Properties.Resources.MinimizeBlack1;
             this.btnMinimize.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnMinimize.Location = new System.Drawing.Point(946, 6);
+            this.btnMinimize.Location = new System.Drawing.Point(1210, 5);
             this.btnMinimize.Name = "btnMinimize";
             this.btnMinimize.Size = new System.Drawing.Size(20, 20);
             this.btnMinimize.TabIndex = 12;
@@ -279,7 +277,7 @@ namespace LGAConnectSOMS
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Image = global::LGAConnectSOMS.Properties.Resources.CloseBlack;
-            this.btnClose.Location = new System.Drawing.Point(1006, 6);
+            this.btnClose.Location = new System.Drawing.Point(1270, 5);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(20, 20);
             this.btnClose.TabIndex = 10;
@@ -377,22 +375,6 @@ namespace LGAConnectSOMS
             this.lblTitleNewsPanel.TabIndex = 6;
             this.lblTitleNewsPanel.Text = "Latest News";
             this.lblTitleNewsPanel.UseCompatibleTextRendering = true;
-            // 
-            // btnAccount
-            // 
-            this.btnAccount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAccount.BackColor = System.Drawing.Color.Gray;
-            this.btnAccount.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAccount.Font = new System.Drawing.Font("Tw Cen MT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAccount.ForeColor = System.Drawing.Color.White;
-            this.btnAccount.Location = new System.Drawing.Point(1238, 55);
-            this.btnAccount.Name = "btnAccount";
-            this.btnAccount.Size = new System.Drawing.Size(50, 50);
-            this.btnAccount.TabIndex = 7;
-            this.btnAccount.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnAccount.UseVisualStyleBackColor = false;
-            this.btnAccount.Click += new System.EventHandler(this.btnAccount_Click);
             // 
             // lblAccountName
             // 
@@ -502,18 +484,33 @@ namespace LGAConnectSOMS
             this.btnUserSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnUserSettings.UseVisualStyleBackColor = false;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Location = new System.Drawing.Point(1238, 55);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 15;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
             // HomeViewAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(242)))), ((int)(((byte)(245)))));
             this.ClientSize = new System.Drawing.Size(1300, 700);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.btnMaximize);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.btnMinimize);
             this.Controls.Add(this.lblTitle);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.DragWindowsPanel);
             this.Controls.Add(this.lblUserRole);
             this.Controls.Add(this.lblAccountName);
-            this.Controls.Add(this.btnAccount);
             this.Controls.Add(this.NewsPanel);
             this.Controls.Add(this.SideBarPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -525,12 +522,12 @@ namespace LGAConnectSOMS
             this.Click += new System.EventHandler(this.HomeViewAdmin_Click);
             this.SideBarPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.LGAConnectLogo)).EndInit();
-            this.DragWindowsPanel.ResumeLayout(false);
             this.NewsPanel.ResumeLayout(false);
             this.NewsPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NewsImage)).EndInit();
             this.NewsPanelYellow.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -543,7 +540,6 @@ namespace LGAConnectSOMS
         private System.Windows.Forms.Label lblArticleTitle;
         private System.Windows.Forms.PictureBox NewsImage;
         private System.Windows.Forms.Panel NewsPanelYellow;
-        private System.Windows.Forms.Button btnAccount;
         private System.Windows.Forms.Label lblAccountName;
         private System.Windows.Forms.Label lblTitleNewsPanel;
         private System.Windows.Forms.Label lblvViewMoreNews;
@@ -564,6 +560,7 @@ namespace LGAConnectSOMS
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Button btnAbout;
         private System.Windows.Forms.Button btnFacultyAdmin;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

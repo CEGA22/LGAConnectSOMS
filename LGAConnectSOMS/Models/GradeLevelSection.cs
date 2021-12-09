@@ -12,6 +12,8 @@ namespace LGAConnectSOMS.Models
 
         public int GradeLevel { get; set; }
 
+        public string GradeLevels { get; set; }
+
         public string SectionName { get; set; }
     }
 }

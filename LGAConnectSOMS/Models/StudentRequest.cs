@@ -8,6 +8,8 @@ namespace LGAConnectSOMS.Models
 {
     public class StudentRequest
     {
+        public int ID { get; set; }
+
         public string Lastname { get; set; }
 
         public string Middlename { get; set; }
@@ -18,7 +20,9 @@ namespace LGAConnectSOMS.Models
 
         public string Password { get; set; }
 
-        public Int64 MobileNumber { get; set; }
+        public byte[] StudentProfile { get; set; }
+
+        public string MobileNumber { get; set; }
 
         public string Gender { get; set; }
 

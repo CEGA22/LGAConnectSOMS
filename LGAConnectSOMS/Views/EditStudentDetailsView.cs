@@ -1,8 +1,11 @@
-﻿using System;
+﻿using LGAConnectSOMS.Models;
+using LGAConnectSOMS.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,9 +15,16 @@ namespace LGAConnectSOMS.Views
 {
     public partial class EditStudentDetailsView : Form
     {
+        
         public EditStudentDetailsView()
         {
-            InitializeComponent();
+            InitializeComponent();            
+        }
+
+        //Load
+        private void EditStudentDetailsView_Load(object sender, EventArgs e)
+        {
+
         }
 
 
@@ -27,27 +37,26 @@ namespace LGAConnectSOMS.Views
 
         //Buttons Forecolor and background Styles
 
-        private void btnBack_MouseEnter(object sender, EventArgs e)
+        private void btnClose_MouseEnter(object sender, EventArgs e)
         {
-            btnBack.Image = LGAConnectSOMS.Properties.Resources.BackArrowYellow24;
+            btnClose.BackColor = Color.FromArgb(240, 52, 52);
+            btnClose.Image = LGAConnectSOMS.Properties.Resources.close_button;
         }
 
-        private void btnBack_MouseLeave(object sender, EventArgs e)
+        private void btnClose_MouseLeave(object sender, EventArgs e)
         {
-            btnBack.Image = LGAConnectSOMS.Properties.Resources.BackArrow24;
+            btnClose.BackColor = Color.Transparent;
+            btnClose.Image = LGAConnectSOMS.Properties.Resources.CloseBlack;
         }
+
+
+
 
         //TitleBarFunction
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void EditStudentDetailsView_Load(object sender, EventArgs e)
-        {
-            cbGender.Items.Add("Male");
-            cbGender.Items.Add("Female");
-            
+        //
+        private void btnClose_Click_1(object sender, EventArgs e)
+        {           
+            this.Hide();
         }
 
         private void cbGender_KeyPress(object sender, KeyPressEventArgs e)
@@ -67,9 +76,80 @@ namespace LGAConnectSOMS.Views
             }
         }
 
-        private void btnSaveChanges_Click(object sender, EventArgs e)
+        private void btnStudentProfile_Click(object sender, EventArgs e)
         {
+            // open file dialog   
+            OpenFileDialog open = new OpenFileDialog();
+            // image filters  
+            open.Filter = "Image Files(*.jpg; *.jpeg; *.png;)|*.jpg; *.jpeg; *.png;";
+            if (open.ShowDialog() == DialogResult.OK)
+            {
+                FileStream fs = File.OpenRead(open.FileName);
+                if (fs.Length > 1000000)
+                {
+                    MessageBox.Show("Maximum file size is 1MB");
+                    return;
+                }
 
+                else
+                {
+                    // display image in picture box
+                    StudentProfilePicturebox.SizeMode = PictureBoxSizeMode.Zoom;
+                    StudentProfilePicturebox.Image = new Bitmap(open.FileName);
+                    var image = StudentProfilePicturebox.Image;
+                    ImageToByteArray(image);
+                    // image file path  
+                }
+            }
         }
+
+        public byte[] ImageToByteArray(System.Drawing.Image imageIn)
+        {
+            using (var ms = new MemoryStream())
+            {
+                imageIn.Save(ms, imageIn.RawFormat);
+                return ms.ToArray();
+            }
+        }
+
+        private async void btnSaveChanges_Click(object sender, EventArgs e)
+        {
+            var id = int.Parse(txtID.Text);
+            var image = StudentProfilePicturebox.Image;
+            try
+            {
+                StudentRequestService studentRequestService = new StudentRequestService();
+                var IsSucess = await studentRequestService.UpdateStudentRequest(new StudentRequest
+                {
+                    ID = id,
+                    Lastname = txtLastname.Text,
+                    Middlename = txtMiddlename.Text,
+                    Firstname = txtFirstname.Text,
+                    StudentNumber = txtStudentNumber.Text,
+                    Password = txtPassword.Text,
+                    StudentProfile = ImageToByteArray(image),
+                    MobileNumber = txtMobileNumber.Text,
+                    Gender = cbGender.Text,
+                    //GradeLevelId = int.Parse(cmbGradeLevel.Text),
+                    //SchoolYearStart = int.Parse(cmbSY.Text),
+                    //SchoolYearEnd = int.Parse(txtSchoolYearEnd.Text)
+                });;
+
+                if (IsSucess)
+                {                    
+                    MessageBox.Show("Update Student information Successfully", "Update Complete", (MessageBoxButtons)MessageBoxIcon.Information);                
+                }
+
+                else
+                {
+                    MessageBox.Show("Update Student information Not Successfull");
+                }
+
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show(x.Message);
+            }
+        }       
     }
 }

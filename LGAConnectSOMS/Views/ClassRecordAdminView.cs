@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,8 +16,8 @@ using System.Windows.Forms;
 namespace LGAConnectSOMS.Views
 {
     public partial class ClassRecordAdminView : Form
-    {      
-        
+    {
+
 
         public ClassRecordAdminView()
         {
@@ -50,15 +51,64 @@ namespace LGAConnectSOMS.Views
             //    SectionName = "Blue Sapphire"
             //});            
         }
-            
+
         //Load
+
+        private void ClassRecordAdminView_Load(object sender, EventArgs e)
+        {
+            ClassRecordDataGridView.CurrentCell = null;
+            GradeLevelDataGridView.CurrentCell = null;
+            GradeLevelSectionDataGridView.CurrentCell = null;
+            LoadData();
+            this.RestoreWindowPosition();
+            MaximizeIcon();
+        }
+
+        private async void LoadData()
+        {
+            await LoadGradeLevels();
+            await DisplayGradeLevels();
+            await DisplayGradeLevelSections();
+            await DisplayClassRecordData();
+            LoadYear();           
+            lblloading.Hide();
+            lblloadingGradeLevel.Hide();
+            lblLoadingGradeLevelSection.Hide();
+        }
         IEnumerable<GradeLevelSection> gradeLevelSections = new List<GradeLevelSection>();
         private async Task LoadGradeLevels()
         {
             GradeLevelSectionService gradeLevelSectionService = new GradeLevelSectionService();
-            gradeLevelSections = await gradeLevelSectionService.GetGradeLevel();
-            var gradelevelslist = gradeLevelSections.Select(x => x.GradeLevel).Distinct();
+            gradeLevelSections = await Task.Run(() => gradeLevelSectionService.GetGradeLevel());
+            var gradelevelslist = gradeLevelSections.Select(x => x.GradeLevels).Distinct();
             cmbGradeLevels.DataSource = gradelevelslist.ToList();
+        }
+
+        private async Task DisplayGradeLevelSections()
+        {
+            lblLoadingGradeLevelSection.Show();
+            GradeLevelSectionService gradeLevelSectionService = new GradeLevelSectionService();
+            gradeLevelSections = await Task.Run(() => gradeLevelSectionService.GetGradeLevel());
+            var gradelevelslist = gradeLevelSections;
+            GradeLevelSectionDataGridView.DataSource = gradelevelslist.ToList();
+            lblLoadingGradeLevelSection.Hide();
+            GradeLevelSectionDataGridView.CurrentCell = null;
+            GradeLevelSectionDataGridView.Columns[0].Visible = false;
+            GradeLevelSectionDataGridView.Columns[1].Visible = false;
+            
+        }
+
+        IEnumerable<GradeLevel> gradeLevels = new List<GradeLevel>();
+        private async Task DisplayGradeLevels()
+        {
+            lblloadingGradeLevel.Show();
+            GradeLevelService gradeLevelService = new GradeLevelService();
+            gradeLevels = await Task.Run(() => gradeLevelService.GetGradeLevel());
+            var gradelevelslist = gradeLevels;
+            GradeLevelDataGridView.DataSource = gradelevelslist.ToList();
+            GradeLevelDataGridView.CurrentCell = null;
+            lblloadingGradeLevel.Hide();            
+            
         }
         private void LoadYear()
         {
@@ -69,19 +119,6 @@ namespace LGAConnectSOMS.Views
             }
         }
 
-        private async Task LoadData()
-        {
-            await DisplayClassRecordData();          
-            await LoadGradeLevels();
-            LoadYear();           
-        }
-        private void ClassRecordAdminView_Load(object sender, EventArgs e)
-        {
-            this.RestoreWindowPosition();
-            MaximizeIcon();
-            LoadData();           
-            ClassRecordDataGridView.CurrentCell = null;           
-        }
 
         //NavigationToOtherForm
 
@@ -89,39 +126,45 @@ namespace LGAConnectSOMS.Views
         {
             this.SaveWindowPosition();
             var HVA = new HomeViewAdmin();
-            HVA.Show();   
+            HVA.Show();
             this.Hide();
         }
 
         //Commands
+        public IEnumerable<StudentAccount> studentAccounts = new List<StudentAccount>();
         public async Task DisplayClassRecordData()
-         {           
+        {
+            lblloading.Show();
             StudentService studentService = new StudentService();
-            var students = await studentService.GetStudentAccount();
-            var studentsList = students.ToList();
-            studentsList.Insert(0, new StudentAccount
-            {
-                
-            });         
-            ClassRecordDataGridView.DataSource =  students;
+            var students = await Task.Run(() => studentService.GetStudentAccount());
+            studentAccounts = students.ToList();
+            ClassRecordDataGridView.DataSource = studentAccounts;
+            lblloading.Hide();
             ClassRecordDataGridView.CurrentCell = null;
+            this.ClassRecordDataGridView.Columns[9].Visible = false;
         }
 
         private async void txtSearchStudent_TextChanged(object sender, EventArgs e)
-        {                      
+        {
             if (!string.IsNullOrWhiteSpace(txtSearchStudent.Text))
             {
-                StudentService studentService = new StudentService();
-                var students = studentService.GetStudentAccountById(txtSearchStudent.Text);
-                ClassRecordDataGridView.DataSource = await students;
-                CBGradeLevel.SelectedIndex = -1;
-                CBSection.SelectedIndex = -1;
-                ClassRecordDataGridView.CurrentCell = null;               
+                var lastname = txtSearchStudent.Text;
+                //StudentService studentService = new StudentService();
+                //var students = studentService.GetStudentAccountById(txtSearchStudent.Text);
+                //ClassRecordDataGridView.DataSource = await students;
+                //CBGradeLevel.SelectedIndex = -1;
+                //CBSection.SelectedIndex = -1;
+                //ClassRecordDataGridView.CurrentCell = null;
+                var listbyLastname = studentAccounts.Where(x => x.Lastname.ToString().Contains(lastname)).ToList();
+                ClassRecordDataGridView.DataSource = listbyLastname;
+                //this.ClassRecordDataGridView.Columns[9].Visible = false;
+                ClassRecordDataGridView.CurrentCell = null;
             }
-
             else
             {
-                await DisplayClassRecordData();
+                ClassRecordDataGridView.DataSource = studentAccounts;
+                this.ClassRecordDataGridView.Columns[9].Visible = false;
+                ClassRecordDataGridView.CurrentCell = null;
             }
         }
 
@@ -144,7 +187,7 @@ namespace LGAConnectSOMS.Views
                     Firstname = txtFirstname.Text,
                     StudentNumber = txtStudentNumber.Text,
                     Password = txtPassword.Text,
-                    MobileNumber = Convert.ToInt64(txtMobileNumber.Text),
+                    MobileNumber = txtMobileNumber.Text,
                     Gender = cbGender.Text,
                     GradeLevelId = gradeLevelId,
                     SchoolYearStart = int.Parse(cmbSYStart.Text),
@@ -158,7 +201,7 @@ namespace LGAConnectSOMS.Views
 
                 else
                 {
-                    MessageBox.Show("Added new Student Not Successfull");                   
+                    MessageBox.Show("Added new Student Not Successfull");
                 }
 
             }
@@ -166,18 +209,18 @@ namespace LGAConnectSOMS.Views
             {
                 MessageBox.Show(x.Message);
             }
-            
+
         }
-       
+
         private async void CBGradeLevel_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (CBGradeLevel.SelectedIndex == -1)
             {
-                await DisplayClassRecordData();              
+                await DisplayClassRecordData();
             }
             else
-            {              
-                var selectedgrade = CBGradeLevel.Text;              
+            {
+                var selectedgrade = CBGradeLevel.Text;
                 StudentService studentService = new StudentService();
                 var students = studentService.GetStudentAccountByGradeLevel(selectedgrade.ToString());
                 ClassRecordDataGridView.DataSource = await students;
@@ -191,13 +234,13 @@ namespace LGAConnectSOMS.Views
             //var db = new DataAccess();
             //gradelevel = db.GetStudentsByGradeLevel();
             //CBGradeLevel.DataSource = gradelevel;           
-             StudentService studentService = new StudentService();
-             var students = studentService.GetStudentByGradeLevelFilter();
-             CBGradeLevel.DataSource = await students;
-             CBGradeLevel.DisplayMember = "Grade_Level";
+            StudentService studentService = new StudentService();
+            var students = studentService.GetStudentByGradeLevelFilter();
+            CBGradeLevel.DataSource = await students;
+            CBGradeLevel.DisplayMember = "Grade_Level";
             CBGradeLevel.Text = "Grade Level";
             CBGradeLevel.SelectedIndex = -1;
-             ClassRecordDataGridView.CurrentCell = null;                    
+            ClassRecordDataGridView.CurrentCell = null;
         }
 
         private async void CBSection_SelectedIndexChanged(object sender, EventArgs e)
@@ -214,7 +257,7 @@ namespace LGAConnectSOMS.Views
                 var selectedsection = CBSection.Text;
                 StudentService studentService = new StudentService();
                 var students = studentService.GetStudentAccountBySection(selectedsection.ToString());
-                ClassRecordDataGridView.DataSource = await students;            
+                ClassRecordDataGridView.DataSource = await students;
                 CBGradeLevel.SelectedIndex = -1;
                 ClassRecordDataGridView.CurrentCell = null;
 
@@ -243,8 +286,8 @@ namespace LGAConnectSOMS.Views
 
         private void cmbGradeLevels_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var selectedGradeLevel = (int)cmbGradeLevels.SelectedItem;
-            var gradelevelslist = gradeLevelSections.Where(x => x.GradeLevel == selectedGradeLevel).Select(x => x.SectionName);
+            var selectedGradeLevel = cmbGradeLevels.SelectedItem;
+            var gradelevelslist = gradeLevelSections.Where(x => x.GradeLevels.Equals(selectedGradeLevel)).Select(x => x.SectionName);
             cmbSections.DataSource = gradelevelslist.ToList();
         }
 
@@ -255,17 +298,20 @@ namespace LGAConnectSOMS.Views
             ESDV.txtLastname.Text = ClassRecordDataGridView.CurrentRow.Cells[1].Value.ToString();
             ESDV.txtMiddlename.Text = ClassRecordDataGridView.CurrentRow.Cells[2].Value.ToString();
             ESDV.txtFirstname.Text = ClassRecordDataGridView.CurrentRow.Cells[3].Value.ToString();
-            ESDV.cbGender.Text = ClassRecordDataGridView.CurrentRow.Cells[4].Value.ToString();          
+            ESDV.cbGender.Text = ClassRecordDataGridView.CurrentRow.Cells[4].Value.ToString();
             ESDV.cmbGradeLevel.Text = ClassRecordDataGridView.CurrentRow.Cells[5].Value.ToString();
             ESDV.cmbSection.Text = ClassRecordDataGridView.CurrentRow.Cells[6].Value.ToString();
             ESDV.txtStudentNumber.Text = ClassRecordDataGridView.CurrentRow.Cells[7].Value.ToString();
-            ESDV.txtPassword.Text = ClassRecordDataGridView.CurrentRow.Cells[8].Value.ToString();           
-            ESDV.txtMobileNumber.Text = ClassRecordDataGridView.CurrentRow.Cells[9].Value.ToString();                                        
-            ESDV.cmbSY.Text = ClassRecordDataGridView.CurrentRow.Cells[10].Value.ToString();
-            ESDV.txtSchoolYearEnd.Text = ClassRecordDataGridView.CurrentRow.Cells[11].Value.ToString();
+            ESDV.txtPassword.Text = ClassRecordDataGridView.CurrentRow.Cells[8].Value.ToString();
+            byte[] image = (byte[])ClassRecordDataGridView.CurrentRow.Cells[9].Value;
+            MemoryStream ms = new MemoryStream(image);
+            ESDV.StudentProfilePicturebox.Image = Image.FromStream(ms);
+            ESDV.txtMobileNumber.Text = ClassRecordDataGridView.CurrentRow.Cells[10].Value.ToString();
+            ESDV.cmbSY.Text = ClassRecordDataGridView.CurrentRow.Cells[11].Value.ToString();
+            ESDV.txtSchoolYearEnd.Text = ClassRecordDataGridView.CurrentRow.Cells[12].Value.ToString();
             ESDV.ShowDialog();
         }
-    
+
         //Buttons Forecolor and background Styles
 
         private void btnBack_MouseEnter(object sender, EventArgs e)
@@ -368,7 +414,7 @@ namespace LGAConnectSOMS.Views
         {
             Application.Exit();
         }
-    
+
         //DragWindows
         private Point _mouseLoc;
         private void DragWindowsPanel_MouseDown(object sender, MouseEventArgs e)
@@ -417,7 +463,51 @@ namespace LGAConnectSOMS.Views
 
         private async void button1_Click(object sender, EventArgs e)
         {
-            
-        }        
+
+        }
+
+        private void btnUploadStudentProfile_Click(object sender, EventArgs e)
+        {
+            // open file dialog   
+            OpenFileDialog open = new OpenFileDialog();
+            // image filters  
+            open.Filter = "Image Files(*.jpg; *.jpeg; *.png;)|*.jpg; *.jpeg; *.png;";
+            if (open.ShowDialog() == DialogResult.OK)
+            {
+               
+                    FileStream fs = File.OpenRead(open.FileName);
+                    if (fs.Length > 1000000)
+                    {
+                        MessageBox.Show("Maximum file size is 1MB");
+                        return;
+                    }
+
+                    else
+                    {
+                        StudentProfilePictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+                        StudentProfilePictureBox.Image = new Bitmap(open.FileName);
+                        var image = StudentProfilePictureBox.Image;
+                        ImageToByteArray(image);
+                    }
+                    // display image in picture box
+
+                    // image file path                          
+                }
+            }
+
+            public byte[] ImageToByteArray(System.Drawing.Image imageIn)
+            {
+                using (var ms = new MemoryStream())
+                {
+                    imageIn.Save(ms, imageIn.RawFormat);
+                    return ms.ToArray();
+                }
+            }
+
+        private void btnAddGradeLevel_Click(object sender, EventArgs e)
+        {
+            AddGradeLevelView addGradeLevelView = new AddGradeLevelView();
+            addGradeLevelView.ShowDialog();
+        }
     }
-}
+    }

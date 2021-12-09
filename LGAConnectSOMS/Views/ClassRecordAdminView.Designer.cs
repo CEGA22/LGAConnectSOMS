@@ -29,11 +29,21 @@ namespace LGAConnectSOMS.Views
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle43 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle44 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle45 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblSearchStudent = new System.Windows.Forms.Label();
             this.txtSearchStudent = new System.Windows.Forms.TextBox();
             this.lblGradeLevel = new System.Windows.Forms.Label();
@@ -45,15 +55,18 @@ namespace LGAConnectSOMS.Views
             this.lblClassRecordAdminTitle = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.lblloading = new System.Windows.Forms.Label();
             this.ClassRecordDataGridView = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.txtMobileNumber = new System.Windows.Forms.TextBox();
             this.lblMobileNumber = new System.Windows.Forms.Label();
             this.cmbSYStart = new System.Windows.Forms.ComboBox();
             this.cmbSections = new System.Windows.Forms.ComboBox();
             this.cmbGradeLevels = new System.Windows.Forms.ComboBox();
             this.cbGender = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnUploadStudentProfile = new System.Windows.Forms.Button();
             this.lblSchoolYearEnd = new System.Windows.Forms.Label();
             this.txtSchoolYearEnd = new System.Windows.Forms.TextBox();
             this.lblSchoolYearStart = new System.Windows.Forms.Label();
@@ -72,17 +85,27 @@ namespace LGAConnectSOMS.Views
             this.lblFirstname = new System.Windows.Forms.Label();
             this.lblLastname = new System.Windows.Forms.Label();
             this.lblStudentDetailsTitle = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.GradeLevelDataGridView = new System.Windows.Forms.DataGridView();
+            this.lblloadingGradeLevel = new System.Windows.Forms.Label();
             this.btnMinimize = new System.Windows.Forms.Button();
             this.btnMaximize = new System.Windows.Forms.Button();
+            this.StudentProfilePictureBox = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
-            this.DragWindowsPanel.SuspendLayout();
+            this.btnAddGradeLevel = new System.Windows.Forms.Button();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.lblLoadingGradeLevelSection = new System.Windows.Forms.Label();
+            this.GradeLevelSectionDataGridView = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ClassRecordDataGridView)).BeginInit();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GradeLevelDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StudentProfilePictureBox)).BeginInit();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GradeLevelSectionDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // lblSearchStudent
@@ -120,7 +143,6 @@ namespace LGAConnectSOMS.Views
             // 
             this.CBGradeLevel.DropDownHeight = 200;
             this.CBGradeLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CBGradeLevel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CBGradeLevel.Font = new System.Drawing.Font("Tw Cen MT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CBGradeLevel.ForeColor = System.Drawing.Color.Black;
             this.CBGradeLevel.FormattingEnabled = true;
@@ -136,7 +158,7 @@ namespace LGAConnectSOMS.Views
             // 
             // CBSection
             // 
-            this.CBSection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CBSection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBSection.Font = new System.Drawing.Font("Tw Cen MT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CBSection.FormattingEnabled = true;
             this.CBSection.ItemHeight = 22;
@@ -161,15 +183,9 @@ namespace LGAConnectSOMS.Views
             // 
             this.DragWindowsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DragWindowsPanel.Controls.Add(this.btnMinimize);
-            this.DragWindowsPanel.Controls.Add(this.btnMaximize);
-            this.DragWindowsPanel.Controls.Add(this.btnClose);
-            this.DragWindowsPanel.Controls.Add(this.btnBack);
-            this.DragWindowsPanel.Controls.Add(this.panel1);
-            this.DragWindowsPanel.Controls.Add(this.lblClassRecordAdminTitle);
-            this.DragWindowsPanel.Location = new System.Drawing.Point(1, 1);
+            this.DragWindowsPanel.Location = new System.Drawing.Point(273, 1);
             this.DragWindowsPanel.Name = "DragWindowsPanel";
-            this.DragWindowsPanel.Size = new System.Drawing.Size(1301, 105);
+            this.DragWindowsPanel.Size = new System.Drawing.Size(890, 31);
             this.DragWindowsPanel.TabIndex = 26;
             this.DragWindowsPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DragWindowsPanel_MouseDown);
             this.DragWindowsPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DragWindowsPanel_MouseMove);
@@ -179,7 +195,7 @@ namespace LGAConnectSOMS.Views
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(143)))));
-            this.panel1.Location = new System.Drawing.Point(13, 96);
+            this.panel1.Location = new System.Drawing.Point(19, 81);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1276, 3);
             this.panel1.TabIndex = 12;
@@ -188,7 +204,7 @@ namespace LGAConnectSOMS.Views
             // 
             this.lblClassRecordAdminTitle.AutoSize = true;
             this.lblClassRecordAdminTitle.Font = new System.Drawing.Font("Tw Cen MT", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClassRecordAdminTitle.Location = new System.Drawing.Point(69, 27);
+            this.lblClassRecordAdminTitle.Location = new System.Drawing.Point(64, 23);
             this.lblClassRecordAdminTitle.Name = "lblClassRecordAdminTitle";
             this.lblClassRecordAdminTitle.Size = new System.Drawing.Size(187, 31);
             this.lblClassRecordAdminTitle.TabIndex = 10;
@@ -201,8 +217,10 @@ namespace LGAConnectSOMS.Views
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl1.Location = new System.Drawing.Point(14, 186);
+            this.tabControl1.Location = new System.Drawing.Point(19, 186);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1276, 502);
@@ -211,6 +229,7 @@ namespace LGAConnectSOMS.Views
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage1.Controls.Add(this.lblloading);
             this.tabPage1.Controls.Add(this.ClassRecordDataGridView);
             this.tabPage1.Location = new System.Drawing.Point(4, 28);
             this.tabPage1.Name = "tabPage1";
@@ -219,50 +238,62 @@ namespace LGAConnectSOMS.Views
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "List of Students";
             // 
+            // lblloading
+            // 
+            this.lblloading.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.lblloading.AutoSize = true;
+            this.lblloading.Font = new System.Drawing.Font("Tw Cen MT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblloading.Location = new System.Drawing.Point(540, 205);
+            this.lblloading.Name = "lblloading";
+            this.lblloading.Size = new System.Drawing.Size(224, 22);
+            this.lblloading.TabIndex = 27;
+            this.lblloading.Text = "Processing file. Please wait...";
+            // 
             // ClassRecordDataGridView
             // 
             this.ClassRecordDataGridView.AllowUserToResizeColumns = false;
             this.ClassRecordDataGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
-            this.ClassRecordDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle41.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
+            this.ClassRecordDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle41;
             this.ClassRecordDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ClassRecordDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.ClassRecordDataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
             this.ClassRecordDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(143)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ClassRecordDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle42.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(143)))));
+            dataGridViewCellStyle42.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle42.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle42.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle42.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle42.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ClassRecordDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle42;
             this.ClassRecordDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(242)))), ((int)(((byte)(245)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ClassRecordDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ClassRecordDataGridView.Cursor = System.Windows.Forms.Cursors.Hand;
+            dataGridViewCellStyle43.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle43.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(242)))), ((int)(((byte)(245)))));
+            dataGridViewCellStyle43.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle43.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle43.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle43.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle43.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ClassRecordDataGridView.DefaultCellStyle = dataGridViewCellStyle43;
             this.ClassRecordDataGridView.EnableHeadersVisualStyles = false;
             this.ClassRecordDataGridView.Location = new System.Drawing.Point(-3, 0);
             this.ClassRecordDataGridView.Name = "ClassRecordDataGridView";
             this.ClassRecordDataGridView.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ClassRecordDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle44.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle44.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle44.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle44.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle44.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle44.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle44.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ClassRecordDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle44;
             this.ClassRecordDataGridView.RowHeadersVisible = false;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ClassRecordDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle45.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClassRecordDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle45;
             this.ClassRecordDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ClassRecordDataGridView.Size = new System.Drawing.Size(1271, 474);
             this.ClassRecordDataGridView.TabIndex = 26;
@@ -271,13 +302,15 @@ namespace LGAConnectSOMS.Views
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage2.Controls.Add(this.label3);
+            this.tabPage2.Controls.Add(this.label2);
             this.tabPage2.Controls.Add(this.txtMobileNumber);
             this.tabPage2.Controls.Add(this.lblMobileNumber);
             this.tabPage2.Controls.Add(this.cmbSYStart);
             this.tabPage2.Controls.Add(this.cmbSections);
             this.tabPage2.Controls.Add(this.cmbGradeLevels);
             this.tabPage2.Controls.Add(this.cbGender);
-            this.tabPage2.Controls.Add(this.button1);
+            this.tabPage2.Controls.Add(this.btnUploadStudentProfile);
             this.tabPage2.Controls.Add(this.lblSchoolYearEnd);
             this.tabPage2.Controls.Add(this.txtSchoolYearEnd);
             this.tabPage2.Controls.Add(this.lblSchoolYearStart);
@@ -296,13 +329,35 @@ namespace LGAConnectSOMS.Views
             this.tabPage2.Controls.Add(this.lblFirstname);
             this.tabPage2.Controls.Add(this.lblLastname);
             this.tabPage2.Controls.Add(this.lblStudentDetailsTitle);
-            this.tabPage2.Controls.Add(this.pictureBox1);
+            this.tabPage2.Controls.Add(this.StudentProfilePictureBox);
             this.tabPage2.Location = new System.Drawing.Point(4, 28);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(1268, 470);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Add New Student";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.Gray;
+            this.label3.Location = new System.Drawing.Point(41, 295);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(176, 19);
+            this.label3.TabIndex = 52;
+            this.label3.Text = "File extension:  JPEG, PNG";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.Gray;
+            this.label2.Location = new System.Drawing.Point(48, 270);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(165, 19);
+            this.label2.TabIndex = 51;
+            this.label2.Text = "Maximum file size is 1MB";
             // 
             // txtMobileNumber
             // 
@@ -342,6 +397,7 @@ namespace LGAConnectSOMS.Views
             // cmbSections
             // 
             this.cmbSections.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cmbSections.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSections.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbSections.FormattingEnabled = true;
             this.cmbSections.Location = new System.Drawing.Point(889, 234);
@@ -349,11 +405,12 @@ namespace LGAConnectSOMS.Views
             this.cmbSections.Size = new System.Drawing.Size(233, 27);
             this.cmbSections.TabIndex = 47;
             this.cmbSections.TabStop = false;
-            this.cmbSections.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbSections_KeyPress);
+            this.cmbSections.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbSYStart_KeyPress);
             // 
             // cmbGradeLevels
             // 
             this.cmbGradeLevels.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cmbGradeLevels.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGradeLevels.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbGradeLevels.FormattingEnabled = true;
             this.cmbGradeLevels.Location = new System.Drawing.Point(889, 180);
@@ -379,20 +436,21 @@ namespace LGAConnectSOMS.Views
             this.cbGender.TabStop = false;
             this.cbGender.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbGender_KeyPress);
             // 
-            // button1
+            // btnUploadStudentProfile
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(181)))), ((int)(((byte)(254)))));
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(27, 283);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(113, 41);
-            this.button1.TabIndex = 44;
-            this.button1.Text = "Add Image";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnUploadStudentProfile.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnUploadStudentProfile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(181)))), ((int)(((byte)(254)))));
+            this.btnUploadStudentProfile.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnUploadStudentProfile.FlatAppearance.BorderSize = 0;
+            this.btnUploadStudentProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUploadStudentProfile.ForeColor = System.Drawing.Color.White;
+            this.btnUploadStudentProfile.Location = new System.Drawing.Point(27, 329);
+            this.btnUploadStudentProfile.Name = "btnUploadStudentProfile";
+            this.btnUploadStudentProfile.Size = new System.Drawing.Size(127, 41);
+            this.btnUploadStudentProfile.TabIndex = 44;
+            this.btnUploadStudentProfile.Text = "Upload Profile";
+            this.btnUploadStudentProfile.UseVisualStyleBackColor = false;
+            this.btnUploadStudentProfile.Click += new System.EventHandler(this.btnUploadStudentProfile_Click);
             // 
             // lblSchoolYearEnd
             // 
@@ -486,11 +544,11 @@ namespace LGAConnectSOMS.Views
             // btnAddStudent
             // 
             this.btnAddStudent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddStudent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(241)))), ((int)(((byte)(195)))));
+            this.btnAddStudent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(143)))));
             this.btnAddStudent.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAddStudent.FlatAppearance.BorderSize = 0;
             this.btnAddStudent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddStudent.ForeColor = System.Drawing.Color.White;
+            this.btnAddStudent.ForeColor = System.Drawing.Color.Black;
             this.btnAddStudent.Location = new System.Drawing.Point(1113, 412);
             this.btnAddStudent.Name = "btnAddStudent";
             this.btnAddStudent.Size = new System.Drawing.Size(132, 41);
@@ -598,15 +656,78 @@ namespace LGAConnectSOMS.Views
             this.lblStudentDetailsTitle.TabIndex = 0;
             this.lblStudentDetailsTitle.Text = "Student Details";
             // 
-            // pictureBox1
+            // tabPage3
             // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBox1.BackColor = System.Drawing.Color.DarkGray;
-            this.pictureBox1.Location = new System.Drawing.Point(27, 69);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(212, 191);
-            this.pictureBox1.TabIndex = 42;
-            this.pictureBox1.TabStop = false;
+            this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage3.Controls.Add(this.btnAddGradeLevel);
+            this.tabPage3.Controls.Add(this.lblloadingGradeLevel);
+            this.tabPage3.Controls.Add(this.GradeLevelDataGridView);
+            this.tabPage3.Location = new System.Drawing.Point(4, 28);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(1268, 470);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "List of Grade Levels";
+            // 
+            // GradeLevelDataGridView
+            // 
+            this.GradeLevelDataGridView.AllowUserToResizeColumns = false;
+            this.GradeLevelDataGridView.AllowUserToResizeRows = false;
+            dataGridViewCellStyle31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
+            this.GradeLevelDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle31;
+            this.GradeLevelDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.GradeLevelDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.GradeLevelDataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.GradeLevelDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(143)))));
+            dataGridViewCellStyle32.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle32.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GradeLevelDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle32;
+            this.GradeLevelDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GradeLevelDataGridView.Cursor = System.Windows.Forms.Cursors.Hand;
+            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(242)))), ((int)(((byte)(245)))));
+            dataGridViewCellStyle33.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle33.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle33.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.GradeLevelDataGridView.DefaultCellStyle = dataGridViewCellStyle33;
+            this.GradeLevelDataGridView.EnableHeadersVisualStyles = false;
+            this.GradeLevelDataGridView.Location = new System.Drawing.Point(-1, 69);
+            this.GradeLevelDataGridView.Name = "GradeLevelDataGridView";
+            this.GradeLevelDataGridView.ReadOnly = true;
+            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle34.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle34.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle34.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle34.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle34.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GradeLevelDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle34;
+            this.GradeLevelDataGridView.RowHeadersVisible = false;
+            dataGridViewCellStyle35.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GradeLevelDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle35;
+            this.GradeLevelDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.GradeLevelDataGridView.Size = new System.Drawing.Size(1271, 403);
+            this.GradeLevelDataGridView.TabIndex = 27;
+            // 
+            // lblloadingGradeLevel
+            // 
+            this.lblloadingGradeLevel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.lblloadingGradeLevel.AutoSize = true;
+            this.lblloadingGradeLevel.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.lblloadingGradeLevel.Font = new System.Drawing.Font("Tw Cen MT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblloadingGradeLevel.Location = new System.Drawing.Point(522, 224);
+            this.lblloadingGradeLevel.Name = "lblloadingGradeLevel";
+            this.lblloadingGradeLevel.Size = new System.Drawing.Size(224, 22);
+            this.lblloadingGradeLevel.TabIndex = 28;
+            this.lblloadingGradeLevel.Text = "Processing file. Please wait...";
             // 
             // btnMinimize
             // 
@@ -615,7 +736,7 @@ namespace LGAConnectSOMS.Views
             this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinimize.Image = global::LGAConnectSOMS.Properties.Resources.MinimizeBlack1;
             this.btnMinimize.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnMinimize.Location = new System.Drawing.Point(1208, 10);
+            this.btnMinimize.Location = new System.Drawing.Point(1211, 8);
             this.btnMinimize.Name = "btnMinimize";
             this.btnMinimize.Size = new System.Drawing.Size(24, 24);
             this.btnMinimize.TabIndex = 22;
@@ -628,12 +749,22 @@ namespace LGAConnectSOMS.Views
             this.btnMaximize.FlatAppearance.BorderSize = 0;
             this.btnMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMaximize.Image = global::LGAConnectSOMS.Properties.Resources.FullScreenBlack;
-            this.btnMaximize.Location = new System.Drawing.Point(1238, 10);
+            this.btnMaximize.Location = new System.Drawing.Point(1241, 8);
             this.btnMaximize.Name = "btnMaximize";
             this.btnMaximize.Size = new System.Drawing.Size(24, 24);
             this.btnMaximize.TabIndex = 21;
             this.btnMaximize.UseVisualStyleBackColor = true;
             this.btnMaximize.Click += new System.EventHandler(this.btnMaximize_Click);
+            // 
+            // StudentProfilePictureBox
+            // 
+            this.StudentProfilePictureBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.StudentProfilePictureBox.BackColor = System.Drawing.Color.DarkGray;
+            this.StudentProfilePictureBox.Location = new System.Drawing.Point(27, 69);
+            this.StudentProfilePictureBox.Name = "StudentProfilePictureBox";
+            this.StudentProfilePictureBox.Size = new System.Drawing.Size(212, 191);
+            this.StudentProfilePictureBox.TabIndex = 42;
+            this.StudentProfilePictureBox.TabStop = false;
             // 
             // btnClose
             // 
@@ -641,7 +772,7 @@ namespace LGAConnectSOMS.Views
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Image = global::LGAConnectSOMS.Properties.Resources.CloseBlack;
-            this.btnClose.Location = new System.Drawing.Point(1268, 10);
+            this.btnClose.Location = new System.Drawing.Point(1271, 8);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(24, 24);
             this.btnClose.TabIndex = 20;
@@ -657,7 +788,7 @@ namespace LGAConnectSOMS.Views
             this.btnBack.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.Image = global::LGAConnectSOMS.Properties.Resources.BackArrow24;
-            this.btnBack.Location = new System.Drawing.Point(25, 25);
+            this.btnBack.Location = new System.Drawing.Point(20, 21);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(36, 36);
             this.btnBack.TabIndex = 19;
@@ -666,17 +797,109 @@ namespace LGAConnectSOMS.Views
             this.btnBack.MouseEnter += new System.EventHandler(this.btnBack_MouseEnter);
             this.btnBack.MouseLeave += new System.EventHandler(this.btnBack_MouseLeave);
             // 
+            // btnAddGradeLevel
+            // 
+            this.btnAddGradeLevel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddGradeLevel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddGradeLevel.FlatAppearance.BorderSize = 0;
+            this.btnAddGradeLevel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddGradeLevel.Image = global::LGAConnectSOMS.Properties.Resources.AddButtonTransaction;
+            this.btnAddGradeLevel.Location = new System.Drawing.Point(1203, 11);
+            this.btnAddGradeLevel.Name = "btnAddGradeLevel";
+            this.btnAddGradeLevel.Size = new System.Drawing.Size(54, 46);
+            this.btnAddGradeLevel.TabIndex = 37;
+            this.btnAddGradeLevel.UseVisualStyleBackColor = true;
+            this.btnAddGradeLevel.Click += new System.EventHandler(this.btnAddGradeLevel_Click);
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage4.Controls.Add(this.lblLoadingGradeLevelSection);
+            this.tabPage4.Controls.Add(this.GradeLevelSectionDataGridView);
+            this.tabPage4.Location = new System.Drawing.Point(4, 28);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(1268, 470);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "List of Sections";
+            // 
+            // lblLoadingGradeLevelSection
+            // 
+            this.lblLoadingGradeLevelSection.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.lblLoadingGradeLevelSection.AutoSize = true;
+            this.lblLoadingGradeLevelSection.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.lblLoadingGradeLevelSection.Font = new System.Drawing.Font("Tw Cen MT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLoadingGradeLevelSection.Location = new System.Drawing.Point(520, 207);
+            this.lblLoadingGradeLevelSection.Name = "lblLoadingGradeLevelSection";
+            this.lblLoadingGradeLevelSection.Size = new System.Drawing.Size(224, 22);
+            this.lblLoadingGradeLevelSection.TabIndex = 30;
+            this.lblLoadingGradeLevelSection.Text = "Processing file. Please wait...";
+            // 
+            // GradeLevelSectionDataGridView
+            // 
+            this.GradeLevelSectionDataGridView.AllowUserToResizeColumns = false;
+            this.GradeLevelSectionDataGridView.AllowUserToResizeRows = false;
+            dataGridViewCellStyle36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
+            this.GradeLevelSectionDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle36;
+            this.GradeLevelSectionDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.GradeLevelSectionDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.GradeLevelSectionDataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.GradeLevelSectionDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle37.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(143)))));
+            dataGridViewCellStyle37.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle37.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle37.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle37.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle37.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GradeLevelSectionDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle37;
+            this.GradeLevelSectionDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GradeLevelSectionDataGridView.Cursor = System.Windows.Forms.Cursors.Hand;
+            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle38.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(242)))), ((int)(((byte)(245)))));
+            dataGridViewCellStyle38.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle38.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle38.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle38.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle38.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.GradeLevelSectionDataGridView.DefaultCellStyle = dataGridViewCellStyle38;
+            this.GradeLevelSectionDataGridView.EnableHeadersVisualStyles = false;
+            this.GradeLevelSectionDataGridView.Location = new System.Drawing.Point(-1, 58);
+            this.GradeLevelSectionDataGridView.Name = "GradeLevelSectionDataGridView";
+            this.GradeLevelSectionDataGridView.ReadOnly = true;
+            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle39.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle39.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle39.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle39.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle39.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle39.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GradeLevelSectionDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle39;
+            this.GradeLevelSectionDataGridView.RowHeadersVisible = false;
+            dataGridViewCellStyle40.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GradeLevelSectionDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle40;
+            this.GradeLevelSectionDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.GradeLevelSectionDataGridView.Size = new System.Drawing.Size(1271, 642);
+            this.GradeLevelSectionDataGridView.TabIndex = 29;
+            // 
             // ClassRecordAdminView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
             this.ClientSize = new System.Drawing.Size(1300, 700);
+            this.Controls.Add(this.btnMinimize);
+            this.Controls.Add(this.btnMaximize);
             this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.DragWindowsPanel);
             this.Controls.Add(this.CBSection);
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.lblSection);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.CBGradeLevel);
+            this.Controls.Add(this.lblClassRecordAdminTitle);
             this.Controls.Add(this.lblGradeLevel);
             this.Controls.Add(this.txtSearchStudent);
             this.Controls.Add(this.lblSearchStudent);
@@ -687,14 +910,19 @@ namespace LGAConnectSOMS.Views
             this.Text = "ClassRecordAdminView";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ClassRecordAdminView_FormClosing);
             this.Load += new System.EventHandler(this.ClassRecordAdminView_Load);
-            this.DragWindowsPanel.ResumeLayout(false);
-            this.DragWindowsPanel.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ClassRecordDataGridView)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GradeLevelDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StudentProfilePictureBox)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GradeLevelSectionDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -733,16 +961,26 @@ namespace LGAConnectSOMS.Views
         private System.Windows.Forms.Label lblStudentNumber;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label lblPassword;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox StudentProfilePictureBox;
         private System.Windows.Forms.Label lblSchoolYearEnd;
         public System.Windows.Forms.TextBox txtSchoolYearEnd;
         private System.Windows.Forms.Label lblSchoolYearStart;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnUploadStudentProfile;
         public System.Windows.Forms.ComboBox cbGender;
         public System.Windows.Forms.ComboBox cmbGradeLevels;
         public System.Windows.Forms.ComboBox cmbSections;
         public System.Windows.Forms.ComboBox cmbSYStart;
         private System.Windows.Forms.TextBox txtMobileNumber;
         private System.Windows.Forms.Label lblMobileNumber;
+        private System.Windows.Forms.Label lblloading;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TabPage tabPage3;
+        public System.Windows.Forms.DataGridView GradeLevelDataGridView;
+        private System.Windows.Forms.Label lblloadingGradeLevel;
+        private System.Windows.Forms.Button btnAddGradeLevel;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.Label lblLoadingGradeLevelSection;
+        public System.Windows.Forms.DataGridView GradeLevelSectionDataGridView;
     }
 }
