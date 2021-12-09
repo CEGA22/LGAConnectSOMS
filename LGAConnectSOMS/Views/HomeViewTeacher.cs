@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,11 @@ namespace LGAConnectSOMS.Views
 
         private void HomeViewTeacher_Load(object sender, EventArgs e)
         {
+            var profile = Settings.Default.TeacherProfile;
+            byte[] convertprofile = System.Convert.FromBase64String(profile);
+            var imageMemoryStream = new MemoryStream(convertprofile);
+            Image imgFromStream = Image.FromStream(imageMemoryStream);
+            pictureBox2.Image = imgFromStream;
             this.RestoreWindowPosition();
             MaximizeIcon();
             Menu.Hide();
@@ -181,6 +187,11 @@ namespace LGAConnectSOMS.Views
             AboutPageView aboutPageView = new AboutPageView();
             aboutPageView.Show();
             this.Hide();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            IsMenuVisible();
         }
     }
 }

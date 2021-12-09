@@ -19,5 +19,11 @@ namespace LGAConnectSOMS.Gateway
             string url = $"{BaseUrl}/information";
             return await WebMethods.MakePostRequest(url, request);
         }
+
+        public async Task<string> UpdateStudentRequest(StudentRequest request)
+        {
+            string url = $"{BaseUrl}/update_information";
+            return await WebMethods.MakePostRequest(url, request);
+        }
     }
 }

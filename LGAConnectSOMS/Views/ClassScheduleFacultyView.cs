@@ -51,7 +51,7 @@ namespace LGAConnectSOMS.Views
         {
             var number = 1;
             var ID = Settings.Default.ID;
-            DateTime todaysDate = DateTime.UtcNow;          
+            DateTime todaysDate = DateTime.Now;          
             var weekday = todaysDate.DayOfWeek.ToString();
             ClassScheduleService classScheduleService = new ClassScheduleService();
             var schedules = await classScheduleService.GetClassScheduleWeekFacultyDetails(ID, weekday);

@@ -1,5 +1,6 @@
 ﻿using LGAConnectSOMS.Gateway;
 using LGAConnectSOMS.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,6 @@ namespace LGAConnectSOMS.Services
             var apiGateway = new SchoolAccountGateway();
             var content = await apiGateway.GetSchoolAccountDetails();
             return content;
-        }
+        }     
     }
 }

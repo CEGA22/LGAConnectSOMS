@@ -5,6 +5,7 @@ using LGAConnectSOMS.Views;
 using System;
 using System.Drawing;
 using System.Drawing.Text;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -25,7 +26,12 @@ namespace LGAConnectSOMS
         //Load
         private void HomeView_Load(object sender, EventArgs e)
         {
-             DynamicHomeViewAdminPanel();            
+            LoadData();
+            var profile = Settings.Default.TeacherProfile;
+            byte[] convertprofile = System.Convert.FromBase64String(profile);
+            var imageMemoryStream = new MemoryStream(convertprofile);
+            Image imgFromStream = Image.FromStream(imageMemoryStream);
+            pictureBox1.Image = imgFromStream;          
             btnHome.ForeColor = Color.FromArgb(255, 246, 143);
             //CustomFont();
             lblAccountName.Text = Settings.Default.Fullname;
@@ -33,6 +39,13 @@ namespace LGAConnectSOMS
             this.RestoreWindowPosition();
             panel1.Hide();           
             MaximizeIcon();
+            
+        }
+
+
+        public async void LoadData()
+        {
+            await DynamicHomeViewAdminPanel();
         }
 
 
@@ -124,6 +137,10 @@ namespace LGAConnectSOMS
 
         public async Task DynamicHomeViewAdminPanel()
         {
+            //StudentService studentService = new StudentService();
+            //var students = await studentService.GetStudentAccount();
+            //var studentsList = students.Select(x => x.ID).ToList();
+            
             Panel EnrolledStudentsPanel = new Panel();
             Panel FileRequestPanel = new Panel();
             EnrolledStudentsPanel.Size = new System.Drawing.Size(219, 188);
@@ -164,10 +181,7 @@ namespace LGAConnectSOMS
             EnrolledStudentsPanel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             FileRequestPanel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             EnrolledStudentsPanel.Cursor = Cursors.Hand;
-            StudentService studentService = new StudentService();
-            var students = await studentService.GetStudentAccount();
-            var studentsList = students.ToList();
-            lblEnrolledStudentsCount.Text = studentsList.Count.ToString();         
+            //lblEnrolledStudentsCount.Text = studentsList.Count.ToString();
         }
 
         //Buttons Forecolor and background Styles
@@ -337,8 +351,7 @@ namespace LGAConnectSOMS
 
         //DragWIindows
 
-        private Point _mouseLoc;
-
+        private Point _mouseLoc;        
         private void DragWindowsPanel_MouseDown(object sender, MouseEventArgs e)
         {
             try
@@ -347,9 +360,31 @@ namespace LGAConnectSOMS
                 {
                     this.WindowState = FormWindowState.Normal;
                     btnMaximize.Image = LGAConnectSOMS.Properties.Resources.FullScreenBlack;
-
+                   
                 }
+
                 _mouseLoc = e.Location;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+
+        private void DragWindowsPanel_MouseMove(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                if (e.Button == MouseButtons.Left)
+                {
+                    int dx = e.Location.X - _mouseLoc.X;
+                    int dy = e.Location.Y - _mouseLoc.Y;
+                    this.Location = new Point(this.Location.X + dx, this.Location.Y + dy);
+                    
+                }
             }
             catch (Exception)
             {
@@ -358,23 +393,9 @@ namespace LGAConnectSOMS
             }
         }
 
-        private void DragWindowsPanel_MouseMove(object sender, MouseEventArgs e)
+        private void DragWindowsPanel_MouseUp(object sender, MouseEventArgs e)
         {
-
-            try
-            {
-                if (e.Button == MouseButtons.Left)
-                {
-                    int dx = e.Location.X - _mouseLoc.X;
-                    int dy = e.Location.Y - _mouseLoc.Y;
-                    this.Location = new Point(this.Location.X + dx, this.Location.Y + dy);
-                }
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
+           
         }
 
         public void MaximizeIcon()
@@ -451,6 +472,11 @@ namespace LGAConnectSOMS
             AboutPageView aboutPageView = new AboutPageView();
             aboutPageView.Show();
             this.Hide();
-        }       
-    }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            IsMenuVisible();
+        }
+    }    
 }

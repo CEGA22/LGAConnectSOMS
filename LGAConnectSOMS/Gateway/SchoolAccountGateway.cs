@@ -27,6 +27,6 @@ namespace LGAConnectSOMS.Gateway
             {
                 return Enumerable.Empty<SchoolAccount>();
             }
-        }
+        }       
     }
 }

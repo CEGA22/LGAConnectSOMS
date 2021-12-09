@@ -37,22 +37,15 @@ namespace LGAConnectSOMS.Views
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblAboutTitle = new System.Windows.Forms.Label();
             this.AboutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.DragWindowsPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // DragWindowsPanel
             // 
             this.DragWindowsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DragWindowsPanel.Controls.Add(this.btnMinimize);
-            this.DragWindowsPanel.Controls.Add(this.btnMaximize);
-            this.DragWindowsPanel.Controls.Add(this.btnClose);
-            this.DragWindowsPanel.Controls.Add(this.btnBack);
-            this.DragWindowsPanel.Controls.Add(this.panel1);
-            this.DragWindowsPanel.Controls.Add(this.lblAboutTitle);
-            this.DragWindowsPanel.Location = new System.Drawing.Point(1, 1);
+            this.DragWindowsPanel.Location = new System.Drawing.Point(176, 1);
             this.DragWindowsPanel.Name = "DragWindowsPanel";
-            this.DragWindowsPanel.Size = new System.Drawing.Size(1301, 105);
+            this.DragWindowsPanel.Size = new System.Drawing.Size(1005, 33);
             this.DragWindowsPanel.TabIndex = 28;
             this.DragWindowsPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DragWindowsPanel_MouseDown);
             this.DragWindowsPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DragWindowsPanel_MouseMove);
@@ -64,7 +57,7 @@ namespace LGAConnectSOMS.Views
             this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinimize.Image = global::LGAConnectSOMS.Properties.Resources.MinimizeBlack1;
             this.btnMinimize.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnMinimize.Location = new System.Drawing.Point(1208, 10);
+            this.btnMinimize.Location = new System.Drawing.Point(1208, 6);
             this.btnMinimize.Name = "btnMinimize";
             this.btnMinimize.Size = new System.Drawing.Size(24, 24);
             this.btnMinimize.TabIndex = 22;
@@ -77,7 +70,7 @@ namespace LGAConnectSOMS.Views
             this.btnMaximize.FlatAppearance.BorderSize = 0;
             this.btnMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMaximize.Image = global::LGAConnectSOMS.Properties.Resources.FullScreenBlack;
-            this.btnMaximize.Location = new System.Drawing.Point(1238, 10);
+            this.btnMaximize.Location = new System.Drawing.Point(1238, 6);
             this.btnMaximize.Name = "btnMaximize";
             this.btnMaximize.Size = new System.Drawing.Size(24, 24);
             this.btnMaximize.TabIndex = 21;
@@ -90,7 +83,7 @@ namespace LGAConnectSOMS.Views
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Image = global::LGAConnectSOMS.Properties.Resources.CloseBlack;
-            this.btnClose.Location = new System.Drawing.Point(1268, 10);
+            this.btnClose.Location = new System.Drawing.Point(1268, 6);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(24, 24);
             this.btnClose.TabIndex = 20;
@@ -129,7 +122,7 @@ namespace LGAConnectSOMS.Views
             // 
             this.lblAboutTitle.AutoSize = true;
             this.lblAboutTitle.Font = new System.Drawing.Font("Tw Cen MT", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAboutTitle.Location = new System.Drawing.Point(75, 25);
+            this.lblAboutTitle.Location = new System.Drawing.Point(69, 27);
             this.lblAboutTitle.Name = "lblAboutTitle";
             this.lblAboutTitle.Size = new System.Drawing.Size(85, 34);
             this.lblAboutTitle.TabIndex = 10;
@@ -141,9 +134,9 @@ namespace LGAConnectSOMS.Views
             this.AboutPanel.AutoScroll = true;
             this.AboutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.AboutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.AboutPanel.Location = new System.Drawing.Point(14, 131);
+            this.AboutPanel.Location = new System.Drawing.Point(14, 122);
             this.AboutPanel.Name = "AboutPanel";
-            this.AboutPanel.Size = new System.Drawing.Size(1274, 557);
+            this.AboutPanel.Size = new System.Drawing.Size(1274, 566);
             this.AboutPanel.TabIndex = 29;
             this.AboutPanel.WrapContents = false;
             // 
@@ -153,17 +146,22 @@ namespace LGAConnectSOMS.Views
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
             this.ClientSize = new System.Drawing.Size(1300, 700);
+            this.Controls.Add(this.btnMinimize);
             this.Controls.Add(this.AboutPanel);
+            this.Controls.Add(this.btnMaximize);
             this.Controls.Add(this.DragWindowsPanel);
+            this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.lblAboutTitle);
+            this.Controls.Add(this.btnBack);
+            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AboutPageView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AboutPageView";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AboutPageView_FormClosing);
             this.Load += new System.EventHandler(this.AboutPageView_Load);
-            this.DragWindowsPanel.ResumeLayout(false);
-            this.DragWindowsPanel.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
