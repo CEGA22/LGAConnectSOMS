@@ -8,6 +8,8 @@ namespace LGAConnectSOMS.Models
 {
     public class GradeLevel
     {
+        public int ID { get; set; }
+
         public string GradeLevels { get; set; }
     }
 }

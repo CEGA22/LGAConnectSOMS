@@ -202,6 +202,12 @@
     <Compile Include="Views\EditSchoolFacultyAccountDetails.Designer.cs">
       <DependentUpon>EditSchoolFacultyAccountDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\EditSectionDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\EditSectionDetails.Designer.cs">
+      <DependentUpon>EditSectionDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\EditStudentDetailsView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -290,6 +296,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\EditSchoolFacultyAccountDetails.resx">
       <DependentUpon>EditSchoolFacultyAccountDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EditSectionDetails.resx">
+      <DependentUpon>EditSectionDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\EditStudentDetailsView.resx">
       <DependentUpon>EditStudentDetailsView.cs</DependentUpon>

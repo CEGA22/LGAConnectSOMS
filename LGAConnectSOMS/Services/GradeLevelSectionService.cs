@@ -18,10 +18,17 @@ namespace LGAConnectSOMS.Services
             return content;
         }
 
-        public async Task<bool> CreateGradeLevelSectinRequest(GradeLevelSection request)
+        public async Task<bool> CreateGradeLevelSectionRequest(GradeLevelSection request)
         {
             var apiGateway = new  GradeLevelSectionGateway();
-            var content = await apiGateway.CreateGradeLevelSectinRequest(request);
+            var content = await apiGateway.CreateGradeLevelSectionRequest(request);
+            return JsonConvert.DeserializeObject<bool>(content);
+        }
+
+        public async Task<bool> UpdateGradeLevelSectionRequest(GradeLevelSection request)
+        {
+            var apiGateway = new GradeLevelSectionGateway();
+            var content = await apiGateway.UpdateGradeLevelSectionRequest(request);
             return JsonConvert.DeserializeObject<bool>(content);
         }
     }

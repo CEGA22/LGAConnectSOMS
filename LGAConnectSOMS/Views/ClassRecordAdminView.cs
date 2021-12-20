@@ -172,8 +172,7 @@ namespace LGAConnectSOMS.Views
             var gradelevelslist = gradeLevelSections.Where(x => x.GradeLevels.Equals(selectedGradeLevel)).Select(x => x.SectionName);
             var gradeLevelsId = gradeLevelSections.First(x => x.GradeLevels == selectedGradeLevel).Id;
             var subjectslist = subjects.Where(x => x.GradeLevel == gradeLevelsId).Select(x => x.SubjectName);
-            comboBox1.DataSource = subjectslist.ToList();
-
+           
             foreach (var subjecttosave in subjectslist)
             {
                 try
@@ -209,9 +208,7 @@ namespace LGAConnectSOMS.Views
                 {
                     MessageBox.Show(x.Message);
                 }
-            }
-           
-
+            }          
         }
 
         private async void CBGradeLevel_SelectedIndexChanged(object sender, EventArgs e)
@@ -507,9 +504,7 @@ namespace LGAConnectSOMS.Views
             var selectedSection = cmbSections.SelectedItem;
             var gradelevelslist = gradeLevelSections.Where(x => x.GradeLevels.Equals(selectedGradeLevel)).Select(x => x.SectionName);
             var gradeLevelId = gradeLevelSections.First(x => x.GradeLevels == selectedGradeLevel).Id;
-            var subjectslist = subjects.Where(x => x.GradeLevel == gradeLevelId).Select(x => x.SubjectName);
-            comboBox1.DataSource = subjectslist.ToList();
-            
+            var subjectslist = subjects.Where(x => x.GradeLevel == gradeLevelId).Select(x => x.SubjectName);                     
             foreach(var subjecttosave in subjectslist)
             {
                 
@@ -518,7 +513,23 @@ namespace LGAConnectSOMS.Views
 
         private async void btnAddGradeSection_Click(object sender, EventArgs e)
         {
+            AddGradeLevelSectionView addGradeLevelSectionView = new AddGradeLevelSectionView();
+            addGradeLevelSectionView.ShowDialog();
+        }
 
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+   
+        private void GradeLevelSectionDataGridView_Click(object sender, EventArgs e)
+        {
+            EditSectionDetails editSectionDetails = new EditSectionDetails();          
+            editSectionDetails.txtID.Text = GradeLevelSectionDataGridView.CurrentRow.Cells[0].Value.ToString();
+            editSectionDetails.cmbGradelevel.Text = GradeLevelSectionDataGridView.CurrentRow.Cells[2].Value.ToString();
+            editSectionDetails.txtSectionName.Text = GradeLevelSectionDataGridView.CurrentRow.Cells[3].Value.ToString();
+            //cmbGradeLevels.SelectedIndex = -1;
+            editSectionDetails.ShowDialog();
         }
     }
     }

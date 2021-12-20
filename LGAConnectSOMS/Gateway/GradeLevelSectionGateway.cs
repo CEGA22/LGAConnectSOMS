@@ -28,9 +28,15 @@ namespace LGAConnectSOMS.Gateway
             }
         }
 
-        public async Task<string> CreateGradeLevelSectinRequest(GradeLevelSection request)
+        public async Task<string> CreateGradeLevelSectionRequest(GradeLevelSection request)
         {
             string url = $"{BaseUrl}/information";
+            return await WebMethods.MakePostRequest(url, request);
+        }
+
+        public async Task<string> UpdateGradeLevelSectionRequest(GradeLevelSection request)
+        {
+            string url = $"{BaseUrl}/update_information";
             return await WebMethods.MakePostRequest(url, request);
         }
     }

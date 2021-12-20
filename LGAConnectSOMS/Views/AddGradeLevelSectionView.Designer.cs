@@ -46,29 +46,33 @@ namespace LGAConnectSOMS.Views
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Image = global::LGAConnectSOMS.Properties.Resources.CloseBlack;
-            this.btnClose.Location = new System.Drawing.Point(685, 5);
+            this.btnClose.Location = new System.Drawing.Point(913, 6);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(35, 34);
+            this.btnClose.Size = new System.Drawing.Size(47, 42);
             this.btnClose.TabIndex = 48;
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(143)))));
-            this.panel1.Location = new System.Drawing.Point(2, 84);
+            this.panel1.Location = new System.Drawing.Point(3, 103);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(500, 3);
+            this.panel1.Size = new System.Drawing.Size(667, 4);
             this.panel1.TabIndex = 47;
             // 
             // lblClassRecordAdminTitle
             // 
             this.lblClassRecordAdminTitle.AutoSize = true;
             this.lblClassRecordAdminTitle.Font = new System.Drawing.Font("Tw Cen MT", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClassRecordAdminTitle.Location = new System.Drawing.Point(2, 31);
+            this.lblClassRecordAdminTitle.Location = new System.Drawing.Point(3, 38);
+            this.lblClassRecordAdminTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblClassRecordAdminTitle.Name = "lblClassRecordAdminTitle";
-            this.lblClassRecordAdminTitle.Size = new System.Drawing.Size(364, 31);
+            this.lblClassRecordAdminTitle.Size = new System.Drawing.Size(453, 39);
             this.lblClassRecordAdminTitle.TabIndex = 46;
             this.lblClassRecordAdminTitle.Text = "Grade Level and Section Details";
             // 
@@ -81,12 +85,14 @@ namespace LGAConnectSOMS.Views
             this.btnAddStudent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddStudent.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddStudent.ForeColor = System.Drawing.Color.Black;
-            this.btnAddStudent.Location = new System.Drawing.Point(300, 286);
+            this.btnAddStudent.Location = new System.Drawing.Point(400, 352);
+            this.btnAddStudent.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddStudent.Name = "btnAddStudent";
-            this.btnAddStudent.Size = new System.Drawing.Size(132, 41);
+            this.btnAddStudent.Size = new System.Drawing.Size(184, 50);
             this.btnAddStudent.TabIndex = 51;
-            this.btnAddStudent.Text = "Save";
+            this.btnAddStudent.Text = "Save ";
             this.btnAddStudent.UseVisualStyleBackColor = false;
+            this.btnAddStudent.Click += new System.EventHandler(this.btnAddStudent_Click);
             // 
             // cmbGradelevel
             // 
@@ -107,18 +113,20 @@ namespace LGAConnectSOMS.Views
             "Grade 10",
             "Grade 11",
             "Grade 12"});
-            this.cmbGradelevel.Location = new System.Drawing.Point(300, 149);
+            this.cmbGradelevel.Location = new System.Drawing.Point(400, 183);
+            this.cmbGradelevel.Margin = new System.Windows.Forms.Padding(4);
             this.cmbGradelevel.Name = "cmbGradelevel";
-            this.cmbGradelevel.Size = new System.Drawing.Size(203, 30);
+            this.cmbGradelevel.Size = new System.Drawing.Size(269, 36);
             this.cmbGradelevel.TabIndex = 50;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tw Cen MT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(185, 152);
+            this.label1.Location = new System.Drawing.Point(247, 187);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(109, 22);
+            this.label1.Size = new System.Drawing.Size(138, 28);
             this.label1.TabIndex = 49;
             this.label1.Text = "Grade Level:";
             // 
@@ -127,29 +135,31 @@ namespace LGAConnectSOMS.Views
             this.lblLastname.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblLastname.AutoSize = true;
             this.lblLastname.Font = new System.Drawing.Font("Tw Cen MT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLastname.Location = new System.Drawing.Point(145, 208);
+            this.lblLastname.Location = new System.Drawing.Point(205, 259);
+            this.lblLastname.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblLastname.Name = "lblLastname";
-            this.lblLastname.Size = new System.Drawing.Size(149, 22);
+            this.lblLastname.Size = new System.Drawing.Size(144, 28);
             this.lblLastname.TabIndex = 52;
-            this.lblLastname.Text = "Student Lastname: ";
+            this.lblLastname.Text = "Section name:";
             // 
             // txtSectionName
             // 
             this.txtSectionName.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtSectionName.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSectionName.Location = new System.Drawing.Point(300, 208);
+            this.txtSectionName.Location = new System.Drawing.Point(400, 256);
+            this.txtSectionName.Margin = new System.Windows.Forms.Padding(4);
             this.txtSectionName.Multiline = true;
             this.txtSectionName.Name = "txtSectionName";
-            this.txtSectionName.Size = new System.Drawing.Size(233, 32);
+            this.txtSectionName.Size = new System.Drawing.Size(309, 38);
             this.txtSectionName.TabIndex = 53;
             this.txtSectionName.TabStop = false;
             // 
             // AddGradeLevelSectionView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
-            this.ClientSize = new System.Drawing.Size(730, 377);
+            this.ClientSize = new System.Drawing.Size(973, 464);
             this.Controls.Add(this.txtSectionName);
             this.Controls.Add(this.lblLastname);
             this.Controls.Add(this.btnAddStudent);
@@ -159,6 +169,7 @@ namespace LGAConnectSOMS.Views
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblClassRecordAdminTitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AddGradeLevelSectionView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AddGradeLevelSectionView";
@@ -174,9 +185,9 @@ namespace LGAConnectSOMS.Views
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblClassRecordAdminTitle;
         private System.Windows.Forms.Button btnAddStudent;
-        private System.Windows.Forms.ComboBox cmbGradelevel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblLastname;
-        private System.Windows.Forms.TextBox txtSectionName;
+        public System.Windows.Forms.ComboBox cmbGradelevel;
+        public System.Windows.Forms.TextBox txtSectionName;
     }
 }
