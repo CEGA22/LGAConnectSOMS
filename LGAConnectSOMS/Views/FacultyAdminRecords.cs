@@ -38,12 +38,7 @@ namespace LGAConnectSOMS.Views
             lblLoading.Show();                           
             await DisplayFacultyRecordData();
             await DisplayAdminRecordData();                        
-            lblLoading.Hide();
-            
-            
-
-
-
+            lblLoading.Hide();          
         }
         public async Task DisplayAdminRecordData()
         {            
@@ -305,8 +300,7 @@ namespace LGAConnectSOMS.Views
         }
 
         private async void btnAddAdministrator_Click(object sender, EventArgs e)
-        {
-            int id = 1;
+        {            
             var image = AdminPictureBox.Image;
             try
             {
@@ -321,7 +315,8 @@ namespace LGAConnectSOMS.Views
                     TeacherProfile = ImageToByteArray(image),
                     MobileNumber = txtMobileNumber.Text,
                     Gender = cbGender.Text,
-                    IsAdmin = 1
+                    IsAdmin = 1,
+                    IsFaculty = 0
                 });
 
                 if (IsSuccess)

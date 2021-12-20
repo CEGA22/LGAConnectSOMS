@@ -37,6 +37,5 @@ namespace LGAConnectSOMS.Models
 
         public string SchoolYearEnd { get; set; }
 
-
     }
 }

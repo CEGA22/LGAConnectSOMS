@@ -18,8 +18,11 @@ namespace LGAConnectSOMS.Views
         bool IsFirstLoad = true;
 
         List<ClassRecords> FirstGradingList = new List<ClassRecords>();
+        List<ClassRecords> SecondGradingList = new List<ClassRecords>();
+        List<ClassRecords> ThirdGradingList = new List<ClassRecords>();
+        List<ClassRecords> FourthGradingList = new List<ClassRecords>();
 
-        public ClassRecordFacultyView()
+    public ClassRecordFacultyView()
         {
             InitializeComponent();
         }
@@ -34,43 +37,48 @@ namespace LGAConnectSOMS.Views
 
         public async void LoadData()
         {
-            await SubjectDropDown();
-            await GradeLvelDropDown();
+            
+            await LoadFacultySubjects();
+            GradeLvelDropDown();
+            await LoadSubjects();           
             await ClassRecords();
-            //FirstGradingGradebook.BeginEdit(true);
-            //FirstGradingGradebook.ClearSelection();
-            SetupDataGrid();          
+            await SetupDataGrid();
+
         }
 
-        private void SetupDataGrid() 
+        private async Task SetupDataGrid() 
         {
             FirstGradingGradebook.Rows[0].Cells[0].ReadOnly = true;
-            FirstGradingGradebook.Rows[0].Cells[12].Value = 50;
-            FirstGradingGradebook.Rows[0].Cells[24].Value = 50;
+            FirstGradingGradebook.Columns["SaveasDraft"].Visible = false;
+            //FirstGradingGradebook.Rows[0].Cells[12].Value = 50;
+            //FirstGradingGradebook.Rows[0].Cells[24].Value = 50;
             FirstGradingGradebook.Rows[0].Cells[11].ReadOnly = true;
-            FirstGradingGradebook.Rows[0].Cells[25].Value = "##";
-            FirstGradingGradebook.Rows[0].Cells[26].Value = "##";
+            //FirstGradingGradebook.Rows[0].Cells[25].Value = "##";
+            //FirstGradingGradebook.Rows[0].Cells[26].Value = "##";
 
             SecondGradingGradebook.Rows[0].Cells[0].ReadOnly = true;
-            SecondGradingGradebook.Rows[0].Cells[12].Value = 50;
-            SecondGradingGradebook.Rows[0].Cells[24].Value = 50;
+            //SecondGradingGradebook.Columns["SaveasDraft"].Visible = false;
+            //SecondGradingGradebook.Rows[0].Cells[12].Value = 50;
+            //SecondGradingGradebook.Rows[0].Cells[24].Value = 50;
             SecondGradingGradebook.Rows[0].Cells[11].ReadOnly = true;
-            SecondGradingGradebook.Rows[0].Cells[25].Value = "##";
-            SecondGradingGradebook.Rows[0].Cells[26].Value = "##";
+            //SecondGradingGradebook.Rows[0].Cells[25].Value = "##";
+            //SecondGradingGradebook.Rows[0].Cells[26].Value = "##";
 
             ThirdGradingGradebook.Rows[0].Cells[0].ReadOnly = true;
-            ThirdGradingGradebook.Rows[0].Cells[12].Value = 50;
-            ThirdGradingGradebook.Rows[0].Cells[24].Value = 50;
+           // ThirdGradingGradebook.Columns["SaveAsDraft"].Visible = false;
+            //ThirdGradingGradebook.Rows[0].Cells[12].Value = 50;
+            //ThirdGradingGradebook.Rows[0].Cells[24].Value = 50;
             ThirdGradingGradebook.Rows[0].Cells[11].ReadOnly = true;
-            ThirdGradingGradebook.Rows[0].Cells[25].Value = "##";
-            ThirdGradingGradebook.Rows[0].Cells[26].Value = "##";
+            //ThirdGradingGradebook.Rows[0].Cells[25].Value = "##";
+            //ThirdGradingGradebook.Rows[0].Cells[26].Value = "##";
 
             FourthGradingGradebook.Rows[0].Cells[0].ReadOnly = true;
-            FourthGradingGradebook.Rows[0].Cells[12].Value = 50;
-            FourthGradingGradebook.Rows[0].Cells[24].Value = 50;
+            //FourthGradingGradebook.Columns["SaveAsDraft"].Visible = false;
+            //FourthGradingGradebook.Rows[0].Cells[12].Value = 50;
+            //FourthGradingGradebook.Rows[0].Cells[24].Value = 50;
             FourthGradingGradebook.Rows[0].Cells[11].ReadOnly = true;
-            FourthGradingGradebook.Rows[0].Cells[25].Value = "##";
-            FourthGradingGradebook.Rows[0].Cells[26].Value = "##";
+            //FourthGradingGradebook.Rows[0].Cells[25].Value = "##";
+            //FourthGradingGradebook.Rows[0].Cells[26].Value = "##";
         }
 
         //NavigationToOtherForm
@@ -99,11 +107,11 @@ namespace LGAConnectSOMS.Views
 
                 //FirstGradingGradebook.Rows[1].Cells[0].Value = "Student's names";
                 //FirstGradingGradebook.Rows[0].Cells[0].Value = "Highest possible score";               
-                FirstGradingGradebook.Rows[0].Cells[12].Value = 50;
-                FirstGradingGradebook.Rows[0].Cells[24].Value = 50;
+                //FirstGradingGradebook.Rows[0].Cells[12].Value = 50;
+                //FirstGradingGradebook.Rows[0].Cells[24].Value = 50;
                 FirstGradingGradebook.Rows[0].Cells[11].ReadOnly = true;
-                FirstGradingGradebook.Rows[0].Cells[25].Value = "##";
-                FirstGradingGradebook.Rows[0].Cells[26].Value = "##";
+                //FirstGradingGradebook.Rows[0].Cells[25].Value = "##";
+                //FirstGradingGradebook.Rows[0].Cells[26].Value = "##";
 
                 var verificationww = FirstGradingGradebook.Rows[0].Cells[1].Value;
                 var wwgrade = row.Cells[FirstGradingGradebook.Columns["WW"].Index].Value;
@@ -563,443 +571,18 @@ namespace LGAConnectSOMS.Views
                         row.Cells[FirstGradingGradebook.Columns["QuarterlyGrade"].Index].Value = 80.00;
                     }
 
-                    else
+                    else if (Convert.ToDouble(row.Cells[FirstGradingGradebook.Columns["InitialGrade"].Index].Value) >= 65.00 || Convert.ToDouble(row.Cells[FirstGradingGradebook.Columns["InitialGrade"].Index].Value) >= 67.00)
                     {
                         row.Cells[FirstGradingGradebook.Columns["QuarterlyGrade"].Index].Value = 75.00;
+                    }
+
+                    else
+                    {
+                        row.Cells[FirstGradingGradebook.Columns["QuarterlyGrade"].Index].Value = 0;
                     }
                 }
             }
         }
-
-        int globalgradingperiod;
-        public async Task ClassRecords(int gradingperiod = 1)
-        {
-            var ID = Settings.Default.ID;
-            ClassRecordsService classRecordsService = new ClassRecordsService();
-            var records = await classRecordsService.GetClassRecrodsDetails(ID);
-            var recordslist = records.ToList();
-            globalgradingperiod = gradingperiod;
-            
-            if (gradingperiod == 1)
-            {
-                globalgradingperiod = gradingperiod;
-
-                //if (!FirstGradingList.Any(x => x.Fullname == "Highest Possible Score"))
-                //{
-                recordslist.Insert(0, new ClassRecords
-                {
-                    Lastname = "Score",
-                    Firstname = "Highest Possible",
-                    GradingPeriod = 1
-                });
-                //}
-
-                FirstGradingGradebook.AutoGenerateColumns = false;
-                FirstGradingList = recordslist.Where(x => x.GradingPeriod == gradingperiod).ToList();
-
-                FirstGradingGradebook.DataSource = FirstGradingList;
-                //CBSubject_SelectedIndexChanged(null, null);
-                FirstGradingGradebook.BeginEdit(true);
-                //FirstGradingGradebook.ClearSelection();
-                
-            }
-            else if(gradingperiod == 2)
-            {
-                globalgradingperiod = gradingperiod;              
-                recordslist.Insert(0, new ClassRecords
-                {
-                    Lastname = "Score",
-                    Firstname = "Highest Possible",
-                    GradingPeriod = 2
-
-                });
-
-                SecondGradingGradebook.AutoGenerateColumns = false;
-                //CBSubject_SelectedIndexChanged(null, null);
-                var SecondGradingList = recordslist.Where(x => x.GradingPeriod == gradingperiod).ToList();
-                
-                SecondGradingGradebook.DataSource = SecondGradingList;              
-                SecondGradingGradebook.BeginEdit(true);
-                SecondGradingGradebook.ClearSelection();
-                
-            }
-
-            else if(gradingperiod == 3)
-            {
-                globalgradingperiod = gradingperiod;
-                recordslist.Insert(0, new ClassRecords
-                {
-                    Lastname = "Score",
-                    Firstname = "Highest Possible",
-                    GradingPeriod = 3
-                });
-
-                ThirdGradingGradebook.AutoGenerateColumns = false;
-                var ThirdGradingList = recordslist.Where(x => x.GradingPeriod == gradingperiod).ToList();
-                ThirdGradingGradebook.DataSource = ThirdGradingList;
-                //CBSubject_SelectedIndexChanged(null, null);
-                ThirdGradingGradebook.BeginEdit(true);
-                ThirdGradingGradebook.ClearSelection();
-            }
-
-            else if (gradingperiod == 4)
-            {
-                globalgradingperiod = gradingperiod;
-                recordslist.Insert(0, new ClassRecords
-                {
-                    Lastname = "Score",
-                    Firstname = "Highest Possible",
-                    GradingPeriod = 4
-                });
-
-                FourthGradingGradebook.AutoGenerateColumns = false;
-                var FourthGradingList = recordslist.Where(x => x.GradingPeriod == gradingperiod).ToList();
-                FourthGradingGradebook.DataSource = FourthGradingList;
-                //CBSubject_SelectedIndexChanged(null, null);
-                FourthGradingGradebook.BeginEdit(true);
-                FourthGradingGradebook.ClearSelection();
-            }
-
-            FirstGradingGradebook.Columns[0].DataPropertyName = "Fullname";
-            FirstGradingGradebook.Columns[1].DataPropertyName = "WrittenWork1";
-            FirstGradingGradebook.Columns[2].DataPropertyName = "WrittenWork2";
-            FirstGradingGradebook.Columns[3].DataPropertyName = "WrittenWork3";
-            FirstGradingGradebook.Columns[4].DataPropertyName = "WrittenWork4";
-            FirstGradingGradebook.Columns[5].DataPropertyName = "WrittenWork5";
-            FirstGradingGradebook.Columns[6].DataPropertyName = "WrittenWork6";
-            FirstGradingGradebook.Columns[7].DataPropertyName = "WrittenWork7";
-            FirstGradingGradebook.Columns[8].DataPropertyName = "WrittenWork8";
-            FirstGradingGradebook.Columns[9].DataPropertyName = "WrittenWork9";
-            FirstGradingGradebook.Columns[10].DataPropertyName = "WrittenWork10";
-            FirstGradingGradebook.Columns[11].DataPropertyName = "WrittenWorkTotal";
-            FirstGradingGradebook.Columns[12].DataPropertyName = "WrittenWorkPercentage";
-            FirstGradingGradebook.Columns[13].DataPropertyName = "TaskPeformance1";
-            FirstGradingGradebook.Columns[14].DataPropertyName = "TaskPeformance2";
-            FirstGradingGradebook.Columns[15].DataPropertyName = "TaskPeformance3";
-            FirstGradingGradebook.Columns[16].DataPropertyName = "TaskPeformance4";
-            FirstGradingGradebook.Columns[17].DataPropertyName = "TaskPeformance5";
-            FirstGradingGradebook.Columns[18].DataPropertyName = "TaskPeformance6";
-            FirstGradingGradebook.Columns[19].DataPropertyName = "TaskPeformance7";
-            FirstGradingGradebook.Columns[20].DataPropertyName = "TaskPeformance8";
-            FirstGradingGradebook.Columns[21].DataPropertyName = "TaskPeformance9";
-            FirstGradingGradebook.Columns[22].DataPropertyName = "TaskPeformance10";
-            FirstGradingGradebook.Columns[27].DataPropertyName = "GradingPeriod";
-
-            SecondGradingGradebook.Columns[0].DataPropertyName = "Fullname";
-            SecondGradingGradebook.Columns[1].DataPropertyName = "WrittenWork1";
-            SecondGradingGradebook.Columns[2].DataPropertyName = "WrittenWork2";
-            SecondGradingGradebook.Columns[3].DataPropertyName = "WrittenWork3";
-            SecondGradingGradebook.Columns[4].DataPropertyName = "WrittenWork4";
-            SecondGradingGradebook.Columns[5].DataPropertyName = "WrittenWork5";
-            SecondGradingGradebook.Columns[6].DataPropertyName = "WrittenWork6";
-            SecondGradingGradebook.Columns[7].DataPropertyName = "WrittenWork7";
-            SecondGradingGradebook.Columns[8].DataPropertyName = "WrittenWork8";
-            SecondGradingGradebook.Columns[9].DataPropertyName = "WrittenWork9";
-            SecondGradingGradebook.Columns[10].DataPropertyName = "WrittenWork10";
-            SecondGradingGradebook.Columns[11].DataPropertyName = "WrittenWorkTotal";
-            SecondGradingGradebook.Columns[12].DataPropertyName = "WrittenWorkPercentage";
-            SecondGradingGradebook.Columns[13].DataPropertyName = "TaskPeformance1";
-            SecondGradingGradebook.Columns[14].DataPropertyName = "TaskPeformance2";
-            SecondGradingGradebook.Columns[15].DataPropertyName = "TaskPeformance3";
-            SecondGradingGradebook.Columns[16].DataPropertyName = "TaskPeformance4";
-            SecondGradingGradebook.Columns[17].DataPropertyName = "TaskPeformance5";
-            SecondGradingGradebook.Columns[18].DataPropertyName = "TaskPeformance6";
-            SecondGradingGradebook.Columns[19].DataPropertyName = "TaskPeformance7";
-            SecondGradingGradebook.Columns[20].DataPropertyName = "TaskPeformance8";
-            SecondGradingGradebook.Columns[21].DataPropertyName = "TaskPeformance9";
-            SecondGradingGradebook.Columns[22].DataPropertyName = "TaskPeformance10";
-            SecondGradingGradebook.Columns[27].DataPropertyName = "GradingPeriod";
-            SecondGradingGradebook.Columns[27].DataPropertyName = "GradingPeriod";
-
-            ThirdGradingGradebook.Columns[0].DataPropertyName = "Fullname";
-            ThirdGradingGradebook.Columns[1].DataPropertyName = "WrittenWork1";
-            ThirdGradingGradebook.Columns[2].DataPropertyName = "WrittenWork2";
-            ThirdGradingGradebook.Columns[3].DataPropertyName = "WrittenWork3";
-            ThirdGradingGradebook.Columns[4].DataPropertyName = "WrittenWork4";
-            ThirdGradingGradebook.Columns[5].DataPropertyName = "WrittenWork5";
-            ThirdGradingGradebook.Columns[6].DataPropertyName = "WrittenWork6";
-            ThirdGradingGradebook.Columns[7].DataPropertyName = "WrittenWork7";
-            ThirdGradingGradebook.Columns[8].DataPropertyName = "WrittenWork8";
-            ThirdGradingGradebook.Columns[9].DataPropertyName = "WrittenWork9";
-            ThirdGradingGradebook.Columns[10].DataPropertyName = "WrittenWork10";
-            ThirdGradingGradebook.Columns[11].DataPropertyName = "WrittenWorkTotal";
-            ThirdGradingGradebook.Columns[12].DataPropertyName = "WrittenWorkPercentage";
-            ThirdGradingGradebook.Columns[13].DataPropertyName = "TaskPeformance1";
-            ThirdGradingGradebook.Columns[14].DataPropertyName = "TaskPeformance2";
-            ThirdGradingGradebook.Columns[15].DataPropertyName = "TaskPeformance3";
-            ThirdGradingGradebook.Columns[16].DataPropertyName = "TaskPeformance4";
-            ThirdGradingGradebook.Columns[17].DataPropertyName = "TaskPeformance5";
-            ThirdGradingGradebook.Columns[18].DataPropertyName = "TaskPeformance6";
-            ThirdGradingGradebook.Columns[19].DataPropertyName = "TaskPeformance7";
-            ThirdGradingGradebook.Columns[20].DataPropertyName = "TaskPeformance8";
-            ThirdGradingGradebook.Columns[21].DataPropertyName = "TaskPeformance9";
-            ThirdGradingGradebook.Columns[22].DataPropertyName = "TaskPeformance10";
-            ThirdGradingGradebook.Columns[27].DataPropertyName = "GradingPeriod";
-            ThirdGradingGradebook.Columns[27].DataPropertyName = "GradingPeriod";
-
-            FourthGradingGradebook.Columns[0].DataPropertyName = "Fullname";
-            FourthGradingGradebook.Columns[1].DataPropertyName = "WrittenWork1";
-            FourthGradingGradebook.Columns[2].DataPropertyName = "WrittenWork2";
-            FourthGradingGradebook.Columns[3].DataPropertyName = "WrittenWork3";
-            FourthGradingGradebook.Columns[4].DataPropertyName = "WrittenWork4";
-            FourthGradingGradebook.Columns[5].DataPropertyName = "WrittenWork5";
-            FourthGradingGradebook.Columns[6].DataPropertyName = "WrittenWork6";
-            FourthGradingGradebook.Columns[7].DataPropertyName = "WrittenWork7";
-            FourthGradingGradebook.Columns[8].DataPropertyName = "WrittenWork8";
-            FourthGradingGradebook.Columns[9].DataPropertyName = "WrittenWork9";
-            FourthGradingGradebook.Columns[10].DataPropertyName = "WrittenWork10";
-            FourthGradingGradebook.Columns[11].DataPropertyName = "WrittenWorkTotal";
-            FourthGradingGradebook.Columns[12].DataPropertyName = "WrittenWorkPercentage";
-            FourthGradingGradebook.Columns[13].DataPropertyName = "TaskPeformance1";
-            FourthGradingGradebook.Columns[14].DataPropertyName = "TaskPeformance2";
-            FourthGradingGradebook.Columns[15].DataPropertyName = "TaskPeformance3";
-            FourthGradingGradebook.Columns[16].DataPropertyName = "TaskPeformance4";
-            FourthGradingGradebook.Columns[17].DataPropertyName = "TaskPeformance5";
-            FourthGradingGradebook.Columns[18].DataPropertyName = "TaskPeformance6";
-            FourthGradingGradebook.Columns[19].DataPropertyName = "TaskPeformance7";
-            FourthGradingGradebook.Columns[20].DataPropertyName = "TaskPeformance8";
-            FourthGradingGradebook.Columns[21].DataPropertyName = "TaskPeformance9";
-            FourthGradingGradebook.Columns[22].DataPropertyName = "TaskPeformance10";
-            FourthGradingGradebook.Columns[27].DataPropertyName = "GradingPeriod";          
-            FirstGradingGradebook_CellEndEdit(null, null);
-            IsFirstLoad = false;
-        }
-
-        private void FirstGradingGradebook_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            //allow number, backspace and dot
-            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == '.'))
-            {
-                e.Handled = true;
-
-            }
-            //allow only one dot
-            if (e.KeyChar == '.' && (sender as TextBox).Text.Contains("."))
-            {
-                e.Handled = true;
-
-            }
-        }
-
-        private void FirstGradingGradebook_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
-        {
-            e.Control.KeyPress -= new KeyPressEventHandler(FirstGradingGradebook_KeyPress);
-            if (FirstGradingGradebook.CurrentCell.ColumnIndex == 1 || FirstGradingGradebook.CurrentCell.ColumnIndex == 2 || FirstGradingGradebook.CurrentCell.ColumnIndex == 3 || FirstGradingGradebook.CurrentCell.ColumnIndex == 4 || FirstGradingGradebook.CurrentCell.ColumnIndex == 5 || FirstGradingGradebook.CurrentCell.ColumnIndex == 6 || FirstGradingGradebook.CurrentCell.ColumnIndex == 7 || FirstGradingGradebook.CurrentCell.ColumnIndex == 8 || FirstGradingGradebook.CurrentCell.ColumnIndex == 3 || FirstGradingGradebook.CurrentCell.ColumnIndex == 9 || FirstGradingGradebook.CurrentCell.ColumnIndex == 10 ||FirstGradingGradebook.CurrentCell.ColumnIndex == 12 || FirstGradingGradebook.CurrentCell.ColumnIndex == 13 || FirstGradingGradebook.CurrentCell.ColumnIndex == 14 || FirstGradingGradebook.CurrentCell.ColumnIndex == 15 || FirstGradingGradebook.CurrentCell.ColumnIndex == 16 || FirstGradingGradebook.CurrentCell.ColumnIndex == 17 || FirstGradingGradebook.CurrentCell.ColumnIndex == 18 || FirstGradingGradebook.CurrentCell.ColumnIndex == 19 || FirstGradingGradebook.CurrentCell.ColumnIndex == 20 || FirstGradingGradebook.CurrentCell.ColumnIndex == 21 || FirstGradingGradebook.CurrentCell.ColumnIndex == 22) //Desired Column
-            {
-                TextBox tb = e.Control as TextBox;
-                if (tb != null)
-                {
-                    tb.KeyPress += new KeyPressEventHandler(FirstGradingGradebook_KeyPress);
-                }
-            }
-        }
-
-        private async void tabcontrol_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (tabcontrol.SelectedIndex == 0)
-            {  
-                if(globalgradingperiod == 1)
-                {
-                }
-                else
-                {
-                    await ClassRecords(1);
-                }
-                                
-            }
-
-            else if (tabcontrol.SelectedIndex == 1)
-            {
-                if (globalgradingperiod == 2)
-                {
-                }
-                else
-                {
-                    await ClassRecords(2);
-                }
-                               
-            }
-
-            else if (tabcontrol.SelectedIndex == 2)
-            {
-                if (globalgradingperiod == 3)
-                {
-                }
-                else
-                {
-                    await ClassRecords(3);
-                }
-                
-            }
-
-            else if (tabcontrol.SelectedIndex == 3)
-            {
-                if (globalgradingperiod == 3)
-                {
-                    await ClassRecords(4);
-                }
-                else
-                {
-                    
-                }
-            }
-        }
-
-        private async void CBGradeLevel_DropDown(object sender, EventArgs e)
-        {
-                               
-        }
-
-        private async Task SubjectDropDown()
-        {
-            var ID = Settings.Default.ID;
-            ClassRecordsService classRecordsService = new ClassRecordsService();
-            var records = await classRecordsService.GetClassRecrodsDetails(ID);
-            var recordslist = records.ToList();
-            var gradingperiodlist = recordslist.ToList();
-            var Distinctgradingperiod = recordslist.Select(x => x.SubjectName).Distinct().ToList();
-            Distinctgradingperiod.Insert(0, "All Subjects");
-            CBSubject.DataSource = Distinctgradingperiod;
-            //CBGradeLevel.DisplayMember = "GradingPeriod";
-            CBSubject.SelectedIndex = 0;
-        }
-
-        private async Task GradeLvelDropDown()
-        {
-            var ID = Settings.Default.ID;
-            ClassRecordsService classRecordsService = new ClassRecordsService();
-            var records = await classRecordsService.GetClassRecrodsDetails(ID);
-            var recordslist = records.ToList();
-            var gradingperiodlist = recordslist.ToList();
-            var Distinctgradingperiod = recordslist.Select(x => x.Grade_Level.ToString()).Distinct().ToList();
-            Distinctgradingperiod.Insert(0, "All Grade Level");
-            CBGradeLevel.DataSource = Distinctgradingperiod;
-            //CBGradeLevel.DisplayMember = "GradingPeriod";
-            CBGradeLevel.SelectedIndex = 0;
-        }
-
-        private async void CBSY_DropDown(object sender, EventArgs e)
-        {
-            var ID = Settings.Default.ID;
-            ClassRecordsService classRecordsService = new ClassRecordsService();
-            var records = await classRecordsService.GetClassRecrodsDetails(ID);
-            var recordslist = records.ToList();
-            var gradingperiodlist = recordslist.ToList();
-            var Distinctgradingperiod = recordslist.Select(x => x.SchoolYearStart).Distinct().ToList();
-            CBSY.DataSource = Distinctgradingperiod;
-            //CBGradeLevel.DisplayMember = "GradingPeriod";
-            CBSY.SelectedIndex = -1;
-        }
-
-        //Buttons Forecolor and background Styles
-        private void btnBack_MouseEnter(object sender, EventArgs e)
-        {
-            btnBack.Image = LGAConnectSOMS.Properties.Resources.BackArrowYellow24;
-        }
-
-        private void btnBack_MouseLeave(object sender, EventArgs e)
-        {
-            btnBack.Image = LGAConnectSOMS.Properties.Resources.BackArrow24;
-        }
-
-        //TitleBarFunction
-        private void RestoreWindowPosition()
-        {
-
-            if (Settings.Default.HasSetDefault)
-            {
-                this.WindowState = Settings.Default.WindowState;
-                this.Location = Settings.Default.Location;
-                this.Size = Settings.Default.Size;
-            }
-        }
-
-        private void ClassRecordFacultyView_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            this.SaveWindowPosition();
-        }
-
-        private void SaveWindowPosition()
-        {
-            Settings.Default.WindowState = this.WindowState;
-
-            if (this.WindowState == FormWindowState.Normal)
-            {
-                Settings.Default.Location = this.Location;
-                Settings.Default.Size = this.Size;
-
-            }
-            else
-            {
-                Settings.Default.Location = this.RestoreBounds.Location;
-                Settings.Default.Size = this.RestoreBounds.Size;
-            }
-
-            Settings.Default.HasSetDefault = true;
-
-            Settings.Default.Save();
-        }
-
-        private void btnMinimize_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
-        private void btnMaximize_Click(object sender, EventArgs e)
-        {
-            if (this.WindowState == FormWindowState.Normal)
-            {
-                this.WindowState = FormWindowState.Maximized;
-                btnMaximize.Image = LGAConnectSOMS.Properties.Resources.NormalBlack;
-            }
-
-            else
-            {
-                this.WindowState = FormWindowState.Normal;
-                btnMaximize.Image = LGAConnectSOMS.Properties.Resources.FullScreenBlack;
-            }
-        }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        //DragWindows
-        private Point _mouseLoc;
-
-        private void DragWindowsPanel_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (this.WindowState == FormWindowState.Maximized)
-            {
-                this.WindowState = FormWindowState.Normal;
-            }
-            _mouseLoc = e.Location;
-        }
-
-        private void DragWindowsPanel_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                int dx = e.Location.X - _mouseLoc.X;
-                int dy = e.Location.Y - _mouseLoc.Y;
-                this.Location = new Point(this.Location.X + dx, this.Location.Y + dy);
-            }
-        }
-
-        public void MaximizeIcon()
-        {
-            if (this.WindowState == FormWindowState.Maximized)
-            {
-                btnMaximize.Image = LGAConnectSOMS.Properties.Resources.NormalBlack;
-            }
-
-            else if (this.WindowState == FormWindowState.Normal)
-            {
-                btnMaximize.Image = LGAConnectSOMS.Properties.Resources.FullScreenBlack;
-            }
-        }
-
         private void SecondGradingGradebook_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             foreach (DataGridViewRow row in SecondGradingGradebook.Rows)
@@ -1016,11 +599,11 @@ namespace LGAConnectSOMS.Views
 
                 //FirstGradingGradebook.Rows[1].Cells[0].Value = "Student's names";
                 //FirstGradingGradebook.Rows[0].Cells[0].Value = "Highest possible score";               
-                SecondGradingGradebook.Rows[0].Cells[12].Value = 50;
-                SecondGradingGradebook.Rows[0].Cells[24].Value = 50;
+                //SecondGradingGradebook.Rows[0].Cells[12].Value = 50;
+                //SecondGradingGradebook.Rows[0].Cells[24].Value = 50;
                 SecondGradingGradebook.Rows[0].Cells[11].ReadOnly = true;
-                SecondGradingGradebook.Rows[0].Cells[25].Value = "##";
-                SecondGradingGradebook.Rows[0].Cells[26].Value = "##";
+                //SecondGradingGradebook.Rows[0].Cells[25].Value = "##";
+                //SecondGradingGradebook.Rows[0].Cells[26].Value = "##";
 
                 var verificationww = SecondGradingGradebook.Rows[0].Cells[1].Value;
                 var wwgrade = row.Cells[SecondGradingGradebook.Columns["SecondWW"].Index].Value;
@@ -1480,43 +1063,18 @@ namespace LGAConnectSOMS.Views
                         row.Cells[SecondGradingGradebook.Columns["SecondQuarterlyGrade"].Index].Value = 80.00;
                     }
 
-                    else
+                    else if (Convert.ToDouble(row.Cells[SecondGradingGradebook.Columns["SecondInitialGrade"].Index].Value) >= 65.00 || Convert.ToDouble(row.Cells[SecondGradingGradebook.Columns["SecondInitialGrade"].Index].Value) >= 67.00)
                     {
                         row.Cells[SecondGradingGradebook.Columns["SecondQuarterlyGrade"].Index].Value = 75.00;
+                    }
+
+                    else
+                    {
+                        row.Cells[SecondGradingGradebook.Columns["SecondQuarterlyGrade"].Index].Value = 0;
                     }
                 }
             }
         }
-
-        private void SecondGradingGradebook_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            //allow number, backspace and dot
-            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == '.'))
-            {
-                e.Handled = true;
-
-            }
-            //allow only one dot
-            if (e.KeyChar == '.' && (sender as TextBox).Text.Contains("."))
-            {
-                e.Handled = true;
-
-            }
-        }
-
-        private void SecondGradingGradebook_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
-        {
-            e.Control.KeyPress -= new KeyPressEventHandler(SecondGradingGradebook_KeyPress);
-            if (SecondGradingGradebook.CurrentCell.ColumnIndex == 1 || SecondGradingGradebook.CurrentCell.ColumnIndex == 2 || SecondGradingGradebook.CurrentCell.ColumnIndex == 3 || SecondGradingGradebook.CurrentCell.ColumnIndex == 4 || SecondGradingGradebook.CurrentCell.ColumnIndex == 5 || SecondGradingGradebook.CurrentCell.ColumnIndex == 6 || SecondGradingGradebook.CurrentCell.ColumnIndex == 7 || SecondGradingGradebook.CurrentCell.ColumnIndex == 8 || SecondGradingGradebook.CurrentCell.ColumnIndex == 3 || SecondGradingGradebook.CurrentCell.ColumnIndex == 9 || SecondGradingGradebook.CurrentCell.ColumnIndex == 10 || SecondGradingGradebook.CurrentCell.ColumnIndex == 12 || SecondGradingGradebook.CurrentCell.ColumnIndex == 13 || SecondGradingGradebook.CurrentCell.ColumnIndex == 14 || SecondGradingGradebook.CurrentCell.ColumnIndex == 15 || SecondGradingGradebook.CurrentCell.ColumnIndex == 16 || SecondGradingGradebook.CurrentCell.ColumnIndex == 17 || SecondGradingGradebook.CurrentCell.ColumnIndex == 18 || SecondGradingGradebook.CurrentCell.ColumnIndex == 19 || SecondGradingGradebook.CurrentCell.ColumnIndex == 20 || SecondGradingGradebook.CurrentCell.ColumnIndex == 21 || SecondGradingGradebook.CurrentCell.ColumnIndex == 22) //Desired Column
-            {
-                TextBox tb = e.Control as TextBox;
-                if (tb != null)
-                {
-                    tb.KeyPress += new KeyPressEventHandler(SecondGradingGradebook_KeyPress);
-                }
-            }
-        }
-
         private void ThirdGradingGradebook_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             foreach (DataGridViewRow row in ThirdGradingGradebook.Rows)
@@ -1533,11 +1091,11 @@ namespace LGAConnectSOMS.Views
 
                 //FirstGradingGradebook.Rows[1].Cells[0].Value = "Student's names";
                 //FirstGradingGradebook.Rows[0].Cells[0].Value = "Highest possible score";               
-                ThirdGradingGradebook.Rows[0].Cells[12].Value = 50;
-                ThirdGradingGradebook.Rows[0].Cells[24].Value = 50;
+                //ThirdGradingGradebook.Rows[0].Cells[12].Value = 50;
+                //ThirdGradingGradebook.Rows[0].Cells[24].Value = 50;
                 ThirdGradingGradebook.Rows[0].Cells[11].ReadOnly = true;
-                ThirdGradingGradebook.Rows[0].Cells[25].Value = "##";
-                ThirdGradingGradebook.Rows[0].Cells[26].Value = "##";
+                //ThirdGradingGradebook.Rows[0].Cells[25].Value = "##";
+                //ThirdGradingGradebook.Rows[0].Cells[26].Value = "##";
 
                 var verificationww = ThirdGradingGradebook.Rows[0].Cells[1].Value;
                 var wwgrade = row.Cells[ThirdGradingGradebook.Columns["ThirdWW"].Index].Value;
@@ -1997,43 +1555,18 @@ namespace LGAConnectSOMS.Views
                         row.Cells[ThirdGradingGradebook.Columns["ThirdQuarterlyGrade"].Index].Value = 80.00;
                     }
 
-                    else
+                    else if (Convert.ToDouble(row.Cells[ThirdGradingGradebook.Columns["ThirdInitialGrade"].Index].Value) >= 65.00 || Convert.ToDouble(row.Cells[ThirdGradingGradebook.Columns["ThirdInitialGrade"].Index].Value) >= 67.00)
                     {
                         row.Cells[ThirdGradingGradebook.Columns["ThirdQuarterlyGrade"].Index].Value = 75.00;
+                    }
+
+                    else
+                    {
+                        row.Cells[ThirdGradingGradebook.Columns["ThirdQuarterlyGrade"].Index].Value = 0;
                     }
                 }
             }
         }
-
-        private void ThirdGradingGradebook_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            //allow number, backspace and dot
-            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == '.'))
-            {
-                e.Handled = true;
-
-            }
-            //allow only one dot
-            if (e.KeyChar == '.' && (sender as TextBox).Text.Contains("."))
-            {
-                e.Handled = true;
-
-            }
-        }
-
-        private void ThirdGradingGradebook_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
-        {
-            e.Control.KeyPress -= new KeyPressEventHandler(ThirdGradingGradebook_KeyPress);
-            if (ThirdGradingGradebook.CurrentCell.ColumnIndex == 1 || ThirdGradingGradebook.CurrentCell.ColumnIndex == 2 || ThirdGradingGradebook.CurrentCell.ColumnIndex == 3 || ThirdGradingGradebook.CurrentCell.ColumnIndex == 4 || ThirdGradingGradebook.CurrentCell.ColumnIndex == 5 || ThirdGradingGradebook.CurrentCell.ColumnIndex == 6 || ThirdGradingGradebook.CurrentCell.ColumnIndex == 7 || ThirdGradingGradebook.CurrentCell.ColumnIndex == 8 || ThirdGradingGradebook.CurrentCell.ColumnIndex == 3 || ThirdGradingGradebook.CurrentCell.ColumnIndex == 9 || ThirdGradingGradebook.CurrentCell.ColumnIndex == 10 || ThirdGradingGradebook.CurrentCell.ColumnIndex == 12 || ThirdGradingGradebook.CurrentCell.ColumnIndex == 13 || ThirdGradingGradebook.CurrentCell.ColumnIndex == 14 || ThirdGradingGradebook.CurrentCell.ColumnIndex == 15 || ThirdGradingGradebook.CurrentCell.ColumnIndex == 16 || ThirdGradingGradebook.CurrentCell.ColumnIndex == 17 || ThirdGradingGradebook.CurrentCell.ColumnIndex == 18 || ThirdGradingGradebook.CurrentCell.ColumnIndex == 19 || ThirdGradingGradebook.CurrentCell.ColumnIndex == 20 || ThirdGradingGradebook.CurrentCell.ColumnIndex == 21 || ThirdGradingGradebook.CurrentCell.ColumnIndex == 22) //Desired Column
-            {
-                TextBox tb = e.Control as TextBox;
-                if (tb != null)
-                {
-                    tb.KeyPress += new KeyPressEventHandler(ThirdGradingGradebook_KeyPress);
-                }
-            }
-        }
-
         private void FourthGradingGradebook_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             foreach (DataGridViewRow row in FourthGradingGradebook.Rows)
@@ -2050,11 +1583,11 @@ namespace LGAConnectSOMS.Views
 
                 //FirstGradingGradebook.Rows[1].Cells[0].Value = "Student's names";
                 //FirstGradingGradebook.Rows[0].Cells[0].Value = "Highest possible score";               
-                FourthGradingGradebook.Rows[0].Cells[12].Value = 50;
-                FourthGradingGradebook.Rows[0].Cells[24].Value = 50;
+                //FourthGradingGradebook.Rows[0].Cells[12].Value = 50;
+                //FourthGradingGradebook.Rows[0].Cells[24].Value = 50;
                 FourthGradingGradebook.Rows[0].Cells[11].ReadOnly = true;
-                FourthGradingGradebook.Rows[0].Cells[25].Value = "##";
-                FourthGradingGradebook.Rows[0].Cells[26].Value = "##";
+                //FourthGradingGradebook.Rows[0].Cells[25].Value = "##";
+                //FourthGradingGradebook.Rows[0].Cells[26].Value = "##";
 
                 var verificationww = FourthGradingGradebook.Rows[0].Cells[1].Value;
                 var wwgrade = row.Cells[FourthGradingGradebook.Columns["FourthWW"].Index].Value;
@@ -2514,13 +2047,570 @@ namespace LGAConnectSOMS.Views
                         row.Cells[FourthGradingGradebook.Columns["FourthQuarterlyGrade"].Index].Value = 80.00;
                     }
 
-                    else
+                    else if (Convert.ToDouble(row.Cells[FourthGradingGradebook.Columns["FourthInitialGrade"].Index].Value) >= 65.00 || Convert.ToDouble(row.Cells[FourthGradingGradebook.Columns["FourthInitialGrade"].Index].Value) >= 67.00)
                     {
                         row.Cells[FourthGradingGradebook.Columns["FourthQuarterlyGrade"].Index].Value = 75.00;
+                    }
+
+                    else
+                    {
+                        row.Cells[FourthGradingGradebook.Columns["FourthQuarterlyGrade"].Index].Value = 0.0;
                     }
                 }
             }
         }
+
+        private List<FacultySubjects> FacultySubjects = new List<FacultySubjects>();
+        public async Task LoadFacultySubjects()
+        {
+            var ID = Settings.Default.ID;
+            FacultySubjectsService facultySubjectsService = new FacultySubjectsService();
+            var facultySubjectList = await facultySubjectsService.GetFacultySubjects(ID);
+            FacultySubjects = facultySubjectList.ToList();
+        }
+
+
+        int globalgradingperiod;
+        IEnumerable<ClassRecords> recordslist = new List<ClassRecords>();
+        public async Task ClassRecords(int gradingperiod = 0)
+        {
+            var ID = Settings.Default.ID;
+            ClassRecordsService classRecordsService = new ClassRecordsService();
+            var records = await classRecordsService.GetClassRecrodsDetails(ID);
+            recordslist = records.ToList();
+            globalgradingperiod = gradingperiod;
+
+            var selectedGradeLevel = CBGradeLevel.SelectedItem;
+            var selectedSection = CBSection.SelectedItem;
+            var selectedSubject = CBSubject.SelectedItem;
+            var selectedGradingPeriod = tabcontrol.SelectedIndex;
+
+            if (selectedGradingPeriod == 0)
+            {
+                globalgradingperiod = gradingperiod;
+                FirstGradingGradebook.AutoGenerateColumns = false;
+
+                FirstGradingList = recordslist.Where(x => x.GradingPeriod == gradingperiod + 1 && x.SubjectName == (string)selectedSubject && x.SectionName == (string)selectedSection).ToList();
+
+                FirstGradingGradebook.DataSource = FirstGradingList;
+                //CBSubject_SelectedIndexChanged(null, null);
+
+                if(FirstGradingList.Any())
+                    FirstGradingGradebook.BeginEdit(true);
+                //FirstGradingGradebook.ClearSelection();
+                
+            }
+
+            else if(selectedGradingPeriod == 1)
+            {
+                globalgradingperiod = gradingperiod + 1;                            
+                SecondGradingGradebook.AutoGenerateColumns = false;
+                //CBSubject_SelectedIndexChanged(null, null);
+                SecondGradingList = recordslist.Where(x => x.GradingPeriod == gradingperiod + 1 && x.SubjectName == (string)selectedSubject && x.SectionName == (string)selectedSection).ToList();
+
+                SecondGradingGradebook.DataSource = SecondGradingList;
+                
+
+                if (SecondGradingList.Any())
+                    
+                    SecondGradingGradebook.BeginEdit(true);
+                    //SecondGradingGradebook.ClearSelection();
+
+            }
+
+            else if(selectedGradingPeriod == 2)
+            {
+                globalgradingperiod = gradingperiod;              
+                ThirdGradingGradebook.AutoGenerateColumns = false;
+                ThirdGradingList = recordslist.Where(x => x.GradingPeriod == gradingperiod + 1 && x.SubjectName == (string)selectedSubject && x.SectionName == (string)selectedSection).ToList();
+
+                ThirdGradingGradebook.DataSource = ThirdGradingList;
+                //CBSubject_SelectedIndexChanged(null, null);
+
+                if (ThirdGradingList.Any())
+                    ThirdGradingGradebook.BeginEdit(true);
+
+                //ThirdGradingGradebook.ClearSelection();
+                
+            }
+
+            else if (selectedGradingPeriod == 3)
+            {
+                globalgradingperiod = gradingperiod;
+
+                FourthGradingGradebook.AutoGenerateColumns = false;
+
+                FourthGradingList = recordslist.Where(x => x.GradingPeriod == gradingperiod + 1 && x.SubjectName == (string)selectedSubject && x.SectionName == (string)selectedSection).ToList();
+
+                FourthGradingGradebook.DataSource = FourthGradingList;
+                //CBSubject_SelectedIndexChanged(null, null);
+
+                if (FourthGradingList.Any())
+                    FourthGradingGradebook.BeginEdit(true);
+
+               // FourthGradingGradebook.ClearSelection();
+                
+            }
+
+            //FirstGradingGradebook.Columns[0].DataPropertyName = "ID";
+            FirstGradingGradebook.Columns[0].DataPropertyName = "Fullname";
+            FirstGradingGradebook.Columns[1].DataPropertyName = "WrittenWork1";
+            FirstGradingGradebook.Columns[2].DataPropertyName = "WrittenWork2";
+            FirstGradingGradebook.Columns[3].DataPropertyName = "WrittenWork3";
+            FirstGradingGradebook.Columns[4].DataPropertyName = "WrittenWork4";
+            FirstGradingGradebook.Columns[5].DataPropertyName = "WrittenWork5";
+            FirstGradingGradebook.Columns[6].DataPropertyName = "WrittenWork6";
+            FirstGradingGradebook.Columns[7].DataPropertyName = "WrittenWork7";
+            FirstGradingGradebook.Columns[8].DataPropertyName = "WrittenWork8";
+            FirstGradingGradebook.Columns[9].DataPropertyName = "WrittenWork9";
+            FirstGradingGradebook.Columns[10].DataPropertyName = "WrittenWork10";
+            FirstGradingGradebook.Columns[11].DataPropertyName = "WrittenWorkTotal";
+            FirstGradingGradebook.Columns[12].DataPropertyName = "WrittenWorkPercentage";
+            FirstGradingGradebook.Columns[13].DataPropertyName = "TaskPeformance1";
+            FirstGradingGradebook.Columns[14].DataPropertyName = "TaskPeformance2";
+            FirstGradingGradebook.Columns[15].DataPropertyName = "TaskPeformance3";
+            FirstGradingGradebook.Columns[16].DataPropertyName = "TaskPeformance4";
+            FirstGradingGradebook.Columns[17].DataPropertyName = "TaskPeformance5";
+            FirstGradingGradebook.Columns[18].DataPropertyName = "TaskPeformance6";
+            FirstGradingGradebook.Columns[19].DataPropertyName = "TaskPeformance7";
+            FirstGradingGradebook.Columns[20].DataPropertyName = "TaskPeformance8";
+            FirstGradingGradebook.Columns[21].DataPropertyName = "TaskPeformance9";
+            FirstGradingGradebook.Columns[22].DataPropertyName = "TaskPeformance10";
+            FirstGradingGradebook.Columns[23].DataPropertyName = "TaskPeformanceTotal";
+            FirstGradingGradebook.Columns[24].DataPropertyName = "TaskPeformancePercentage";
+            FirstGradingGradebook.Columns[25].DataPropertyName = "InitialGrade";
+            FirstGradingGradebook.Columns[26].DataPropertyName = "QuarterlyGrade";
+            FirstGradingGradebook.Columns[27].DataPropertyName = "SchoolYearStart";
+            FirstGradingGradebook.Columns[28].DataPropertyName = "Grade_Level";
+            FirstGradingGradebook.Columns[29].DataPropertyName = "SubjectName";
+            FirstGradingGradebook.Columns[30].DataPropertyName = "SectionName";
+            FirstGradingGradebook.Columns[31].DataPropertyName = "SaveasDraft";
+            FirstGradingGradebook.Columns[32].DataPropertyName = "SaveDraft";
+            FirstGradingGradebook.Columns[33].DataPropertyName = "GradingPeriod";
+
+            SecondGradingGradebook.Columns[0].DataPropertyName = "Fullname";
+            SecondGradingGradebook.Columns[1].DataPropertyName = "WrittenWork1";
+            SecondGradingGradebook.Columns[2].DataPropertyName = "WrittenWork2";
+            SecondGradingGradebook.Columns[3].DataPropertyName = "WrittenWork3";
+            SecondGradingGradebook.Columns[4].DataPropertyName = "WrittenWork4";
+            SecondGradingGradebook.Columns[5].DataPropertyName = "WrittenWork5";
+            SecondGradingGradebook.Columns[6].DataPropertyName = "WrittenWork6";
+            SecondGradingGradebook.Columns[7].DataPropertyName = "WrittenWork7";
+            SecondGradingGradebook.Columns[8].DataPropertyName = "WrittenWork8";
+            SecondGradingGradebook.Columns[9].DataPropertyName = "WrittenWork9";
+            SecondGradingGradebook.Columns[10].DataPropertyName = "WrittenWork10";
+            SecondGradingGradebook.Columns[11].DataPropertyName = "WrittenWorkTotal";
+            SecondGradingGradebook.Columns[12].DataPropertyName = "WrittenWorkPercentage";
+            SecondGradingGradebook.Columns[13].DataPropertyName = "TaskPeformance1";
+            SecondGradingGradebook.Columns[14].DataPropertyName = "TaskPeformance2";
+            SecondGradingGradebook.Columns[15].DataPropertyName = "TaskPeformance3";
+            SecondGradingGradebook.Columns[16].DataPropertyName = "TaskPeformance4";
+            SecondGradingGradebook.Columns[17].DataPropertyName = "TaskPeformance5";
+            SecondGradingGradebook.Columns[18].DataPropertyName = "TaskPeformance6";
+            SecondGradingGradebook.Columns[19].DataPropertyName = "TaskPeformance7";
+            SecondGradingGradebook.Columns[20].DataPropertyName = "TaskPeformance8";
+            SecondGradingGradebook.Columns[21].DataPropertyName = "TaskPeformance9";
+            SecondGradingGradebook.Columns[22].DataPropertyName = "TaskPeformance10";
+            SecondGradingGradebook.Columns[23].DataPropertyName = "TaskPeformanceTotal";
+            SecondGradingGradebook.Columns[24].DataPropertyName = "TaskPeformancePercentage";
+            SecondGradingGradebook.Columns[25].DataPropertyName = "InitialGrade";
+            SecondGradingGradebook.Columns[26].DataPropertyName = "QuarterlyGrade";
+            SecondGradingGradebook.Columns[27].DataPropertyName = "SchoolYearStart";
+            SecondGradingGradebook.Columns[28].DataPropertyName = "Grade_Level";
+            SecondGradingGradebook.Columns[29].DataPropertyName = "SubjectName";
+            SecondGradingGradebook.Columns[30].DataPropertyName = "SectionName";
+            SecondGradingGradebook.Columns[31].DataPropertyName = "SaveasDraft";
+            SecondGradingGradebook.Columns[32].DataPropertyName = "SaveDraft";
+            SecondGradingGradebook.Columns[33].DataPropertyName = "GradingPeriod";
+
+            ThirdGradingGradebook.Columns[0].DataPropertyName = "Fullname";
+            ThirdGradingGradebook.Columns[1].DataPropertyName = "WrittenWork1";
+            ThirdGradingGradebook.Columns[2].DataPropertyName = "WrittenWork2";
+            ThirdGradingGradebook.Columns[3].DataPropertyName = "WrittenWork3";
+            ThirdGradingGradebook.Columns[4].DataPropertyName = "WrittenWork4";
+            ThirdGradingGradebook.Columns[5].DataPropertyName = "WrittenWork5";
+            ThirdGradingGradebook.Columns[6].DataPropertyName = "WrittenWork6";
+            ThirdGradingGradebook.Columns[7].DataPropertyName = "WrittenWork7";
+            ThirdGradingGradebook.Columns[8].DataPropertyName = "WrittenWork8";
+            ThirdGradingGradebook.Columns[9].DataPropertyName = "WrittenWork9";
+            ThirdGradingGradebook.Columns[10].DataPropertyName = "WrittenWork10";
+            ThirdGradingGradebook.Columns[11].DataPropertyName = "WrittenWorkTotal";
+            ThirdGradingGradebook.Columns[12].DataPropertyName = "WrittenWorkPercentage";
+            ThirdGradingGradebook.Columns[13].DataPropertyName = "TaskPeformance1";
+            ThirdGradingGradebook.Columns[14].DataPropertyName = "TaskPeformance2";
+            ThirdGradingGradebook.Columns[15].DataPropertyName = "TaskPeformance3";
+            ThirdGradingGradebook.Columns[16].DataPropertyName = "TaskPeformance4";
+            ThirdGradingGradebook.Columns[17].DataPropertyName = "TaskPeformance5";
+            ThirdGradingGradebook.Columns[18].DataPropertyName = "TaskPeformance6";
+            ThirdGradingGradebook.Columns[19].DataPropertyName = "TaskPeformance7";
+            ThirdGradingGradebook.Columns[20].DataPropertyName = "TaskPeformance8";
+            ThirdGradingGradebook.Columns[21].DataPropertyName = "TaskPeformance9";
+            ThirdGradingGradebook.Columns[22].DataPropertyName = "TaskPeformance10";
+            ThirdGradingGradebook.Columns[23].DataPropertyName = "TaskPeformanceTotal";
+            ThirdGradingGradebook.Columns[24].DataPropertyName = "TaskPeformancePercentage";
+            ThirdGradingGradebook.Columns[25].DataPropertyName = "InitialGrade";
+            ThirdGradingGradebook.Columns[26].DataPropertyName = "QuarterlyGrade";
+            ThirdGradingGradebook.Columns[27].DataPropertyName = "SchoolYearStart";
+            ThirdGradingGradebook.Columns[28].DataPropertyName = "Grade_Level";
+            ThirdGradingGradebook.Columns[29].DataPropertyName = "SubjectName";
+            ThirdGradingGradebook.Columns[30].DataPropertyName = "SectionName";
+            ThirdGradingGradebook.Columns[31].DataPropertyName = "SaveasDraft";
+            ThirdGradingGradebook.Columns[32].DataPropertyName = "SaveDraft";
+            ThirdGradingGradebook.Columns[33].DataPropertyName = "GradingPeriod";
+
+            FourthGradingGradebook.Columns[0].DataPropertyName = "Fullname";
+            FourthGradingGradebook.Columns[1].DataPropertyName = "WrittenWork1";
+            FourthGradingGradebook.Columns[2].DataPropertyName = "WrittenWork2";
+            FourthGradingGradebook.Columns[3].DataPropertyName = "WrittenWork3";
+            FourthGradingGradebook.Columns[4].DataPropertyName = "WrittenWork4";
+            FourthGradingGradebook.Columns[5].DataPropertyName = "WrittenWork5";
+            FourthGradingGradebook.Columns[6].DataPropertyName = "WrittenWork6";
+            FourthGradingGradebook.Columns[7].DataPropertyName = "WrittenWork7";
+            FourthGradingGradebook.Columns[8].DataPropertyName = "WrittenWork8";
+            FourthGradingGradebook.Columns[9].DataPropertyName = "WrittenWork9";
+            FourthGradingGradebook.Columns[10].DataPropertyName = "WrittenWork10";
+            FourthGradingGradebook.Columns[11].DataPropertyName = "WrittenWorkTotal";
+            FourthGradingGradebook.Columns[12].DataPropertyName = "WrittenWorkPercentage";
+            FourthGradingGradebook.Columns[13].DataPropertyName = "TaskPeformance1";
+            FourthGradingGradebook.Columns[14].DataPropertyName = "TaskPeformance2";
+            FourthGradingGradebook.Columns[15].DataPropertyName = "TaskPeformance3";
+            FourthGradingGradebook.Columns[16].DataPropertyName = "TaskPeformance4";
+            FourthGradingGradebook.Columns[17].DataPropertyName = "TaskPeformance5";
+            FourthGradingGradebook.Columns[18].DataPropertyName = "TaskPeformance6";
+            FourthGradingGradebook.Columns[19].DataPropertyName = "TaskPeformance7";
+            FourthGradingGradebook.Columns[20].DataPropertyName = "TaskPeformance8";
+            FourthGradingGradebook.Columns[21].DataPropertyName = "TaskPeformance9";
+            FourthGradingGradebook.Columns[22].DataPropertyName = "TaskPeformance10";
+            FourthGradingGradebook.Columns[23].DataPropertyName = "TaskPeformanceTotal";
+            FourthGradingGradebook.Columns[24].DataPropertyName = "TaskPeformancePercentage";
+            FourthGradingGradebook.Columns[25].DataPropertyName = "InitialGrade";
+            FourthGradingGradebook.Columns[26].DataPropertyName = "QuarterlyGrade";
+            FourthGradingGradebook.Columns[27].DataPropertyName = "SchoolYearStart";
+            FourthGradingGradebook.Columns[28].DataPropertyName = "Grade_Level";
+            FourthGradingGradebook.Columns[29].DataPropertyName = "SubjectName";
+            FourthGradingGradebook.Columns[30].DataPropertyName = "SectionName";
+            FourthGradingGradebook.Columns[31].DataPropertyName = "SaveasDraft";
+            FourthGradingGradebook.Columns[32].DataPropertyName = "SaveDraft";
+            FourthGradingGradebook.Columns[33].DataPropertyName = "GradingPeriod";
+
+            if(FirstGradingList.Any())
+                FirstGradingGradebook_CellEndEdit(null, null);
+
+            if (SecondGradingList.Any())               
+                SecondGradingGradebook_CellEndEdit(null, null);
+
+            if (ThirdGradingList.Any())
+                ThirdGradingGradebook_CellEndEdit(null, null);
+
+            if (FourthGradingList.Any())
+                FourthGradingGradebook_CellEndEdit(null, null);
+
+            IsFirstLoad = false;
+        }
+
+        private void FirstGradingGradebook_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //allow number, backspace and dot
+            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == '.'))
+            {
+                e.Handled = true;
+
+            }
+            //allow only one dot
+            if (e.KeyChar == '.' && (sender as TextBox).Text.Contains("."))
+            {
+                e.Handled = true;
+
+            }
+        }
+
+        private void FirstGradingGradebook_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            e.Control.KeyPress -= new KeyPressEventHandler(FirstGradingGradebook_KeyPress);
+            if (FirstGradingGradebook.CurrentCell.ColumnIndex == 1 || FirstGradingGradebook.CurrentCell.ColumnIndex == 2 || FirstGradingGradebook.CurrentCell.ColumnIndex == 3 || FirstGradingGradebook.CurrentCell.ColumnIndex == 4 || FirstGradingGradebook.CurrentCell.ColumnIndex == 5 || FirstGradingGradebook.CurrentCell.ColumnIndex == 6 || FirstGradingGradebook.CurrentCell.ColumnIndex == 7 || FirstGradingGradebook.CurrentCell.ColumnIndex == 8 || FirstGradingGradebook.CurrentCell.ColumnIndex == 3 || FirstGradingGradebook.CurrentCell.ColumnIndex == 9 || FirstGradingGradebook.CurrentCell.ColumnIndex == 10 ||FirstGradingGradebook.CurrentCell.ColumnIndex == 12 || FirstGradingGradebook.CurrentCell.ColumnIndex == 13 || FirstGradingGradebook.CurrentCell.ColumnIndex == 14 || FirstGradingGradebook.CurrentCell.ColumnIndex == 15 || FirstGradingGradebook.CurrentCell.ColumnIndex == 16 || FirstGradingGradebook.CurrentCell.ColumnIndex == 17 || FirstGradingGradebook.CurrentCell.ColumnIndex == 18 || FirstGradingGradebook.CurrentCell.ColumnIndex == 19 || FirstGradingGradebook.CurrentCell.ColumnIndex == 20 || FirstGradingGradebook.CurrentCell.ColumnIndex == 21 || FirstGradingGradebook.CurrentCell.ColumnIndex == 22) //Desired Column
+            {
+                TextBox tb = e.Control as TextBox;
+                if (tb != null)
+                {
+                    tb.KeyPress += new KeyPressEventHandler(FirstGradingGradebook_KeyPress);
+                }
+            }
+        }
+
+        private async void tabcontrol_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            await ClassRecords(tabcontrol.SelectedIndex);
+            //if (tabcontrol.SelectedIndex == 0)
+            //{
+            //    if (globalgradingperiod == 1)
+            //    {
+            //    }
+            //    else
+            //    {
+            //        await ClassRecords(1);
+            //    }
+
+            //}
+
+            //else if (tabcontrol.SelectedIndex == 1)
+            //{
+            //    if (globalgradingperiod == 2)
+            //    {
+            //    }
+            //    else
+            //    {
+            //        await ClassRecords(2);
+            //    }
+
+            //}
+
+            //else if (tabcontrol.SelectedIndex == 2)
+            //{
+            //    if (globalgradingperiod == 3)
+            //    {
+            //    }
+            //    else
+            //    {
+            //        await ClassRecords(3);
+            //    }
+
+            //}
+
+            //else if (tabcontrol.SelectedIndex == 3)
+            //{
+            //    if (globalgradingperiod == 3)
+            //    {
+            //        await ClassRecords(4);
+            //    }
+            //    else
+            //    {
+
+            //    }
+            //}
+            
+            
+        }
+
+        private async void CBGradeLevel_DropDown(object sender, EventArgs e)
+        {
+                               
+        }
+
+        private async Task SubjectDropDown()
+        {
+            var ID = Settings.Default.ID;
+            //ClassRecordsService classRecordsService = new ClassRecordsService();
+            //var records = await classRecordsService.GetClassRecrodsDetails(ID);
+            //var recordslist = records.ToList();
+            //var gradingperiodlist = recordslist.ToList();
+            //var Distinctgradingperiod = recordslist.Select(x => x.SubjectName).Distinct().ToList();
+            //Distinctgradingperiod.Insert(0, "All Subjects");
+
+            //ClassRecordsService classRecordsService = new ClassRecordsService();
+            //var records = await classRecordsService.GetFacultySubjects(ID, cm);
+
+            var subjects = FacultySubjects.Select(x => x.SubjectName).ToList();
+
+            CBSubject.DataSource = subjects;
+            //CBGradeLevel.DisplayMember = "GradingPeriod";
+            CBSubject.SelectedIndex = 0;
+        }
+
+        private void GradeLvelDropDown()
+        {
+            var Distinctgradingperiod = FacultySubjects.Select(x => x.GradeLevel).Distinct().ToList();
+            CBGradeLevel.DataSource = Distinctgradingperiod;
+            CBGradeLevel.SelectedIndex = 0;
+
+            //var ID = Settings.Default.ID;
+            //ClassRecordsService classRecordsService = new ClassRecordsService();
+            //var records = await classRecordsService.GetClassRecrodsDetails(ID);
+            //var recordslist = records.ToList();
+            //var gradingperiodlist = recordslist.ToList();
+            //var Distinctgradingperiod = recordslist.Select(x => x.Grade_Level.ToString()).Distinct().ToList();
+            //Distinctgradingperiod.Insert(0, "All Grade Level");
+            //CBGradeLevel.DisplayMember = "GradingPeriod";
+        }
+
+        private async void CBSY_DropDown(object sender, EventArgs e)
+        {
+            var ID = Settings.Default.ID;
+            ClassRecordsService classRecordsService = new ClassRecordsService();
+            var records = await classRecordsService.GetClassRecrodsDetails(ID);
+            var recordslist = records.ToList();
+            var gradingperiodlist = recordslist.ToList();
+            var Distinctgradingperiod = recordslist.Select(x => x.SchoolYearStart).Distinct().ToList();
+            CBSY.DataSource = Distinctgradingperiod;
+            //CBGradeLevel.DisplayMember = "GradingPeriod";
+            CBSY.SelectedIndex = -1;
+        }
+
+        //Buttons Forecolor and background Styles
+        private void btnBack_MouseEnter(object sender, EventArgs e)
+        {
+            btnBack.Image = LGAConnectSOMS.Properties.Resources.BackArrowYellow24;
+        }
+
+        private void btnBack_MouseLeave(object sender, EventArgs e)
+        {
+            btnBack.Image = LGAConnectSOMS.Properties.Resources.BackArrow24;
+        }
+
+        //TitleBarFunction
+        private void RestoreWindowPosition()
+        {
+
+            if (Settings.Default.HasSetDefault)
+            {
+                this.WindowState = Settings.Default.WindowState;
+                this.Location = Settings.Default.Location;
+                this.Size = Settings.Default.Size;
+            }
+        }
+
+        private void ClassRecordFacultyView_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.SaveWindowPosition();
+        }
+
+        private void SaveWindowPosition()
+        {
+            Settings.Default.WindowState = this.WindowState;
+
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                Settings.Default.Location = this.Location;
+                Settings.Default.Size = this.Size;
+
+            }
+            else
+            {
+                Settings.Default.Location = this.RestoreBounds.Location;
+                Settings.Default.Size = this.RestoreBounds.Size;
+            }
+
+            Settings.Default.HasSetDefault = true;
+
+            Settings.Default.Save();
+        }
+
+        private void btnMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnMaximize_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                this.WindowState = FormWindowState.Maximized;
+                btnMaximize.Image = LGAConnectSOMS.Properties.Resources.NormalBlack;
+            }
+
+            else
+            {
+                this.WindowState = FormWindowState.Normal;
+                btnMaximize.Image = LGAConnectSOMS.Properties.Resources.FullScreenBlack;
+            }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        //DragWindows
+        private Point _mouseLoc;
+
+        private void DragWindowsPanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+            _mouseLoc = e.Location;
+        }
+
+        private void DragWindowsPanel_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                int dx = e.Location.X - _mouseLoc.X;
+                int dy = e.Location.Y - _mouseLoc.Y;
+                this.Location = new Point(this.Location.X + dx, this.Location.Y + dy);
+            }
+        }
+
+        public void MaximizeIcon()
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+            {
+                btnMaximize.Image = LGAConnectSOMS.Properties.Resources.NormalBlack;
+            }
+
+            else if (this.WindowState == FormWindowState.Normal)
+            {
+                btnMaximize.Image = LGAConnectSOMS.Properties.Resources.FullScreenBlack;
+            }
+        }      
+
+        private void SecondGradingGradebook_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //allow number, backspace and dot
+            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == '.'))
+            {
+                e.Handled = true;
+
+            }
+            //allow only one dot
+            if (e.KeyChar == '.' && (sender as TextBox).Text.Contains("."))
+            {
+                e.Handled = true;
+
+            }
+        }
+
+        private void SecondGradingGradebook_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            e.Control.KeyPress -= new KeyPressEventHandler(SecondGradingGradebook_KeyPress);
+            if (SecondGradingGradebook.CurrentCell.ColumnIndex == 1 || SecondGradingGradebook.CurrentCell.ColumnIndex == 2 || SecondGradingGradebook.CurrentCell.ColumnIndex == 3 || SecondGradingGradebook.CurrentCell.ColumnIndex == 4 || SecondGradingGradebook.CurrentCell.ColumnIndex == 5 || SecondGradingGradebook.CurrentCell.ColumnIndex == 6 || SecondGradingGradebook.CurrentCell.ColumnIndex == 7 || SecondGradingGradebook.CurrentCell.ColumnIndex == 8 || SecondGradingGradebook.CurrentCell.ColumnIndex == 3 || SecondGradingGradebook.CurrentCell.ColumnIndex == 9 || SecondGradingGradebook.CurrentCell.ColumnIndex == 10 || SecondGradingGradebook.CurrentCell.ColumnIndex == 12 || SecondGradingGradebook.CurrentCell.ColumnIndex == 13 || SecondGradingGradebook.CurrentCell.ColumnIndex == 14 || SecondGradingGradebook.CurrentCell.ColumnIndex == 15 || SecondGradingGradebook.CurrentCell.ColumnIndex == 16 || SecondGradingGradebook.CurrentCell.ColumnIndex == 17 || SecondGradingGradebook.CurrentCell.ColumnIndex == 18 || SecondGradingGradebook.CurrentCell.ColumnIndex == 19 || SecondGradingGradebook.CurrentCell.ColumnIndex == 20 || SecondGradingGradebook.CurrentCell.ColumnIndex == 21 || SecondGradingGradebook.CurrentCell.ColumnIndex == 22) //Desired Column
+            {
+                TextBox tb = e.Control as TextBox;
+                if (tb != null)
+                {
+                    tb.KeyPress += new KeyPressEventHandler(SecondGradingGradebook_KeyPress);
+                }
+            }
+        }
+        
+        private void ThirdGradingGradebook_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //allow number, backspace and dot
+            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == '.'))
+            {
+                e.Handled = true;
+
+            }
+            //allow only one dot
+            if (e.KeyChar == '.' && (sender as TextBox).Text.Contains("."))
+            {
+                e.Handled = true;
+
+            }
+        }
+
+        private void ThirdGradingGradebook_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            e.Control.KeyPress -= new KeyPressEventHandler(ThirdGradingGradebook_KeyPress);
+            if (ThirdGradingGradebook.CurrentCell.ColumnIndex == 1 || ThirdGradingGradebook.CurrentCell.ColumnIndex == 2 || ThirdGradingGradebook.CurrentCell.ColumnIndex == 3 || ThirdGradingGradebook.CurrentCell.ColumnIndex == 4 || ThirdGradingGradebook.CurrentCell.ColumnIndex == 5 || ThirdGradingGradebook.CurrentCell.ColumnIndex == 6 || ThirdGradingGradebook.CurrentCell.ColumnIndex == 7 || ThirdGradingGradebook.CurrentCell.ColumnIndex == 8 || ThirdGradingGradebook.CurrentCell.ColumnIndex == 3 || ThirdGradingGradebook.CurrentCell.ColumnIndex == 9 || ThirdGradingGradebook.CurrentCell.ColumnIndex == 10 || ThirdGradingGradebook.CurrentCell.ColumnIndex == 12 || ThirdGradingGradebook.CurrentCell.ColumnIndex == 13 || ThirdGradingGradebook.CurrentCell.ColumnIndex == 14 || ThirdGradingGradebook.CurrentCell.ColumnIndex == 15 || ThirdGradingGradebook.CurrentCell.ColumnIndex == 16 || ThirdGradingGradebook.CurrentCell.ColumnIndex == 17 || ThirdGradingGradebook.CurrentCell.ColumnIndex == 18 || ThirdGradingGradebook.CurrentCell.ColumnIndex == 19 || ThirdGradingGradebook.CurrentCell.ColumnIndex == 20 || ThirdGradingGradebook.CurrentCell.ColumnIndex == 21 || ThirdGradingGradebook.CurrentCell.ColumnIndex == 22) //Desired Column
+            {
+                TextBox tb = e.Control as TextBox;
+                if (tb != null)
+                {
+                    tb.KeyPress += new KeyPressEventHandler(ThirdGradingGradebook_KeyPress);
+                }
+            }
+        }    
 
         private void FourthGradingGradebook_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -2553,59 +2643,226 @@ namespace LGAConnectSOMS.Views
 
         private async void CBSubject_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int selectedIndex = CBSubject.SelectedIndex;
-
-            if(selectedIndex > -1)
+            if(CBSubject.SelectedIndex > -1) 
             {
-                var selectedSubject = (string)CBSubject.SelectedItem;
-                
-                if (FirstGradingList.Any())
-                {
-                    var filteredlist = FirstGradingList.Where(item => item.SubjectName == selectedSubject).ToList();
+                await ClassRecords(tabcontrol.SelectedIndex);
+            }
+            //int selectedIndex = CBSubject.SelectedIndex;
 
-                    filteredlist.Insert(0, new ClassRecords
-                    {
-                        Lastname = "Score",
-                        Firstname = "Highest Possible",
-                        GradingPeriod = 1
-                    });
-                    FirstGradingGradebook.AutoGenerateColumns = false;
-                    FirstGradingGradebook.DataSource = selectedIndex != 0 ? filteredlist : FirstGradingList;
-                    FirstGradingGradebook.BeginEdit(true);
-                    FirstGradingGradebook.ClearSelection();
-                }
-            }         
+            //if(selectedIndex > -1)
+            //{
+            //    var selectedSubject = (string)CBSubject.SelectedItem;
+                
+            //    if (FirstGradingList.Any() || SecondGradingList.Any() || ThirdGradingList.Any() || FourthGradingList.Any())
+            //    {
+            //        var filteredlist = FirstGradingList.Where(item => item.SubjectName == selectedSubject).ToList();                                                       
+            //        //filteredlist.Insert(0, new ClassRecords
+            //        //{
+            //        //    Lastname = "Score",
+            //        //    Firstname = "Highest Possible",
+            //        //    GradingPeriod = 1
+            //        //});
+            //        FirstGradingGradebook.AutoGenerateColumns = false;
+            //        //FirstGradingGradebook.DataSource = selectedIndex != -1 ? filteredlist : FirstGradingList;
+            //        FirstGradingGradebook.DataSource = filteredlist;
+            //        FirstGradingGradebook.BeginEdit(true);
+            //        FirstGradingGradebook.ClearSelection();
+
+            //        SecondGradingGradebook.AutoGenerateColumns = false;
+            //        var SecondGradingfilteredlist = SecondGradingList.Where(item => item.SubjectName == selectedSubject).ToList();
+            //        SecondGradingGradebook.DataSource = selectedIndex != 0 ? SecondGradingfilteredlist : SecondGradingList;
+            //        SecondGradingGradebook.BeginEdit(true);
+            //        SecondGradingGradebook.ClearSelection();
+
+            //        ThirdGradingGradebook.AutoGenerateColumns = false;
+            //        var ThirdGradingfilteredlist = ThirdGradingList.Where(item => item.SubjectName == selectedSubject).ToList();
+            //        ThirdGradingGradebook.DataSource = selectedIndex != 0 ? ThirdGradingfilteredlist : ThirdGradingList;
+            //        ThirdGradingGradebook.BeginEdit(true);
+            //        ThirdGradingGradebook.ClearSelection();
+
+            //        FourthGradingGradebook.AutoGenerateColumns = false;
+            //        var FourthGradingfilteredlist = FourthGradingList.Where(item => item.SubjectName == selectedSubject).ToList();
+            //        FourthGradingGradebook.DataSource = selectedIndex != 0 ? FourthGradingfilteredlist : FourthGradingList;
+            //        FourthGradingGradebook.BeginEdit(true);
+            //        FourthGradingGradebook.ClearSelection();
+            //    }           
+            //}         
         }
 
-        private void CBGradeLevel_SelectedIndexChanged(object sender, EventArgs e)
+        private async void CBGradeLevel_SelectedIndexChanged(object sender, EventArgs e)
         {
             int selectedIndex = CBGradeLevel.SelectedIndex;
 
-            if (selectedIndex > -1)
+            var selectedGradeLevel = CBGradeLevel.SelectedItem;
+            var sectionlist = FacultySubjects.Where(x => x.GradeLevel.Equals(selectedGradeLevel)).Select(x => x.SectionName).Distinct();
+            CBSection.DataSource = sectionlist.ToList();
+
+            if (CBGradeLevel.SelectedIndex > -1)
             {
-                var selectedGradeLevel = (string)CBGradeLevel.SelectedItem;
+                await ClassRecords();
+            }
 
-                if (FirstGradingList.Any())
-                {
-                    var filteredlist = FirstGradingList.Where(item => item.Grade_Level.ToString() == selectedGradeLevel).ToList();
+            //var selectedGradeLevel = cmbGradeLevels.SelectedItem;
+            //var gradelevelslist = gradeLevelSections.Where(x => x.GradeLevels.Equals(selectedGradeLevel)).Select(x => x.SectionName);
 
-                    filteredlist.Insert(0, new ClassRecords
-                    {
-                        Lastname = "Score",
-                        Firstname = "Highest Possible",
-                        GradingPeriod = 1
-                    });
-                    FirstGradingGradebook.AutoGenerateColumns = false;
-                    FirstGradingGradebook.DataSource = selectedIndex != 0 ? filteredlist : FirstGradingList;
-                    FirstGradingGradebook.BeginEdit(true);
-                    FirstGradingGradebook.ClearSelection();
-                }
+            //if (selectedIndex > -1)
+            //{
+            //    var selectedGradeLevel = (string)CBGradeLevel.SelectedItem;
+
+            //    if (FirstGradingList.Any())
+            //    {
+            //        var filteredlist = FirstGradingList.Where(item => item.Grade_Level.ToString() == selectedGradeLevel).ToList();
+
+            //        //filteredlist.Insert(0, new ClassRecords
+            //        //{
+            //        //    Lastname = "Score",
+            //        //    Firstname = "Highest Possible",
+            //        //    GradingPeriod = 1
+            //        //});
+            //        FirstGradingGradebook.AutoGenerateColumns = false;
+            //        FirstGradingGradebook.DataSource = selectedIndex != 0 ? filteredlist : FirstGradingList;
+            //        FirstGradingGradebook.BeginEdit(true);
+            //        FirstGradingGradebook.ClearSelection();
+            //    }
+            //}
+        }
+
+        private async void CBSection_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var selectedSection = CBSection.SelectedItem;
+            var subjectlist = FacultySubjects.Where(x => x.SectionName.Equals((string)selectedSection)).Select(x => x.SubjectName).Distinct();
+            CBSubject.DataSource = subjectlist.ToList();
+
+            if (CBSection.SelectedIndex > -1)
+            {
+                await ClassRecords(tabcontrol.SelectedIndex);
             }
         }
 
-        private void CBSection_SelectedIndexChanged(object sender, EventArgs e)
+        IEnumerable<Subjects> Subjects = new List<Subjects>();
+        private async Task LoadSubjects()
         {
+            SubjectsService subjectsService = new SubjectsService();
+            var SubjectList = await subjectsService.GetSubjects();
+            Subjects = SubjectList.ToList();
+        }
+        private async void btnSaveClassRecords_Click(object sender, EventArgs e)
+        {
+            
+            for (int grades = 0; grades < FirstGradingGradebook.Rows.Count -1; grades++)
+            {
+                bool IsSuccess;
+                var teacherID = Settings.Default.ID;
+                var student = FirstGradingGradebook.Rows[grades].Cells[0].Value;
+                var subject = FirstGradingGradebook.Rows[grades].Cells[29].Value;
+                var gradelevel = (int)FirstGradingGradebook.Rows[grades].Cells[28].Value;
+                var studentid = recordslist.First(x => x.Fullname.Equals(student)).ID;
+                var subjectid = Subjects.First(x => x.SubjectName.Equals(subject) && x.GradeLevel == gradelevel).ID;
+                try
+                {
+                    ClassRecordRequestService classRecordRequestService = new ClassRecordRequestService();
+                    IsSuccess = await classRecordRequestService.UpdateClassRecordRequest(new ClassRecordRequest
+                    {
+                        ID = studentid,
+                        TeacherID = teacherID,
+                        WrittenWork1 = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[1].Value),
+                        WrittenWork2 = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[2].Value),
+                        WrittenWork3 = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[3].Value),
+                        WrittenWork4 = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[4].Value),
+                        WrittenWork5 = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[5].Value),
+                        WrittenWork6 = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[6].Value),
+                        WrittenWork7 = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[7].Value),
+                        WrittenWork8 = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[8].Value),
+                        WrittenWork9 = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[9].Value),
+                        WrittenWork10 = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[10].Value),
+                        WrittenWorkTotal = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[11].Value),
+                        WrittenWorkPercentage = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[12].Value),
+                        TaskPeformance1 = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[13].Value),
+                        TaskPeformance2 = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[14].Value),
+                        TaskPeformance3 = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[15].Value),
+                        TaskPeformance4 = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[16].Value),
+                        TaskPeformance5 = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[17].Value),
+                        TaskPeformance6 = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[18].Value),
+                        TaskPeformance7 = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[19].Value),
+                        TaskPeformance8 = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[20].Value),
+                        TaskPeformance9 = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[21].Value),
+                        TaskPeformance10 = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[22].Value),
+                        TaskPeformanceTotal = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[23].Value),
+                        TaskPeformancePercentage = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[24].Value),
+                        InitialGrade = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[25].Value),
+                        QuarterlyGrade = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[26].Value),
+                        SchoolYearStart = Convert.ToString(FirstGradingGradebook.Rows[grades].Cells[27].Value),
+                        Grade_Level = Convert.ToInt32(FirstGradingGradebook.Rows[grades].Cells[28].Value),
+                        SubjectName = Convert.ToString(FirstGradingGradebook.Rows[grades].Cells[29].Value),
+                        SectionName = Convert.ToString(FirstGradingGradebook.Rows[grades].Cells[30].Value),
+                        SaveasDraft = Convert.ToInt32(FirstGradingGradebook.Rows[grades].Cells[31].Value),
+                        SaveDraft = Convert.ToInt32(FirstGradingGradebook.Rows[grades].Cells[32].Value),
+                        GradingPeriod = Convert.ToInt32(FirstGradingGradebook.Rows[grades].Cells[33].Value)
+                    });                   
+                }
+                catch (Exception x)
+                {
+                    MessageBox.Show(x.Message);
+                }
+            }
 
+         MessageBox.Show("Successfully Save");
+
+            for (int grades = 0; grades < SecondGradingGradebook.Rows.Count - 1; grades++)
+            {
+                bool IsSuccess;
+                var teacherID = Settings.Default.ID;
+                var student = SecondGradingGradebook.Rows[grades].Cells[0].Value;
+                var studentid = recordslist.First(x => x.Fullname.Equals(student)).ID;
+                try
+                {
+                    ClassRecordRequestService classRecordRequestService = new ClassRecordRequestService();
+                    IsSuccess = await classRecordRequestService.UpdateClassRecordRequest(new ClassRecordRequest
+                    {
+                        ID = studentid,
+                        TeacherID = teacherID,
+                        WrittenWork1 = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[1].Value),
+                        WrittenWork2 = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[2].Value),
+                        WrittenWork3 = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[3].Value),
+                        WrittenWork4 = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[4].Value),
+                        WrittenWork5 = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[5].Value),
+                        WrittenWork6 = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[6].Value),
+                        WrittenWork7 = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[7].Value),
+                        WrittenWork8 = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[8].Value),
+                        WrittenWork9 = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[9].Value),
+                        WrittenWork10 = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[10].Value),
+                        WrittenWorkTotal = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[11].Value),
+                        WrittenWorkPercentage = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[12].Value),
+                        TaskPeformance1 = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[13].Value),
+                        TaskPeformance2 = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[14].Value),
+                        TaskPeformance3 = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[15].Value),
+                        TaskPeformance4 = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[16].Value),
+                        TaskPeformance5 = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[17].Value),
+                        TaskPeformance6 = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[18].Value),
+                        TaskPeformance7 = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[19].Value),
+                        TaskPeformance8 = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[20].Value),
+                        TaskPeformance9 = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[21].Value),
+                        TaskPeformance10 = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[22].Value),
+                        TaskPeformanceTotal = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[23].Value),
+                        TaskPeformancePercentage = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[24].Value),
+                        InitialGrade = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[25].Value),
+                        QuarterlyGrade = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[26].Value),
+                        SchoolYearStart = Convert.ToString(SecondGradingGradebook.Rows[grades].Cells[27].Value),
+                        Grade_Level = Convert.ToInt32(SecondGradingGradebook.Rows[grades].Cells[28].Value),
+                        SubjectName = Convert.ToString(SecondGradingGradebook.Rows[grades].Cells[29].Value),
+                        SectionName = Convert.ToString(SecondGradingGradebook.Rows[grades].Cells[30].Value),
+                        SaveasDraft = Convert.ToInt32(SecondGradingGradebook.Rows[grades].Cells[31].Value),
+                        SaveDraft = Convert.ToInt32(SecondGradingGradebook.Rows[grades].Cells[32].Value),
+                        GradingPeriod = Convert.ToInt32(SecondGradingGradebook.Rows[grades].Cells[33].Value)
+                    });
+                }
+                catch (Exception x)
+                {
+                    MessageBox.Show(x.Message);
+                }
+            }
+
+            MessageBox.Show("Successfully Save");
         }
     }
 }

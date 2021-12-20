@@ -92,6 +92,7 @@
     <Compile Include="Gateway\AboutGateway.cs" />
     <Compile Include="Gateway\ClassRecordsGateway.cs" />
     <Compile Include="Gateway\ClassScheduleGateway.cs" />
+    <Compile Include="Gateway\FacultySubjectsGateway.cs" />
     <Compile Include="Gateway\GradeLevelGateway.cs" />
     <Compile Include="Gateway\GradeLevelRequestGateway.cs" />
     <Compile Include="Gateway\GradeLevelSectionGateway.cs" />
@@ -102,12 +103,15 @@
     <Compile Include="Gateway\StudentAccountGateway.cs" />
     <Compile Include="Gateway\StudentBalanceGateway.cs" />
     <Compile Include="Gateway\StudentRequestGateway.cs" />
+    <Compile Include="Gateway\SubjectsGateway.cs" />
     <Compile Include="Gateway\TransactionHistoryGateway.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="Helpers\WebMethods.cs" />
     <Compile Include="Models\About.cs" />
+    <Compile Include="Models\ClassRecordRequest.cs" />
     <Compile Include="Models\ClassRecords.cs" />
     <Compile Include="Models\ClassSchedule.cs" />
+    <Compile Include="Models\FacultySubjects.cs" />
     <Compile Include="Models\GradeLevel.cs" />
     <Compile Include="Models\GradeLevelModel.cs" />
     <Compile Include="Models\GradeLevelRequest.cs" />
@@ -123,11 +127,14 @@
     <Compile Include="Models\StudentDetailsModel.cs" />
     <Compile Include="Models\StudentRequest.cs" />
     <Compile Include="Models\Students.cs" />
+    <Compile Include="Models\Subjects.cs" />
     <Compile Include="Models\TransactionHistory.cs" />
     <Compile Include="Services\AboutServices.cs" />
+    <Compile Include="Services\ClassRecordRequestService.cs" />
     <Compile Include="Services\ClassRecordsService.cs" />
     <Compile Include="Services\ClassScheduleService.cs" />
     <Compile Include="Services\DataAccess.cs" />
+    <Compile Include="Services\FacultySubjectsService.cs" />
     <Compile Include="Services\GradeLevelRequestService.cs" />
     <Compile Include="Services\GradeLevelSectionService.cs" />
     <Compile Include="Services\GradeLevelService.cs" />
@@ -139,12 +146,19 @@
     <Compile Include="Services\StudentBalanceService.cs" />
     <Compile Include="Services\StudentRequestService.cs" />
     <Compile Include="Services\StudentService.cs" />
+    <Compile Include="Services\SubjectsService.cs" />
     <Compile Include="Services\TransactionHistoryService.cs" />
     <Compile Include="Views\AboutPageView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\AboutPageView.Designer.cs">
       <DependentUpon>AboutPageView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddGradeLevelSectionView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AddGradeLevelSectionView.Designer.cs">
+      <DependentUpon>AddGradeLevelSectionView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\AddGradeLevelView.cs">
       <SubType>Form</SubType>
@@ -252,6 +266,9 @@
     </Compile>
     <EmbeddedResource Include="Views\AboutPageView.resx">
       <DependentUpon>AboutPageView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AddGradeLevelSectionView.resx">
+      <DependentUpon>AddGradeLevelSectionView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\AddGradeLevelView.resx">
       <DependentUpon>AddGradeLevelView.cs</DependentUpon>

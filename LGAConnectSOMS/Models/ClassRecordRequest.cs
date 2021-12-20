@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace LGAConnectSOMS.Models
 {
-    public class ClassRecords
+    public class ClassRecordRequest
     {
         public int ID { get; set; }
+
+        public int TeacherID { get; set; }
 
         public string Lastname { get; set; }
 
@@ -70,7 +72,7 @@ namespace LGAConnectSOMS.Models
 
         public string SchoolYearStart { get; set; }
 
-        public int Grade_Level { get; set; }     
+        public int Grade_Level { get; set; }
 
         public string SectionName { get; set; }
 
@@ -79,17 +81,5 @@ namespace LGAConnectSOMS.Models
         public int SaveDraft { get; set; }
 
         public int GradingPeriod { get; set; }
-
-
-        private string fullname;
-
-        public string Fullname
-        {
-            get { return $"{Firstname} {Lastname}"; }
-            set { fullname = value; }
-        }
-
-        
-
     }
 }

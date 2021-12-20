@@ -334,6 +334,8 @@ namespace LGAConnectSOMS.Views
             this.cmbGradeLevel.Name = "cmbGradeLevel";
             this.cmbGradeLevel.Size = new System.Drawing.Size(233, 27);
             this.cmbGradeLevel.TabIndex = 41;
+            this.cmbGradeLevel.DropDown += new System.EventHandler(this.cmbGradeLevel_DropDown);
+            this.cmbGradeLevel.SelectedIndexChanged += new System.EventHandler(this.cmbGradeLevel_SelectedIndexChanged);
             // 
             // cmbSection
             // 
@@ -343,6 +345,7 @@ namespace LGAConnectSOMS.Views
             this.cmbSection.Name = "cmbSection";
             this.cmbSection.Size = new System.Drawing.Size(233, 27);
             this.cmbSection.TabIndex = 42;
+            this.cmbSection.SelectedIndexChanged += new System.EventHandler(this.cmbSection_SelectedIndexChanged);
             // 
             // cmbSY
             // 

@@ -23,8 +23,28 @@ namespace LGAConnectSOMS.Views
 
         //Load
         private void EditStudentDetailsView_Load(object sender, EventArgs e)
-        {
+        {          
+            LoadData();            
+        }
 
+        public async void LoadData()
+        {
+            await LoadGradeLevels();
+        }
+
+
+        IEnumerable<GradeLevelSection> gradeLevelSections = new List<GradeLevelSection>();
+        private async Task LoadGradeLevels()
+        {
+            var currentGradeLevel = cmbGradeLevel.Text;
+            var currentSection = cmbSection.Text;          
+            
+            GradeLevelSectionService gradeLevelSectionService = new GradeLevelSectionService();
+            gradeLevelSections = await Task.Run(() => gradeLevelSectionService.GetGradeLevel());
+            var gradelevelslist = gradeLevelSections.Select(x => x.GradeLevels).Distinct();
+            cmbGradeLevel.DataSource = gradelevelslist.ToList();
+            cmbGradeLevel.Text = currentGradeLevel;
+            cmbSection.Text = currentSection;
         }
 
 
@@ -116,6 +136,10 @@ namespace LGAConnectSOMS.Views
         {
             var id = int.Parse(txtID.Text);
             var image = StudentProfilePicturebox.Image;
+            var selectedGradeLevel = cmbGradeLevel.SelectedItem;
+            var selectedSection = cmbSection.SelectedItem;
+
+            var gradeLevelId = gradeLevelSections.First(x => x.GradeLevels.Equals(selectedGradeLevel) && x.SectionName.Equals(selectedSection)).Id;
             try
             {
                 StudentRequestService studentRequestService = new StudentRequestService();
@@ -130,9 +154,9 @@ namespace LGAConnectSOMS.Views
                     StudentProfile = ImageToByteArray(image),
                     MobileNumber = txtMobileNumber.Text,
                     Gender = cbGender.Text,
-                    //GradeLevelId = int.Parse(cmbGradeLevel.Text),
-                    //SchoolYearStart = int.Parse(cmbSY.Text),
-                    //SchoolYearEnd = int.Parse(txtSchoolYearEnd.Text)
+                    GradeLevelId = gradeLevelId,
+                    SchoolYearStart = int.Parse(cmbSY.Text),
+                    SchoolYearEnd = int.Parse(txtSchoolYearEnd.Text)
                 });;
 
                 if (IsSucess)
@@ -150,6 +174,23 @@ namespace LGAConnectSOMS.Views
             {
                 MessageBox.Show(x.Message);
             }
-        }       
+        }
+
+        private void cmbGradeLevel_SelectedIndexChanged(object sender, EventArgs e)
+        {               
+           var selectedGradeLevel = cmbGradeLevel.SelectedItem;
+           var gradelevelslist = gradeLevelSections.Where(x => x.GradeLevels.Equals(selectedGradeLevel)).Select(x => x.SectionName);
+           cmbSection.DataSource = gradelevelslist.ToList();         
+        }
+
+        private void cmbSection_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private async void cmbGradeLevel_DropDown(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

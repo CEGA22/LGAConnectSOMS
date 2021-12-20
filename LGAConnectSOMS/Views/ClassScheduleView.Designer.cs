@@ -29,6 +29,11 @@ namespace LGAConnectSOMS.Views
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DragWindowsPanel = new System.Windows.Forms.Panel();
             this.btnMinimize = new System.Windows.Forms.Button();
             this.btnMaximize = new System.Windows.Forms.Button();
@@ -36,9 +41,18 @@ namespace LGAConnectSOMS.Views
             this.btnBack = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblClassScheduleTitle = new System.Windows.Forms.Label();
-            this.ClassSchedulePanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.cmbSections = new System.Windows.Forms.ComboBox();
+            this.cmbGradeLevels = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnAddClassSchedule = new System.Windows.Forms.Button();
+            this.labelGradeLevel = new System.Windows.Forms.Label();
+            this.lblLastname = new System.Windows.Forms.Label();
+            this.lblClassScheduleDetailsTitle = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.ClassScheduleDataGridView = new System.Windows.Forms.DataGridView();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.ClassDaysPanel = new System.Windows.Forms.Panel();
             this.lblEntireWeek = new System.Windows.Forms.Label();
             this.lblSunday = new System.Windows.Forms.Label();
@@ -49,9 +63,25 @@ namespace LGAConnectSOMS.Views
             this.lblTuesday = new System.Windows.Forms.Label();
             this.lblMonday = new System.Windows.Forms.Label();
             this.Title = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ClassSchedulePanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmbStartTime = new System.Windows.Forms.ComboBox();
+            this.cmbEndTime = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cmbDays = new System.Windows.Forms.ComboBox();
+            this.cmbLastname = new System.Windows.Forms.ComboBox();
+            this.cmbSubjects = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.DragWindowsPanel.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ClassScheduleDataGridView)).BeginInit();
+            this.tabPage1.SuspendLayout();
             this.ClassDaysPanel.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // DragWindowsPanel
@@ -150,43 +180,201 @@ namespace LGAConnectSOMS.Views
             this.lblClassScheduleTitle.TabIndex = 10;
             this.lblClassScheduleTitle.Text = "Class Schedule";
             // 
-            // ClassSchedulePanel
+            // tabControl1
             // 
-            this.ClassSchedulePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.ClassSchedulePanel.AutoScroll = true;
-            this.ClassSchedulePanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClassSchedulePanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.ClassSchedulePanel.Location = new System.Drawing.Point(295, 210);
-            this.ClassSchedulePanel.Name = "ClassSchedulePanel";
-            this.ClassSchedulePanel.Size = new System.Drawing.Size(736, 478);
-            this.ClassSchedulePanel.TabIndex = 28;
-            this.ClassSchedulePanel.WrapContents = false;
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabControl1.Location = new System.Drawing.Point(12, 145);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1276, 543);
+            this.tabControl1.TabIndex = 34;
             // 
-            // panel2
+            // tabPage2
             // 
-            this.panel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panel2.Location = new System.Drawing.Point(295, 144);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(700, 38);
-            this.panel2.TabIndex = 29;
-            this.panel2.Click += new System.EventHandler(this.panel2_Click);
+            this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage2.Controls.Add(this.label5);
+            this.tabPage2.Controls.Add(this.cmbSubjects);
+            this.tabPage2.Controls.Add(this.cmbLastname);
+            this.tabPage2.Controls.Add(this.cmbDays);
+            this.tabPage2.Controls.Add(this.label3);
+            this.tabPage2.Controls.Add(this.cmbEndTime);
+            this.tabPage2.Controls.Add(this.cmbStartTime);
+            this.tabPage2.Controls.Add(this.label2);
+            this.tabPage2.Controls.Add(this.cmbSections);
+            this.tabPage2.Controls.Add(this.cmbGradeLevels);
+            this.tabPage2.Controls.Add(this.label4);
+            this.tabPage2.Controls.Add(this.btnAddClassSchedule);
+            this.tabPage2.Controls.Add(this.labelGradeLevel);
+            this.tabPage2.Controls.Add(this.lblLastname);
+            this.tabPage2.Controls.Add(this.lblClassScheduleDetailsTitle);
+            this.tabPage2.Location = new System.Drawing.Point(4, 28);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1268, 511);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Add New Schedule";
             // 
-            // label1
+            // cmbSections
             // 
-            this.label1.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Image = global::LGAConnectSOMS.Properties.Resources.dropdown16;
-            this.label1.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.label1.Location = new System.Drawing.Point(325, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(114, 19);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Entire Week";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.cmbSections.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cmbSections.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSections.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbSections.FormattingEnabled = true;
+            this.cmbSections.Location = new System.Drawing.Point(508, 177);
+            this.cmbSections.Name = "cmbSections";
+            this.cmbSections.Size = new System.Drawing.Size(233, 27);
+            this.cmbSections.TabIndex = 47;
+            this.cmbSections.TabStop = false;
+            // 
+            // cmbGradeLevels
+            // 
+            this.cmbGradeLevels.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cmbGradeLevels.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbGradeLevels.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbGradeLevels.FormattingEnabled = true;
+            this.cmbGradeLevels.Location = new System.Drawing.Point(508, 123);
+            this.cmbGradeLevels.Name = "cmbGradeLevels";
+            this.cmbGradeLevels.Size = new System.Drawing.Size(233, 27);
+            this.cmbGradeLevels.TabIndex = 46;
+            this.cmbGradeLevels.TabStop = false;
+            this.cmbGradeLevels.SelectedIndexChanged += new System.EventHandler(this.cmbGradeLevels_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(322, 180);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(61, 19);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Section: ";
+            // 
+            // btnAddClassSchedule
+            // 
+            this.btnAddClassSchedule.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnAddClassSchedule.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(143)))));
+            this.btnAddClassSchedule.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddClassSchedule.FlatAppearance.BorderSize = 0;
+            this.btnAddClassSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddClassSchedule.ForeColor = System.Drawing.Color.Black;
+            this.btnAddClassSchedule.Location = new System.Drawing.Point(508, 418);
+            this.btnAddClassSchedule.Name = "btnAddClassSchedule";
+            this.btnAddClassSchedule.Size = new System.Drawing.Size(269, 41);
+            this.btnAddClassSchedule.TabIndex = 11;
+            this.btnAddClassSchedule.Text = "Save";
+            this.btnAddClassSchedule.UseVisualStyleBackColor = false;
+            this.btnAddClassSchedule.Click += new System.EventHandler(this.btnAddClassSchedule_Click);
+            // 
+            // labelGradeLevel
+            // 
+            this.labelGradeLevel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.labelGradeLevel.AutoSize = true;
+            this.labelGradeLevel.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGradeLevel.Location = new System.Drawing.Point(322, 131);
+            this.labelGradeLevel.Name = "labelGradeLevel";
+            this.labelGradeLevel.Size = new System.Drawing.Size(96, 19);
+            this.labelGradeLevel.TabIndex = 5;
+            this.labelGradeLevel.Text = "Grade Level: ";
+            // 
+            // lblLastname
+            // 
+            this.lblLastname.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblLastname.AutoSize = true;
+            this.lblLastname.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLastname.Location = new System.Drawing.Point(322, 69);
+            this.lblLastname.Name = "lblLastname";
+            this.lblLastname.Size = new System.Drawing.Size(63, 19);
+            this.lblLastname.TabIndex = 1;
+            this.lblLastname.Text = "Teacher:";
+            // 
+            // lblClassScheduleDetailsTitle
+            // 
+            this.lblClassScheduleDetailsTitle.AutoSize = true;
+            this.lblClassScheduleDetailsTitle.Font = new System.Drawing.Font("Tw Cen MT", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClassScheduleDetailsTitle.Location = new System.Drawing.Point(21, 14);
+            this.lblClassScheduleDetailsTitle.Name = "lblClassScheduleDetailsTitle";
+            this.lblClassScheduleDetailsTitle.Size = new System.Drawing.Size(253, 31);
+            this.lblClassScheduleDetailsTitle.TabIndex = 0;
+            this.lblClassScheduleDetailsTitle.Text = "Class Schedule Details";
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage3.Controls.Add(this.ClassScheduleDataGridView);
+            this.tabPage3.Location = new System.Drawing.Point(4, 28);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(1268, 511);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "List of Class Schedule";
+            // 
+            // ClassScheduleDataGridView
+            // 
+            this.ClassScheduleDataGridView.AllowUserToResizeColumns = false;
+            this.ClassScheduleDataGridView.AllowUserToResizeRows = false;
+            dataGridViewCellStyle26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
+            this.ClassScheduleDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle26;
+            this.ClassScheduleDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ClassScheduleDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.ClassScheduleDataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.ClassScheduleDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(143)))));
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ClassScheduleDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle27;
+            this.ClassScheduleDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ClassScheduleDataGridView.Cursor = System.Windows.Forms.Cursors.Hand;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(242)))), ((int)(((byte)(245)))));
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ClassScheduleDataGridView.DefaultCellStyle = dataGridViewCellStyle28;
+            this.ClassScheduleDataGridView.EnableHeadersVisualStyles = false;
+            this.ClassScheduleDataGridView.Location = new System.Drawing.Point(-1, 69);
+            this.ClassScheduleDataGridView.Name = "ClassScheduleDataGridView";
+            this.ClassScheduleDataGridView.ReadOnly = true;
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle29.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ClassScheduleDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle29;
+            this.ClassScheduleDataGridView.RowHeadersVisible = false;
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClassScheduleDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle30;
+            this.ClassScheduleDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.ClassScheduleDataGridView.Size = new System.Drawing.Size(1271, 403);
+            this.ClassScheduleDataGridView.TabIndex = 27;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage1.Controls.Add(this.ClassDaysPanel);
+            this.tabPage1.Controls.Add(this.panel2);
+            this.tabPage1.Controls.Add(this.ClassSchedulePanel);
+            this.tabPage1.Location = new System.Drawing.Point(4, 28);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1268, 511);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Class Schedule";
             // 
             // ClassDaysPanel
             // 
@@ -201,10 +389,10 @@ namespace LGAConnectSOMS.Views
             this.ClassDaysPanel.Controls.Add(this.lblTuesday);
             this.ClassDaysPanel.Controls.Add(this.lblMonday);
             this.ClassDaysPanel.Controls.Add(this.Title);
-            this.ClassDaysPanel.Location = new System.Drawing.Point(295, 193);
+            this.ClassDaysPanel.Location = new System.Drawing.Point(293, 59);
             this.ClassDaysPanel.Name = "ClassDaysPanel";
             this.ClassDaysPanel.Size = new System.Drawing.Size(710, 407);
-            this.ClassDaysPanel.TabIndex = 0;
+            this.ClassDaysPanel.TabIndex = 30;
             // 
             // lblEntireWeek
             // 
@@ -216,7 +404,6 @@ namespace LGAConnectSOMS.Views
             this.lblEntireWeek.Size = new System.Drawing.Size(103, 22);
             this.lblEntireWeek.TabIndex = 8;
             this.lblEntireWeek.Text = "Entire Week";
-            this.lblEntireWeek.Click += new System.EventHandler(this.lblEntireWeek_Click);
             // 
             // lblSunday
             // 
@@ -228,7 +415,6 @@ namespace LGAConnectSOMS.Views
             this.lblSunday.Size = new System.Drawing.Size(66, 22);
             this.lblSunday.TabIndex = 7;
             this.lblSunday.Text = "Sunday";
-            this.lblSunday.Click += new System.EventHandler(this.lblSunday_Click);
             // 
             // lblSaturday
             // 
@@ -240,7 +426,6 @@ namespace LGAConnectSOMS.Views
             this.lblSaturday.Size = new System.Drawing.Size(79, 22);
             this.lblSaturday.TabIndex = 6;
             this.lblSaturday.Text = "Saturday";
-            this.lblSaturday.Click += new System.EventHandler(this.lblSaturday_Click);
             // 
             // lblFriday
             // 
@@ -252,7 +437,6 @@ namespace LGAConnectSOMS.Views
             this.lblFriday.Size = new System.Drawing.Size(58, 22);
             this.lblFriday.TabIndex = 5;
             this.lblFriday.Text = "Friday";
-            this.lblFriday.Click += new System.EventHandler(this.lblFriday_Click);
             // 
             // lblThursday
             // 
@@ -264,7 +448,6 @@ namespace LGAConnectSOMS.Views
             this.lblThursday.Size = new System.Drawing.Size(76, 22);
             this.lblThursday.TabIndex = 4;
             this.lblThursday.Text = "Thursday";
-            this.lblThursday.Click += new System.EventHandler(this.lblThursday_Click);
             // 
             // lblWednesday
             // 
@@ -276,7 +459,6 @@ namespace LGAConnectSOMS.Views
             this.lblWednesday.Size = new System.Drawing.Size(103, 22);
             this.lblWednesday.TabIndex = 3;
             this.lblWednesday.Text = "Wednesday";
-            this.lblWednesday.Click += new System.EventHandler(this.lblWednesday_Click);
             // 
             // lblTuesday
             // 
@@ -288,7 +470,6 @@ namespace LGAConnectSOMS.Views
             this.lblTuesday.Size = new System.Drawing.Size(72, 22);
             this.lblTuesday.TabIndex = 2;
             this.lblTuesday.Text = "Tuesday";
-            this.lblTuesday.Click += new System.EventHandler(this.lblTuesday_Click);
             // 
             // lblMonday
             // 
@@ -300,7 +481,6 @@ namespace LGAConnectSOMS.Views
             this.lblMonday.Size = new System.Drawing.Size(73, 22);
             this.lblMonday.TabIndex = 1;
             this.lblMonday.Text = "Monday";
-            this.lblMonday.Click += new System.EventHandler(this.lblMonday_Click);
             // 
             // Title
             // 
@@ -313,15 +493,220 @@ namespace LGAConnectSOMS.Views
             this.Title.TabIndex = 0;
             this.Title.Text = "Class Days";
             // 
+            // panel2
+            // 
+            this.panel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panel2.Location = new System.Drawing.Point(293, 10);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(700, 38);
+            this.panel2.TabIndex = 32;
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Image = global::LGAConnectSOMS.Properties.Resources.dropdown16;
+            this.label1.ImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.label1.Location = new System.Drawing.Point(325, 10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(114, 19);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Entire Week";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // ClassSchedulePanel
+            // 
+            this.ClassSchedulePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.ClassSchedulePanel.AutoScroll = true;
+            this.ClassSchedulePanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ClassSchedulePanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.ClassSchedulePanel.Location = new System.Drawing.Point(293, 76);
+            this.ClassSchedulePanel.Name = "ClassSchedulePanel";
+            this.ClassSchedulePanel.Size = new System.Drawing.Size(736, 433);
+            this.ClassSchedulePanel.TabIndex = 31;
+            this.ClassSchedulePanel.WrapContents = false;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(322, 295);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(46, 19);
+            this.label2.TabIndex = 51;
+            this.label2.Text = "Time: ";
+            // 
+            // cmbStartTime
+            // 
+            this.cmbStartTime.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cmbStartTime.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbStartTime.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbStartTime.FormattingEnabled = true;
+            this.cmbStartTime.Items.AddRange(new object[] {
+            "6:00 am",
+            "6:30 am",
+            "7:00 am",
+            "7:30 am",
+            "8:00 am",
+            "8:30 am",
+            "9:00 am",
+            "9:30 am",
+            "10:00 am",
+            "10:30 am",
+            "11:00 am",
+            "11:30 am",
+            "12:00 pm",
+            "12:30pm",
+            "1:00 pm",
+            "1:30 pm",
+            "2:00 pm",
+            "2:30 pm",
+            "3:00 pm",
+            "3:00 pm",
+            "4:00 pm",
+            "4:30 pm",
+            "5:00 pm",
+            "5:30 pm",
+            "6:00 pm",
+            "6:30 pm",
+            "7:00 pm",
+            "7:30 pm",
+            "8:00 pm",
+            "8:30 pm",
+            "9:00 pm",
+            "9:30 pm",
+            "10:00 pm",
+            "10:30 pm",
+            "11:00 pm",
+            "11:30 pm"});
+            this.cmbStartTime.Location = new System.Drawing.Point(508, 295);
+            this.cmbStartTime.Name = "cmbStartTime";
+            this.cmbStartTime.Size = new System.Drawing.Size(113, 27);
+            this.cmbStartTime.TabIndex = 52;
+            this.cmbStartTime.TabStop = false;
+            // 
+            // cmbEndTime
+            // 
+            this.cmbEndTime.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cmbEndTime.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEndTime.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbEndTime.FormattingEnabled = true;
+            this.cmbEndTime.Items.AddRange(new object[] {
+            "6:00 am",
+            "6:30 am",
+            "7:00 am",
+            "7:30 am",
+            "8:00 am",
+            "8:30 am",
+            "9:00 am",
+            "9:30 am",
+            "10:00 am",
+            "10:30 am",
+            "11:00 am",
+            "11:30 am",
+            "12:00 pm",
+            "12:30pm",
+            "1:00 pm",
+            "1:30 pm",
+            "2:00 pm",
+            "2:30 pm",
+            "3:00 pm",
+            "3:00 pm",
+            "4:00 pm",
+            "4:30 pm",
+            "5:00 pm",
+            "5:30 pm",
+            "6:00 pm",
+            "6:30 pm",
+            "7:00 pm",
+            "7:30 pm",
+            "8:00 pm",
+            "8:30 pm",
+            "9:00 pm",
+            "9:30 pm",
+            "10:00 pm",
+            "10:30 pm",
+            "11:00 pm",
+            "11:30 pm"});
+            this.cmbEndTime.Location = new System.Drawing.Point(664, 295);
+            this.cmbEndTime.Name = "cmbEndTime";
+            this.cmbEndTime.Size = new System.Drawing.Size(113, 27);
+            this.cmbEndTime.TabIndex = 53;
+            this.cmbEndTime.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(322, 357);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(45, 19);
+            this.label3.TabIndex = 54;
+            this.label3.Text = "Days:";
+            // 
+            // cmbDays
+            // 
+            this.cmbDays.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cmbDays.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDays.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbDays.FormattingEnabled = true;
+            this.cmbDays.Items.AddRange(new object[] {
+            "Every Weekday (Mon - Fri)",
+            "Custom"});
+            this.cmbDays.Location = new System.Drawing.Point(508, 354);
+            this.cmbDays.Name = "cmbDays";
+            this.cmbDays.Size = new System.Drawing.Size(113, 27);
+            this.cmbDays.TabIndex = 55;
+            this.cmbDays.TabStop = false;
+            this.cmbDays.SelectedIndexChanged += new System.EventHandler(this.cmbDays_SelectedIndexChanged);
+            // 
+            // cmbLastname
+            // 
+            this.cmbLastname.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cmbLastname.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbLastname.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbLastname.FormattingEnabled = true;
+            this.cmbLastname.Location = new System.Drawing.Point(508, 69);
+            this.cmbLastname.Name = "cmbLastname";
+            this.cmbLastname.Size = new System.Drawing.Size(233, 27);
+            this.cmbLastname.TabIndex = 56;
+            this.cmbLastname.TabStop = false;
+            // 
+            // cmbSubjects
+            // 
+            this.cmbSubjects.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cmbSubjects.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSubjects.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbSubjects.FormattingEnabled = true;
+            this.cmbSubjects.Location = new System.Drawing.Point(508, 234);
+            this.cmbSubjects.Name = "cmbSubjects";
+            this.cmbSubjects.Size = new System.Drawing.Size(233, 27);
+            this.cmbSubjects.TabIndex = 57;
+            this.cmbSubjects.TabStop = false;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(322, 242);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(62, 19);
+            this.label5.TabIndex = 58;
+            this.label5.Text = "Subject: ";
+            // 
             // ClassScheduleView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
             this.ClientSize = new System.Drawing.Size(1300, 700);
-            this.Controls.Add(this.ClassDaysPanel);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.ClassSchedulePanel);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.DragWindowsPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ClassScheduleView";
@@ -331,9 +716,15 @@ namespace LGAConnectSOMS.Views
             this.Click += new System.EventHandler(this.ClassScheduleView_Click);
             this.DragWindowsPanel.ResumeLayout(false);
             this.DragWindowsPanel.PerformLayout();
-            this.panel2.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ClassScheduleDataGridView)).EndInit();
+            this.tabPage1.ResumeLayout(false);
             this.ClassDaysPanel.ResumeLayout(false);
             this.ClassDaysPanel.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -347,9 +738,8 @@ namespace LGAConnectSOMS.Views
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblClassScheduleTitle;
-        private System.Windows.Forms.FlowLayoutPanel ClassSchedulePanel;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Panel ClassDaysPanel;
         private System.Windows.Forms.Label lblEntireWeek;
         private System.Windows.Forms.Label lblSunday;
@@ -360,5 +750,26 @@ namespace LGAConnectSOMS.Views
         private System.Windows.Forms.Label lblTuesday;
         private System.Windows.Forms.Label lblMonday;
         private System.Windows.Forms.Label Title;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.FlowLayoutPanel ClassSchedulePanel;
+        private System.Windows.Forms.TabPage tabPage2;
+        public System.Windows.Forms.ComboBox cmbSections;
+        public System.Windows.Forms.ComboBox cmbGradeLevels;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnAddClassSchedule;
+        private System.Windows.Forms.Label labelGradeLevel;
+        private System.Windows.Forms.Label lblLastname;
+        private System.Windows.Forms.Label lblClassScheduleDetailsTitle;
+        private System.Windows.Forms.TabPage tabPage3;
+        public System.Windows.Forms.DataGridView ClassScheduleDataGridView;
+        public System.Windows.Forms.ComboBox cmbDays;
+        private System.Windows.Forms.Label label3;
+        public System.Windows.Forms.ComboBox cmbEndTime;
+        public System.Windows.Forms.ComboBox cmbStartTime;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label5;
+        public System.Windows.Forms.ComboBox cmbSubjects;
+        public System.Windows.Forms.ComboBox cmbLastname;
     }
 }

@@ -251,6 +251,7 @@ namespace LGAConnectSOMS.Views
             // cmbPaymentScheme
             // 
             this.cmbPaymentScheme.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cmbPaymentScheme.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPaymentScheme.Font = new System.Drawing.Font("Tw Cen MT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPaymentScheme.FormattingEnabled = true;
             this.cmbPaymentScheme.Location = new System.Drawing.Point(600, 134);

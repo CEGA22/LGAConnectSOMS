@@ -27,5 +27,7 @@ namespace LGAConnectSOMS.Models
         public string Gender { get; set; }
 
         public int IsAdmin { get; set; }
+
+        public int IsFaculty { get; set; }
     }
 }

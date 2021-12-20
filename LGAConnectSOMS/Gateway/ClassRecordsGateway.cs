@@ -28,5 +28,11 @@ namespace LGAConnectSOMS.Gateway
                 return Enumerable.Empty<ClassRecords>();
             }
         }
+
+        public async Task<string> UpdateClassRecordRequest(ClassRecordRequest request)
+        {
+            string url = $"{BaseUrl}/update_grades";
+            return await WebMethods.MakePostRequest(url, request);
+        }
     }
 }

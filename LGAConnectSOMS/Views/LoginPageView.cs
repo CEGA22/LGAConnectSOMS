@@ -43,7 +43,7 @@ namespace LGAConnectSOMS.Views
             if (result.IsSuccess)
             {
                 panel1.Show();
-                await Task.Delay(2000);
+                await Task.Delay(1000);
                 if (result.IsAdmin == 1)
                 {
 

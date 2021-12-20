@@ -33,14 +33,15 @@ namespace LGAConnectSOMS.Views
             await DisplayStudentBalance();
             await DisplayTransactionHistory();
             await DisplayPaymentScheme();
-            await StudentAccount();           
+            await StudentAccount();
+            cmbPaymentScheme.SelectedIndex = -1;
         }
         
 
         public async Task DisplayStudentBalance()
         {
             StudentBalanceService studentBalanceService = new StudentBalanceService();
-            var studentbalancelist = await studentBalanceService.GetStudentBalance();
+            var studentbalancelist = await Task.Run(() => studentBalanceService.GetStudentBalance());
             StudentsBalanceDataGridView.DataSource = studentbalancelist;
             StudentsBalanceDataGridView.CurrentCell = null;
         }
@@ -49,7 +50,7 @@ namespace LGAConnectSOMS.Views
         public async Task DisplayTransactionHistory()
         {
             TransactionHistoryService transactionHistoryService = new TransactionHistoryService();
-            var transactionhistorylist = await transactionHistoryService.GetTransactionHistory();
+            var transactionhistorylist = await Task.Run(() => transactionHistoryService.GetTransactionHistory());
             TransactionHistoryDataGridView.DataSource = transactionhistorylist;
             TransactionHistoryDataGridView.Columns[5].Visible = false;
             TransactionHistoryDataGridView.Columns[9].Visible = false;
@@ -70,7 +71,7 @@ namespace LGAConnectSOMS.Views
         public async Task StudentAccount()
         {
             StudentService studentService = new StudentService(); 
-            studentaccount = await studentService.GetStudentAccount();
+            studentaccount = await Task.Run(() => studentService.GetStudentAccount());
             var studentnumberlist = studentaccount.Select(x => x.StudentNumber);
         }
 

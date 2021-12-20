@@ -23,11 +23,25 @@ namespace LGAConnectSOMS.Views
 
         //Load
         private async void ClassScheduleView_Load(object sender, EventArgs e)
-        {          
+        {
+            LoadData();
             this.RestoreWindowPosition();
             MaximizeIcon();
             ClassDaysPanel.Hide();
-            await ClassSchedules();          
+            
+            //string time = "7:00 pm";
+            //DateTime date = DateTime.Parse(time);
+            //var day = date.ToString("HH:mm:ss");          
+        }
+
+
+        public async void LoadData()
+        {
+            await LoadFaculty();
+            await ClassSchedules();
+            await LoadSubjects();
+            await LoadGradeLevelSection();
+            
         }
 
         //NavigationToOtherForm
@@ -48,6 +62,9 @@ namespace LGAConnectSOMS.Views
             ClassScheduleService classScheduleService = new ClassScheduleService();
             var schedules = await classScheduleService.GetClassScheduleDetails();
             schedulelist = schedules.ToList();
+            ClassScheduleDataGridView.DataSource = schedulelist;
+            ClassScheduleDataGridView.Columns[0].Visible = false;
+            ClassScheduleDataGridView.Columns[7].Visible = false;          
             var count = schedulelist.Count();
             if (count == 0)
             {
@@ -493,6 +510,64 @@ namespace LGAConnectSOMS.Views
             }
         }
 
-        
+        IEnumerable<GradeLevelSection> gradeLevelSections = new List<GradeLevelSection>();
+        public async Task LoadGradeLevelSection()
+        {
+            GradeLevelSectionService gradeLevelSectionService = new GradeLevelSectionService();
+            gradeLevelSections = await Task.Run(() => gradeLevelSectionService.GetGradeLevel());
+            var gradelevelslist = gradeLevelSections.Select(x => x.GradeLevels).Distinct().ToList();
+            cmbGradeLevels.DataSource = gradelevelslist.ToList();
+        }
+
+        IEnumerable<Subjects> subjects = new List<Subjects>();
+        public async Task LoadSubjects()
+        {
+            SubjectsService subjectsService = new SubjectsService();
+            subjects = await Task.Run(() => subjectsService.GetSubjects());           
+        }
+
+        IEnumerable<SchoolAccount> schoolAccounts = new List<SchoolAccount>();
+        public async Task LoadFaculty()
+        {
+            SchoolAccountService schoolAccountService = new SchoolAccountService();
+            schoolAccounts = await Task.Run(() => schoolAccountService.GetSchoolAccountDetails());
+            var facultylist = schoolAccounts.Where(x => x.isAdmin == 0).Select(x => x.Fullname);
+            cmbLastname.DataSource = facultylist.ToList();
+        }
+
+        private void cmbGradeLevels_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var selectedGradeLevel = cmbGradeLevels.SelectedItem;
+            var selectedSection = cmbSections.SelectedItem;
+            
+            var gradelevelslist = gradeLevelSections.Where(x => x.GradeLevels.Equals(selectedGradeLevel)).Select(x => x.SectionName);
+            
+            cmbSections.DataSource = gradelevelslist.ToList();
+           
+
+            var gradeLevelId = gradeLevelSections.First(x => x.GradeLevels == selectedGradeLevel).Id;
+            var subjectslist = subjects.Where(x => x.GradeLevel == gradeLevelId).Select(x => x.SubjectName);
+            cmbSubjects.DataSource = subjectslist.ToList();
+        }
+
+        private void btnAddClassSchedule_Click(object sender, EventArgs e)
+        {
+            var selectedGradeLevel = (string)cmbGradeLevels.SelectedItem;
+            var selectedSection = cmbSections.SelectedItem;
+            var selectedteacher = (string)cmbLastname.SelectedItem;
+            var selectedSubject = cmbSubjects.SelectedItem;
+            var gradeLevelId = gradeLevelSections.First(x => x.GradeLevels == selectedGradeLevel && x.SectionName == selectedSection).Id;
+            var subjectid = subjects.First(x => x.SubjectName == selectedSubject).ID;
+            var teacherid = schoolAccounts.First(x => x.Fullname == selectedteacher).id;
+                 
+        }
+
+        private void cmbDays_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cmbDays.SelectedIndex == 1)
+            {
+                MessageBox.Show("Custom");
+            }
+        }
     }
 }
