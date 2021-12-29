@@ -25,5 +25,12 @@ namespace LGAConnectSOMS.Services
             var content = await apiGateway.UpdateStudentRequest(request);
             return JsonConvert.DeserializeObject<bool>(content);
         }
+
+        public async Task<bool> DeleteStudentRequest(int ID)
+        {
+            var apiGateway = new StudentRequestGateway();
+            var content = await apiGateway.DeleteStudentRequest(ID);
+            return JsonConvert.DeserializeObject<bool>(content);
+        }
     }
 }

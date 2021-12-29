@@ -11,7 +11,7 @@ namespace LGAConnectSOMS.Gateway
 {
     public class GradeLevelSectionGateway
     {
-        static string BaseUrl = "http://ceejaygabrang-001-site1.itempurl.com/api/lga/gradelevelsection";
+        static string BaseUrl = "http://cegagabrang-001-site1.btempurl.com/api/lga/gradelevelsection";
 
         public async Task<IEnumerable<GradeLevelSection>> GetGradeLevel ()
         {

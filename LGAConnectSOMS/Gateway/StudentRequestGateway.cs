@@ -12,7 +12,7 @@ namespace LGAConnectSOMS.Gateway
     public class StudentRequestGateway
     {
        
-        static string BaseUrl = "http://ceejaygabrang-001-site1.itempurl.com/api/lga/student";
+        static string BaseUrl = "http://cegagabrang-001-site1.btempurl.com/api/lga/student";
 
         public async Task<string> CreateStudentRequest(StudentRequest request)
         {
@@ -24,6 +24,12 @@ namespace LGAConnectSOMS.Gateway
         {
             string url = $"{BaseUrl}/update_information";
             return await WebMethods.MakePostRequest(url, request);
+        }
+
+        public async Task<string> DeleteStudentRequest(int ID)
+        {
+            string url = $"{BaseUrl}/delete_information/{ID}";
+            return await WebMethods.MakePostRequest(url, ID);
         }
     }
 }

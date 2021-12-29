@@ -11,8 +11,8 @@ namespace LGAConnectSOMS.Gateway
 {
     public class AboutGateway
     {
-        static string BaseUrl = "http://ceejaygabrang-001-site1.itempurl.com/api/lga/about";
-
+        static string BaseUrl = "http://cegagabrang-001-site1.btempurl.com/api/lga/about";
+                               
         public async Task<IEnumerable<About>> GetAbout()
         {
             try

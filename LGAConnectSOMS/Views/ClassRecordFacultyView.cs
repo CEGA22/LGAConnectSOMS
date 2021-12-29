@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Reflection;
 
 namespace LGAConnectSOMS.Views
 {
@@ -36,38 +37,46 @@ namespace LGAConnectSOMS.Views
         }
 
         public async void LoadData()
-        {
-            
+        {           
             await LoadFacultySubjects();
             GradeLvelDropDown();
-            await LoadSubjects();           
+            await LoadSubjects();
+            await FinalGradeRecords();
             await ClassRecords();
-            await SetupDataGrid();
-
+            DataGridFlickerFix();
+            //SetupDataGrid();
         }
 
-        private async Task SetupDataGrid() 
+        private void DataGridFlickerFix()
+        {
+            FirstGradingGradebook.GetType().GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(FirstGradingGradebook, true, null);
+            SecondGradingGradebook.GetType().GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(SecondGradingGradebook, true, null);
+            ThirdGradingGradebook.GetType().GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(ThirdGradingGradebook, true, null);
+            FourthGradingGradebook.GetType().GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(FourthGradingGradebook, true, null);
+        }
+
+        private void SetupDataGrid() 
         {
             FirstGradingGradebook.Rows[0].Cells[0].ReadOnly = true;
-            FirstGradingGradebook.Columns["SaveasDraft"].Visible = false;
-            //FirstGradingGradebook.Rows[0].Cells[12].Value = 50;
-            //FirstGradingGradebook.Rows[0].Cells[24].Value = 50;
+            //FirstGradingGradebook.Columns["SaveasDraft"].Visible = false;
+            FirstGradingGradebook.Rows[0].Cells[12].Value = 50;
+            FirstGradingGradebook.Rows[0].Cells[24].Value = 50;
             FirstGradingGradebook.Rows[0].Cells[11].ReadOnly = true;
             //FirstGradingGradebook.Rows[0].Cells[25].Value = "##";
             //FirstGradingGradebook.Rows[0].Cells[26].Value = "##";
 
             SecondGradingGradebook.Rows[0].Cells[0].ReadOnly = true;
             //SecondGradingGradebook.Columns["SaveasDraft"].Visible = false;
-            //SecondGradingGradebook.Rows[0].Cells[12].Value = 50;
-            //SecondGradingGradebook.Rows[0].Cells[24].Value = 50;
+            SecondGradingGradebook.Rows[0].Cells[12].Value = 50;
+            SecondGradingGradebook.Rows[0].Cells[24].Value = 50;
             SecondGradingGradebook.Rows[0].Cells[11].ReadOnly = true;
             //SecondGradingGradebook.Rows[0].Cells[25].Value = "##";
             //SecondGradingGradebook.Rows[0].Cells[26].Value = "##";
 
             ThirdGradingGradebook.Rows[0].Cells[0].ReadOnly = true;
-           // ThirdGradingGradebook.Columns["SaveAsDraft"].Visible = false;
-            //ThirdGradingGradebook.Rows[0].Cells[12].Value = 50;
-            //ThirdGradingGradebook.Rows[0].Cells[24].Value = 50;
+            // ThirdGradingGradebook.Columns["SaveAsDraft"].Visible = false;
+            ThirdGradingGradebook.Rows[0].Cells[12].Value = 50;
+            ThirdGradingGradebook.Rows[0].Cells[24].Value = 50;
             ThirdGradingGradebook.Rows[0].Cells[11].ReadOnly = true;
             //ThirdGradingGradebook.Rows[0].Cells[25].Value = "##";
             //ThirdGradingGradebook.Rows[0].Cells[26].Value = "##";
@@ -2069,6 +2078,16 @@ namespace LGAConnectSOMS.Views
             FacultySubjects = facultySubjectList.ToList();
         }
 
+        IEnumerable<FinalGrade> finalGrades = new List<FinalGrade>();
+        public async Task FinalGradeRecords()
+        {
+            var ID = Settings.Default.ID;
+            FinalGradeService finalGradeService = new FinalGradeService();
+            var records = await finalGradeService.GetFinalGrade(ID);
+            finalGrades = records.ToList();
+            FinalGradeDataGridView.DataSource = finalGrades.ToList();
+            FinalGradeDataGridView.Columns[0].Visible = false;
+        }
 
         int globalgradingperiod;
         IEnumerable<ClassRecords> recordslist = new List<ClassRecords>();
@@ -2078,7 +2097,7 @@ namespace LGAConnectSOMS.Views
             ClassRecordsService classRecordsService = new ClassRecordsService();
             var records = await classRecordsService.GetClassRecrodsDetails(ID);
             recordslist = records.ToList();
-            globalgradingperiod = gradingperiod;
+             globalgradingperiod = gradingperiod;
 
             var selectedGradeLevel = CBGradeLevel.SelectedItem;
             var selectedSection = CBSection.SelectedItem;
@@ -2115,7 +2134,6 @@ namespace LGAConnectSOMS.Views
                     
                     SecondGradingGradebook.BeginEdit(true);
                     //SecondGradingGradebook.ClearSelection();
-
             }
 
             else if(selectedGradingPeriod == 2)
@@ -2148,7 +2166,7 @@ namespace LGAConnectSOMS.Views
                 if (FourthGradingList.Any())
                     FourthGradingGradebook.BeginEdit(true);
 
-               // FourthGradingGradebook.ClearSelection();
+                    //FourthGradingGradebook.ClearSelection();
                 
             }
 
@@ -2166,18 +2184,18 @@ namespace LGAConnectSOMS.Views
             FirstGradingGradebook.Columns[10].DataPropertyName = "WrittenWork10";
             FirstGradingGradebook.Columns[11].DataPropertyName = "WrittenWorkTotal";
             FirstGradingGradebook.Columns[12].DataPropertyName = "WrittenWorkPercentage";
-            FirstGradingGradebook.Columns[13].DataPropertyName = "TaskPeformance1";
-            FirstGradingGradebook.Columns[14].DataPropertyName = "TaskPeformance2";
-            FirstGradingGradebook.Columns[15].DataPropertyName = "TaskPeformance3";
-            FirstGradingGradebook.Columns[16].DataPropertyName = "TaskPeformance4";
-            FirstGradingGradebook.Columns[17].DataPropertyName = "TaskPeformance5";
-            FirstGradingGradebook.Columns[18].DataPropertyName = "TaskPeformance6";
-            FirstGradingGradebook.Columns[19].DataPropertyName = "TaskPeformance7";
-            FirstGradingGradebook.Columns[20].DataPropertyName = "TaskPeformance8";
-            FirstGradingGradebook.Columns[21].DataPropertyName = "TaskPeformance9";
-            FirstGradingGradebook.Columns[22].DataPropertyName = "TaskPeformance10";
-            FirstGradingGradebook.Columns[23].DataPropertyName = "TaskPeformanceTotal";
-            FirstGradingGradebook.Columns[24].DataPropertyName = "TaskPeformancePercentage";
+            FirstGradingGradebook.Columns[13].DataPropertyName = "TaskPerformance1";
+            FirstGradingGradebook.Columns[14].DataPropertyName = "TaskPerformance2";
+            FirstGradingGradebook.Columns[15].DataPropertyName = "TaskPerformance3";
+            FirstGradingGradebook.Columns[16].DataPropertyName = "TaskPerformance4";
+            FirstGradingGradebook.Columns[17].DataPropertyName = "TaskPerformance5";
+            FirstGradingGradebook.Columns[18].DataPropertyName = "TaskPerformance6";
+            FirstGradingGradebook.Columns[19].DataPropertyName = "TaskPerformance7";
+            FirstGradingGradebook.Columns[20].DataPropertyName = "TaskPerformance8";
+            FirstGradingGradebook.Columns[21].DataPropertyName = "TaskPerformance9";
+            FirstGradingGradebook.Columns[22].DataPropertyName = "TaskPerformance10";
+            FirstGradingGradebook.Columns[23].DataPropertyName = "TaskPerformanceTotal";
+            FirstGradingGradebook.Columns[24].DataPropertyName = "TaskPerformancePercentage";
             FirstGradingGradebook.Columns[25].DataPropertyName = "InitialGrade";
             FirstGradingGradebook.Columns[26].DataPropertyName = "QuarterlyGrade";
             FirstGradingGradebook.Columns[27].DataPropertyName = "SchoolYearStart";
@@ -2201,18 +2219,18 @@ namespace LGAConnectSOMS.Views
             SecondGradingGradebook.Columns[10].DataPropertyName = "WrittenWork10";
             SecondGradingGradebook.Columns[11].DataPropertyName = "WrittenWorkTotal";
             SecondGradingGradebook.Columns[12].DataPropertyName = "WrittenWorkPercentage";
-            SecondGradingGradebook.Columns[13].DataPropertyName = "TaskPeformance1";
-            SecondGradingGradebook.Columns[14].DataPropertyName = "TaskPeformance2";
-            SecondGradingGradebook.Columns[15].DataPropertyName = "TaskPeformance3";
-            SecondGradingGradebook.Columns[16].DataPropertyName = "TaskPeformance4";
-            SecondGradingGradebook.Columns[17].DataPropertyName = "TaskPeformance5";
-            SecondGradingGradebook.Columns[18].DataPropertyName = "TaskPeformance6";
-            SecondGradingGradebook.Columns[19].DataPropertyName = "TaskPeformance7";
-            SecondGradingGradebook.Columns[20].DataPropertyName = "TaskPeformance8";
-            SecondGradingGradebook.Columns[21].DataPropertyName = "TaskPeformance9";
-            SecondGradingGradebook.Columns[22].DataPropertyName = "TaskPeformance10";
-            SecondGradingGradebook.Columns[23].DataPropertyName = "TaskPeformanceTotal";
-            SecondGradingGradebook.Columns[24].DataPropertyName = "TaskPeformancePercentage";
+            SecondGradingGradebook.Columns[13].DataPropertyName = "TaskPerformance1";
+            SecondGradingGradebook.Columns[14].DataPropertyName = "TaskPerformance2";
+            SecondGradingGradebook.Columns[15].DataPropertyName = "TaskPerformance3";
+            SecondGradingGradebook.Columns[16].DataPropertyName = "TaskPerformance4";
+            SecondGradingGradebook.Columns[17].DataPropertyName = "TaskPerformance5";
+            SecondGradingGradebook.Columns[18].DataPropertyName = "TaskPerformance6";
+            SecondGradingGradebook.Columns[19].DataPropertyName = "TaskPerformance7";
+            SecondGradingGradebook.Columns[20].DataPropertyName = "TaskPerformance8";
+            SecondGradingGradebook.Columns[21].DataPropertyName = "TaskPerformance9";
+            SecondGradingGradebook.Columns[22].DataPropertyName = "TaskPerformance10";
+            SecondGradingGradebook.Columns[23].DataPropertyName = "TaskPerformanceTotal";
+            SecondGradingGradebook.Columns[24].DataPropertyName = "TaskPerformancePercentage";
             SecondGradingGradebook.Columns[25].DataPropertyName = "InitialGrade";
             SecondGradingGradebook.Columns[26].DataPropertyName = "QuarterlyGrade";
             SecondGradingGradebook.Columns[27].DataPropertyName = "SchoolYearStart";
@@ -2236,18 +2254,18 @@ namespace LGAConnectSOMS.Views
             ThirdGradingGradebook.Columns[10].DataPropertyName = "WrittenWork10";
             ThirdGradingGradebook.Columns[11].DataPropertyName = "WrittenWorkTotal";
             ThirdGradingGradebook.Columns[12].DataPropertyName = "WrittenWorkPercentage";
-            ThirdGradingGradebook.Columns[13].DataPropertyName = "TaskPeformance1";
-            ThirdGradingGradebook.Columns[14].DataPropertyName = "TaskPeformance2";
-            ThirdGradingGradebook.Columns[15].DataPropertyName = "TaskPeformance3";
-            ThirdGradingGradebook.Columns[16].DataPropertyName = "TaskPeformance4";
-            ThirdGradingGradebook.Columns[17].DataPropertyName = "TaskPeformance5";
-            ThirdGradingGradebook.Columns[18].DataPropertyName = "TaskPeformance6";
-            ThirdGradingGradebook.Columns[19].DataPropertyName = "TaskPeformance7";
-            ThirdGradingGradebook.Columns[20].DataPropertyName = "TaskPeformance8";
-            ThirdGradingGradebook.Columns[21].DataPropertyName = "TaskPeformance9";
-            ThirdGradingGradebook.Columns[22].DataPropertyName = "TaskPeformance10";
-            ThirdGradingGradebook.Columns[23].DataPropertyName = "TaskPeformanceTotal";
-            ThirdGradingGradebook.Columns[24].DataPropertyName = "TaskPeformancePercentage";
+            ThirdGradingGradebook.Columns[13].DataPropertyName = "TaskPerformance1";
+            ThirdGradingGradebook.Columns[14].DataPropertyName = "TaskPerformance2";
+            ThirdGradingGradebook.Columns[15].DataPropertyName = "TaskPerformance3";
+            ThirdGradingGradebook.Columns[16].DataPropertyName = "TaskPerformance4";
+            ThirdGradingGradebook.Columns[17].DataPropertyName = "TaskPerformance5";
+            ThirdGradingGradebook.Columns[18].DataPropertyName = "TaskPerformance6";
+            ThirdGradingGradebook.Columns[19].DataPropertyName = "TaskPerformance7";
+            ThirdGradingGradebook.Columns[20].DataPropertyName = "TaskPerformance8";
+            ThirdGradingGradebook.Columns[21].DataPropertyName = "TaskPerformance9";
+            ThirdGradingGradebook.Columns[22].DataPropertyName = "TaskPerformance10";
+            ThirdGradingGradebook.Columns[23].DataPropertyName = "TaskPerformanceTotal";
+            ThirdGradingGradebook.Columns[24].DataPropertyName = "TaskPerformancePercentage";
             ThirdGradingGradebook.Columns[25].DataPropertyName = "InitialGrade";
             ThirdGradingGradebook.Columns[26].DataPropertyName = "QuarterlyGrade";
             ThirdGradingGradebook.Columns[27].DataPropertyName = "SchoolYearStart";
@@ -2271,18 +2289,18 @@ namespace LGAConnectSOMS.Views
             FourthGradingGradebook.Columns[10].DataPropertyName = "WrittenWork10";
             FourthGradingGradebook.Columns[11].DataPropertyName = "WrittenWorkTotal";
             FourthGradingGradebook.Columns[12].DataPropertyName = "WrittenWorkPercentage";
-            FourthGradingGradebook.Columns[13].DataPropertyName = "TaskPeformance1";
-            FourthGradingGradebook.Columns[14].DataPropertyName = "TaskPeformance2";
-            FourthGradingGradebook.Columns[15].DataPropertyName = "TaskPeformance3";
-            FourthGradingGradebook.Columns[16].DataPropertyName = "TaskPeformance4";
-            FourthGradingGradebook.Columns[17].DataPropertyName = "TaskPeformance5";
-            FourthGradingGradebook.Columns[18].DataPropertyName = "TaskPeformance6";
-            FourthGradingGradebook.Columns[19].DataPropertyName = "TaskPeformance7";
-            FourthGradingGradebook.Columns[20].DataPropertyName = "TaskPeformance8";
-            FourthGradingGradebook.Columns[21].DataPropertyName = "TaskPeformance9";
-            FourthGradingGradebook.Columns[22].DataPropertyName = "TaskPeformance10";
-            FourthGradingGradebook.Columns[23].DataPropertyName = "TaskPeformanceTotal";
-            FourthGradingGradebook.Columns[24].DataPropertyName = "TaskPeformancePercentage";
+            FourthGradingGradebook.Columns[13].DataPropertyName = "TaskPerformance1";
+            FourthGradingGradebook.Columns[14].DataPropertyName = "TaskPerformance2";
+            FourthGradingGradebook.Columns[15].DataPropertyName = "TaskPerformance3";
+            FourthGradingGradebook.Columns[16].DataPropertyName = "TaskPerformance4";
+            FourthGradingGradebook.Columns[17].DataPropertyName = "TaskPerformance5";
+            FourthGradingGradebook.Columns[18].DataPropertyName = "TaskPerformance6";
+            FourthGradingGradebook.Columns[19].DataPropertyName = "TaskPerformance7";
+            FourthGradingGradebook.Columns[20].DataPropertyName = "TaskPerformance8";
+            FourthGradingGradebook.Columns[21].DataPropertyName = "TaskPerformance9";
+            FourthGradingGradebook.Columns[22].DataPropertyName = "TaskPerformance10";
+            FourthGradingGradebook.Columns[23].DataPropertyName = "TaskPerformanceTotal";
+            FourthGradingGradebook.Columns[24].DataPropertyName = "TaskPerformancePercentage";
             FourthGradingGradebook.Columns[25].DataPropertyName = "InitialGrade";
             FourthGradingGradebook.Columns[26].DataPropertyName = "QuarterlyGrade";
             FourthGradingGradebook.Columns[27].DataPropertyName = "SchoolYearStart";
@@ -2293,7 +2311,7 @@ namespace LGAConnectSOMS.Views
             FourthGradingGradebook.Columns[32].DataPropertyName = "SaveDraft";
             FourthGradingGradebook.Columns[33].DataPropertyName = "GradingPeriod";
 
-            if(FirstGradingList.Any())
+            if (FirstGradingList.Any())
                 FirstGradingGradebook_CellEndEdit(null, null);
 
             if (SecondGradingList.Any())               
@@ -2749,7 +2767,7 @@ namespace LGAConnectSOMS.Views
         private async void btnSaveClassRecords_Click(object sender, EventArgs e)
         {
             
-            for (int grades = 0; grades < FirstGradingGradebook.Rows.Count -1; grades++)
+            for (int grades = 0; grades <= FirstGradingGradebook.Rows.Count -1; grades++)
             {
                 bool IsSuccess;
                 var teacherID = Settings.Default.ID;
@@ -2764,7 +2782,7 @@ namespace LGAConnectSOMS.Views
                     IsSuccess = await classRecordRequestService.UpdateClassRecordRequest(new ClassRecordRequest
                     {
                         ID = studentid,
-                        TeacherID = teacherID,
+                       // TeacherID = teacherID,
                         WrittenWork1 = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[1].Value),
                         WrittenWork2 = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[2].Value),
                         WrittenWork3 = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[3].Value),
@@ -2777,25 +2795,25 @@ namespace LGAConnectSOMS.Views
                         WrittenWork10 = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[10].Value),
                         WrittenWorkTotal = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[11].Value),
                         WrittenWorkPercentage = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[12].Value),
-                        TaskPeformance1 = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[13].Value),
-                        TaskPeformance2 = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[14].Value),
-                        TaskPeformance3 = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[15].Value),
-                        TaskPeformance4 = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[16].Value),
-                        TaskPeformance5 = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[17].Value),
-                        TaskPeformance6 = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[18].Value),
-                        TaskPeformance7 = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[19].Value),
-                        TaskPeformance8 = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[20].Value),
-                        TaskPeformance9 = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[21].Value),
-                        TaskPeformance10 = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[22].Value),
-                        TaskPeformanceTotal = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[23].Value),
-                        TaskPeformancePercentage = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[24].Value),
+                        TaskPerformance1 = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[13].Value),
+                        TaskPerformance2 = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[14].Value),
+                        TaskPerformance3 = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[15].Value),
+                        TaskPerformance4 = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[16].Value),
+                        TaskPerformance5 = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[17].Value),
+                        TaskPerformance6 = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[18].Value),
+                        TaskPerformance7 = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[19].Value),
+                        TaskPerformance8 = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[20].Value),
+                        TaskPerformance9 = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[21].Value),
+                        TaskPerformance10 = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[22].Value),
+                        TaskPerformanceTotal = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[23].Value),
+                        TaskPerformancePercentage = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[24].Value),
                         InitialGrade = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[25].Value),
                         QuarterlyGrade = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[26].Value),
                         SchoolYearStart = Convert.ToString(FirstGradingGradebook.Rows[grades].Cells[27].Value),
                         Grade_Level = Convert.ToInt32(FirstGradingGradebook.Rows[grades].Cells[28].Value),
-                        SubjectName = Convert.ToString(FirstGradingGradebook.Rows[grades].Cells[29].Value),
-                        SectionName = Convert.ToString(FirstGradingGradebook.Rows[grades].Cells[30].Value),
-                        SaveasDraft = Convert.ToInt32(FirstGradingGradebook.Rows[grades].Cells[31].Value),
+                        SubjectsName = subjectid,
+                        //SectionName = Convert.ToString(FirstGradingGradebook.Rows[grades].Cells[30].Value),
+                        //SaveasDraft = Convert.ToInt32(FirstGradingGradebook.Rows[grades].Cells[31].Value),
                         SaveDraft = Convert.ToInt32(FirstGradingGradebook.Rows[grades].Cells[32].Value),
                         GradingPeriod = Convert.ToInt32(FirstGradingGradebook.Rows[grades].Cells[33].Value)
                     });                   
@@ -2806,21 +2824,26 @@ namespace LGAConnectSOMS.Views
                 }
             }
 
-         MessageBox.Show("Successfully Save");
-
-            for (int grades = 0; grades < SecondGradingGradebook.Rows.Count - 1; grades++)
+            for (int grades = 0; grades <= SecondGradingGradebook.Rows.Count - 1; grades++)
             {
+                //bool IsSuccess;
+                //var teacherID = Settings.Default.ID;
+                //var student = SecondGradingGradebook.Rows[grades].Cells[0].Value;
+                //var studentid = recordslist.First(x => x.Fullname.Equals(student)).ID;
                 bool IsSuccess;
                 var teacherID = Settings.Default.ID;
                 var student = SecondGradingGradebook.Rows[grades].Cells[0].Value;
+                var subject = SecondGradingGradebook.Rows[grades].Cells[29].Value;
+                var gradelevel = (int)SecondGradingGradebook.Rows[grades].Cells[28].Value;
                 var studentid = recordslist.First(x => x.Fullname.Equals(student)).ID;
+                var subjectid = Subjects.First(x => x.SubjectName.Equals(subject) && x.GradeLevel == gradelevel).ID;
                 try
                 {
                     ClassRecordRequestService classRecordRequestService = new ClassRecordRequestService();
                     IsSuccess = await classRecordRequestService.UpdateClassRecordRequest(new ClassRecordRequest
                     {
                         ID = studentid,
-                        TeacherID = teacherID,
+                        //TeacherID = teacherID,
                         WrittenWork1 = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[1].Value),
                         WrittenWork2 = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[2].Value),
                         WrittenWork3 = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[3].Value),
@@ -2833,25 +2856,25 @@ namespace LGAConnectSOMS.Views
                         WrittenWork10 = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[10].Value),
                         WrittenWorkTotal = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[11].Value),
                         WrittenWorkPercentage = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[12].Value),
-                        TaskPeformance1 = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[13].Value),
-                        TaskPeformance2 = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[14].Value),
-                        TaskPeformance3 = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[15].Value),
-                        TaskPeformance4 = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[16].Value),
-                        TaskPeformance5 = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[17].Value),
-                        TaskPeformance6 = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[18].Value),
-                        TaskPeformance7 = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[19].Value),
-                        TaskPeformance8 = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[20].Value),
-                        TaskPeformance9 = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[21].Value),
-                        TaskPeformance10 = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[22].Value),
-                        TaskPeformanceTotal = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[23].Value),
-                        TaskPeformancePercentage = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[24].Value),
+                        TaskPerformance1 = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[13].Value),
+                        TaskPerformance2 = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[14].Value),
+                        TaskPerformance3 = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[15].Value),
+                        TaskPerformance4 = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[16].Value),
+                        TaskPerformance5 = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[17].Value),
+                        TaskPerformance6 = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[18].Value),
+                        TaskPerformance7 = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[19].Value),
+                        TaskPerformance8 = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[20].Value),
+                        TaskPerformance9 = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[21].Value),
+                        TaskPerformance10 = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[22].Value),
+                        TaskPerformanceTotal = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[23].Value),
+                        TaskPerformancePercentage = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[24].Value),
                         InitialGrade = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[25].Value),
                         QuarterlyGrade = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[26].Value),
-                        SchoolYearStart = Convert.ToString(SecondGradingGradebook.Rows[grades].Cells[27].Value),
+                        //SchoolYearStart = Convert.ToString(SecondGradingGradebook.Rows[grades].Cells[27].Value),
                         Grade_Level = Convert.ToInt32(SecondGradingGradebook.Rows[grades].Cells[28].Value),
-                        SubjectName = Convert.ToString(SecondGradingGradebook.Rows[grades].Cells[29].Value),
-                        SectionName = Convert.ToString(SecondGradingGradebook.Rows[grades].Cells[30].Value),
-                        SaveasDraft = Convert.ToInt32(SecondGradingGradebook.Rows[grades].Cells[31].Value),
+                        SubjectsName = subjectid,
+                        //SectionName = Convert.ToString(SecondGradingGradebook.Rows[grades].Cells[30].Value),
+                        //SaveasDraft = Convert.ToInt32(SecondGradingGradebook.Rows[grades].Cells[31].Value),
                         SaveDraft = Convert.ToInt32(SecondGradingGradebook.Rows[grades].Cells[32].Value),
                         GradingPeriod = Convert.ToInt32(SecondGradingGradebook.Rows[grades].Cells[33].Value)
                     });
@@ -2861,6 +2884,128 @@ namespace LGAConnectSOMS.Views
                     MessageBox.Show(x.Message);
                 }
             }
+
+            //for (int grades = 0; grades <= ThirdGradingGradebook.Rows.Count - 1; grades++)
+            //{
+            //    //bool IsSuccess;
+            //    //var teacherID = Settings.Default.ID;
+            //    //var student = SecondGradingGradebook.Rows[grades].Cells[0].Value;
+            //    //var studentid = recordslist.First(x => x.Fullname.Equals(student)).ID;
+            //    bool IsSuccess;
+            //    var teacherID = Settings.Default.ID;
+            //    var student = ThirdGradingGradebook.Rows[grades].Cells[0].Value;
+            //    var subject = ThirdGradingGradebook.Rows[grades].Cells[29].Value;
+            //    var gradelevel = (int)ThirdGradingGradebook.Rows[grades].Cells[28].Value;
+            //    var studentid = recordslist.First(x => x.Fullname.Equals(student)).ID;
+            //    var subjectid = Subjects.First(x => x.SubjectName.Equals(subject) && x.GradeLevel == gradelevel).ID;
+            //    try
+            //    {
+            //        ClassRecordRequestService classRecordRequestService = new ClassRecordRequestService();
+            //        IsSuccess = await classRecordRequestService.UpdateClassRecordRequest(new ClassRecordRequest
+            //        {
+            //            ID = studentid,
+            //            //TeacherID = teacherID,
+            //            WrittenWork1 = Convert.ToDouble(ThirdGradingGradebook.Rows[grades].Cells[1].Value),
+            //            WrittenWork2 = Convert.ToDouble(ThirdGradingGradebook.Rows[grades].Cells[2].Value),
+            //            WrittenWork3 = Convert.ToDouble(ThirdGradingGradebook.Rows[grades].Cells[3].Value),
+            //            WrittenWork4 = Convert.ToDouble(ThirdGradingGradebook.Rows[grades].Cells[4].Value),
+            //            WrittenWork5 = Convert.ToDouble(ThirdGradingGradebook.Rows[grades].Cells[5].Value),
+            //            WrittenWork6 = Convert.ToDouble(ThirdGradingGradebook.Rows[grades].Cells[6].Value),
+            //            WrittenWork7 = Convert.ToDouble(ThirdGradingGradebook.Rows[grades].Cells[7].Value),
+            //            WrittenWork8 = Convert.ToDouble(ThirdGradingGradebook.Rows[grades].Cells[8].Value),
+            //            WrittenWork9 = Convert.ToDouble(ThirdGradingGradebook.Rows[grades].Cells[9].Value),
+            //            WrittenWork10 = Convert.ToDouble(ThirdGradingGradebook.Rows[grades].Cells[10].Value),
+            //            WrittenWorkTotal = Convert.ToDouble(ThirdGradingGradebook.Rows[grades].Cells[11].Value),
+            //            WrittenWorkPercentage = Convert.ToDouble(ThirdGradingGradebook.Rows[grades].Cells[12].Value),
+            //            TaskPeformance1 = Convert.ToDouble(ThirdGradingGradebook.Rows[grades].Cells[13].Value),
+            //            TaskPeformance2 = Convert.ToDouble(ThirdGradingGradebook.Rows[grades].Cells[14].Value),
+            //            TaskPeformance3 = Convert.ToDouble(ThirdGradingGradebook.Rows[grades].Cells[15].Value),
+            //            TaskPeformance4 = Convert.ToDouble(ThirdGradingGradebook.Rows[grades].Cells[16].Value),
+            //            TaskPeformance5 = Convert.ToDouble(ThirdGradingGradebook.Rows[grades].Cells[17].Value),
+            //            TaskPeformance6 = Convert.ToDouble(ThirdGradingGradebook.Rows[grades].Cells[18].Value),
+            //            TaskPeformance7 = Convert.ToDouble(ThirdGradingGradebook.Rows[grades].Cells[19].Value),
+            //            TaskPeformance8 = Convert.ToDouble(ThirdGradingGradebook.Rows[grades].Cells[20].Value),
+            //            TaskPeformance9 = Convert.ToDouble(ThirdGradingGradebook.Rows[grades].Cells[21].Value),
+            //            TaskPeformance10 = Convert.ToDouble(ThirdGradingGradebook.Rows[grades].Cells[22].Value),
+            //            TaskPeformanceTotal = Convert.ToDouble(ThirdGradingGradebook.Rows[grades].Cells[23].Value),
+            //            TaskPeformancePercentage = Convert.ToDouble(ThirdGradingGradebook.Rows[grades].Cells[24].Value),
+            //            InitialGrade = Convert.ToDouble(ThirdGradingGradebook.Rows[grades].Cells[25].Value),
+            //            QuarterlyGrade = Convert.ToDouble(ThirdGradingGradebook.Rows[grades].Cells[26].Value),
+            //            //SchoolYearStart = Convert.ToString(SecondGradingGradebook.Rows[grades].Cells[27].Value),
+            //            Grade_Level = Convert.ToInt32(ThirdGradingGradebook.Rows[grades].Cells[28].Value),
+            //            SubjectsName = subjectid,
+            //            //SectionName = Convert.ToString(SecondGradingGradebook.Rows[grades].Cells[30].Value),
+            //            //SaveasDraft = Convert.ToInt32(SecondGradingGradebook.Rows[grades].Cells[31].Value),
+            //            SaveDraft = Convert.ToInt32(ThirdGradingGradebook.Rows[grades].Cells[32].Value),
+            //            GradingPeriod = Convert.ToInt32(ThirdGradingGradebook.Rows[grades].Cells[33].Value)
+            //        });
+            //    }
+            //    catch (Exception x)
+            //    {
+            //        MessageBox.Show(x.Message);
+            //    }
+            //}
+
+            //for (int grades = 0; grades <= FourthGradingGradebook.Rows.Count - 1; grades++)
+            //{
+            //    //bool IsSuccess;
+            //    //var teacherID = Settings.Default.ID;
+            //    //var student = SecondGradingGradebook.Rows[grades].Cells[0].Value;
+            //    //var studentid = recordslist.First(x => x.Fullname.Equals(student)).ID;
+            //    bool IsSuccess;
+            //    var teacherID = Settings.Default.ID;
+            //    var student = FourthGradingGradebook.Rows[grades].Cells[0].Value;
+            //    var subject = FourthGradingGradebook.Rows[grades].Cells[29].Value;
+            //    var gradelevel = (int)FourthGradingGradebook.Rows[grades].Cells[28].Value;
+            //    var studentid = recordslist.First(x => x.Fullname.Equals(student)).ID;
+            //    var subjectid = Subjects.First(x => x.SubjectName.Equals(subject) && x.GradeLevel == gradelevel).ID;
+            //    try
+            //    {
+            //        ClassRecordRequestService classRecordRequestService = new ClassRecordRequestService();
+            //        IsSuccess = await classRecordRequestService.UpdateClassRecordRequest(new ClassRecordRequest
+            //        {
+            //            ID = studentid,
+            //            //TeacherID = teacherID,
+            //            WrittenWork1 = Convert.ToDouble(FourthGradingGradebook.Rows[grades].Cells[1].Value),
+            //            WrittenWork2 = Convert.ToDouble(FourthGradingGradebook.Rows[grades].Cells[2].Value),
+            //            WrittenWork3 = Convert.ToDouble(FourthGradingGradebook.Rows[grades].Cells[3].Value),
+            //            WrittenWork4 = Convert.ToDouble(FourthGradingGradebook.Rows[grades].Cells[4].Value),
+            //            WrittenWork5 = Convert.ToDouble(FourthGradingGradebook.Rows[grades].Cells[5].Value),
+            //            WrittenWork6 = Convert.ToDouble(FourthGradingGradebook.Rows[grades].Cells[6].Value),
+            //            WrittenWork7 = Convert.ToDouble(FourthGradingGradebook.Rows[grades].Cells[7].Value),
+            //            WrittenWork8 = Convert.ToDouble(FourthGradingGradebook.Rows[grades].Cells[8].Value),
+            //            WrittenWork9 = Convert.ToDouble(FourthGradingGradebook.Rows[grades].Cells[9].Value),
+            //            WrittenWork10 = Convert.ToDouble(FourthGradingGradebook.Rows[grades].Cells[10].Value),
+            //            WrittenWorkTotal = Convert.ToDouble(FourthGradingGradebook.Rows[grades].Cells[11].Value),
+            //            WrittenWorkPercentage = Convert.ToDouble(FourthGradingGradebook.Rows[grades].Cells[12].Value),
+            //            TaskPeformance1 = Convert.ToDouble(FourthGradingGradebook.Rows[grades].Cells[13].Value),
+            //            TaskPeformance2 = Convert.ToDouble(FourthGradingGradebook.Rows[grades].Cells[14].Value),
+            //            TaskPeformance3 = Convert.ToDouble(FourthGradingGradebook.Rows[grades].Cells[15].Value),
+            //            TaskPeformance4 = Convert.ToDouble(FourthGradingGradebook.Rows[grades].Cells[16].Value),
+            //            TaskPeformance5 = Convert.ToDouble(FourthGradingGradebook.Rows[grades].Cells[17].Value),
+            //            TaskPeformance6 = Convert.ToDouble(FourthGradingGradebook.Rows[grades].Cells[18].Value),
+            //            TaskPeformance7 = Convert.ToDouble(FourthGradingGradebook.Rows[grades].Cells[19].Value),
+            //            TaskPeformance8 = Convert.ToDouble(FourthGradingGradebook.Rows[grades].Cells[20].Value),
+            //            TaskPeformance9 = Convert.ToDouble(FourthGradingGradebook.Rows[grades].Cells[21].Value),
+            //            TaskPeformance10 = Convert.ToDouble(FourthGradingGradebook.Rows[grades].Cells[22].Value),
+            //            TaskPeformanceTotal = Convert.ToDouble(FourthGradingGradebook.Rows[grades].Cells[23].Value),
+            //            TaskPeformancePercentage = Convert.ToDouble(FourthGradingGradebook.Rows[grades].Cells[24].Value),
+            //            InitialGrade = Convert.ToDouble(FourthGradingGradebook.Rows[grades].Cells[25].Value),
+            //            QuarterlyGrade = Convert.ToDouble(FourthGradingGradebook.Rows[grades].Cells[26].Value),
+            //            //SchoolYearStart = Convert.ToString(SecondGradingGradebook.Rows[grades].Cells[27].Value),
+            //            Grade_Level = Convert.ToInt32(FourthGradingGradebook.Rows[grades].Cells[28].Value),
+            //            SubjectsName = subjectid,
+            //            //SectionName = Convert.ToString(SecondGradingGradebook.Rows[grades].Cells[30].Value),
+            //            //SaveasDraft = Convert.ToInt32(SecondGradingGradebook.Rows[grades].Cells[31].Value),
+            //            SaveDraft = Convert.ToInt32(FourthGradingGradebook.Rows[grades].Cells[32].Value),
+            //            GradingPeriod = Convert.ToInt32(FourthGradingGradebook.Rows[grades].Cells[33].Value)
+            //        });
+            //    }
+            //    catch (Exception x)
+            //    {
+            //        MessageBox.Show(x.Message);
+            //    }
+            //}
 
             MessageBox.Show("Successfully Save");
         }

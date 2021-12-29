@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -56,7 +57,8 @@ namespace LGAConnectSOMS.Views
 
         private async void btnAddTransactionRecord_Click(object sender, EventArgs e)
         {            
-            //DateTime da = DateTime.Now;
+            //DateTime dateTime = DateTime.Now.Date.AddHours(12).AddMinutes(14);
+            //DateTime dateTimes = DateTime.Now;
             var studentnumber = txtStudentNumber.Text;
             var studentid = studentaccount.First(x => x.StudentNumber == studentnumber).id;
             var studentbalance = studentaccount.First(x => x.StudentNumber == studentnumber).Balance;
@@ -70,13 +72,15 @@ namespace LGAConnectSOMS.Views
                 {
                     Studentid = studentid,
                     Amount = amount,
-                    Note = Note.Text,                    
+                    Note = Note.Text, 
+                    TransactionDate = DateTime.Now,
                     Balance = remainingbalance
                 });
 
                 if (IsSuccess)
                 {
                     MessageBox.Show("Transaction Complete");
+                    this.Close();
                 }
 
                 else

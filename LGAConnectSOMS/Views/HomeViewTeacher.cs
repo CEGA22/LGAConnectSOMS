@@ -33,7 +33,6 @@ namespace LGAConnectSOMS.Views
             lblTitle.Text = "Good Day, " + Settings.Default.Firstname;
         }
 
-
         //NavigationToOtherForm
         private void btnClassRecords_Click(object sender, EventArgs e)
         {
@@ -46,6 +45,14 @@ namespace LGAConnectSOMS.Views
         {
             ClassScheduleFacultyView classScheduleFacultyView = new ClassScheduleFacultyView();
             classScheduleFacultyView.Show();
+            this.Hide();
+        }
+
+        private void btnManageNews_Click(object sender, EventArgs e)
+        {
+            ManageNewsView manageNewsView = new ManageNewsView();
+            manageNewsView.BtnAddNews.Hide();
+            manageNewsView.Show();
             this.Hide();
         }
 
@@ -90,9 +97,7 @@ namespace LGAConnectSOMS.Views
                 this.Size = Settings.Default.Size;
             }
         }
-
-        
-
+      
         private void HomeViewTeacher_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.SaveWindowPosition();
@@ -143,9 +148,6 @@ namespace LGAConnectSOMS.Views
             Application.Exit();
         }
 
-
-
-
         //DragWIindows
 
         private Point _mouseLoc;
@@ -192,6 +194,14 @@ namespace LGAConnectSOMS.Views
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             IsMenuVisible();
+        }
+
+        private void btnUserSettings_Click(object sender, EventArgs e)
+        {
+            SaveWindowPosition();
+            AccountSettingsView accountSettingsView = new AccountSettingsView();
+            accountSettingsView.Show();
+            this.Hide();
         }
     }
 }

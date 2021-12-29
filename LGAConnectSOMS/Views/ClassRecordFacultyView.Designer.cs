@@ -29,26 +29,31 @@ namespace LGAConnectSOMS.Views
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle43 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle44 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle45 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle46 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle49 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle50 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DragWindowsPanel = new System.Windows.Forms.Panel();
             this.btnMinimize = new System.Windows.Forms.Button();
             this.btnMaximize = new System.Windows.Forms.Button();
@@ -58,10 +63,77 @@ namespace LGAConnectSOMS.Views
             this.lblClassRecordAdminTitle = new System.Windows.Forms.Label();
             this.tabcontrol = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.btnSaveClassRecords = new System.Windows.Forms.Button();
             this.FirstGradingGradebook = new System.Windows.Forms.DataGridView();
+            this.StudentName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WW = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WW1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WW2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WW3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WW4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WW5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WW6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WW7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WW8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WW9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WWTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.WWPercentage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TP1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TP2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TP3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TP4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TP5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TP6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TP7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TP8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TP9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TPTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TPPercentage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InitialGrade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuarterlyGrade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SchoolYear = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GradeLevel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Subject = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SectionName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SaveAsDraft = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SaveDraft = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GradingPeriod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.SecondGradingGradebook = new System.Windows.Forms.DataGridView();
+            this.StudentNameSecondGrading = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SecondWW = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SecondWW1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SecondWW2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SecondWW3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SecondWW4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SecondWW5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SecondWW6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SecondWW7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SecondWW8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SecondWW9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SecondWWTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SecondWWPercentage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SecondTP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SecondTP1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SecondTP2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SecondTP3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SecondTP4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SecondTP5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SecondTP6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SecondTP7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SecondTP8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SecondTP9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SecondTPTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SecondTPPercentage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SecondInitialGrade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SecondQuarterlyGrade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SecondSchoolYear = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SecondGradeLevel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SecondSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SecondSectionName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SecondSaveAsDraft = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SecondSaveDraft = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SecondGradingPeriod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.ThirdGradingGradebook = new System.Windows.Forms.DataGridView();
             this.StudentNameThirdGrading = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -134,6 +206,7 @@ namespace LGAConnectSOMS.Views
             this.FourthSaveAsDraft = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FourthSaveDraft = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FourthGradingPeriod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnSaveClassRecords = new System.Windows.Forms.Button();
             this.CBSection = new System.Windows.Forms.ComboBox();
             this.lblSection = new System.Windows.Forms.Label();
             this.CBGradeLevel = new System.Windows.Forms.ComboBox();
@@ -142,74 +215,8 @@ namespace LGAConnectSOMS.Views
             this.lblSubject = new System.Windows.Forms.Label();
             this.CBSY = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.StudentName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.WW = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.WW1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.WW2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.WW3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.WW4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.WW5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.WW6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.WW7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.WW8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.WW9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.WWTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.WWPercentage = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TP1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TP2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TP3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TP4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TP5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TP6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TP7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TP8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TP9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TPTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TPPercentage = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InitialGrade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QuarterlyGrade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SchoolYear = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GradeLevel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Subject = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SectionName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SaveAsDraft = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SaveDraft = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GradingPeriod = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StudentNameSecondGrading = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SecondWW = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SecondWW1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SecondWW2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SecondWW3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SecondWW4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SecondWW5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SecondWW6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SecondWW7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SecondWW8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SecondWW9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SecondWWTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SecondWWPercentage = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SecondTP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SecondTP1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SecondTP2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SecondTP3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SecondTP4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SecondTP5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SecondTP6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SecondTP7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SecondTP8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SecondTP9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SecondTPTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SecondTPPercentage = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SecondInitialGrade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SecondQuarterlyGrade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SecondSchoolYear = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SecondGradeLevel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SecondSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SecondSectionName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SecondSaveAsDraft = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SecondSaveDraft = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SecondGradingPeriod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.FinalGradeDataGridView = new System.Windows.Forms.DataGridView();
             this.DragWindowsPanel.SuspendLayout();
             this.tabcontrol.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -220,6 +227,8 @@ namespace LGAConnectSOMS.Views
             ((System.ComponentModel.ISupportInitialize)(this.ThirdGradingGradebook)).BeginInit();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FourthGradingGradebook)).BeginInit();
+            this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FinalGradeDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // DragWindowsPanel
@@ -323,18 +332,18 @@ namespace LGAConnectSOMS.Views
             this.tabcontrol.Controls.Add(this.tabPage2);
             this.tabcontrol.Controls.Add(this.tabPage3);
             this.tabcontrol.Controls.Add(this.tabPage4);
+            this.tabcontrol.Controls.Add(this.tabPage5);
             this.tabcontrol.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabcontrol.Location = new System.Drawing.Point(14, 186);
+            this.tabcontrol.Location = new System.Drawing.Point(14, 240);
             this.tabcontrol.Name = "tabcontrol";
             this.tabcontrol.SelectedIndex = 0;
-            this.tabcontrol.Size = new System.Drawing.Size(1276, 502);
+            this.tabcontrol.Size = new System.Drawing.Size(1276, 448);
             this.tabcontrol.TabIndex = 34;
             this.tabcontrol.SelectedIndexChanged += new System.EventHandler(this.tabcontrol_SelectedIndexChanged);
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.Transparent;
-            this.tabPage1.Controls.Add(this.btnSaveClassRecords);
             this.tabPage1.Controls.Add(this.FirstGradingGradebook);
             this.tabPage1.Location = new System.Drawing.Point(4, 28);
             this.tabPage1.Name = "tabPage1";
@@ -343,42 +352,26 @@ namespace LGAConnectSOMS.Views
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "First Grading";
             // 
-            // btnSaveClassRecords
-            // 
-            this.btnSaveClassRecords.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSaveClassRecords.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(143)))));
-            this.btnSaveClassRecords.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSaveClassRecords.FlatAppearance.BorderSize = 0;
-            this.btnSaveClassRecords.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSaveClassRecords.ForeColor = System.Drawing.Color.Black;
-            this.btnSaveClassRecords.Location = new System.Drawing.Point(1130, 10);
-            this.btnSaveClassRecords.Name = "btnSaveClassRecords";
-            this.btnSaveClassRecords.Size = new System.Drawing.Size(132, 41);
-            this.btnSaveClassRecords.TabIndex = 31;
-            this.btnSaveClassRecords.Text = "Save";
-            this.btnSaveClassRecords.UseVisualStyleBackColor = false;
-            this.btnSaveClassRecords.Click += new System.EventHandler(this.btnSaveClassRecords_Click);
-            // 
             // FirstGradingGradebook
             // 
             this.FirstGradingGradebook.AllowUserToResizeColumns = false;
             this.FirstGradingGradebook.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
-            this.FirstGradingGradebook.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
+            this.FirstGradingGradebook.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle26;
             this.FirstGradingGradebook.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.FirstGradingGradebook.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.FirstGradingGradebook.BackgroundColor = System.Drawing.SystemColors.Control;
             this.FirstGradingGradebook.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(143)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.FirstGradingGradebook.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(143)))));
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.FirstGradingGradebook.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle27;
             this.FirstGradingGradebook.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.FirstGradingGradebook.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.StudentName,
@@ -415,33 +408,301 @@ namespace LGAConnectSOMS.Views
             this.SaveAsDraft,
             this.SaveDraft,
             this.GradingPeriod});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(242)))), ((int)(((byte)(245)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.FirstGradingGradebook.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(242)))), ((int)(((byte)(245)))));
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.FirstGradingGradebook.DefaultCellStyle = dataGridViewCellStyle28;
             this.FirstGradingGradebook.EnableHeadersVisualStyles = false;
-            this.FirstGradingGradebook.Location = new System.Drawing.Point(0, 57);
+            this.FirstGradingGradebook.Location = new System.Drawing.Point(0, 0);
             this.FirstGradingGradebook.Name = "FirstGradingGradebook";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.FirstGradingGradebook.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle29.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.FirstGradingGradebook.RowHeadersDefaultCellStyle = dataGridViewCellStyle29;
             this.FirstGradingGradebook.RowHeadersVisible = false;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FirstGradingGradebook.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FirstGradingGradebook.RowsDefaultCellStyle = dataGridViewCellStyle30;
+            this.FirstGradingGradebook.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.FirstGradingGradebook.Size = new System.Drawing.Size(1268, 410);
             this.FirstGradingGradebook.TabIndex = 26;
             this.FirstGradingGradebook.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.FirstGradingGradebook_CellEndEdit);
             this.FirstGradingGradebook.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.FirstGradingGradebook_EditingControlShowing);
             this.FirstGradingGradebook.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FirstGradingGradebook_KeyPress);
+            // 
+            // StudentName
+            // 
+            this.StudentName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.StudentName.HeaderText = "Learner\'s Name";
+            this.StudentName.MinimumWidth = 300;
+            this.StudentName.Name = "StudentName";
+            this.StudentName.ReadOnly = true;
+            this.StudentName.Width = 300;
+            // 
+            // WW
+            // 
+            this.WW.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.WW.HeaderText = "WW #1";
+            this.WW.Name = "WW";
+            this.WW.ToolTipText = "Written Work 1";
+            this.WW.Width = 83;
+            // 
+            // WW1
+            // 
+            this.WW1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.WW1.HeaderText = "WW #2";
+            this.WW1.Name = "WW1";
+            this.WW1.ToolTipText = "Written Work 2";
+            this.WW1.Width = 83;
+            // 
+            // WW2
+            // 
+            this.WW2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.WW2.HeaderText = "WW #3";
+            this.WW2.Name = "WW2";
+            this.WW2.ToolTipText = "Written Work 3";
+            this.WW2.Width = 83;
+            // 
+            // WW3
+            // 
+            this.WW3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.WW3.HeaderText = "WW #4";
+            this.WW3.Name = "WW3";
+            this.WW3.ToolTipText = "Written Work 4";
+            this.WW3.Width = 83;
+            // 
+            // WW4
+            // 
+            this.WW4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.WW4.HeaderText = "WW #5";
+            this.WW4.Name = "WW4";
+            this.WW4.ToolTipText = "Written Work 5";
+            this.WW4.Width = 83;
+            // 
+            // WW5
+            // 
+            this.WW5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.WW5.HeaderText = "WW #6";
+            this.WW5.Name = "WW5";
+            this.WW5.ToolTipText = "Written Work 6";
+            this.WW5.Width = 83;
+            // 
+            // WW6
+            // 
+            this.WW6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.WW6.HeaderText = "WW  #7";
+            this.WW6.Name = "WW6";
+            this.WW6.ToolTipText = "Written Work 7";
+            this.WW6.Width = 69;
+            // 
+            // WW7
+            // 
+            this.WW7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.WW7.HeaderText = "WW #8";
+            this.WW7.Name = "WW7";
+            this.WW7.ToolTipText = "Written Work 8";
+            this.WW7.Width = 83;
+            // 
+            // WW8
+            // 
+            this.WW8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.WW8.HeaderText = "WW #9";
+            this.WW8.Name = "WW8";
+            this.WW8.ToolTipText = "Written Work 9";
+            this.WW8.Width = 83;
+            // 
+            // WW9
+            // 
+            this.WW9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.WW9.HeaderText = "WW #10";
+            this.WW9.Name = "WW9";
+            this.WW9.ToolTipText = "Written Work 10";
+            this.WW9.Width = 91;
+            // 
+            // WWTotal
+            // 
+            this.WWTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.WWTotal.HeaderText = "Total";
+            this.WWTotal.Name = "WWTotal";
+            this.WWTotal.ReadOnly = true;
+            this.WWTotal.Width = 65;
+            // 
+            // WWPercentage
+            // 
+            this.WWPercentage.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.WWPercentage.HeaderText = "WS";
+            this.WWPercentage.Name = "WWPercentage";
+            this.WWPercentage.ReadOnly = true;
+            this.WWPercentage.ToolTipText = "Written Work Percentage";
+            this.WWPercentage.Width = 58;
+            // 
+            // TP
+            // 
+            this.TP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.TP.HeaderText = "TP #1";
+            this.TP.Name = "TP";
+            this.TP.ToolTipText = "Task Performance 1";
+            this.TP.Width = 68;
+            // 
+            // TP1
+            // 
+            this.TP1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.TP1.HeaderText = "TP #2";
+            this.TP1.Name = "TP1";
+            this.TP1.ToolTipText = "Task Performance 2";
+            this.TP1.Width = 68;
+            // 
+            // TP2
+            // 
+            this.TP2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.TP2.HeaderText = "TP #3";
+            this.TP2.Name = "TP2";
+            this.TP2.ToolTipText = "Task Performance 3";
+            this.TP2.Width = 68;
+            // 
+            // TP3
+            // 
+            this.TP3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.TP3.HeaderText = "TP #4";
+            this.TP3.Name = "TP3";
+            this.TP3.ToolTipText = "Task Performance 4";
+            this.TP3.Width = 68;
+            // 
+            // TP4
+            // 
+            this.TP4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.TP4.HeaderText = "TP #5";
+            this.TP4.Name = "TP4";
+            this.TP4.ToolTipText = "Task Performance 5";
+            this.TP4.Width = 68;
+            // 
+            // TP5
+            // 
+            this.TP5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.TP5.HeaderText = "TP #6";
+            this.TP5.Name = "TP5";
+            this.TP5.ToolTipText = "Task Performance 6";
+            this.TP5.Width = 68;
+            // 
+            // TP6
+            // 
+            this.TP6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.TP6.HeaderText = "TP #7";
+            this.TP6.Name = "TP6";
+            this.TP6.ToolTipText = "Task Performance 7";
+            this.TP6.Width = 68;
+            // 
+            // TP7
+            // 
+            this.TP7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.TP7.HeaderText = "TP #8";
+            this.TP7.Name = "TP7";
+            this.TP7.ToolTipText = "Task Performance 8";
+            this.TP7.Width = 68;
+            // 
+            // TP8
+            // 
+            this.TP8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.TP8.HeaderText = "TP #9";
+            this.TP8.Name = "TP8";
+            this.TP8.ToolTipText = "Task Performance 9";
+            this.TP8.Width = 68;
+            // 
+            // TP9
+            // 
+            this.TP9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.TP9.HeaderText = "TP #10";
+            this.TP9.Name = "TP9";
+            this.TP9.ToolTipText = "Task Performance 10";
+            this.TP9.Width = 76;
+            // 
+            // TPTotal
+            // 
+            this.TPTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.TPTotal.HeaderText = "Total";
+            this.TPTotal.Name = "TPTotal";
+            this.TPTotal.ReadOnly = true;
+            this.TPTotal.ToolTipText = "Task Performance Percentage";
+            this.TPTotal.Width = 65;
+            // 
+            // TPPercentage
+            // 
+            this.TPPercentage.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.TPPercentage.HeaderText = "TS";
+            this.TPPercentage.Name = "TPPercentage";
+            this.TPPercentage.ReadOnly = true;
+            this.TPPercentage.Width = 49;
+            // 
+            // InitialGrade
+            // 
+            this.InitialGrade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.InitialGrade.HeaderText = "Initial Grade";
+            this.InitialGrade.Name = "InitialGrade";
+            this.InitialGrade.ReadOnly = true;
+            this.InitialGrade.Width = 105;
+            // 
+            // QuarterlyGrade
+            // 
+            this.QuarterlyGrade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.QuarterlyGrade.HeaderText = "Quarterly Grade";
+            this.QuarterlyGrade.Name = "QuarterlyGrade";
+            this.QuarterlyGrade.ReadOnly = true;
+            this.QuarterlyGrade.Width = 130;
+            // 
+            // SchoolYear
+            // 
+            this.SchoolYear.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SchoolYear.HeaderText = "School Year";
+            this.SchoolYear.Name = "SchoolYear";
+            // 
+            // GradeLevel
+            // 
+            this.GradeLevel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.GradeLevel.HeaderText = "Grade Level";
+            this.GradeLevel.Name = "GradeLevel";
+            this.GradeLevel.Width = 104;
+            // 
+            // Subject
+            // 
+            this.Subject.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Subject.HeaderText = "Subject";
+            this.Subject.Name = "Subject";
+            this.Subject.Width = 79;
+            // 
+            // SectionName
+            // 
+            this.SectionName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SectionName.HeaderText = "Section name";
+            this.SectionName.Name = "SectionName";
+            this.SectionName.Width = 107;
+            // 
+            // SaveAsDraft
+            // 
+            this.SaveAsDraft.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SaveAsDraft.HeaderText = "Save as Draft";
+            this.SaveAsDraft.Name = "SaveAsDraft";
+            this.SaveAsDraft.Width = 111;
+            // 
+            // SaveDraft
+            // 
+            this.SaveDraft.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SaveDraft.HeaderText = "Save Draft";
+            this.SaveDraft.Name = "SaveDraft";
+            this.SaveDraft.Width = 95;
+            // 
+            // GradingPeriod
+            // 
+            this.GradingPeriod.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.GradingPeriod.HeaderText = "Grading Period";
+            this.GradingPeriod.Name = "GradingPeriod";
+            this.GradingPeriod.Width = 122;
             // 
             // tabPage2
             // 
@@ -450,7 +711,7 @@ namespace LGAConnectSOMS.Views
             this.tabPage2.Location = new System.Drawing.Point(4, 28);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1268, 470);
+            this.tabPage2.Size = new System.Drawing.Size(1268, 416);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Second Grading";
             // 
@@ -458,22 +719,22 @@ namespace LGAConnectSOMS.Views
             // 
             this.SecondGradingGradebook.AllowUserToResizeColumns = false;
             this.SecondGradingGradebook.AllowUserToResizeRows = false;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
-            this.SecondGradingGradebook.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
+            this.SecondGradingGradebook.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle31;
             this.SecondGradingGradebook.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.SecondGradingGradebook.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.SecondGradingGradebook.BackgroundColor = System.Drawing.SystemColors.Control;
             this.SecondGradingGradebook.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(143)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.SecondGradingGradebook.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(143)))));
+            dataGridViewCellStyle32.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle32.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.SecondGradingGradebook.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle32;
             this.SecondGradingGradebook.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.SecondGradingGradebook.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.StudentNameSecondGrading,
@@ -510,33 +771,300 @@ namespace LGAConnectSOMS.Views
             this.SecondSaveAsDraft,
             this.SecondSaveDraft,
             this.SecondGradingPeriod});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(242)))), ((int)(((byte)(245)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.SecondGradingGradebook.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(242)))), ((int)(((byte)(245)))));
+            dataGridViewCellStyle33.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle33.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle33.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.SecondGradingGradebook.DefaultCellStyle = dataGridViewCellStyle33;
             this.SecondGradingGradebook.EnableHeadersVisualStyles = false;
-            this.SecondGradingGradebook.Location = new System.Drawing.Point(0, 57);
+            this.SecondGradingGradebook.Location = new System.Drawing.Point(0, 0);
             this.SecondGradingGradebook.Name = "SecondGradingGradebook";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.SecondGradingGradebook.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle34.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle34.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle34.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle34.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle34.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.SecondGradingGradebook.RowHeadersDefaultCellStyle = dataGridViewCellStyle34;
             this.SecondGradingGradebook.RowHeadersVisible = false;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SecondGradingGradebook.RowsDefaultCellStyle = dataGridViewCellStyle10;
-            this.SecondGradingGradebook.Size = new System.Drawing.Size(1268, 410);
+            dataGridViewCellStyle35.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SecondGradingGradebook.RowsDefaultCellStyle = dataGridViewCellStyle35;
+            this.SecondGradingGradebook.Size = new System.Drawing.Size(1268, 420);
             this.SecondGradingGradebook.TabIndex = 27;
             this.SecondGradingGradebook.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.SecondGradingGradebook_CellEndEdit);
             this.SecondGradingGradebook.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.SecondGradingGradebook_EditingControlShowing);
             this.SecondGradingGradebook.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SecondGradingGradebook_KeyPress);
+            // 
+            // StudentNameSecondGrading
+            // 
+            this.StudentNameSecondGrading.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.StudentNameSecondGrading.HeaderText = "Learner\'s Name";
+            this.StudentNameSecondGrading.MinimumWidth = 300;
+            this.StudentNameSecondGrading.Name = "StudentNameSecondGrading";
+            this.StudentNameSecondGrading.ReadOnly = true;
+            this.StudentNameSecondGrading.Width = 300;
+            // 
+            // SecondWW
+            // 
+            this.SecondWW.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SecondWW.HeaderText = "WW #1";
+            this.SecondWW.Name = "SecondWW";
+            this.SecondWW.ToolTipText = "Written Work 1";
+            this.SecondWW.Width = 83;
+            // 
+            // SecondWW1
+            // 
+            this.SecondWW1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SecondWW1.HeaderText = "WW #2";
+            this.SecondWW1.Name = "SecondWW1";
+            this.SecondWW1.ToolTipText = "Written Work 2";
+            this.SecondWW1.Width = 83;
+            // 
+            // SecondWW2
+            // 
+            this.SecondWW2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SecondWW2.HeaderText = "WW #3";
+            this.SecondWW2.Name = "SecondWW2";
+            this.SecondWW2.ToolTipText = "Written Work 3";
+            this.SecondWW2.Width = 83;
+            // 
+            // SecondWW3
+            // 
+            this.SecondWW3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SecondWW3.HeaderText = "WW #4";
+            this.SecondWW3.Name = "SecondWW3";
+            this.SecondWW3.ToolTipText = "Written Work 4";
+            this.SecondWW3.Width = 83;
+            // 
+            // SecondWW4
+            // 
+            this.SecondWW4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SecondWW4.HeaderText = "WW #5";
+            this.SecondWW4.Name = "SecondWW4";
+            this.SecondWW4.ToolTipText = "Written Work 5";
+            this.SecondWW4.Width = 83;
+            // 
+            // SecondWW5
+            // 
+            this.SecondWW5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SecondWW5.HeaderText = "WW #6";
+            this.SecondWW5.Name = "SecondWW5";
+            this.SecondWW5.ToolTipText = "Written Work 6";
+            this.SecondWW5.Width = 83;
+            // 
+            // SecondWW6
+            // 
+            this.SecondWW6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SecondWW6.HeaderText = "WW  #7";
+            this.SecondWW6.Name = "SecondWW6";
+            this.SecondWW6.ToolTipText = "Written Work 7";
+            this.SecondWW6.Width = 69;
+            // 
+            // SecondWW7
+            // 
+            this.SecondWW7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SecondWW7.HeaderText = "WW #8";
+            this.SecondWW7.Name = "SecondWW7";
+            this.SecondWW7.ToolTipText = "Written Work 8";
+            this.SecondWW7.Width = 83;
+            // 
+            // SecondWW8
+            // 
+            this.SecondWW8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SecondWW8.HeaderText = "WW #9";
+            this.SecondWW8.Name = "SecondWW8";
+            this.SecondWW8.ToolTipText = "Written Work 9";
+            this.SecondWW8.Width = 83;
+            // 
+            // SecondWW9
+            // 
+            this.SecondWW9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SecondWW9.HeaderText = "WW #10";
+            this.SecondWW9.Name = "SecondWW9";
+            this.SecondWW9.ToolTipText = "Written Work 10";
+            this.SecondWW9.Width = 91;
+            // 
+            // SecondWWTotal
+            // 
+            this.SecondWWTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SecondWWTotal.HeaderText = "Total";
+            this.SecondWWTotal.Name = "SecondWWTotal";
+            this.SecondWWTotal.ReadOnly = true;
+            this.SecondWWTotal.Width = 65;
+            // 
+            // SecondWWPercentage
+            // 
+            this.SecondWWPercentage.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SecondWWPercentage.HeaderText = "WS";
+            this.SecondWWPercentage.Name = "SecondWWPercentage";
+            this.SecondWWPercentage.ReadOnly = true;
+            this.SecondWWPercentage.ToolTipText = "Written Work Percentage";
+            this.SecondWWPercentage.Width = 58;
+            // 
+            // SecondTP
+            // 
+            this.SecondTP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SecondTP.HeaderText = "TP #1";
+            this.SecondTP.Name = "SecondTP";
+            this.SecondTP.ToolTipText = "Task Performance 1";
+            this.SecondTP.Width = 68;
+            // 
+            // SecondTP1
+            // 
+            this.SecondTP1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SecondTP1.HeaderText = "TP #2";
+            this.SecondTP1.Name = "SecondTP1";
+            this.SecondTP1.ToolTipText = "Task Performance 2";
+            this.SecondTP1.Width = 68;
+            // 
+            // SecondTP2
+            // 
+            this.SecondTP2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SecondTP2.HeaderText = "TP #3";
+            this.SecondTP2.Name = "SecondTP2";
+            this.SecondTP2.ToolTipText = "Task Performance 3";
+            this.SecondTP2.Width = 68;
+            // 
+            // SecondTP3
+            // 
+            this.SecondTP3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SecondTP3.HeaderText = "TP #4";
+            this.SecondTP3.Name = "SecondTP3";
+            this.SecondTP3.ToolTipText = "Task Performance 4";
+            this.SecondTP3.Width = 68;
+            // 
+            // SecondTP4
+            // 
+            this.SecondTP4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SecondTP4.HeaderText = "TP #5";
+            this.SecondTP4.Name = "SecondTP4";
+            this.SecondTP4.ToolTipText = "Task Performance 5";
+            this.SecondTP4.Width = 68;
+            // 
+            // SecondTP5
+            // 
+            this.SecondTP5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SecondTP5.HeaderText = "TP #6";
+            this.SecondTP5.Name = "SecondTP5";
+            this.SecondTP5.ToolTipText = "Task Performance 6";
+            this.SecondTP5.Width = 68;
+            // 
+            // SecondTP6
+            // 
+            this.SecondTP6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SecondTP6.HeaderText = "TP #7";
+            this.SecondTP6.Name = "SecondTP6";
+            this.SecondTP6.ToolTipText = "Task Performance 7";
+            this.SecondTP6.Width = 68;
+            // 
+            // SecondTP7
+            // 
+            this.SecondTP7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SecondTP7.HeaderText = "TP #8";
+            this.SecondTP7.Name = "SecondTP7";
+            this.SecondTP7.ToolTipText = "Task Performance 8";
+            this.SecondTP7.Width = 68;
+            // 
+            // SecondTP8
+            // 
+            this.SecondTP8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SecondTP8.HeaderText = "TP #9";
+            this.SecondTP8.Name = "SecondTP8";
+            this.SecondTP8.ToolTipText = "Task Performance 9";
+            this.SecondTP8.Width = 68;
+            // 
+            // SecondTP9
+            // 
+            this.SecondTP9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SecondTP9.HeaderText = "TP #10";
+            this.SecondTP9.Name = "SecondTP9";
+            this.SecondTP9.ToolTipText = "Task Performance 10";
+            this.SecondTP9.Width = 76;
+            // 
+            // SecondTPTotal
+            // 
+            this.SecondTPTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SecondTPTotal.HeaderText = "Total";
+            this.SecondTPTotal.Name = "SecondTPTotal";
+            this.SecondTPTotal.ReadOnly = true;
+            this.SecondTPTotal.ToolTipText = "Task Performance Percentage";
+            this.SecondTPTotal.Width = 65;
+            // 
+            // SecondTPPercentage
+            // 
+            this.SecondTPPercentage.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SecondTPPercentage.HeaderText = "TS";
+            this.SecondTPPercentage.Name = "SecondTPPercentage";
+            this.SecondTPPercentage.ReadOnly = true;
+            this.SecondTPPercentage.Width = 49;
+            // 
+            // SecondInitialGrade
+            // 
+            this.SecondInitialGrade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SecondInitialGrade.HeaderText = "Initial Grade";
+            this.SecondInitialGrade.Name = "SecondInitialGrade";
+            this.SecondInitialGrade.ReadOnly = true;
+            this.SecondInitialGrade.Width = 105;
+            // 
+            // SecondQuarterlyGrade
+            // 
+            this.SecondQuarterlyGrade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SecondQuarterlyGrade.HeaderText = "Quarterly Grade";
+            this.SecondQuarterlyGrade.Name = "SecondQuarterlyGrade";
+            this.SecondQuarterlyGrade.ReadOnly = true;
+            this.SecondQuarterlyGrade.Width = 130;
+            // 
+            // SecondSchoolYear
+            // 
+            this.SecondSchoolYear.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SecondSchoolYear.HeaderText = "School Year";
+            this.SecondSchoolYear.Name = "SecondSchoolYear";
+            // 
+            // SecondGradeLevel
+            // 
+            this.SecondGradeLevel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SecondGradeLevel.HeaderText = "Grade Level";
+            this.SecondGradeLevel.Name = "SecondGradeLevel";
+            this.SecondGradeLevel.Width = 104;
+            // 
+            // SecondSubject
+            // 
+            this.SecondSubject.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.SecondSubject.HeaderText = "Subject";
+            this.SecondSubject.Name = "SecondSubject";
+            this.SecondSubject.Width = 79;
+            // 
+            // SecondSectionName
+            // 
+            this.SecondSectionName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SecondSectionName.HeaderText = "Section Name";
+            this.SecondSectionName.Name = "SecondSectionName";
+            this.SecondSectionName.Width = 111;
+            // 
+            // SecondSaveAsDraft
+            // 
+            this.SecondSaveAsDraft.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SecondSaveAsDraft.HeaderText = "Save as Draft";
+            this.SecondSaveAsDraft.Name = "SecondSaveAsDraft";
+            this.SecondSaveAsDraft.Width = 111;
+            // 
+            // SecondSaveDraft
+            // 
+            this.SecondSaveDraft.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SecondSaveDraft.HeaderText = "Save Draft";
+            this.SecondSaveDraft.Name = "SecondSaveDraft";
+            this.SecondSaveDraft.Width = 95;
+            // 
+            // SecondGradingPeriod
+            // 
+            this.SecondGradingPeriod.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SecondGradingPeriod.HeaderText = "Grading Period";
+            this.SecondGradingPeriod.Name = "SecondGradingPeriod";
+            this.SecondGradingPeriod.Width = 122;
             // 
             // tabPage3
             // 
@@ -544,7 +1072,7 @@ namespace LGAConnectSOMS.Views
             this.tabPage3.Controls.Add(this.ThirdGradingGradebook);
             this.tabPage3.Location = new System.Drawing.Point(4, 28);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1268, 470);
+            this.tabPage3.Size = new System.Drawing.Size(1268, 416);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Third Grading";
             // 
@@ -552,22 +1080,22 @@ namespace LGAConnectSOMS.Views
             // 
             this.ThirdGradingGradebook.AllowUserToResizeColumns = false;
             this.ThirdGradingGradebook.AllowUserToResizeRows = false;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
-            this.ThirdGradingGradebook.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
+            this.ThirdGradingGradebook.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle36;
             this.ThirdGradingGradebook.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ThirdGradingGradebook.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.ThirdGradingGradebook.BackgroundColor = System.Drawing.SystemColors.Control;
             this.ThirdGradingGradebook.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(143)))));
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ThirdGradingGradebook.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle37.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(143)))));
+            dataGridViewCellStyle37.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle37.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle37.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle37.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle37.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ThirdGradingGradebook.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle37;
             this.ThirdGradingGradebook.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ThirdGradingGradebook.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.StudentNameThirdGrading,
@@ -604,29 +1132,29 @@ namespace LGAConnectSOMS.Views
             this.ThirdSaveAsDraft,
             this.ThirdSaveDraft,
             this.ThirdGradingPeriod});
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(242)))), ((int)(((byte)(245)))));
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ThirdGradingGradebook.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle38.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(242)))), ((int)(((byte)(245)))));
+            dataGridViewCellStyle38.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle38.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle38.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle38.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle38.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ThirdGradingGradebook.DefaultCellStyle = dataGridViewCellStyle38;
             this.ThirdGradingGradebook.EnableHeadersVisualStyles = false;
-            this.ThirdGradingGradebook.Location = new System.Drawing.Point(0, 57);
+            this.ThirdGradingGradebook.Location = new System.Drawing.Point(0, 0);
             this.ThirdGradingGradebook.Name = "ThirdGradingGradebook";
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ThirdGradingGradebook.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle39.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle39.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle39.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle39.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle39.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle39.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ThirdGradingGradebook.RowHeadersDefaultCellStyle = dataGridViewCellStyle39;
             this.ThirdGradingGradebook.RowHeadersVisible = false;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ThirdGradingGradebook.RowsDefaultCellStyle = dataGridViewCellStyle15;
-            this.ThirdGradingGradebook.Size = new System.Drawing.Size(1268, 410);
+            dataGridViewCellStyle40.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ThirdGradingGradebook.RowsDefaultCellStyle = dataGridViewCellStyle40;
+            this.ThirdGradingGradebook.Size = new System.Drawing.Size(1268, 420);
             this.ThirdGradingGradebook.TabIndex = 28;
             this.ThirdGradingGradebook.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.ThirdGradingGradebook_CellEndEdit);
             this.ThirdGradingGradebook.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.ThirdGradingGradebook_EditingControlShowing);
@@ -905,7 +1433,7 @@ namespace LGAConnectSOMS.Views
             this.tabPage4.Controls.Add(this.FourthGradingGradebook);
             this.tabPage4.Location = new System.Drawing.Point(4, 28);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1268, 470);
+            this.tabPage4.Size = new System.Drawing.Size(1268, 416);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Fourth Grading";
             // 
@@ -913,22 +1441,22 @@ namespace LGAConnectSOMS.Views
             // 
             this.FourthGradingGradebook.AllowUserToResizeColumns = false;
             this.FourthGradingGradebook.AllowUserToResizeRows = false;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
-            this.FourthGradingGradebook.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle41.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
+            this.FourthGradingGradebook.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle41;
             this.FourthGradingGradebook.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.FourthGradingGradebook.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.FourthGradingGradebook.BackgroundColor = System.Drawing.SystemColors.Control;
             this.FourthGradingGradebook.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(143)))));
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.FourthGradingGradebook.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle42.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(143)))));
+            dataGridViewCellStyle42.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle42.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle42.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle42.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle42.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.FourthGradingGradebook.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle42;
             this.FourthGradingGradebook.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.FourthGradingGradebook.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.StudentNameFourthGrading,
@@ -965,29 +1493,29 @@ namespace LGAConnectSOMS.Views
             this.FourthSaveAsDraft,
             this.FourthSaveDraft,
             this.FourthGradingPeriod});
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(242)))), ((int)(((byte)(245)))));
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.FourthGradingGradebook.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle43.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle43.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(242)))), ((int)(((byte)(245)))));
+            dataGridViewCellStyle43.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle43.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle43.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle43.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle43.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.FourthGradingGradebook.DefaultCellStyle = dataGridViewCellStyle43;
             this.FourthGradingGradebook.EnableHeadersVisualStyles = false;
-            this.FourthGradingGradebook.Location = new System.Drawing.Point(0, 57);
+            this.FourthGradingGradebook.Location = new System.Drawing.Point(0, 0);
             this.FourthGradingGradebook.Name = "FourthGradingGradebook";
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.FourthGradingGradebook.RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle44.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle44.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle44.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle44.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle44.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle44.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle44.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.FourthGradingGradebook.RowHeadersDefaultCellStyle = dataGridViewCellStyle44;
             this.FourthGradingGradebook.RowHeadersVisible = false;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FourthGradingGradebook.RowsDefaultCellStyle = dataGridViewCellStyle20;
-            this.FourthGradingGradebook.Size = new System.Drawing.Size(1268, 410);
+            dataGridViewCellStyle45.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FourthGradingGradebook.RowsDefaultCellStyle = dataGridViewCellStyle45;
+            this.FourthGradingGradebook.Size = new System.Drawing.Size(1268, 420);
             this.FourthGradingGradebook.TabIndex = 29;
             this.FourthGradingGradebook.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.FourthGradingGradebook_CellEndEdit);
             this.FourthGradingGradebook.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.FourthGradingGradebook_EditingControlShowing);
@@ -1260,6 +1788,22 @@ namespace LGAConnectSOMS.Views
             this.FourthGradingPeriod.Name = "FourthGradingPeriod";
             this.FourthGradingPeriod.Width = 122;
             // 
+            // btnSaveClassRecords
+            // 
+            this.btnSaveClassRecords.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(143)))));
+            this.btnSaveClassRecords.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSaveClassRecords.FlatAppearance.BorderSize = 0;
+            this.btnSaveClassRecords.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSaveClassRecords.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveClassRecords.ForeColor = System.Drawing.Color.Black;
+            this.btnSaveClassRecords.Location = new System.Drawing.Point(22, 199);
+            this.btnSaveClassRecords.Name = "btnSaveClassRecords";
+            this.btnSaveClassRecords.Size = new System.Drawing.Size(100, 35);
+            this.btnSaveClassRecords.TabIndex = 31;
+            this.btnSaveClassRecords.Text = "Save";
+            this.btnSaveClassRecords.UseVisualStyleBackColor = false;
+            this.btnSaveClassRecords.Click += new System.EventHandler(this.btnSaveClassRecords_Click);
+            // 
             // CBSection
             // 
             this.CBSection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -1356,539 +1900,62 @@ namespace LGAConnectSOMS.Views
             this.label1.TabIndex = 43;
             this.label1.Text = "S.Y.";
             // 
-            // StudentName
-            // 
-            this.StudentName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.StudentName.HeaderText = "Learner\'s Name";
-            this.StudentName.MinimumWidth = 300;
-            this.StudentName.Name = "StudentName";
-            this.StudentName.ReadOnly = true;
-            this.StudentName.Width = 300;
-            // 
-            // WW
-            // 
-            this.WW.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.WW.HeaderText = "WW #1";
-            this.WW.Name = "WW";
-            this.WW.ToolTipText = "Written Work 1";
-            this.WW.Width = 90;
-            // 
-            // WW1
-            // 
-            this.WW1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.WW1.HeaderText = "WW #2";
-            this.WW1.Name = "WW1";
-            this.WW1.ToolTipText = "Written Work 2";
-            this.WW1.Width = 90;
-            // 
-            // WW2
-            // 
-            this.WW2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.WW2.HeaderText = "WW #3";
-            this.WW2.Name = "WW2";
-            this.WW2.ToolTipText = "Written Work 3";
-            this.WW2.Width = 90;
-            // 
-            // WW3
-            // 
-            this.WW3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.WW3.HeaderText = "WW #4";
-            this.WW3.Name = "WW3";
-            this.WW3.ToolTipText = "Written Work 4";
-            this.WW3.Width = 90;
-            // 
-            // WW4
-            // 
-            this.WW4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.WW4.HeaderText = "WW #5";
-            this.WW4.Name = "WW4";
-            this.WW4.ToolTipText = "Written Work 5";
-            this.WW4.Width = 90;
-            // 
-            // WW5
-            // 
-            this.WW5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.WW5.HeaderText = "WW #6";
-            this.WW5.Name = "WW5";
-            this.WW5.ToolTipText = "Written Work 6";
-            this.WW5.Width = 90;
-            // 
-            // WW6
-            // 
-            this.WW6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.WW6.HeaderText = "WW  #7";
-            this.WW6.Name = "WW6";
-            this.WW6.ToolTipText = "Written Work 7";
-            this.WW6.Width = 94;
-            // 
-            // WW7
-            // 
-            this.WW7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.WW7.HeaderText = "WW #8";
-            this.WW7.Name = "WW7";
-            this.WW7.ToolTipText = "Written Work 8";
-            this.WW7.Width = 90;
-            // 
-            // WW8
-            // 
-            this.WW8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.WW8.HeaderText = "WW #9";
-            this.WW8.Name = "WW8";
-            this.WW8.ToolTipText = "Written Work 9";
-            this.WW8.Width = 90;
-            // 
-            // WW9
-            // 
-            this.WW9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.WW9.HeaderText = "WW #10";
-            this.WW9.Name = "WW9";
-            this.WW9.ToolTipText = "Written Work 10";
-            this.WW9.Width = 99;
-            // 
-            // WWTotal
-            // 
-            this.WWTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.WWTotal.HeaderText = "Total";
-            this.WWTotal.Name = "WWTotal";
-            this.WWTotal.ReadOnly = true;
-            this.WWTotal.Width = 65;
-            // 
-            // WWPercentage
-            // 
-            this.WWPercentage.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.WWPercentage.HeaderText = "WS";
-            this.WWPercentage.Name = "WWPercentage";
-            this.WWPercentage.ReadOnly = true;
-            this.WWPercentage.ToolTipText = "Written Work Percentage";
-            this.WWPercentage.Width = 58;
-            // 
-            // TP
-            // 
-            this.TP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.TP.HeaderText = "TP #1";
-            this.TP.Name = "TP";
-            this.TP.ToolTipText = "Task Performance 1";
-            this.TP.Width = 73;
-            // 
-            // TP1
-            // 
-            this.TP1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.TP1.HeaderText = "TP #2";
-            this.TP1.Name = "TP1";
-            this.TP1.ToolTipText = "Task Performance 2";
-            this.TP1.Width = 73;
-            // 
-            // TP2
-            // 
-            this.TP2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.TP2.HeaderText = "TP #3";
-            this.TP2.Name = "TP2";
-            this.TP2.ToolTipText = "Task Performance 3";
-            this.TP2.Width = 73;
-            // 
-            // TP3
-            // 
-            this.TP3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.TP3.HeaderText = "TP #4";
-            this.TP3.Name = "TP3";
-            this.TP3.ToolTipText = "Task Performance 4";
-            this.TP3.Width = 73;
-            // 
-            // TP4
-            // 
-            this.TP4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.TP4.HeaderText = "TP #5";
-            this.TP4.Name = "TP4";
-            this.TP4.ToolTipText = "Task Performance 5";
-            this.TP4.Width = 73;
-            // 
-            // TP5
-            // 
-            this.TP5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.TP5.HeaderText = "TP #6";
-            this.TP5.Name = "TP5";
-            this.TP5.ToolTipText = "Task Performance 6";
-            this.TP5.Width = 73;
-            // 
-            // TP6
-            // 
-            this.TP6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.TP6.HeaderText = "TP #7";
-            this.TP6.Name = "TP6";
-            this.TP6.ToolTipText = "Task Performance 7";
-            this.TP6.Width = 73;
-            // 
-            // TP7
-            // 
-            this.TP7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.TP7.HeaderText = "TP #8";
-            this.TP7.Name = "TP7";
-            this.TP7.ToolTipText = "Task Performance 8";
-            this.TP7.Width = 73;
-            // 
-            // TP8
-            // 
-            this.TP8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.TP8.HeaderText = "TP #9";
-            this.TP8.Name = "TP8";
-            this.TP8.ToolTipText = "Task Performance 9";
-            this.TP8.Width = 73;
-            // 
-            // TP9
-            // 
-            this.TP9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.TP9.HeaderText = "TP #10";
-            this.TP9.Name = "TP9";
-            this.TP9.ToolTipText = "Task Performance 10";
-            this.TP9.Width = 82;
-            // 
-            // TPTotal
-            // 
-            this.TPTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.TPTotal.HeaderText = "Total";
-            this.TPTotal.Name = "TPTotal";
-            this.TPTotal.ReadOnly = true;
-            this.TPTotal.ToolTipText = "Task Performance Percentage";
-            this.TPTotal.Width = 65;
-            // 
-            // TPPercentage
-            // 
-            this.TPPercentage.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.TPPercentage.HeaderText = "TS";
-            this.TPPercentage.Name = "TPPercentage";
-            this.TPPercentage.ReadOnly = true;
-            this.TPPercentage.Width = 49;
-            // 
-            // InitialGrade
-            // 
-            this.InitialGrade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.InitialGrade.HeaderText = "Initial Grade";
-            this.InitialGrade.Name = "InitialGrade";
-            this.InitialGrade.ReadOnly = true;
-            this.InitialGrade.Width = 114;
-            // 
-            // QuarterlyGrade
-            // 
-            this.QuarterlyGrade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.QuarterlyGrade.HeaderText = "Quarterly Grade";
-            this.QuarterlyGrade.Name = "QuarterlyGrade";
-            this.QuarterlyGrade.ReadOnly = true;
-            this.QuarterlyGrade.Width = 130;
-            // 
-            // SchoolYear
-            // 
-            this.SchoolYear.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.SchoolYear.HeaderText = "School Year";
-            this.SchoolYear.Name = "SchoolYear";
-            // 
-            // GradeLevel
-            // 
-            this.GradeLevel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.GradeLevel.HeaderText = "Grade Level";
-            this.GradeLevel.Name = "GradeLevel";
-            this.GradeLevel.Width = 104;
-            // 
-            // Subject
-            // 
-            this.Subject.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Subject.HeaderText = "Subject";
-            this.Subject.Name = "Subject";
-            this.Subject.Width = 79;
-            // 
-            // SectionName
-            // 
-            this.SectionName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.SectionName.HeaderText = "Section name";
-            this.SectionName.Name = "SectionName";
-            this.SectionName.Width = 107;
-            // 
-            // SaveAsDraft
-            // 
-            this.SaveAsDraft.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.SaveAsDraft.HeaderText = "Save as Draft";
-            this.SaveAsDraft.Name = "SaveAsDraft";
-            this.SaveAsDraft.Width = 111;
-            // 
-            // SaveDraft
-            // 
-            this.SaveDraft.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.SaveDraft.HeaderText = "Save Draft";
-            this.SaveDraft.Name = "SaveDraft";
-            this.SaveDraft.Width = 95;
-            // 
-            // GradingPeriod
-            // 
-            this.GradingPeriod.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.GradingPeriod.HeaderText = "Grading Period";
-            this.GradingPeriod.Name = "GradingPeriod";
-            this.GradingPeriod.Width = 122;
-            // 
-            // StudentNameSecondGrading
-            // 
-            this.StudentNameSecondGrading.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.StudentNameSecondGrading.HeaderText = "Learner\'s Name";
-            this.StudentNameSecondGrading.MinimumWidth = 300;
-            this.StudentNameSecondGrading.Name = "StudentNameSecondGrading";
-            this.StudentNameSecondGrading.ReadOnly = true;
-            this.StudentNameSecondGrading.Width = 300;
-            // 
-            // SecondWW
-            // 
-            this.SecondWW.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.SecondWW.HeaderText = "WW #1";
-            this.SecondWW.Name = "SecondWW";
-            this.SecondWW.ToolTipText = "Written Work 1";
-            this.SecondWW.Width = 90;
-            // 
-            // SecondWW1
-            // 
-            this.SecondWW1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.SecondWW1.HeaderText = "WW #2";
-            this.SecondWW1.Name = "SecondWW1";
-            this.SecondWW1.ToolTipText = "Written Work 2";
-            this.SecondWW1.Width = 90;
-            // 
-            // SecondWW2
-            // 
-            this.SecondWW2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.SecondWW2.HeaderText = "WW #3";
-            this.SecondWW2.Name = "SecondWW2";
-            this.SecondWW2.ToolTipText = "Written Work 3";
-            this.SecondWW2.Width = 90;
-            // 
-            // SecondWW3
-            // 
-            this.SecondWW3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.SecondWW3.HeaderText = "WW #4";
-            this.SecondWW3.Name = "SecondWW3";
-            this.SecondWW3.ToolTipText = "Written Work 4";
-            this.SecondWW3.Width = 90;
-            // 
-            // SecondWW4
-            // 
-            this.SecondWW4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.SecondWW4.HeaderText = "WW #5";
-            this.SecondWW4.Name = "SecondWW4";
-            this.SecondWW4.ToolTipText = "Written Work 5";
-            this.SecondWW4.Width = 90;
-            // 
-            // SecondWW5
-            // 
-            this.SecondWW5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.SecondWW5.HeaderText = "WW #6";
-            this.SecondWW5.Name = "SecondWW5";
-            this.SecondWW5.ToolTipText = "Written Work 6";
-            this.SecondWW5.Width = 90;
-            // 
-            // SecondWW6
-            // 
-            this.SecondWW6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.SecondWW6.HeaderText = "WW  #7";
-            this.SecondWW6.Name = "SecondWW6";
-            this.SecondWW6.ToolTipText = "Written Work 7";
-            this.SecondWW6.Width = 94;
-            // 
-            // SecondWW7
-            // 
-            this.SecondWW7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.SecondWW7.HeaderText = "WW #8";
-            this.SecondWW7.Name = "SecondWW7";
-            this.SecondWW7.ToolTipText = "Written Work 8";
-            this.SecondWW7.Width = 90;
-            // 
-            // SecondWW8
-            // 
-            this.SecondWW8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.SecondWW8.HeaderText = "WW #9";
-            this.SecondWW8.Name = "SecondWW8";
-            this.SecondWW8.ToolTipText = "Written Work 9";
-            this.SecondWW8.Width = 90;
-            // 
-            // SecondWW9
-            // 
-            this.SecondWW9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.SecondWW9.HeaderText = "WW #10";
-            this.SecondWW9.Name = "SecondWW9";
-            this.SecondWW9.ToolTipText = "Written Work 10";
-            this.SecondWW9.Width = 99;
-            // 
-            // SecondWWTotal
-            // 
-            this.SecondWWTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.SecondWWTotal.HeaderText = "Total";
-            this.SecondWWTotal.Name = "SecondWWTotal";
-            this.SecondWWTotal.ReadOnly = true;
-            this.SecondWWTotal.Width = 65;
-            // 
-            // SecondWWPercentage
-            // 
-            this.SecondWWPercentage.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.SecondWWPercentage.HeaderText = "WS";
-            this.SecondWWPercentage.Name = "SecondWWPercentage";
-            this.SecondWWPercentage.ReadOnly = true;
-            this.SecondWWPercentage.ToolTipText = "Written Work Percentage";
-            this.SecondWWPercentage.Width = 58;
-            // 
-            // SecondTP
-            // 
-            this.SecondTP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.SecondTP.HeaderText = "TP #1";
-            this.SecondTP.Name = "SecondTP";
-            this.SecondTP.ToolTipText = "Task Performance 1";
-            this.SecondTP.Width = 73;
-            // 
-            // SecondTP1
-            // 
-            this.SecondTP1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.SecondTP1.HeaderText = "TP #2";
-            this.SecondTP1.Name = "SecondTP1";
-            this.SecondTP1.ToolTipText = "Task Performance 2";
-            this.SecondTP1.Width = 73;
-            // 
-            // SecondTP2
-            // 
-            this.SecondTP2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.SecondTP2.HeaderText = "TP #3";
-            this.SecondTP2.Name = "SecondTP2";
-            this.SecondTP2.ToolTipText = "Task Performance 3";
-            this.SecondTP2.Width = 73;
-            // 
-            // SecondTP3
-            // 
-            this.SecondTP3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.SecondTP3.HeaderText = "TP #4";
-            this.SecondTP3.Name = "SecondTP3";
-            this.SecondTP3.ToolTipText = "Task Performance 4";
-            this.SecondTP3.Width = 73;
-            // 
-            // SecondTP4
-            // 
-            this.SecondTP4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.SecondTP4.HeaderText = "TP #5";
-            this.SecondTP4.Name = "SecondTP4";
-            this.SecondTP4.ToolTipText = "Task Performance 5";
-            this.SecondTP4.Width = 73;
-            // 
-            // SecondTP5
-            // 
-            this.SecondTP5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.SecondTP5.HeaderText = "TP #6";
-            this.SecondTP5.Name = "SecondTP5";
-            this.SecondTP5.ToolTipText = "Task Performance 6";
-            this.SecondTP5.Width = 73;
-            // 
-            // SecondTP6
-            // 
-            this.SecondTP6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.SecondTP6.HeaderText = "TP #7";
-            this.SecondTP6.Name = "SecondTP6";
-            this.SecondTP6.ToolTipText = "Task Performance 7";
-            this.SecondTP6.Width = 73;
-            // 
-            // SecondTP7
-            // 
-            this.SecondTP7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.SecondTP7.HeaderText = "TP #8";
-            this.SecondTP7.Name = "SecondTP7";
-            this.SecondTP7.ToolTipText = "Task Performance 8";
-            this.SecondTP7.Width = 73;
-            // 
-            // SecondTP8
-            // 
-            this.SecondTP8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.SecondTP8.HeaderText = "TP #9";
-            this.SecondTP8.Name = "SecondTP8";
-            this.SecondTP8.ToolTipText = "Task Performance 9";
-            this.SecondTP8.Width = 73;
-            // 
-            // SecondTP9
-            // 
-            this.SecondTP9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.SecondTP9.HeaderText = "TP #10";
-            this.SecondTP9.Name = "SecondTP9";
-            this.SecondTP9.ToolTipText = "Task Performance 10";
-            this.SecondTP9.Width = 82;
-            // 
-            // SecondTPTotal
-            // 
-            this.SecondTPTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.SecondTPTotal.HeaderText = "Total";
-            this.SecondTPTotal.Name = "SecondTPTotal";
-            this.SecondTPTotal.ReadOnly = true;
-            this.SecondTPTotal.ToolTipText = "Task Performance Percentage";
-            this.SecondTPTotal.Width = 65;
-            // 
-            // SecondTPPercentage
-            // 
-            this.SecondTPPercentage.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.SecondTPPercentage.HeaderText = "TS";
-            this.SecondTPPercentage.Name = "SecondTPPercentage";
-            this.SecondTPPercentage.ReadOnly = true;
-            this.SecondTPPercentage.Width = 49;
-            // 
-            // SecondInitialGrade
-            // 
-            this.SecondInitialGrade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.SecondInitialGrade.HeaderText = "Initial Grade";
-            this.SecondInitialGrade.Name = "SecondInitialGrade";
-            this.SecondInitialGrade.ReadOnly = true;
-            this.SecondInitialGrade.Width = 114;
-            // 
-            // SecondQuarterlyGrade
-            // 
-            this.SecondQuarterlyGrade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.SecondQuarterlyGrade.HeaderText = "Quarterly Grade";
-            this.SecondQuarterlyGrade.Name = "SecondQuarterlyGrade";
-            this.SecondQuarterlyGrade.ReadOnly = true;
-            this.SecondQuarterlyGrade.Width = 130;
-            // 
-            // SecondSchoolYear
-            // 
-            this.SecondSchoolYear.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.SecondSchoolYear.HeaderText = "School Year";
-            this.SecondSchoolYear.Name = "SecondSchoolYear";
-            // 
-            // SecondGradeLevel
-            // 
-            this.SecondGradeLevel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.SecondGradeLevel.HeaderText = "Grade Level";
-            this.SecondGradeLevel.Name = "SecondGradeLevel";
-            this.SecondGradeLevel.Width = 104;
-            // 
-            // SecondSubject
-            // 
-            this.SecondSubject.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.SecondSubject.HeaderText = "Subject";
-            this.SecondSubject.Name = "SecondSubject";
-            this.SecondSubject.Width = 79;
-            // 
-            // SecondSectionName
-            // 
-            this.SecondSectionName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.SecondSectionName.HeaderText = "Section Name";
-            this.SecondSectionName.Name = "SecondSectionName";
-            this.SecondSectionName.Width = 111;
-            // 
-            // SecondSaveAsDraft
-            // 
-            this.SecondSaveAsDraft.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.SecondSaveAsDraft.HeaderText = "Save as Draft";
-            this.SecondSaveAsDraft.Name = "SecondSaveAsDraft";
-            this.SecondSaveAsDraft.Width = 111;
-            // 
-            // SecondSaveDraft
-            // 
-            this.SecondSaveDraft.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.SecondSaveDraft.HeaderText = "Save Draft";
-            this.SecondSaveDraft.Name = "SecondSaveDraft";
-            this.SecondSaveDraft.Width = 95;
-            // 
-            // SecondGradingPeriod
-            // 
-            this.SecondGradingPeriod.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.SecondGradingPeriod.HeaderText = "Grading Period";
-            this.SecondGradingPeriod.Name = "SecondGradingPeriod";
-            this.SecondGradingPeriod.Width = 122;
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.FinalGradeDataGridView);
+            this.tabPage5.Location = new System.Drawing.Point(4, 28);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(1268, 416);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "Final Grade";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // FinalGradeDataGridView
+            // 
+            this.FinalGradeDataGridView.AllowUserToResizeColumns = false;
+            this.FinalGradeDataGridView.AllowUserToResizeRows = false;
+            dataGridViewCellStyle46.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
+            this.FinalGradeDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle46;
+            this.FinalGradeDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.FinalGradeDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.FinalGradeDataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.FinalGradeDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle47.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(143)))));
+            dataGridViewCellStyle47.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle47.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle47.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle47.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle47.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.FinalGradeDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle47;
+            this.FinalGradeDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle48.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle48.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(242)))), ((int)(((byte)(245)))));
+            dataGridViewCellStyle48.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle48.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle48.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle48.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle48.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.FinalGradeDataGridView.DefaultCellStyle = dataGridViewCellStyle48;
+            this.FinalGradeDataGridView.EnableHeadersVisualStyles = false;
+            this.FinalGradeDataGridView.Location = new System.Drawing.Point(0, 0);
+            this.FinalGradeDataGridView.Name = "FinalGradeDataGridView";
+            dataGridViewCellStyle49.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle49.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle49.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle49.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle49.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle49.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle49.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.FinalGradeDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle49;
+            this.FinalGradeDataGridView.RowHeadersVisible = false;
+            dataGridViewCellStyle50.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FinalGradeDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle50;
+            this.FinalGradeDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.FinalGradeDataGridView.Size = new System.Drawing.Size(1268, 413);
+            this.FinalGradeDataGridView.TabIndex = 27;
             // 
             // ClassRecordFacultyView
             // 
@@ -1896,6 +1963,7 @@ namespace LGAConnectSOMS.Views
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
             this.ClientSize = new System.Drawing.Size(1300, 700);
+            this.Controls.Add(this.btnSaveClassRecords);
             this.Controls.Add(this.CBSY);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.CBSubject);
@@ -1925,6 +1993,8 @@ namespace LGAConnectSOMS.Views
             ((System.ComponentModel.ISupportInitialize)(this.ThirdGradingGradebook)).EndInit();
             this.tabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.FourthGradingGradebook)).EndInit();
+            this.tabPage5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.FinalGradeDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2093,5 +2163,7 @@ namespace LGAConnectSOMS.Views
         private System.Windows.Forms.DataGridViewTextBoxColumn SecondSaveAsDraft;
         private System.Windows.Forms.DataGridViewTextBoxColumn SecondSaveDraft;
         private System.Windows.Forms.DataGridViewTextBoxColumn SecondGradingPeriod;
+        private System.Windows.Forms.TabPage tabPage5;
+        public System.Windows.Forms.DataGridView FinalGradeDataGridView;
     }
 }

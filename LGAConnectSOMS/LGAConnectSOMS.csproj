@@ -75,6 +75,7 @@
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -93,10 +94,12 @@
     <Compile Include="Gateway\ClassRecordsGateway.cs" />
     <Compile Include="Gateway\ClassScheduleGateway.cs" />
     <Compile Include="Gateway\FacultySubjectsGateway.cs" />
+    <Compile Include="Gateway\FinalGradeGateway.cs" />
     <Compile Include="Gateway\GradeLevelGateway.cs" />
     <Compile Include="Gateway\GradeLevelRequestGateway.cs" />
     <Compile Include="Gateway\GradeLevelSectionGateway.cs" />
     <Compile Include="Gateway\LoginGateway.cs" />
+    <Compile Include="Gateway\NewsAndAnnouncementGateway.cs" />
     <Compile Include="Gateway\PaymentSchemeGateway.cs" />
     <Compile Include="Gateway\SchoolAccountGateway.cs" />
     <Compile Include="Gateway\SchoolAccountRequestGateway.cs" />
@@ -111,13 +114,16 @@
     <Compile Include="Models\ClassRecordRequest.cs" />
     <Compile Include="Models\ClassRecords.cs" />
     <Compile Include="Models\ClassSchedule.cs" />
+    <Compile Include="Models\ClassScheduleRequest.cs" />
     <Compile Include="Models\FacultySubjects.cs" />
+    <Compile Include="Models\FinalGrade.cs" />
     <Compile Include="Models\GradeLevel.cs" />
     <Compile Include="Models\GradeLevelModel.cs" />
     <Compile Include="Models\GradeLevelRequest.cs" />
     <Compile Include="Models\GradeLevelSection.cs" />
     <Compile Include="Models\LoginRequest.cs" />
     <Compile Include="Models\LoginResult.cs" />
+    <Compile Include="Models\NewsAndAnnouncements.cs" />
     <Compile Include="Models\PaymentScheme.cs" />
     <Compile Include="Models\SchoolAccount.cs" />
     <Compile Include="Models\SchoolAccountRequest.cs" />
@@ -135,10 +141,12 @@
     <Compile Include="Services\ClassScheduleService.cs" />
     <Compile Include="Services\DataAccess.cs" />
     <Compile Include="Services\FacultySubjectsService.cs" />
+    <Compile Include="Services\FinalGradeService.cs" />
     <Compile Include="Services\GradeLevelRequestService.cs" />
     <Compile Include="Services\GradeLevelSectionService.cs" />
     <Compile Include="Services\GradeLevelService.cs" />
     <Compile Include="Services\LoginService.cs" />
+    <Compile Include="Services\NewsAndAnnouncementsService.cs" />
     <Compile Include="Services\PaymentSchemeService.cs" />
     <Compile Include="Services\SchoolAccountRequestService.cs" />
     <Compile Include="Services\SchoolAccountService.cs" />
@@ -154,6 +162,12 @@
     <Compile Include="Views\AboutPageView.Designer.cs">
       <DependentUpon>AboutPageView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\AccountSettingsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AccountSettingsView.Designer.cs">
+      <DependentUpon>AccountSettingsView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\AddGradeLevelSectionView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +179,12 @@
     </Compile>
     <Compile Include="Views\AddGradeLevelView.Designer.cs">
       <DependentUpon>AddGradeLevelView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddNewsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AddNewsView.Designer.cs">
+      <DependentUpon>AddNewsView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ClassRecordAdminView.cs">
       <SubType>Form</SubType>
@@ -189,6 +209,12 @@
     </Compile>
     <Compile Include="Views\ClassScheduleView.Designer.cs">
       <DependentUpon>ClassScheduleView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditAddNewsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\EditAddNewsView.Designer.cs">
+      <DependentUpon>EditAddNewsView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\EditSchoolAccountDetails.cs">
       <SubType>Form</SubType>
@@ -252,6 +278,18 @@
     <Compile Include="Views\ManageNewsView.Designer.cs">
       <DependentUpon>ManageNewsView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\NewsAndAnnouncementsUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\NewsAndAnnouncementsUserControl.Designer.cs">
+      <DependentUpon>NewsAndAnnouncementsUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NewsAndAnnouncementsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\NewsAndAnnouncementsView.Designer.cs">
+      <DependentUpon>NewsAndAnnouncementsView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\PaymentDetailsView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -273,11 +311,17 @@
     <EmbeddedResource Include="Views\AboutPageView.resx">
       <DependentUpon>AboutPageView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\AccountSettingsView.resx">
+      <DependentUpon>AccountSettingsView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\AddGradeLevelSectionView.resx">
       <DependentUpon>AddGradeLevelSectionView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\AddGradeLevelView.resx">
       <DependentUpon>AddGradeLevelView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AddNewsView.resx">
+      <DependentUpon>AddNewsView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ClassRecordAdminView.resx">
       <DependentUpon>ClassRecordAdminView.cs</DependentUpon>
@@ -290,6 +334,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ClassScheduleView.resx">
       <DependentUpon>ClassScheduleView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\EditAddNewsView.resx">
+      <DependentUpon>EditAddNewsView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\EditSchoolAccountDetails.resx">
       <DependentUpon>EditSchoolAccountDetails.cs</DependentUpon>
@@ -330,6 +377,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ManageNewsView.resx">
       <DependentUpon>ManageNewsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\NewsAndAnnouncementsUserControl.resx">
+      <DependentUpon>NewsAndAnnouncementsUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\NewsAndAnnouncementsView.resx">
+      <DependentUpon>NewsAndAnnouncementsView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\PaymentDetailsView.resx">
       <DependentUpon>PaymentDetailsView.cs</DependentUpon>
@@ -516,6 +569,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AddButtonTransaction.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddNews.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Author.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Date.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EditNews.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editNewsAnnouncement.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

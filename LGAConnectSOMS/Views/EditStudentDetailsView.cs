@@ -30,8 +30,17 @@ namespace LGAConnectSOMS.Views
         public async void LoadData()
         {
             await LoadGradeLevels();
+            LoadYear();
         }
 
+        private void LoadYear()
+        {
+            var datetime = DateTime.Now.ToString("yyyy");
+            for (int year = 2015; year <= DateTime.UtcNow.Year; ++year)
+            {
+                cmbSY.Items.Add(year);
+            }
+        }
 
         IEnumerable<GradeLevelSection> gradeLevelSections = new List<GradeLevelSection>();
         private async Task LoadGradeLevels()
@@ -46,7 +55,6 @@ namespace LGAConnectSOMS.Views
             cmbGradeLevel.Text = currentGradeLevel;
             cmbSection.Text = currentSection;
         }
-
 
         //NavigationToOtherForm
 
@@ -69,9 +77,6 @@ namespace LGAConnectSOMS.Views
             btnClose.Image = LGAConnectSOMS.Properties.Resources.CloseBlack;
         }
 
-
-
-
         //TitleBarFunction
         //
         private void btnClose_Click_1(object sender, EventArgs e)
@@ -80,6 +85,11 @@ namespace LGAConnectSOMS.Views
         }
 
         private void cbGender_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void cmbSY_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
         }
@@ -138,42 +148,62 @@ namespace LGAConnectSOMS.Views
             var image = StudentProfilePicturebox.Image;
             var selectedGradeLevel = cmbGradeLevel.SelectedItem;
             var selectedSection = cmbSection.SelectedItem;
+            var dateonly = dtBirthday.Value.ToShortDateString();
 
-            var gradeLevelId = gradeLevelSections.First(x => x.GradeLevels.Equals(selectedGradeLevel) && x.SectionName.Equals(selectedSection)).Id;
-            try
+            if (txtLastname.Text == "" || txtMiddlename.Text == "" || txtFirstname.Text == "" || txtStudentNumber.Text == "" || txtPassword.Text == "" || txtMobileNumber.Text == "" || cbGender.Text == "" || cmbGradeLevel.Text == "" || cmbSection.Text == "" || cmbSY.Text == "" || StudentProfilePicturebox.Image == null)
             {
-                StudentRequestService studentRequestService = new StudentRequestService();
-                var IsSucess = await studentRequestService.UpdateStudentRequest(new StudentRequest
+                string message = "Please Fill in All Fields!";
+                string title = "LGA Connect SOMS";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Error);
+                if (result == DialogResult.OK)
                 {
-                    ID = id,
-                    Lastname = txtLastname.Text,
-                    Middlename = txtMiddlename.Text,
-                    Firstname = txtFirstname.Text,
-                    StudentNumber = txtStudentNumber.Text,
-                    Password = txtPassword.Text,
-                    StudentProfile = ImageToByteArray(image),
-                    MobileNumber = txtMobileNumber.Text,
-                    Gender = cbGender.Text,
-                    GradeLevelId = gradeLevelId,
-                    SchoolYearStart = int.Parse(cmbSY.Text),
-                    SchoolYearEnd = int.Parse(txtSchoolYearEnd.Text)
-                });;
 
-                if (IsSucess)
-                {                    
-                    MessageBox.Show("Update Student information Successfully", "Update Complete", (MessageBoxButtons)MessageBoxIcon.Information);                
                 }
-
-                else
-                {
-                    MessageBox.Show("Update Student information Not Successfull");
-                }
-
             }
-            catch (Exception x)
+
+            else
             {
-                MessageBox.Show(x.Message);
-            }
+                var gradeLevelId = gradeLevelSections.First(x => x.GradeLevels.Equals(selectedGradeLevel) && x.SectionName.Equals(selectedSection)).Id;
+                try
+                {
+                    StudentRequestService studentRequestService = new StudentRequestService();
+                    var IsSucess = await studentRequestService.UpdateStudentRequest(new StudentRequest
+                    {
+                        ID = id,
+                        Lastname = txtLastname.Text,
+                        Middlename = txtMiddlename.Text,
+                        Firstname = txtFirstname.Text,                        
+                        Address = txtAddress.Text,
+                        Birthday = Convert.ToDateTime(dateonly),
+                        ParentsName = txtParentsname.Text,
+                        StudentNumber = txtStudentNumber.Text,
+                        Password = txtPassword.Text,
+                        mobileNumber = txtMobileNumber.Text,
+                        Email = txtEmail.Text,
+                        Gender = cbGender.Text,
+                        GradeLevelid = gradeLevelId,
+                        StudentProfile = ImageToByteArray(image),                        
+                        SchoolYearStart = int.Parse(cmbSY.Text),
+                        SchoolYearEnd = int.Parse(txtSchoolYearEnd.Text)
+                    });
+
+                    if (IsSucess)
+                    {
+                        MessageBox.Show("Update Student information Successfully");
+                    }
+
+                    else
+                    {
+                        MessageBox.Show("Update Student information Not Successfull");
+                    }
+
+                }
+                catch (Exception x)
+                {
+                    MessageBox.Show(x.Message);
+                }
+            }        
         }
 
         private void cmbGradeLevel_SelectedIndexChanged(object sender, EventArgs e)
@@ -182,15 +212,77 @@ namespace LGAConnectSOMS.Views
            var gradelevelslist = gradeLevelSections.Where(x => x.GradeLevels.Equals(selectedGradeLevel)).Select(x => x.SectionName);
            cmbSection.DataSource = gradelevelslist.ToList();         
         }
-
-        private void cmbSection_SelectedIndexChanged(object sender, EventArgs e)
+       
+        private void txtSchoolYearEnd_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            e.Handled = true;
         }
 
-        private async void cmbGradeLevel_DropDown(object sender, EventArgs e)
+        private void txtLastname_KeyPress(object sender, KeyPressEventArgs e)
         {
-            
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void txtMiddlename_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void txtFirstname_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void txtStudentNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void txtMobileNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private async void btnDeleteStudentDetails_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int ID = int.Parse(txtID.Text);
+                string message = "Are you sure you want to delete this student account?";
+                string title = "LGA Connect SOMS Student Account";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                {
+                    StudentRequestService studentRequestService = new StudentRequestService();
+                    var IsSuccess = await studentRequestService.DeleteStudentRequest(ID);
+                    if (IsSuccess)
+                    {
+                        MessageBox.Show("Delete student account Successfully");
+                        NewsAndAnnouncementsView newsAndAnnouncements = new NewsAndAnnouncementsView();
+                        newsAndAnnouncements.Show();
+                        this.Hide();
+                    }
+
+                    else
+                    {
+                        MessageBox.Show("Delete student account Not Successfull");
+                    }
+                }
+                else if (result == DialogResult.No)
+                {
+
+                }
+            }
+            catch (Exception x)
+            {
+
+            }
         }
     }
 }

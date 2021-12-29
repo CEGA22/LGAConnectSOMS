@@ -25,14 +25,16 @@ namespace LGAConnectSOMS.Views
         {
             this.RestoreWindowPosition();
             MaximizeIcon();
-            ClassDaysPanel.Hide();
+            ClassDaysPanel.Hide();           
             loadData();
             
         }
 
         public async void loadData()
         {
-            await ClassSchedulesFaculty();
+            DateTime todaysDate = DateTime.Now;
+            var weekday = todaysDate.DayOfWeek.ToString();
+            await ClassSchedulesFaculty(weekday);
         }
 
 
@@ -47,17 +49,28 @@ namespace LGAConnectSOMS.Views
 
         //Commands
         public List<ClassSchedule> schedulelist;
-        public async Task ClassSchedulesFaculty()
+        public List<ClassSchedule> filteredschedulelist;
+        public async Task ClassSchedulesFaculty(string weekday)
         {
             var number = 1;
-            var ID = Settings.Default.ID;
-            DateTime todaysDate = DateTime.Now;          
-            var weekday = todaysDate.DayOfWeek.ToString();
+            var ID = Settings.Default.ID;           
+            //DateTime todaysDate = DateTime.Now;          
+            //var weekday = todaysDate.DayOfWeek.ToString();
             ClassScheduleService classScheduleService = new ClassScheduleService();
-            var schedules = await classScheduleService.GetClassScheduleWeekFacultyDetails(ID, weekday);
+            var schedules = await Task.Run(() => classScheduleService.GetClassScheduleFacultyDetails(ID));
             schedulelist = schedules.ToList();
-            var count = schedulelist.Count();
-            if(count == 0)
+            if (weekday == "Entire Week")
+            {              
+                schedulelist = schedules.ToList();
+            }
+
+            else
+            {
+                 var filteredscheduledlist = schedulelist.Where(x => x.WeekDay == weekday);
+                 schedulelist = filteredscheduledlist.ToList();               
+            }
+
+            if(!schedulelist.Any())
             {
                 Label FreeSchedule = new Label();
                 Panel FreeSchedulePanel = new Panel();
@@ -81,6 +94,12 @@ namespace LGAConnectSOMS.Views
             {
                 foreach (ClassSchedule classSchedule in schedulelist)
                 {
+                    Label WeekDay = new Label();
+                    WeekDay.AutoSize = true;
+                    WeekDay.ForeColor = Color.White;
+                    WeekDay.Text = classSchedule.WeekDay;
+                    WeekDay.Font = new Font("TW Cen MT", 14);
+                    WeekDay.Location = new System.Drawing.Point(500, 20);
                     Label Subject = new Label();
                     Label Teacher = new Label();                   
                     Label StartTimeEndTime = new Label();
@@ -108,7 +127,7 @@ namespace LGAConnectSOMS.Views
                     Teacher.Location = new System.Drawing.Point(85, 50);
                     Subject.AutoSize = true;
                     Teacher.AutoSize = true;
-                    StartTimeEndTime.Location = new System.Drawing.Point(500, 35);
+                    StartTimeEndTime.Location = new System.Drawing.Point(500, 45);
                     pictureBox.Location = new System.Drawing.Point(0, 15);
                     //dynamicPanel.Location = new System.Drawing.Point(500, 101);
                     dynamicPanel.Name = "Panel1";
@@ -121,6 +140,7 @@ namespace LGAConnectSOMS.Views
                     dynamicPanel.Controls.Add(StartTimeEndTime);
                     dynamicPanel.Controls.Add(pictureBox);
                     dynamicPanel.Controls.Add(LinePanel);
+                    dynamicPanel.Controls.Add(WeekDay);
                     ClassSchedulePanel.Controls.Add(dynamicPanel);
                     dynamicPanel.Margin = new Padding(0, 0, 0, 10);
 
@@ -169,14 +189,15 @@ namespace LGAConnectSOMS.Views
            
         }
 
-        public async Task WeekDaySelection(string selectedweekday)
+        public void WeekDaySelection(string selectedweekday)
         {
 
             var number = 1;
-            ClassScheduleService classScheduleService = new ClassScheduleService();
-            var weekdayselection = await classScheduleService.GetClassScheduleByWeekDayDetailsFaculty(selectedweekday);
-            schedulelist = weekdayselection.ToList();
-            var count = schedulelist.Count();
+            //ClassScheduleService classScheduleService = new ClassScheduleService();
+            //var weekdayselection = await Task.Run(() => classScheduleService.GetClassScheduleByWeekDayDetailsFaculty(selectedweekday));
+            //schedulelist = weekdayselection.ToList();
+            var result =  schedulelist.Where(x => x.WeekDay == selectedweekday);
+            var count = result.Count();
             if (count == 0)
             {
                 Label FreeSchedule = new Label();
@@ -198,7 +219,7 @@ namespace LGAConnectSOMS.Views
 
             else
             {
-                foreach (ClassSchedule classSchedule in schedulelist)
+                foreach (ClassSchedule classSchedule in result)
                 {
                     Label Subject = new Label();
                     Label Teacher = new Label();
@@ -285,104 +306,104 @@ namespace LGAConnectSOMS.Views
             
         }
 
-        public async Task ClassSchedulesFacultyAll()
-        {
-            var ID = Settings.Default.ID;
-            var number = 1;
-            ClassScheduleService classScheduleService = new ClassScheduleService();
-            var weekdayselection = await classScheduleService.GetClassScheduleFacultyDetails(ID);
-            schedulelist = weekdayselection.ToList();
-            foreach (ClassSchedule classSchedule in schedulelist)
-            {
-                Label Subject = new Label();
-                Label Teacher = new Label();
-                Label WeekDay = new Label();
-                Label StartTimeEndTime = new Label();
-                Panel dynamicPanel = new Panel();
-                Panel LinePanel = new Panel();
-                LinePanel.Size = new Size(3, 50);
-                LinePanel.Location = new System.Drawing.Point(480, 20);
-                LinePanel.AutoSize = true;
-                LinePanel.BackColor = Color.White;
-                PictureBox pictureBox = new PictureBox();
-                Subject.Font = new Font("TW Cen MT", 16);
-                Teacher.Font = new Font("TW Cen MT", 16);
-                WeekDay.AutoSize = true;
-                WeekDay.ForeColor = Color.White;
-                WeekDay.Text = classSchedule.WeekDay;
-                WeekDay.Font = new Font("TW Cen MT", 14);
-                WeekDay.Location = new System.Drawing.Point(500, 15);
-                StartTimeEndTime.Font = new Font("TW Cen MT", 15);
-                StartTimeEndTime.AutoSize = true;
-                //Panel linebox = new Panel();
-                pictureBox.Image = Properties.Resources.Subject;
-                pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-                Subject.Text = classSchedule.Subject;
-                Subject.ForeColor = ColorTranslator.FromHtml("#fff");
-                Teacher.Text = classSchedule.Firstname + " " + classSchedule.Lastname;
-                Teacher.ForeColor = Color.White;
-                StartTimeEndTime.Text = classSchedule.StartTime + " - " + classSchedule.EndTime;
-                StartTimeEndTime.ForeColor = Color.White;
-                Subject.Location = new System.Drawing.Point(85, 20);
-                Teacher.Location = new System.Drawing.Point(85, 50);
-                Subject.AutoSize = true;
-                Teacher.AutoSize = true;
-                StartTimeEndTime.Location = new System.Drawing.Point(500, 45);
-                pictureBox.Location = new System.Drawing.Point(0, 15);
-                dynamicPanel.Location = new System.Drawing.Point(500, 101);
-                dynamicPanel.Size = new System.Drawing.Size(700, 94);
-                dynamicPanel.BackColor = Color.LightBlue;
-                Controls.Add(dynamicPanel);
-                dynamicPanel.Controls.Add(Subject);
-                dynamicPanel.Controls.Add(Teacher);
-                dynamicPanel.Controls.Add(WeekDay);
-                dynamicPanel.Controls.Add(StartTimeEndTime);
-                dynamicPanel.Controls.Add(pictureBox);
-                dynamicPanel.Controls.Add(LinePanel);
-                ClassSchedulePanel.Controls.Add(dynamicPanel);
+        //public async Task ClassSchedulesFacultyAll()
+        //{
+        //    var ID = Settings.Default.ID;
+        //    var number = 1;
+        //    ClassScheduleService classScheduleService = new ClassScheduleService();
+        //    var weekdayselection = await Task.Run(() => classScheduleService.GetClassScheduleFacultyDetails(ID));
+        //    schedulelist = weekdayselection.ToList();
+        //    foreach (ClassSchedule classSchedule in schedulelist)
+        //    {
+        //        Label Subject = new Label();
+        //        Label Teacher = new Label();
+        //        Label WeekDay = new Label();
+        //        Label StartTimeEndTime = new Label();
+        //        Panel dynamicPanel = new Panel();
+        //        Panel LinePanel = new Panel();
+        //        LinePanel.Size = new Size(3, 50);
+        //        LinePanel.Location = new System.Drawing.Point(480, 20);
+        //        LinePanel.AutoSize = true;
+        //        LinePanel.BackColor = Color.White;
+        //        PictureBox pictureBox = new PictureBox();
+        //        Subject.Font = new Font("TW Cen MT", 16);
+        //        Teacher.Font = new Font("TW Cen MT", 16);
+        //        WeekDay.AutoSize = true;
+        //        WeekDay.ForeColor = Color.White;
+        //        WeekDay.Text = classSchedule.WeekDay;
+        //        WeekDay.Font = new Font("TW Cen MT", 14);
+        //        WeekDay.Location = new System.Drawing.Point(500, 15);
+        //        StartTimeEndTime.Font = new Font("TW Cen MT", 15);
+        //        StartTimeEndTime.AutoSize = true;
+        //        //Panel linebox = new Panel();
+        //        pictureBox.Image = Properties.Resources.Subject;
+        //        pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+        //        Subject.Text = classSchedule.Subject;
+        //        Subject.ForeColor = ColorTranslator.FromHtml("#fff");
+        //        Teacher.Text = classSchedule.Firstname + " " + classSchedule.Lastname;
+        //        Teacher.ForeColor = Color.White;
+        //        StartTimeEndTime.Text = classSchedule.StartTime + " - " + classSchedule.EndTime;
+        //        StartTimeEndTime.ForeColor = Color.White;
+        //        Subject.Location = new System.Drawing.Point(85, 20);
+        //        Teacher.Location = new System.Drawing.Point(85, 50);
+        //        Subject.AutoSize = true;
+        //        Teacher.AutoSize = true;
+        //        StartTimeEndTime.Location = new System.Drawing.Point(500, 45);
+        //        pictureBox.Location = new System.Drawing.Point(0, 15);
+        //        dynamicPanel.Location = new System.Drawing.Point(500, 101);
+        //        dynamicPanel.Size = new System.Drawing.Size(700, 94);
+        //        dynamicPanel.BackColor = Color.LightBlue;
+        //        Controls.Add(dynamicPanel);
+        //        dynamicPanel.Controls.Add(Subject);
+        //        dynamicPanel.Controls.Add(Teacher);
+        //        dynamicPanel.Controls.Add(WeekDay);
+        //        dynamicPanel.Controls.Add(StartTimeEndTime);
+        //        dynamicPanel.Controls.Add(pictureBox);
+        //        dynamicPanel.Controls.Add(LinePanel);
+        //        ClassSchedulePanel.Controls.Add(dynamicPanel);
 
 
-                var rgb1 = 0;
-                var rgb2 = 0;
-                var rgb3 = 0;
+        //        var rgb1 = 0;
+        //        var rgb2 = 0;
+        //        var rgb3 = 0;
 
-                if (number == 1)
-                {
-                    rgb1 = 240;
-                    rgb2 = 52;
-                    rgb3 = 52;
-                    number = number + 1;
-                }
+        //        if (number == 1)
+        //        {
+        //            rgb1 = 240;
+        //            rgb2 = 52;
+        //            rgb3 = 52;
+        //            number = number + 1;
+        //        }
 
-                else if (number == 2)
-                {
-                    rgb1 = 250;
-                    rgb2 = 190;
-                    rgb3 = 88;
-                    number = number + 1;
-                }
+        //        else if (number == 2)
+        //        {
+        //            rgb1 = 250;
+        //            rgb2 = 190;
+        //            rgb3 = 88;
+        //            number = number + 1;
+        //        }
 
-                else if (number == 3)
-                {
-                    rgb1 = 13;
-                    rgb2 = 180;
-                    rgb3 = 185;
-                    number = number + 1;
-                }
+        //        else if (number == 3)
+        //        {
+        //            rgb1 = 13;
+        //            rgb2 = 180;
+        //            rgb3 = 185;
+        //            number = number + 1;
+        //        }
 
-                else if (number == 4)
-                {
-                    rgb1 = 142;
-                    rgb2 = 68;
-                    rgb3 = 173;
-                    number = 1;
-                }
+        //        else if (number == 4)
+        //        {
+        //            rgb1 = 142;
+        //            rgb2 = 68;
+        //            rgb3 = 173;
+        //            number = 1;
+        //        }
 
-                Color randomColor = Color.FromArgb(rgb1, rgb2, rgb3);
-                var Backcolor = randomColor;
-                dynamicPanel.BackColor = Backcolor;
-            }
-        }
+        //        Color randomColor = Color.FromArgb(rgb1, rgb2, rgb3);
+        //        var Backcolor = randomColor;
+        //        dynamicPanel.BackColor = Backcolor;
+        //    }
+        //}
 
         private void btnBack_MouseEnter(object sender, EventArgs e)
         {
@@ -521,7 +542,7 @@ namespace LGAConnectSOMS.Views
             label1.Text = "Monday";
             ClassDaysPanel.Hide();
             ClassSchedulePanel.Controls.Clear();
-            await WeekDaySelection(label1.Text);
+            await ClassSchedulesFaculty(label1.Text);
         }
 
         private async void lblTuesday_Click(object sender, EventArgs e)
@@ -529,7 +550,7 @@ namespace LGAConnectSOMS.Views
             label1.Text = "Tuesday";
             ClassDaysPanel.Hide();
             ClassSchedulePanel.Controls.Clear();
-            await WeekDaySelection(label1.Text);
+            await ClassSchedulesFaculty(label1.Text);
         }
 
         private async void lblWednesday_Click(object sender, EventArgs e)
@@ -537,7 +558,7 @@ namespace LGAConnectSOMS.Views
             label1.Text = "Wednesday";
             ClassDaysPanel.Hide();
             ClassSchedulePanel.Controls.Clear();
-            await WeekDaySelection(label1.Text);
+            await ClassSchedulesFaculty(label1.Text);
         }
 
         private async void lblThursday_Click(object sender, EventArgs e)
@@ -545,7 +566,7 @@ namespace LGAConnectSOMS.Views
             label1.Text = "Thursday";
             ClassDaysPanel.Hide();
             ClassSchedulePanel.Controls.Clear();
-            await WeekDaySelection(label1.Text);
+            await ClassSchedulesFaculty(label1.Text);
         }
 
         private async void lblFriday_Click(object sender, EventArgs e)
@@ -553,7 +574,7 @@ namespace LGAConnectSOMS.Views
             label1.Text = "Friday";
             ClassDaysPanel.Hide();
             ClassSchedulePanel.Controls.Clear();
-            await WeekDaySelection(label1.Text);
+            await ClassSchedulesFaculty(label1.Text);
         }
 
         private async void lblSaturday_Click(object sender, EventArgs e)
@@ -561,7 +582,7 @@ namespace LGAConnectSOMS.Views
             label1.Text = "Saturday";
             ClassDaysPanel.Hide();
             ClassSchedulePanel.Controls.Clear();
-            await WeekDaySelection(label1.Text);
+            await ClassSchedulesFaculty(label1.Text);
         }
 
         private async void lblSunday_Click(object sender, EventArgs e)
@@ -569,7 +590,7 @@ namespace LGAConnectSOMS.Views
             label1.Text = "Sunday";
             ClassDaysPanel.Hide();
             ClassSchedulePanel.Controls.Clear();
-            await WeekDaySelection(label1.Text);
+            await ClassSchedulesFaculty(label1.Text);
         }
 
         private async void lblEntireWeek_Click(object sender, EventArgs e)
@@ -577,10 +598,8 @@ namespace LGAConnectSOMS.Views
             label1.Text = "Entire Week";
             ClassDaysPanel.Hide();
             ClassSchedulePanel.Controls.Clear();
-            await ClassSchedulesFacultyAll();
-
-        }
-
-        
+            await ClassSchedulesFaculty(label1.Text);
+            label1.Text = "Entire Week";
+        }       
     }
 }

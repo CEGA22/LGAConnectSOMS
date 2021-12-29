@@ -10,7 +10,7 @@ namespace LGAConnectSOMS.Gateway
 {
     public class SchoolAccountRequestGateway
     {
-        static string BaseUrl = "http://ceejaygabrang-001-site1.itempurl.com/api/lga/school";
+        static string BaseUrl = "http://cegagabrang-001-site1.btempurl.com/api/lga/school";
 
         public async Task<string> CreateSchoolAccountRequest(SchoolAccountRequest request)
         {
@@ -29,5 +29,15 @@ namespace LGAConnectSOMS.Gateway
             string url = $"{BaseUrl}/update_information_by_id";
             return await WebMethods.MakePostRequest(url, request);
         }
+
+        public async Task<string> UpdateSchoolAccountPassword(SchoolAccountRequest request)
+        {
+            string url = $"{BaseUrl}/update_password";
+            return await WebMethods.MakePostRequest(url, request);
+        }
+
+
+
+
     }
 }

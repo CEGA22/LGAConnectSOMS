@@ -61,6 +61,14 @@ namespace LGAConnectSOMS.Views
             this.btnStudentProfile = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtParentsname = new System.Windows.Forms.TextBox();
+            this.txtAddress = new System.Windows.Forms.TextBox();
+            this.dtBirthday = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.StudentProfilePicturebox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,6 +89,7 @@ namespace LGAConnectSOMS.Views
             this.txtLastname.Size = new System.Drawing.Size(233, 32);
             this.txtLastname.TabIndex = 1;
             this.txtLastname.TabStop = false;
+            this.txtLastname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLastname_KeyPress);
             // 
             // txtFirstname
             // 
@@ -91,6 +100,7 @@ namespace LGAConnectSOMS.Views
             this.txtFirstname.Size = new System.Drawing.Size(233, 32);
             this.txtFirstname.TabIndex = 2;
             this.txtFirstname.TabStop = false;
+            this.txtFirstname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFirstname_KeyPress);
             // 
             // txtMiddlename
             // 
@@ -101,6 +111,7 @@ namespace LGAConnectSOMS.Views
             this.txtMiddlename.Size = new System.Drawing.Size(233, 32);
             this.txtMiddlename.TabIndex = 3;
             this.txtMiddlename.TabStop = false;
+            this.txtMiddlename.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMiddlename_KeyPress);
             // 
             // lblLastname
             // 
@@ -136,7 +147,7 @@ namespace LGAConnectSOMS.Views
             // 
             this.lblGender.AutoSize = true;
             this.lblGender.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGender.Location = new System.Drawing.Point(679, 207);
+            this.lblGender.Location = new System.Drawing.Point(1094, 141);
             this.lblGender.Name = "lblGender";
             this.lblGender.Size = new System.Drawing.Size(66, 19);
             this.lblGender.TabIndex = 9;
@@ -146,7 +157,7 @@ namespace LGAConnectSOMS.Views
             // 
             this.lblGradeLevel.AutoSize = true;
             this.lblGradeLevel.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGradeLevel.Location = new System.Drawing.Point(679, 260);
+            this.lblGradeLevel.Location = new System.Drawing.Point(1094, 194);
             this.lblGradeLevel.Name = "lblGradeLevel";
             this.lblGradeLevel.Size = new System.Drawing.Size(96, 19);
             this.lblGradeLevel.TabIndex = 10;
@@ -169,7 +180,7 @@ namespace LGAConnectSOMS.Views
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(143)))));
             this.panel1.Location = new System.Drawing.Point(10, 80);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1082, 3);
+            this.panel1.Size = new System.Drawing.Size(1573, 3);
             this.panel1.TabIndex = 23;
             // 
             // btnSaveChanges
@@ -179,7 +190,7 @@ namespace LGAConnectSOMS.Views
             this.btnSaveChanges.FlatAppearance.BorderSize = 0;
             this.btnSaveChanges.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSaveChanges.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveChanges.Location = new System.Drawing.Point(399, 526);
+            this.btnSaveChanges.Location = new System.Drawing.Point(673, 520);
             this.btnSaveChanges.Name = "btnSaveChanges";
             this.btnSaveChanges.Size = new System.Drawing.Size(302, 44);
             this.btnSaveChanges.TabIndex = 24;
@@ -194,7 +205,7 @@ namespace LGAConnectSOMS.Views
             this.cbGender.Items.AddRange(new object[] {
             "MALE",
             "FEMALE"});
-            this.cbGender.Location = new System.Drawing.Point(804, 204);
+            this.cbGender.Location = new System.Drawing.Point(1219, 138);
             this.cbGender.Name = "cbGender";
             this.cbGender.Size = new System.Drawing.Size(123, 27);
             this.cbGender.TabIndex = 25;
@@ -209,18 +220,19 @@ namespace LGAConnectSOMS.Views
             this.btnDeleteStudentDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteStudentDetails.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteStudentDetails.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
-            this.btnDeleteStudentDetails.Location = new System.Drawing.Point(399, 591);
+            this.btnDeleteStudentDetails.Location = new System.Drawing.Point(673, 585);
             this.btnDeleteStudentDetails.Name = "btnDeleteStudentDetails";
             this.btnDeleteStudentDetails.Size = new System.Drawing.Size(302, 44);
             this.btnDeleteStudentDetails.TabIndex = 26;
             this.btnDeleteStudentDetails.Text = "Delete student details";
             this.btnDeleteStudentDetails.UseVisualStyleBackColor = false;
+            this.btnDeleteStudentDetails.Click += new System.EventHandler(this.btnDeleteStudentDetails_Click);
             // 
             // lblSection
             // 
             this.lblSection.AutoSize = true;
             this.lblSection.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSection.Location = new System.Drawing.Point(679, 323);
+            this.lblSection.Location = new System.Drawing.Point(1094, 257);
             this.lblSection.Name = "lblSection";
             this.lblSection.Size = new System.Drawing.Size(61, 19);
             this.lblSection.TabIndex = 28;
@@ -240,11 +252,13 @@ namespace LGAConnectSOMS.Views
             // 
             this.txtStudentNumber.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtStudentNumber.Location = new System.Drawing.Point(399, 316);
+            this.txtStudentNumber.MaxLength = 10;
             this.txtStudentNumber.Multiline = true;
             this.txtStudentNumber.Name = "txtStudentNumber";
             this.txtStudentNumber.Size = new System.Drawing.Size(233, 32);
             this.txtStudentNumber.TabIndex = 29;
             this.txtStudentNumber.TabStop = false;
+            this.txtStudentNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStudentNumber_KeyPress);
             // 
             // lblPassword
             // 
@@ -270,7 +284,7 @@ namespace LGAConnectSOMS.Views
             // 
             this.lblSchoolYearStart.AutoSize = true;
             this.lblSchoolYearStart.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSchoolYearStart.Location = new System.Drawing.Point(800, 389);
+            this.lblSchoolYearStart.Location = new System.Drawing.Point(1215, 323);
             this.lblSchoolYearStart.Name = "lblSchoolYearStart";
             this.lblSchoolYearStart.Size = new System.Drawing.Size(126, 19);
             this.lblSchoolYearStart.TabIndex = 34;
@@ -280,7 +294,7 @@ namespace LGAConnectSOMS.Views
             // 
             this.lblSchoolYearEnd.AutoSize = true;
             this.lblSchoolYearEnd.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSchoolYearEnd.Location = new System.Drawing.Point(946, 389);
+            this.lblSchoolYearEnd.Location = new System.Drawing.Point(1361, 323);
             this.lblSchoolYearEnd.Name = "lblSchoolYearEnd";
             this.lblSchoolYearEnd.Size = new System.Drawing.Size(119, 19);
             this.lblSchoolYearEnd.TabIndex = 36;
@@ -289,12 +303,13 @@ namespace LGAConnectSOMS.Views
             // txtSchoolYearEnd
             // 
             this.txtSchoolYearEnd.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSchoolYearEnd.Location = new System.Drawing.Point(950, 426);
+            this.txtSchoolYearEnd.Location = new System.Drawing.Point(1365, 360);
             this.txtSchoolYearEnd.Multiline = true;
             this.txtSchoolYearEnd.Name = "txtSchoolYearEnd";
             this.txtSchoolYearEnd.Size = new System.Drawing.Size(115, 26);
             this.txtSchoolYearEnd.TabIndex = 35;
             this.txtSchoolYearEnd.TabStop = false;
+            this.txtSchoolYearEnd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSchoolYearEnd_KeyPress);
             // 
             // StudentProfilePicturebox
             // 
@@ -310,7 +325,7 @@ namespace LGAConnectSOMS.Views
             // 
             this.lblMobileNumber.AutoSize = true;
             this.lblMobileNumber.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMobileNumber.Location = new System.Drawing.Point(679, 149);
+            this.lblMobileNumber.Location = new System.Drawing.Point(669, 437);
             this.lblMobileNumber.Name = "lblMobileNumber";
             this.lblMobileNumber.Size = new System.Drawing.Size(115, 19);
             this.lblMobileNumber.TabIndex = 40;
@@ -319,42 +334,43 @@ namespace LGAConnectSOMS.Views
             // txtMobileNumber
             // 
             this.txtMobileNumber.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMobileNumber.Location = new System.Drawing.Point(804, 143);
+            this.txtMobileNumber.Location = new System.Drawing.Point(816, 428);
+            this.txtMobileNumber.MaxLength = 11;
             this.txtMobileNumber.Multiline = true;
             this.txtMobileNumber.Name = "txtMobileNumber";
             this.txtMobileNumber.Size = new System.Drawing.Size(233, 32);
             this.txtMobileNumber.TabIndex = 39;
             this.txtMobileNumber.TabStop = false;
+            this.txtMobileNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMobileNumber_KeyPress);
             // 
             // cmbGradeLevel
             // 
             this.cmbGradeLevel.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbGradeLevel.FormattingEnabled = true;
-            this.cmbGradeLevel.Location = new System.Drawing.Point(804, 256);
+            this.cmbGradeLevel.Location = new System.Drawing.Point(1219, 190);
             this.cmbGradeLevel.Name = "cmbGradeLevel";
             this.cmbGradeLevel.Size = new System.Drawing.Size(233, 27);
             this.cmbGradeLevel.TabIndex = 41;
-            this.cmbGradeLevel.DropDown += new System.EventHandler(this.cmbGradeLevel_DropDown);
             this.cmbGradeLevel.SelectedIndexChanged += new System.EventHandler(this.cmbGradeLevel_SelectedIndexChanged);
             // 
             // cmbSection
             // 
             this.cmbSection.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbSection.FormattingEnabled = true;
-            this.cmbSection.Location = new System.Drawing.Point(804, 317);
+            this.cmbSection.Location = new System.Drawing.Point(1219, 251);
             this.cmbSection.Name = "cmbSection";
             this.cmbSection.Size = new System.Drawing.Size(233, 27);
             this.cmbSection.TabIndex = 42;
-            this.cmbSection.SelectedIndexChanged += new System.EventHandler(this.cmbSection_SelectedIndexChanged);
             // 
             // cmbSY
             // 
             this.cmbSY.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbSY.FormattingEnabled = true;
-            this.cmbSY.Location = new System.Drawing.Point(804, 426);
+            this.cmbSY.Location = new System.Drawing.Point(1219, 360);
             this.cmbSY.Name = "cmbSY";
             this.cmbSY.Size = new System.Drawing.Size(122, 27);
             this.cmbSY.TabIndex = 43;
+            this.cmbSY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbSY_KeyPress);
             // 
             // btnClose
             // 
@@ -363,7 +379,7 @@ namespace LGAConnectSOMS.Views
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Image = global::LGAConnectSOMS.Properties.Resources.CloseBlack;
-            this.btnClose.Location = new System.Drawing.Point(1057, -1);
+            this.btnClose.Location = new System.Drawing.Point(1548, -1);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(35, 34);
             this.btnClose.TabIndex = 44;
@@ -381,7 +397,7 @@ namespace LGAConnectSOMS.Views
             this.btnStudentProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStudentProfile.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStudentProfile.ForeColor = System.Drawing.Color.White;
-            this.btnStudentProfile.Location = new System.Drawing.Point(23, 399);
+            this.btnStudentProfile.Location = new System.Drawing.Point(23, 411);
             this.btnStudentProfile.Name = "btnStudentProfile";
             this.btnStudentProfile.Size = new System.Drawing.Size(144, 41);
             this.btnStudentProfile.TabIndex = 62;
@@ -395,7 +411,7 @@ namespace LGAConnectSOMS.Views
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Gray;
-            this.label3.Location = new System.Drawing.Point(41, 362);
+            this.label3.Location = new System.Drawing.Point(19, 376);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(176, 19);
             this.label3.TabIndex = 64;
@@ -407,18 +423,106 @@ namespace LGAConnectSOMS.Views
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Gray;
-            this.label2.Location = new System.Drawing.Point(48, 337);
+            this.label2.Location = new System.Drawing.Point(21, 344);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(165, 19);
             this.label2.TabIndex = 63;
             this.label2.Text = "Maximum file size is 1MB";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(669, 377);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(50, 19);
+            this.label4.TabIndex = 72;
+            this.label4.Text = "Email: ";
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.Location = new System.Drawing.Point(816, 364);
+            this.txtEmail.MaxLength = 10;
+            this.txtEmail.Multiline = true;
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(233, 32);
+            this.txtEmail.TabIndex = 71;
+            this.txtEmail.TabStop = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(669, 251);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(70, 19);
+            this.label5.TabIndex = 70;
+            this.label5.Text = "Birthday: ";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(669, 308);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(102, 19);
+            this.label6.TabIndex = 69;
+            this.label6.Text = "Parents name: ";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(669, 146);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(64, 19);
+            this.label7.TabIndex = 68;
+            this.label7.Text = "Address:";
+            // 
+            // txtParentsname
+            // 
+            this.txtParentsname.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtParentsname.Location = new System.Drawing.Point(816, 299);
+            this.txtParentsname.Multiline = true;
+            this.txtParentsname.Name = "txtParentsname";
+            this.txtParentsname.Size = new System.Drawing.Size(233, 32);
+            this.txtParentsname.TabIndex = 66;
+            this.txtParentsname.TabStop = false;
+            // 
+            // txtAddress
+            // 
+            this.txtAddress.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAddress.Location = new System.Drawing.Point(816, 148);
+            this.txtAddress.Multiline = true;
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(233, 69);
+            this.txtAddress.TabIndex = 65;
+            this.txtAddress.TabStop = false;
+            // 
+            // dtBirthday
+            // 
+            this.dtBirthday.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtBirthday.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtBirthday.Location = new System.Drawing.Point(816, 246);
+            this.dtBirthday.Name = "dtBirthday";
+            this.dtBirthday.Size = new System.Drawing.Size(200, 25);
+            this.dtBirthday.TabIndex = 73;
             // 
             // EditStudentDetailsView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
-            this.ClientSize = new System.Drawing.Size(1093, 647);
+            this.ClientSize = new System.Drawing.Size(1584, 647);
+            this.Controls.Add(this.dtBirthday);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtEmail);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.txtParentsname);
+            this.Controls.Add(this.txtAddress);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnStudentProfile);
@@ -495,5 +599,13 @@ namespace LGAConnectSOMS.Views
         public System.Windows.Forms.PictureBox StudentProfilePicturebox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label4;
+        public System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        public System.Windows.Forms.TextBox txtParentsname;
+        public System.Windows.Forms.TextBox txtAddress;
+        public System.Windows.Forms.DateTimePicker dtBirthday;
     }
 }

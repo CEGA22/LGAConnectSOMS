@@ -31,6 +31,7 @@ namespace LGAConnectSOMS.Views
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomeViewTeacher));
             this.SideBarPanel = new System.Windows.Forms.Panel();
+            this.btnManageNews = new System.Windows.Forms.Button();
             this.btnClassSchedule = new System.Windows.Forms.Button();
             this.btnClassRecords = new System.Windows.Forms.Button();
             this.btnHome = new System.Windows.Forms.Button();
@@ -75,6 +76,7 @@ namespace LGAConnectSOMS.Views
             this.SideBarPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.SideBarPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(167)))), ((int)(((byte)(240)))));
+            this.SideBarPanel.Controls.Add(this.btnManageNews);
             this.SideBarPanel.Controls.Add(this.btnClassSchedule);
             this.SideBarPanel.Controls.Add(this.btnClassRecords);
             this.SideBarPanel.Controls.Add(this.btnHome);
@@ -83,6 +85,27 @@ namespace LGAConnectSOMS.Views
             this.SideBarPanel.Name = "SideBarPanel";
             this.SideBarPanel.Size = new System.Drawing.Size(265, 700);
             this.SideBarPanel.TabIndex = 7;
+            // 
+            // btnManageNews
+            // 
+            this.btnManageNews.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnManageNews.FlatAppearance.BorderSize = 0;
+            this.btnManageNews.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnManageNews.Font = new System.Drawing.Font("Tw Cen MT", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnManageNews.ForeColor = System.Drawing.Color.White;
+            this.btnManageNews.Image = global::LGAConnectSOMS.Properties.Resources.envelope;
+            this.btnManageNews.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnManageNews.Location = new System.Drawing.Point(2, 390);
+            this.btnManageNews.Name = "btnManageNews";
+            this.btnManageNews.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnManageNews.Size = new System.Drawing.Size(263, 41);
+            this.btnManageNews.TabIndex = 13;
+            this.btnManageNews.Text = "News && Announcements";
+            this.btnManageNews.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btnManageNews.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnManageNews.UseCompatibleTextRendering = true;
+            this.btnManageNews.UseVisualStyleBackColor = true;
+            this.btnManageNews.Click += new System.EventHandler(this.btnManageNews_Click);
             // 
             // btnClassSchedule
             // 
@@ -484,6 +507,7 @@ namespace LGAConnectSOMS.Views
             this.btnUserSettings.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnUserSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnUserSettings.UseVisualStyleBackColor = false;
+            this.btnUserSettings.Click += new System.EventHandler(this.btnUserSettings_Click);
             // 
             // pictureBox2
             // 
@@ -572,5 +596,6 @@ namespace LGAConnectSOMS.Views
         private System.Windows.Forms.Button btnAbout;
         private System.Windows.Forms.Button btnUserSettings;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button btnManageNews;
     }
 }

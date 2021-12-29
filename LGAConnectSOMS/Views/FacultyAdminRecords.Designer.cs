@@ -56,6 +56,8 @@ namespace LGAConnectSOMS.Views
             this.txtAdminLastname = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.btnAddAdministrator = new System.Windows.Forms.Button();
             this.txtMobileNumber = new System.Windows.Forms.TextBox();
             this.lblMobileNumber = new System.Windows.Forms.Label();
@@ -75,8 +77,6 @@ namespace LGAConnectSOMS.Views
             this.lbAdministratorDetailsTitle = new System.Windows.Forms.Label();
             this.AdminPictureBox = new System.Windows.Forms.PictureBox();
             this.btnBack = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.DragWindowsPanel.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -386,14 +386,36 @@ namespace LGAConnectSOMS.Views
             this.tabPage2.TabIndex = 4;
             this.tabPage2.Text = "Add New Admin";
             // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.Gray;
+            this.label3.Location = new System.Drawing.Point(43, 308);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(176, 19);
+            this.label3.TabIndex = 70;
+            this.label3.Text = "File extension:  JPEG, PNG";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.Gray;
+            this.label2.Location = new System.Drawing.Point(50, 283);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(165, 19);
+            this.label2.TabIndex = 69;
+            this.label2.Text = "Maximum file size is 1MB";
+            // 
             // btnAddAdministrator
             // 
             this.btnAddAdministrator.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddAdministrator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(241)))), ((int)(((byte)(195)))));
+            this.btnAddAdministrator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(143)))));
             this.btnAddAdministrator.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAddAdministrator.FlatAppearance.BorderSize = 0;
             this.btnAddAdministrator.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddAdministrator.ForeColor = System.Drawing.Color.White;
+            this.btnAddAdministrator.ForeColor = System.Drawing.Color.Black;
             this.btnAddAdministrator.Location = new System.Drawing.Point(1117, 479);
             this.btnAddAdministrator.Name = "btnAddAdministrator";
             this.btnAddAdministrator.Size = new System.Drawing.Size(132, 41);
@@ -613,28 +635,6 @@ namespace LGAConnectSOMS.Views
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             this.btnBack.MouseEnter += new System.EventHandler(this.btnBack_MouseEnter);
             this.btnBack.MouseLeave += new System.EventHandler(this.btnBack_MouseLeave);
-            // 
-            // label3
-            // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.Gray;
-            this.label3.Location = new System.Drawing.Point(43, 308);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(176, 19);
-            this.label3.TabIndex = 70;
-            this.label3.Text = "File extension:  JPEG, PNG";
-            // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.Gray;
-            this.label2.Location = new System.Drawing.Point(50, 283);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(165, 19);
-            this.label2.TabIndex = 69;
-            this.label2.Text = "Maximum file size is 1MB";
             // 
             // FacultyAdminRecords
             // 

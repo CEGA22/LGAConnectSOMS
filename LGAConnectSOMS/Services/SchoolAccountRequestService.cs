@@ -31,5 +31,12 @@ namespace LGAConnectSOMS.Services
             var content = await apiGateway.UpdateSchoolAccountRequest(request);
             return JsonConvert.DeserializeObject<bool>(content);
         }
+
+        public async Task<bool> UpdateSchoolAccountPassword(SchoolAccountRequest request)
+        {
+            var apiGateway = new SchoolAccountRequestGateway();
+            var content = await apiGateway.UpdateSchoolAccountPassword(request);
+            return JsonConvert.DeserializeObject<bool>(content);
+        }
     }
 }

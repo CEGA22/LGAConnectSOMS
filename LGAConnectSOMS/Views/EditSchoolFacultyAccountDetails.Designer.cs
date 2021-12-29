@@ -171,6 +171,7 @@ namespace LGAConnectSOMS.Views
             this.btnDeleteAdminDetails.TabIndex = 74;
             this.btnDeleteAdminDetails.Text = "Delete faculty details";
             this.btnDeleteAdminDetails.UseVisualStyleBackColor = false;
+            this.btnDeleteAdminDetails.Click += new System.EventHandler(this.btnDeleteFacultyDetails_Click);
             // 
             // cbGender
             // 

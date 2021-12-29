@@ -11,7 +11,7 @@ namespace LGAConnectSOMS.Gateway
 {
     public class ClassScheduleGateway
     {
-        static string BaseUrl = "http://ceejaygabrang-001-site1.itempurl.com/api/lga/classSchedule";
+        static string BaseUrl = "http://cegagabrang-001-site1.btempurl.com/api/lga/classSchedule";
 
         public async Task<IEnumerable<ClassSchedule>> GetClassSchedule()
         {
@@ -28,50 +28,35 @@ namespace LGAConnectSOMS.Gateway
             }
         }
 
-        public async Task<IEnumerable<ClassSchedule>> GetClassScheduleByWeekDay(string weekday)
-        {
-            try
-            {
-                string url = $"{BaseUrl}/get_by_Weekday/{weekday}";
-                var content = await WebMethods.MakeGetRequest(url);
-                var result = JsonConvert.DeserializeObject<IEnumerable<ClassSchedule>>(content);
-                return result;
-            }
-            catch
-            {
-                return Enumerable.Empty<ClassSchedule>();
-            }
-        }
+        //public async Task<IEnumerable<ClassSchedule>> GetClassScheduleWeekFaculty(int ID, string weekday)
+        //{
+        //    try
+        //    {
+        //        string url = $"{BaseUrl}/get_by_Week_Faculty/{ID}/{weekday}";
+        //        var content = await WebMethods.MakeGetRequest(url);
+        //        var result = JsonConvert.DeserializeObject<IEnumerable<ClassSchedule>>(content);
+        //        return result;
+        //    }
+        //    catch
+        //    {
+        //        return Enumerable.Empty<ClassSchedule>();
+        //    }
+        //}
 
-        public async Task<IEnumerable<ClassSchedule>> GetClassScheduleWeekFaculty(int ID, string weekday)
-        {
-            try
-            {
-                string url = $"{BaseUrl}/get_by_Week_Faculty/{ID}/{weekday}";
-                var content = await WebMethods.MakeGetRequest(url);
-                var result = JsonConvert.DeserializeObject<IEnumerable<ClassSchedule>>(content);
-                return result;
-            }
-            catch
-            {
-                return Enumerable.Empty<ClassSchedule>();
-            }
-        }
-
-        public async Task<IEnumerable<ClassSchedule>> GetClassScheduleByWeekDayFaculty(string weekday)
-        {
-            try
-            {
-                string url = $"{BaseUrl}/get_by_Weekday_Faculty/{weekday}";
-                var content = await WebMethods.MakeGetRequest(url);
-                var result = JsonConvert.DeserializeObject<IEnumerable<ClassSchedule>>(content);
-                return result;
-            }
-            catch
-            {
-                return Enumerable.Empty<ClassSchedule>();
-            }
-        }
+        //public async Task<IEnumerable<ClassSchedule>> GetClassScheduleByWeekDayFaculty(string weekday)
+        //{
+        //    try
+        //    {
+        //        string url = $"{BaseUrl}/get_by_Weekday_Faculty/{weekday}";
+        //        var content = await WebMethods.MakeGetRequest(url);
+        //        var result = JsonConvert.DeserializeObject<IEnumerable<ClassSchedule>>(content);
+        //        return result;
+        //    }
+        //    catch
+        //    {
+        //        return Enumerable.Empty<ClassSchedule>();
+        //    }
+        //}
 
         public async Task<IEnumerable<ClassSchedule>> GetClassScheduleFaculty(int ID)
         {
@@ -86,6 +71,12 @@ namespace LGAConnectSOMS.Gateway
             {
                 return Enumerable.Empty<ClassSchedule>();
             }
+        }
+
+        public async Task<string> CreateClassScheduleRequest(ClassScheduleRequest request)
+        {
+            string url = $"{BaseUrl}/information";
+            return await WebMethods.MakePostRequest(url, request);
         }
     }
 }

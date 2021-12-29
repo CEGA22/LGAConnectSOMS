@@ -3,6 +3,7 @@ using LGAConnectSOMS.Properties;
 using LGAConnectSOMS.Services;
 using LGAConnectSOMS.Views;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Text;
 using System.IO;
@@ -38,14 +39,14 @@ namespace LGAConnectSOMS
             lblTitle.Text = "Good Day, " + Settings.Default.Firstname;
             this.RestoreWindowPosition();
             panel1.Hide();           
-            MaximizeIcon();
-            
+            MaximizeIcon();            
         }
 
 
         public async void LoadData()
         {
             await DynamicHomeViewAdminPanel();
+            await LoadNewsAndAnnouncements();
         }
 
 
@@ -182,6 +183,20 @@ namespace LGAConnectSOMS
             FileRequestPanel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             EnrolledStudentsPanel.Cursor = Cursors.Hand;
             //lblEnrolledStudentsCount.Text = studentsList.Count.ToString();
+        }
+
+        IEnumerable<NewsAndAnnouncements> newsandannouncements = new List<NewsAndAnnouncements>();
+        public async Task LoadNewsAndAnnouncements()
+        {
+            NewsAndAnnouncementsService newsAndAnnouncementsService = new NewsAndAnnouncementsService();
+            newsandannouncements = await Task.Run(() => newsAndAnnouncementsService.GetNewsAndAnnouncements());
+            var newsandannouncementsOrder = newsandannouncements.OrderByDescending(x => x.DateCreated);
+            var latestnews = newsandannouncementsOrder.FirstOrDefault();
+            lblArticleTitle.Text = latestnews.Title;
+            lblArticelDescription.Text = latestnews.Content;
+            byte[] image = (byte[])latestnews.ContentPhoto;
+            MemoryStream ms = new MemoryStream(image);
+            NewsImage.Image = Image.FromStream(ms);
         }
 
         //Buttons Forecolor and background Styles
@@ -469,6 +484,7 @@ namespace LGAConnectSOMS
 
         private void btnAbout_Click(object sender, EventArgs e)
         {
+            SaveWindowPosition();
             AboutPageView aboutPageView = new AboutPageView();
             aboutPageView.Show();
             this.Hide();
@@ -477,6 +493,22 @@ namespace LGAConnectSOMS
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             IsMenuVisible();
+        }
+
+        private void btnUserSettings_Click(object sender, EventArgs e)
+        {
+            SaveWindowPosition();
+            AccountSettingsView accountSettingsView = new AccountSettingsView();
+            accountSettingsView.Show();
+            this.Hide();
+        }
+
+        private void lblvViewMoreNews_Click(object sender, EventArgs e)
+        {
+            this.SaveWindowPosition();
+            ManageNewsView manageNewsView = new ManageNewsView();
+            manageNewsView.Show();
+            this.Hide();
         }
     }    
 }

@@ -335,7 +335,7 @@ namespace LGAConnectSOMS
             this.NewsImage.Location = new System.Drawing.Point(16, 50);
             this.NewsImage.Name = "NewsImage";
             this.NewsImage.Size = new System.Drawing.Size(747, 291);
-            this.NewsImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.NewsImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.NewsImage.TabIndex = 3;
             this.NewsImage.TabStop = false;
             // 
@@ -363,6 +363,7 @@ namespace LGAConnectSOMS
             this.lblvViewMoreNews.Size = new System.Drawing.Size(75, 17);
             this.lblvViewMoreNews.TabIndex = 7;
             this.lblvViewMoreNews.Text = "View More";
+            this.lblvViewMoreNews.Click += new System.EventHandler(this.lblvViewMoreNews_Click);
             // 
             // lblTitleNewsPanel
             // 
@@ -483,6 +484,7 @@ namespace LGAConnectSOMS
             this.btnUserSettings.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnUserSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnUserSettings.UseVisualStyleBackColor = false;
+            this.btnUserSettings.Click += new System.EventHandler(this.btnUserSettings_Click);
             // 
             // pictureBox1
             // 

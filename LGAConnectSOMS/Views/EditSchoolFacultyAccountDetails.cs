@@ -86,6 +86,52 @@ namespace LGAConnectSOMS.Views
             {
                 MessageBox.Show(x.Message);
             }
-        }      
+        }
+
+        private async void btnDeleteFacultyDetails_Click(object sender, EventArgs e)
+        {
+            string message = "Are you sure do you want to delete this account?";
+            string title = "Delete Faculty Account";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    var id = int.Parse(txtID.Text);
+                    SchoolAccountRequestService schoolAccountRequestService = new SchoolAccountRequestService();
+                    var IsSuccess = await schoolAccountRequestService.DeleteSchoolAccountRequest(id);
+
+                    if (IsSuccess)
+                    {
+                        MessageBox.Show("Delete Faculty Account Successfully");
+                        clearEditData();
+                    }
+
+                    else
+                    {
+                        MessageBox.Show("Delete Faculty Account Not Successfull");
+                    }
+                }
+                catch (Exception x)
+                {
+                    MessageBox.Show(x.Message);
+                }
+            }
+            else { }
+        }
+
+        public void clearEditData()
+        {
+            txtID.Text = "";
+            txtLastname.Text = "";
+            txtMiddlename.Text = "";
+            txtFirstname.Text = "";
+            txtTeacherNumber.Text = "";
+            txtPassword.Text = "";
+            txtMobileNumber.Text = "";
+            cbGender.Text = "";
+            FacultyPicturebox.Image = null;
+        }
     }
 }

@@ -10,6 +10,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -23,16 +24,16 @@ namespace LGAConnectSOMS.Views
         }
 
         //Load
-
         private void ClassRecordAdminView_Load(object sender, EventArgs e)
         {
             LoadData();                      
             this.RestoreWindowPosition();
-            MaximizeIcon();           
+            MaximizeIcon();
         }
 
         private async void LoadData()
-        {                                
+        {
+            LoadYear();
             await DisplayGradeLevels();            
             await DisplayGradeLevelSections();
             await LoadSubjects();
@@ -41,15 +42,17 @@ namespace LGAConnectSOMS.Views
             CBGradeLevel.SelectedIndex = -1;
             CBSection.SelectedIndex = -1;
             //await CreateHighestPossibleScore();
-            LoadYear();           
+                    
             lblloading.Hide();
             lblloadingGradeLevel.Hide();
             lblLoadingGradeLevelSection.Hide();
             CBGradeLevel.SelectedIndex = -1;
             CBSection.SelectedIndex = -1;
             GradeLevelDataGridView.CurrentCell = null;
-            GradeLevelSectionDataGridView.CurrentCell = null;
+            GradeLevelSectionDataGridView.CurrentCell = null;          
         }
+
+       
         IEnumerable<GradeLevelSection> gradeLevelSections = new List<GradeLevelSection>();
         private async Task LoadGradeLevels()
         {
@@ -59,6 +62,9 @@ namespace LGAConnectSOMS.Views
             gradelevelslist.Insert(0, "All Grade Level");
             cmbGradeLevels.DataSource = gradelevelslist.ToList();
             CBGradeLevel.DataSource = gradelevelslist.ToList();
+            var addgradelevelslist = gradeLevelSections.Select(x => x.GradeLevels).Distinct().ToList();
+            cmbGradeLevels.DataSource = addgradelevelslist.ToList();
+            cmbGradeLevels.SelectedIndex = -1;
             //CBGradeLevel.SelectedIndex = 0;
             //CBSection.SelectedIndex = 0;
         }
@@ -107,7 +113,6 @@ namespace LGAConnectSOMS.Views
             }
         }
 
-
         //NavigationToOtherForm
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -129,7 +134,24 @@ namespace LGAConnectSOMS.Views
             ClassRecordDataGridView.DataSource = studentAccounts;
             lblloading.Hide();
             ClassRecordDataGridView.CurrentCell = null;
-            this.ClassRecordDataGridView.Columns[9].Visible = false;
+            this.ClassRecordDataGridView.Columns[0].Visible = false;
+            this.ClassRecordDataGridView.Columns[14].Visible = false;
+            this.ClassRecordDataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ClassRecordDataGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ClassRecordDataGridView.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ClassRecordDataGridView.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ClassRecordDataGridView.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ClassRecordDataGridView.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ClassRecordDataGridView.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ClassRecordDataGridView.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ClassRecordDataGridView.Columns[9].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ClassRecordDataGridView.Columns[10].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ClassRecordDataGridView.Columns[11].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ClassRecordDataGridView.Columns[12].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ClassRecordDataGridView.Columns[13].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ClassRecordDataGridView.Columns[14].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ClassRecordDataGridView.Columns[15].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ClassRecordDataGridView.Columns[16].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
         }
 
         private async void txtSearchStudent_TextChanged(object sender, EventArgs e)
@@ -157,58 +179,74 @@ namespace LGAConnectSOMS.Views
             subjects = await Task.Run(() => subjectsService.GetSubjects());
         }
 
+        public bool IsSucess;
         private async void btnAddStudent_Click_1(object sender, EventArgs e)
         {
-            //var db = new DataAccess();
-            //db.AddStudent(txtLastname.Text, txtFirstname.Text, txtMiddlename.Text, txtGender.Text, Convert.ToInt32(txtGradeLevel.Text));
-
-            
-            var selectedGradeLevel = (string)cmbGradeLevels.SelectedItem;
-            var selectedSection = (string)cmbSections.SelectedItem;
-            var image = StudentProfilePictureBox.Image;
-
-            var gradeLevelId = gradeLevelSections.First(x => x.GradeLevels == selectedGradeLevel && x.SectionName == selectedSection).Id;
-
-            var gradelevelslist = gradeLevelSections.Where(x => x.GradeLevels.Equals(selectedGradeLevel)).Select(x => x.SectionName);
-            var gradeLevelsId = gradeLevelSections.First(x => x.GradeLevels == selectedGradeLevel).Id;
-            var subjectslist = subjects.Where(x => x.GradeLevel == gradeLevelsId).Select(x => x.SubjectName);
-           
-            foreach (var subjecttosave in subjectslist)
+            if (txtLastname.Text == "" || txtMiddlename.Text == "" || txtFirstname.Text == "" || txtStudentNumber.Text == "" || txtPassword.Text == "" || txtMobileNumber.Text == "" || cbGender.Text == "" || cmbGradeLevels.Text == "" || cmbSections.Text == "" || cmbSYStart.Text == "" || StudentProfilePictureBox.Image == null)
             {
-                try
+                string message = "Please Fill in All Fields!";
+                string title = "LGA Connect SOMS";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Error);
+                if (result == DialogResult.OK)
                 {
-                    StudentRequestService studentRequestService = new StudentRequestService();
-                    var IsSucess = await studentRequestService.CreateStudentRequest(new StudentRequest
-                    {
-                        Lastname = txtLastname.Text,
-                        Middlename = txtMiddlename.Text,
-                        Firstname = txtFirstname.Text,
-                        StudentNumber = txtStudentNumber.Text,
-                        Password = txtPassword.Text,
-                        StudentProfile = ImageToByteArray(image),
-                        MobileNumber = txtMobileNumber.Text,
-                        Gender = cbGender.Text,
-                        GradeLevelId = gradeLevelId,
-                        SchoolYearStart = int.Parse(cmbSYStart.Text),
-                        SchoolYearEnd = int.Parse(txtSchoolYearEnd.Text)
-                    });
+                    
+                }             
+            }
+            else
+            {
+                var selectedGradeLevel = (string)cmbGradeLevels.SelectedItem;
+                var selectedSection = (string)cmbSections.SelectedItem;
+                var image = StudentProfilePictureBox.Image;
+                var dateonly = dtBirthday.Value.ToShortDateString();
+                var gradeLevelId = gradeLevelSections.First(x => x.GradeLevels == selectedGradeLevel && x.SectionName == selectedSection).Id;
 
-                    if (IsSucess)
-                    {
-                        MessageBox.Show("Added new Student Successfully");
-                    }
-
-                    else
-                    {
-                        MessageBox.Show("Added new Student Not Successfull");
-                    }
-
-                }
-                catch (Exception x)
+                var gradelevelslist = gradeLevelSections.Where(x => x.GradeLevels.Equals(selectedGradeLevel)).Select(x => x.SectionName);
+                var gradeLevelsId = gradeLevelSections.First(x => x.GradeLevels == selectedGradeLevel).Id;
+                var subjectslist = subjects.Where(x => x.GradeLevel == gradeLevelsId).Select(x => x.SubjectName);
+                
+                foreach (var subjecttosave in subjectslist)
                 {
-                    MessageBox.Show(x.Message);
+                    var subjectid = subjects.First(x => x.SubjectName == subjecttosave && x.GradeLevel == gradeLevelId).ID;
+                    try
+                    {
+                        StudentRequestService studentRequestService = new StudentRequestService();
+                         IsSucess = await studentRequestService.CreateStudentRequest(new StudentRequest
+                        {                           
+                            Lastname = txtLastname.Text,
+                            Middlename = txtMiddlename.Text,
+                            Firstname = txtFirstname.Text,
+                            Address = txtAddress.Text,
+                            Birthday = Convert.ToDateTime(dateonly),
+                            ParentsName = txtParentsname.Text,
+                            StudentNumber = txtStudentNumber.Text,
+                            Password = txtPassword.Text,
+                            mobileNumber = txtMobileNumber.Text,
+                            Email = txtEmail.Text,
+                            Gender = cbGender.Text,
+                            GradeLevelid = gradeLevelId,
+                            StudentProfile = ImageToByteArray(image),
+                            SchoolYearStart = int.Parse(cmbSYStart.Text),
+                            SchoolYearEnd = int.Parse(txtSchoolYearEnd.Text),
+                            SubjectsName = subjectid
+                        });                       
+
+                    }
+                    catch (Exception x)
+                    {
+                        MessageBox.Show(x.Message);
+                    }
                 }
-            }          
+                if (IsSucess)
+                {
+                    MessageBox.Show("Added new Student Successfully");
+                }
+
+                else
+                {
+                    MessageBox.Show("Added new Student Not Successfull");
+                }
+            }             
         }
 
         private async void CBGradeLevel_SelectedIndexChanged(object sender, EventArgs e)
@@ -227,45 +265,11 @@ namespace LGAConnectSOMS.Views
                 if (studentAccounts.Any())
                 {
                     var filteredlist = studentAccounts.Where(item => item.Grade_Level.ToString() == selectedGradeLevel && item.SectionName.ToString() == selectedSection).ToList();
-                    ClassRecordDataGridView.DataSource = selectedIndex != 0 ? filteredlist : studentAccounts;                    
-                   
+                    ClassRecordDataGridView.DataSource = selectedIndex != 0 ? filteredlist : studentAccounts;                          
                 }
             }
         }
-
-        private async void CBGradeLevel_DropDown(object sender, EventArgs e)
-        {
-            //var db = new DataAccess();
-            //gradelevel = db.GetStudentsByGradeLevel();
-            //CBGradeLevel.DataSource = gradelevel;           
-            //StudentService studentService = new StudentService();
-            //var students = studentService.GetStudentByGradeLevelFilter();
-            //CBGradeLevel.DataSource = await students;
-            //CBGradeLevel.DisplayMember = "Grade_Level";
-            //CBGradeLevel.Text = "Grade Level";
-            //CBGradeLevel.SelectedIndex = -1;
-            //ClassRecordDataGridView.CurrentCell = null;
-        }
-
-        private async void CBSection_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private async void CBSection_DropDown(object sender, EventArgs e)
-        {
-            //var db = new DataAccess();
-            //section = db.GetStudentsBySection();
-            //CBSection.DataSource = section;
-            //StudentService studentService = new StudentService();
-            //var students = studentService.GetStudentBySectionFilter();
-            //CBSection.DataSource = await students;
-            //CBSection.DisplayMember = "SectionName";
-            //CBSection.Text = "Section Name";
-            //CBSection.SelectedIndex = -1;
-            //ClassRecordDataGridView.CurrentCell = null;
-        }
-
+      
         private void cmbSYStart_SelectedIndexChanged(object sender, EventArgs e)
         {
             var selectedYear = (int)cmbSYStart.SelectedItem + 1;
@@ -286,17 +290,21 @@ namespace LGAConnectSOMS.Views
             ESDV.txtLastname.Text = ClassRecordDataGridView.CurrentRow.Cells[1].Value.ToString();
             ESDV.txtMiddlename.Text = ClassRecordDataGridView.CurrentRow.Cells[2].Value.ToString();
             ESDV.txtFirstname.Text = ClassRecordDataGridView.CurrentRow.Cells[3].Value.ToString();
-            ESDV.cbGender.Text = ClassRecordDataGridView.CurrentRow.Cells[4].Value.ToString();
-            ESDV.cmbGradeLevel.Text = ClassRecordDataGridView.CurrentRow.Cells[5].Value.ToString();
-            ESDV.cmbSection.Text = ClassRecordDataGridView.CurrentRow.Cells[6].Value.ToString();
+            ESDV.cbGender.Text = ClassRecordDataGridView.CurrentRow.Cells[11].Value.ToString();
+            ESDV.cmbGradeLevel.Text = ClassRecordDataGridView.CurrentRow.Cells[12].Value.ToString();
+            ESDV.cmbSection.Text = ClassRecordDataGridView.CurrentRow.Cells[13].Value.ToString();
             ESDV.txtStudentNumber.Text = ClassRecordDataGridView.CurrentRow.Cells[7].Value.ToString();
             ESDV.txtPassword.Text = ClassRecordDataGridView.CurrentRow.Cells[8].Value.ToString();
-            byte[] image = (byte[])ClassRecordDataGridView.CurrentRow.Cells[9].Value;
+            byte[] image = (byte[])ClassRecordDataGridView.CurrentRow.Cells[14].Value;
             MemoryStream ms = new MemoryStream(image);
             ESDV.StudentProfilePicturebox.Image = Image.FromStream(ms);
-            ESDV.txtMobileNumber.Text = ClassRecordDataGridView.CurrentRow.Cells[10].Value.ToString();
-            ESDV.cmbSY.Text = ClassRecordDataGridView.CurrentRow.Cells[11].Value.ToString();
-            ESDV.txtSchoolYearEnd.Text = ClassRecordDataGridView.CurrentRow.Cells[12].Value.ToString();
+            ESDV.txtMobileNumber.Text = ClassRecordDataGridView.CurrentRow.Cells[9].Value.ToString();
+            ESDV.cmbSY.Text = ClassRecordDataGridView.CurrentRow.Cells[15].Value.ToString();
+            ESDV.txtSchoolYearEnd.Text = ClassRecordDataGridView.CurrentRow.Cells[16].Value.ToString();
+            ESDV.txtAddress.Text = ClassRecordDataGridView.CurrentRow.Cells[4].Value.ToString();
+            ESDV.dtBirthday.Text = ClassRecordDataGridView.CurrentRow.Cells[5].Value.ToString();
+            ESDV.txtParentsname.Text = ClassRecordDataGridView.CurrentRow.Cells[6].Value.ToString();
+            ESDV.txtEmail.Text = ClassRecordDataGridView.CurrentRow.Cells[10].Value.ToString();           
             ESDV.ShowDialog();
         }
 
@@ -448,12 +456,7 @@ namespace LGAConnectSOMS.Views
                 return cp;
             }
         }
-
-        private async void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
+      
         private void btnUploadStudentProfile_Click(object sender, EventArgs e)
         {
             // open file dialog   
@@ -516,12 +519,7 @@ namespace LGAConnectSOMS.Views
             AddGradeLevelSectionView addGradeLevelSectionView = new AddGradeLevelSectionView();
             addGradeLevelSectionView.ShowDialog();
         }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-   
+      
         private void GradeLevelSectionDataGridView_Click(object sender, EventArgs e)
         {
             EditSectionDetails editSectionDetails = new EditSectionDetails();          
@@ -530,6 +528,36 @@ namespace LGAConnectSOMS.Views
             editSectionDetails.txtSectionName.Text = GradeLevelSectionDataGridView.CurrentRow.Cells[3].Value.ToString();
             //cmbGradeLevels.SelectedIndex = -1;
             editSectionDetails.ShowDialog();
+        }
+       
+        private void txtLastname_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void txtMiddlename_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void txtFirstname_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void txtStudentNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void txtMobileNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+                e.Handled = true;
         }
     }
     }
