@@ -49,16 +49,12 @@ namespace LGAConnectSOMS.Views
         {
             this.Close();
         }
-    
-        private async void txtStudentNumber_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
+          
         private async void btnAddTransactionRecord_Click(object sender, EventArgs e)
-        {            
+        {
             //DateTime dateTime = DateTime.Now.Date.AddHours(12).AddMinutes(14);
-            //DateTime dateTimes = DateTime.Now;
+            DateTime dateTime = DateTime.Now;
+            DateTime other = DateTime.SpecifyKind(dateTime, DateTimeKind.Utc);            
             var studentnumber = txtStudentNumber.Text;
             var studentid = studentaccount.First(x => x.StudentNumber == studentnumber).id;
             var studentbalance = studentaccount.First(x => x.StudentNumber == studentnumber).Balance;
@@ -73,7 +69,7 @@ namespace LGAConnectSOMS.Views
                     Studentid = studentid,
                     Amount = amount,
                     Note = Note.Text, 
-                    TransactionDate = DateTime.Now,
+                    TransactionDate = other,
                     Balance = remainingbalance
                 });
 
@@ -93,6 +89,18 @@ namespace LGAConnectSOMS.Views
 
                 MessageBox.Show(ex.Message);
             }
-        }      
+        }
+
+        private void txtStudentNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void txtAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+                e.Handled = true;
+        }
     }
 }

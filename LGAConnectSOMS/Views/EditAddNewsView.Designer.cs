@@ -140,6 +140,7 @@ namespace LGAConnectSOMS.Views
             // 
             // txtTitle
             // 
+            this.txtTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtTitle.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.txtTitle.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTitle.Location = new System.Drawing.Point(57, 136);
@@ -151,6 +152,7 @@ namespace LGAConnectSOMS.Views
             // 
             // lblSearchStudent
             // 
+            this.lblSearchStudent.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblSearchStudent.AutoSize = true;
             this.lblSearchStudent.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSearchStudent.Location = new System.Drawing.Point(13, 140);
@@ -161,6 +163,7 @@ namespace LGAConnectSOMS.Views
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(339, 140);
@@ -171,6 +174,7 @@ namespace LGAConnectSOMS.Views
             // 
             // rtContent
             // 
+            this.rtContent.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.rtContent.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtContent.Location = new System.Drawing.Point(17, 223);
             this.rtContent.Name = "rtContent";
@@ -180,6 +184,7 @@ namespace LGAConnectSOMS.Views
             // 
             // ContentPhotoPictureBox
             // 
+            this.ContentPhotoPictureBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.ContentPhotoPictureBox.Location = new System.Drawing.Point(680, 223);
             this.ContentPhotoPictureBox.Name = "ContentPhotoPictureBox";
             this.ContentPhotoPictureBox.Size = new System.Drawing.Size(608, 420);
@@ -189,6 +194,7 @@ namespace LGAConnectSOMS.Views
             // 
             // txtID
             // 
+            this.txtID.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtID.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.txtID.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtID.Location = new System.Drawing.Point(1202, 137);
@@ -201,6 +207,7 @@ namespace LGAConnectSOMS.Views
             // 
             // BtnSave
             // 
+            this.BtnSave.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.BtnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(143)))));
             this.BtnSave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnSave.FlatAppearance.BorderSize = 0;
@@ -217,6 +224,7 @@ namespace LGAConnectSOMS.Views
             // 
             // BtnUpdatePhoto
             // 
+            this.BtnUpdatePhoto.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.BtnUpdatePhoto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(181)))), ((int)(((byte)(254)))));
             this.BtnUpdatePhoto.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnUpdatePhoto.FlatAppearance.BorderSize = 0;
@@ -233,6 +241,7 @@ namespace LGAConnectSOMS.Views
             // 
             // NewsDateTimePicker
             // 
+            this.NewsDateTimePicker.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.NewsDateTimePicker.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NewsDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.NewsDateTimePicker.Location = new System.Drawing.Point(390, 136);
@@ -242,6 +251,7 @@ namespace LGAConnectSOMS.Views
             // 
             // button1
             // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.button1.BackColor = System.Drawing.Color.Red;
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.FlatAppearance.BorderSize = 0;

@@ -119,7 +119,8 @@ namespace LGAConnectSOMS.Views
         private async void btnSaveChanges_Click(object sender, EventArgs e)
         {
             var id = int.Parse(txtID.Text);
-            var image = AdminPicturebox.Image; 
+            var image = AdminPicturebox.Image;
+            var dateonly = dtBirthday.Value.ToShortDateString();
             try
             {
                 SchoolAccountRequestService schoolAccountRequestService = new SchoolAccountRequestService();
@@ -134,6 +135,9 @@ namespace LGAConnectSOMS.Views
                     TeacherProfile = ImageToByteArray(image),
                     MobileNumber = txtMobileNumber.Text,
                     Gender = cbGender.Text,
+                    Address = txtAddress.Text,
+                    Email = txtEmail.Text,
+                    Birthday = Convert.ToDateTime(dateonly),
                     IsAdmin = 1
                 }); ;
 

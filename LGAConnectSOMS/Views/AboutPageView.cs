@@ -18,8 +18,6 @@ namespace LGAConnectSOMS.Views
         public AboutPageView()
         {
             InitializeComponent();
-
-            
         }
 
         private async void AboutPageView_Load(object sender, EventArgs e)
@@ -151,12 +149,7 @@ namespace LGAConnectSOMS.Views
                 MissionFrame.Margin = new Padding(0, 0, 0, 20);
                 VisionFrame.Margin = new Padding(0, 0, 0, 20);
                 AppInfoFrame.Margin = new Padding(0, 0, 0, 20);
-
-
             }
-
-
-
         }
 
         //TitleBarFunction

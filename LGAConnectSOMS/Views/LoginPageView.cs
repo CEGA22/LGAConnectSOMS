@@ -32,7 +32,7 @@ namespace LGAConnectSOMS.Views
 
         private async void btnLogin_Click(object sender, EventArgs e)
         {
-                   
+            panel1.Show();
             LoginService loginService = new LoginService();
             var result = await loginService.AccountLogin(new LoginRequest
             {
@@ -42,7 +42,7 @@ namespace LGAConnectSOMS.Views
             
             if (result.IsSuccess)
             {
-                panel1.Show();
+               
                 await Task.Delay(1000);
                 if (result.IsAdmin == 1)
                 {
@@ -68,6 +68,7 @@ namespace LGAConnectSOMS.Views
             }
             else
             {
+                panel1.Hide();
                 string message = "Incorrect password or ID";
                 string title = "Login failed";
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
@@ -239,6 +240,14 @@ namespace LGAConnectSOMS.Views
         {
             btnClose.BackColor = Color.Transparent;
             btnClose.Image = LGAConnectSOMS.Properties.Resources.CloseBlack;
+        }
+
+        private void lblForgotPassword_Click(object sender, EventArgs e)
+        {
+            this.SaveWindowPosition();
+            ForgotPasswordView forgotPasswordView = new ForgotPasswordView();
+            forgotPasswordView.Show();
+            this.Hide();
         }
     }
 }

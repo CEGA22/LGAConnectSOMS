@@ -188,6 +188,7 @@ namespace LGAConnectSOMS
         IEnumerable<NewsAndAnnouncements> newsandannouncements = new List<NewsAndAnnouncements>();
         public async Task LoadNewsAndAnnouncements()
         {
+            lblLoading.Show();
             NewsAndAnnouncementsService newsAndAnnouncementsService = new NewsAndAnnouncementsService();
             newsandannouncements = await Task.Run(() => newsAndAnnouncementsService.GetNewsAndAnnouncements());
             var newsandannouncementsOrder = newsandannouncements.OrderByDescending(x => x.DateCreated);
@@ -197,6 +198,7 @@ namespace LGAConnectSOMS
             byte[] image = (byte[])latestnews.ContentPhoto;
             MemoryStream ms = new MemoryStream(image);
             NewsImage.Image = Image.FromStream(ms);
+            lblLoading.Hide();
         }
 
         //Buttons Forecolor and background Styles

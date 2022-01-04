@@ -53,6 +53,12 @@ namespace LGAConnectSOMS.Views
             this.AdminPicturebox = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.dtBirthday = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtAddress = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.AdminPicturebox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,7 +69,7 @@ namespace LGAConnectSOMS.Views
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(143)))));
             this.panel1.Location = new System.Drawing.Point(10, 80);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1082, 3);
+            this.panel1.Size = new System.Drawing.Size(1395, 3);
             this.panel1.TabIndex = 40;
             // 
             // lblAdministratorTitle
@@ -144,7 +150,7 @@ namespace LGAConnectSOMS.Views
             this.btnDeleteAdminDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteAdminDetails.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteAdminDetails.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
-            this.btnDeleteAdminDetails.Location = new System.Drawing.Point(419, 576);
+            this.btnDeleteAdminDetails.Location = new System.Drawing.Point(607, 577);
             this.btnDeleteAdminDetails.Name = "btnDeleteAdminDetails";
             this.btnDeleteAdminDetails.Size = new System.Drawing.Size(302, 44);
             this.btnDeleteAdminDetails.TabIndex = 52;
@@ -170,7 +176,7 @@ namespace LGAConnectSOMS.Views
             this.btnSaveChanges.FlatAppearance.BorderSize = 0;
             this.btnSaveChanges.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSaveChanges.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveChanges.Location = new System.Drawing.Point(419, 511);
+            this.btnSaveChanges.Location = new System.Drawing.Point(607, 512);
             this.btnSaveChanges.Name = "btnSaveChanges";
             this.btnSaveChanges.Size = new System.Drawing.Size(302, 44);
             this.btnSaveChanges.TabIndex = 50;
@@ -265,7 +271,7 @@ namespace LGAConnectSOMS.Views
             this.btnAdminProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdminProfile.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdminProfile.ForeColor = System.Drawing.Color.White;
-            this.btnAdminProfile.Location = new System.Drawing.Point(18, 378);
+            this.btnAdminProfile.Location = new System.Drawing.Point(21, 394);
             this.btnAdminProfile.Name = "btnAdminProfile";
             this.btnAdminProfile.Size = new System.Drawing.Size(144, 41);
             this.btnAdminProfile.TabIndex = 61;
@@ -280,7 +286,7 @@ namespace LGAConnectSOMS.Views
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Image = global::LGAConnectSOMS.Properties.Resources.CloseBlack;
-            this.btnClose.Location = new System.Drawing.Point(1057, -1);
+            this.btnClose.Location = new System.Drawing.Point(1370, -1);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(35, 34);
             this.btnClose.TabIndex = 60;
@@ -305,7 +311,7 @@ namespace LGAConnectSOMS.Views
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Gray;
-            this.label3.Location = new System.Drawing.Point(36, 345);
+            this.label3.Location = new System.Drawing.Point(21, 360);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(176, 19);
             this.label3.TabIndex = 63;
@@ -317,18 +323,84 @@ namespace LGAConnectSOMS.Views
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Gray;
-            this.label2.Location = new System.Drawing.Point(43, 320);
+            this.label2.Location = new System.Drawing.Point(21, 332);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(165, 19);
             this.label2.TabIndex = 62;
             this.label2.Text = "Maximum file size is 1MB";
+            // 
+            // dtBirthday
+            // 
+            this.dtBirthday.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtBirthday.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtBirthday.Location = new System.Drawing.Point(1184, 124);
+            this.dtBirthday.Name = "dtBirthday";
+            this.dtBirthday.Size = new System.Drawing.Size(200, 25);
+            this.dtBirthday.TabIndex = 79;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(731, 372);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(50, 19);
+            this.label4.TabIndex = 78;
+            this.label4.Text = "Email: ";
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.Location = new System.Drawing.Point(840, 359);
+            this.txtEmail.MaxLength = 100;
+            this.txtEmail.Multiline = true;
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(233, 32);
+            this.txtEmail.TabIndex = 77;
+            this.txtEmail.TabStop = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(1108, 125);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(70, 19);
+            this.label5.TabIndex = 76;
+            this.label5.Text = "Birthday: ";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(715, 243);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(64, 19);
+            this.label7.TabIndex = 75;
+            this.label7.Text = "Address:";
+            // 
+            // txtAddress
+            // 
+            this.txtAddress.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAddress.Location = new System.Drawing.Point(840, 240);
+            this.txtAddress.Multiline = true;
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(233, 69);
+            this.txtAddress.TabIndex = 74;
+            this.txtAddress.TabStop = false;
             // 
             // EditSchoolAccountDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
-            this.ClientSize = new System.Drawing.Size(1093, 647);
+            this.ClientSize = new System.Drawing.Size(1406, 647);
+            this.Controls.Add(this.dtBirthday);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtEmail);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.txtAddress);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnAdminProfile);
@@ -388,5 +460,11 @@ namespace LGAConnectSOMS.Views
         public System.Windows.Forms.PictureBox AdminPicturebox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        public System.Windows.Forms.DateTimePicker dtBirthday;
+        private System.Windows.Forms.Label label4;
+        public System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label7;
+        public System.Windows.Forms.TextBox txtAddress;
     }
 }

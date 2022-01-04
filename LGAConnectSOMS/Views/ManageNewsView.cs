@@ -40,10 +40,13 @@ namespace LGAConnectSOMS.Views
         int newsCount = 0;
         public async Task LoadNewsAndAnnouncements()
         {
+            lblLoading.Show();
             NewsAndAnnouncementsService newsAndAnnouncementsService = new NewsAndAnnouncementsService();
             newsandannouncements = await Task.Run(() => newsAndAnnouncementsService.GetNewsAndAnnouncements());
             var newsandannouncementsOrder = newsandannouncements.OrderByDescending(x => x.DateCreated);
             newsCount = newsandannouncementsOrder.Count();
+            lblLoading.Hide();
+
         }
 
         private async Task GenerateDynamicUserControl()

@@ -39,6 +39,12 @@ namespace LGAConnectSOMS.Models
         [DisplayName("Position")]
         public int isAdmin { get; set; }
 
+        public DateTime Birthday { get; set; }
+
+        public string Address { get; set; }
+
+        public string Email { get; set; }
+
         private string fullname;
 
         public string Fullname

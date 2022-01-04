@@ -29,16 +29,16 @@ namespace LGAConnectSOMS.Views
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblFacultyAdmin = new System.Windows.Forms.Label();
             this.DragWindowsPanel = new System.Windows.Forms.Panel();
@@ -46,8 +46,8 @@ namespace LGAConnectSOMS.Views
             this.btnMaximize = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.txtSearchFaculty = new System.Windows.Forms.TextBox();
-            this.lblSearchStudent = new System.Windows.Forms.Label();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.lblSearchFaculty = new System.Windows.Forms.Label();
+            this.tabcontrol = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.lblLoading = new System.Windows.Forms.Label();
             this.FacultyDataGridView = new System.Windows.Forms.DataGridView();
@@ -56,6 +56,12 @@ namespace LGAConnectSOMS.Views
             this.txtAdminLastname = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtAdminEmail = new System.Windows.Forms.TextBox();
+            this.dtAdminBirthday = new System.Windows.Forms.DateTimePicker();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.txtAdminAddress = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnAddAdministrator = new System.Windows.Forms.Button();
@@ -76,15 +82,45 @@ namespace LGAConnectSOMS.Views
             this.lblLastname = new System.Windows.Forms.Label();
             this.lbAdministratorDetailsTitle = new System.Windows.Forms.Label();
             this.AdminPictureBox = new System.Windows.Forms.PictureBox();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtFacultyEmail = new System.Windows.Forms.TextBox();
+            this.dtBirthday = new System.Windows.Forms.DateTimePicker();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtFacultyAddress = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.txtFacultyMobileNumber = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cbFacultyGender = new System.Windows.Forms.ComboBox();
+            this.btnUploadFacultyProfile = new System.Windows.Forms.Button();
+            this.txtFacultyPassword = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtFacultyTeacherNumber = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtFacultyMiddlename = new System.Windows.Forms.TextBox();
+            this.txtFacultyFirstname = new System.Windows.Forms.TextBox();
+            this.txtFacultyLastname = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.FacultyPictureBox = new System.Windows.Forms.PictureBox();
             this.btnBack = new System.Windows.Forms.Button();
+            this.lblloadingadmin = new System.Windows.Forms.Label();
             this.DragWindowsPanel.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.tabcontrol.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FacultyDataGridView)).BeginInit();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AdminDataGridView)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AdminPictureBox)).BeginInit();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FacultyPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -172,31 +208,32 @@ namespace LGAConnectSOMS.Views
             this.txtSearchFaculty.TabStop = false;
             this.txtSearchFaculty.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
-            // lblSearchStudent
+            // lblSearchFaculty
             // 
-            this.lblSearchStudent.AutoSize = true;
-            this.lblSearchStudent.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSearchStudent.Location = new System.Drawing.Point(17, 19);
-            this.lblSearchStudent.Name = "lblSearchStudent";
-            this.lblSearchStudent.Size = new System.Drawing.Size(141, 19);
-            this.lblSearchStudent.TabIndex = 32;
-            this.lblSearchStudent.Text = "Search by lastname: ";
+            this.lblSearchFaculty.AutoSize = true;
+            this.lblSearchFaculty.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSearchFaculty.Location = new System.Drawing.Point(17, 19);
+            this.lblSearchFaculty.Name = "lblSearchFaculty";
+            this.lblSearchFaculty.Size = new System.Drawing.Size(141, 19);
+            this.lblSearchFaculty.TabIndex = 32;
+            this.lblSearchFaculty.Text = "Search by lastname: ";
             // 
-            // tabControl1
+            // tabcontrol
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tabcontrol.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl1.Location = new System.Drawing.Point(12, 124);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1276, 564);
-            this.tabControl1.TabIndex = 36;
-            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+            this.tabcontrol.Controls.Add(this.tabPage3);
+            this.tabcontrol.Controls.Add(this.tabPage1);
+            this.tabcontrol.Controls.Add(this.tabPage2);
+            this.tabcontrol.Controls.Add(this.tabPage4);
+            this.tabcontrol.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabcontrol.Location = new System.Drawing.Point(12, 124);
+            this.tabcontrol.Name = "tabcontrol";
+            this.tabcontrol.SelectedIndex = 0;
+            this.tabcontrol.Size = new System.Drawing.Size(1276, 564);
+            this.tabcontrol.TabIndex = 36;
+            this.tabcontrol.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabPage3
             // 
@@ -204,7 +241,7 @@ namespace LGAConnectSOMS.Views
             this.tabPage3.Controls.Add(this.lblLoading);
             this.tabPage3.Controls.Add(this.FacultyDataGridView);
             this.tabPage3.Controls.Add(this.txtSearchFaculty);
-            this.tabPage3.Controls.Add(this.lblSearchStudent);
+            this.tabPage3.Controls.Add(this.lblSearchFaculty);
             this.tabPage3.Location = new System.Drawing.Point(4, 28);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(1268, 532);
@@ -219,55 +256,55 @@ namespace LGAConnectSOMS.Views
             this.lblLoading.Font = new System.Drawing.Font("Tw Cen MT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLoading.Location = new System.Drawing.Point(489, 256);
             this.lblLoading.Name = "lblLoading";
-            this.lblLoading.Size = new System.Drawing.Size(270, 22);
+            this.lblLoading.Size = new System.Drawing.Size(282, 22);
             this.lblLoading.TabIndex = 34;
-            this.lblLoading.Text = "Please wait while loading the data";
+            this.lblLoading.Text = "Please wait while loading the data...";
             // 
             // FacultyDataGridView
             // 
             this.FacultyDataGridView.AllowUserToResizeColumns = false;
             this.FacultyDataGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
-            this.FacultyDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
+            this.FacultyDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle21;
             this.FacultyDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.FacultyDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.FacultyDataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
             this.FacultyDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(143)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.FacultyDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(143)))));
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.FacultyDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
             this.FacultyDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.FacultyDataGridView.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(242)))), ((int)(((byte)(245)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.FacultyDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(242)))), ((int)(((byte)(245)))));
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.FacultyDataGridView.DefaultCellStyle = dataGridViewCellStyle23;
             this.FacultyDataGridView.EnableHeadersVisualStyles = false;
             this.FacultyDataGridView.Location = new System.Drawing.Point(-1, 63);
             this.FacultyDataGridView.Name = "FacultyDataGridView";
             this.FacultyDataGridView.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.FacultyDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.FacultyDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
             this.FacultyDataGridView.RowHeadersVisible = false;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FacultyDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle25.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FacultyDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle25;
             this.FacultyDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.FacultyDataGridView.Size = new System.Drawing.Size(1271, 471);
             this.FacultyDataGridView.TabIndex = 27;
@@ -276,6 +313,7 @@ namespace LGAConnectSOMS.Views
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabPage1.Controls.Add(this.lblloadingadmin);
             this.tabPage1.Controls.Add(this.AdminDataGridView);
             this.tabPage1.Controls.Add(this.txtAdminLastname);
             this.tabPage1.Controls.Add(this.label1);
@@ -290,47 +328,47 @@ namespace LGAConnectSOMS.Views
             // 
             this.AdminDataGridView.AllowUserToResizeColumns = false;
             this.AdminDataGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
-            this.AdminDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
+            this.AdminDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle26;
             this.AdminDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.AdminDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.AdminDataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
             this.AdminDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(143)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.AdminDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(143)))));
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.AdminDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle27;
             this.AdminDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.AdminDataGridView.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(242)))), ((int)(((byte)(245)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.AdminDataGridView.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(242)))), ((int)(((byte)(245)))));
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.AdminDataGridView.DefaultCellStyle = dataGridViewCellStyle28;
             this.AdminDataGridView.EnableHeadersVisualStyles = false;
             this.AdminDataGridView.Location = new System.Drawing.Point(-1, 63);
             this.AdminDataGridView.Name = "AdminDataGridView";
             this.AdminDataGridView.ReadOnly = true;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.AdminDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle29.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.AdminDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle29;
             this.AdminDataGridView.RowHeadersVisible = false;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AdminDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AdminDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle30;
             this.AdminDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.AdminDataGridView.Size = new System.Drawing.Size(1271, 471);
             this.AdminDataGridView.TabIndex = 34;
@@ -360,6 +398,12 @@ namespace LGAConnectSOMS.Views
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.Gainsboro;
+            this.tabPage2.Controls.Add(this.label17);
+            this.tabPage2.Controls.Add(this.txtAdminEmail);
+            this.tabPage2.Controls.Add(this.dtAdminBirthday);
+            this.tabPage2.Controls.Add(this.label18);
+            this.tabPage2.Controls.Add(this.label19);
+            this.tabPage2.Controls.Add(this.txtAdminAddress);
             this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Controls.Add(this.label2);
             this.tabPage2.Controls.Add(this.btnAddAdministrator);
@@ -385,6 +429,72 @@ namespace LGAConnectSOMS.Views
             this.tabPage2.Size = new System.Drawing.Size(1268, 532);
             this.tabPage2.TabIndex = 4;
             this.tabPage2.Text = "Add New Admin";
+            // 
+            // label17
+            // 
+            this.label17.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(808, 372);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(50, 19);
+            this.label17.TabIndex = 102;
+            this.label17.Text = "Email: ";
+            // 
+            // txtAdminEmail
+            // 
+            this.txtAdminEmail.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtAdminEmail.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAdminEmail.Location = new System.Drawing.Point(919, 369);
+            this.txtAdminEmail.MaxLength = 100;
+            this.txtAdminEmail.Multiline = true;
+            this.txtAdminEmail.Name = "txtAdminEmail";
+            this.txtAdminEmail.Size = new System.Drawing.Size(201, 32);
+            this.txtAdminEmail.TabIndex = 101;
+            this.txtAdminEmail.TabStop = false;
+            // 
+            // dtAdminBirthday
+            // 
+            this.dtAdminBirthday.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.dtAdminBirthday.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtAdminBirthday.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtAdminBirthday.Location = new System.Drawing.Point(919, 305);
+            this.dtAdminBirthday.Name = "dtAdminBirthday";
+            this.dtAdminBirthday.Size = new System.Drawing.Size(213, 25);
+            this.dtAdminBirthday.TabIndex = 100;
+            // 
+            // label18
+            // 
+            this.label18.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(794, 310);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(70, 19);
+            this.label18.TabIndex = 99;
+            this.label18.Text = "Birthday: ";
+            // 
+            // label19
+            // 
+            this.label19.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(794, 197);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(64, 19);
+            this.label19.TabIndex = 98;
+            this.label19.Text = "Address:";
+            // 
+            // txtAdminAddress
+            // 
+            this.txtAdminAddress.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtAdminAddress.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAdminAddress.Location = new System.Drawing.Point(919, 197);
+            this.txtAdminAddress.Multiline = true;
+            this.txtAdminAddress.Name = "txtAdminAddress";
+            this.txtAdminAddress.Size = new System.Drawing.Size(205, 69);
+            this.txtAdminAddress.TabIndex = 97;
+            this.txtAdminAddress.TabStop = false;
             // 
             // label3
             // 
@@ -428,19 +538,21 @@ namespace LGAConnectSOMS.Views
             // 
             this.txtMobileNumber.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtMobileNumber.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMobileNumber.Location = new System.Drawing.Point(893, 80);
+            this.txtMobileNumber.Location = new System.Drawing.Point(919, 80);
+            this.txtMobileNumber.MaxLength = 11;
             this.txtMobileNumber.Multiline = true;
             this.txtMobileNumber.Name = "txtMobileNumber";
             this.txtMobileNumber.Size = new System.Drawing.Size(233, 32);
             this.txtMobileNumber.TabIndex = 67;
             this.txtMobileNumber.TabStop = false;
+            this.txtMobileNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMobileNumber_KeyPress);
             // 
             // lblMobileNumber
             // 
             this.lblMobileNumber.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblMobileNumber.AutoSize = true;
             this.lblMobileNumber.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMobileNumber.Location = new System.Drawing.Point(768, 83);
+            this.lblMobileNumber.Location = new System.Drawing.Point(794, 83);
             this.lblMobileNumber.Name = "lblMobileNumber";
             this.lblMobileNumber.Size = new System.Drawing.Size(111, 19);
             this.lblMobileNumber.TabIndex = 66;
@@ -454,11 +566,12 @@ namespace LGAConnectSOMS.Views
             this.cbGender.Items.AddRange(new object[] {
             "MALE",
             "FEMALE"});
-            this.cbGender.Location = new System.Drawing.Point(893, 131);
+            this.cbGender.Location = new System.Drawing.Point(919, 131);
             this.cbGender.Name = "cbGender";
             this.cbGender.Size = new System.Drawing.Size(123, 27);
             this.cbGender.TabIndex = 65;
             this.cbGender.TabStop = false;
+            this.cbGender.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbGender_KeyPress);
             // 
             // btnUploadAdminProfile
             // 
@@ -503,11 +616,14 @@ namespace LGAConnectSOMS.Views
             this.txtTeacherNumber.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtTeacherNumber.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTeacherNumber.Location = new System.Drawing.Point(512, 248);
+            this.txtTeacherNumber.MaxLength = 10;
             this.txtTeacherNumber.Multiline = true;
             this.txtTeacherNumber.Name = "txtTeacherNumber";
+            this.txtTeacherNumber.ReadOnly = true;
             this.txtTeacherNumber.Size = new System.Drawing.Size(233, 32);
             this.txtTeacherNumber.TabIndex = 60;
             this.txtTeacherNumber.TabStop = false;
+            this.txtTeacherNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTeacherNumber_KeyPress);
             // 
             // lblStudentNumber
             // 
@@ -530,6 +646,7 @@ namespace LGAConnectSOMS.Views
             this.txtMiddlename.Size = new System.Drawing.Size(233, 32);
             this.txtMiddlename.TabIndex = 58;
             this.txtMiddlename.TabStop = false;
+            this.txtMiddlename.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMiddlename_KeyPress);
             // 
             // txtFirstname
             // 
@@ -541,6 +658,7 @@ namespace LGAConnectSOMS.Views
             this.txtFirstname.Size = new System.Drawing.Size(233, 32);
             this.txtFirstname.TabIndex = 57;
             this.txtFirstname.TabStop = false;
+            this.txtFirstname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFirstname_KeyPress);
             // 
             // txtLastname
             // 
@@ -552,13 +670,14 @@ namespace LGAConnectSOMS.Views
             this.txtLastname.Size = new System.Drawing.Size(233, 32);
             this.txtLastname.TabIndex = 56;
             this.txtLastname.TabStop = false;
+            this.txtLastname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLastname_KeyPress);
             // 
             // lblGender
             // 
             this.lblGender.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblGender.AutoSize = true;
             this.lblGender.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGender.Location = new System.Drawing.Point(768, 134);
+            this.lblGender.Location = new System.Drawing.Point(794, 134);
             this.lblGender.Name = "lblGender";
             this.lblGender.Size = new System.Drawing.Size(66, 19);
             this.lblGender.TabIndex = 55;
@@ -618,6 +737,339 @@ namespace LGAConnectSOMS.Views
             this.AdminPictureBox.TabIndex = 63;
             this.AdminPictureBox.TabStop = false;
             // 
+            // tabPage4
+            // 
+            this.tabPage4.BackColor = System.Drawing.Color.Gainsboro;
+            this.tabPage4.Controls.Add(this.label14);
+            this.tabPage4.Controls.Add(this.txtFacultyEmail);
+            this.tabPage4.Controls.Add(this.dtBirthday);
+            this.tabPage4.Controls.Add(this.label15);
+            this.tabPage4.Controls.Add(this.label16);
+            this.tabPage4.Controls.Add(this.txtFacultyAddress);
+            this.tabPage4.Controls.Add(this.label4);
+            this.tabPage4.Controls.Add(this.label5);
+            this.tabPage4.Controls.Add(this.button1);
+            this.tabPage4.Controls.Add(this.txtFacultyMobileNumber);
+            this.tabPage4.Controls.Add(this.label6);
+            this.tabPage4.Controls.Add(this.cbFacultyGender);
+            this.tabPage4.Controls.Add(this.btnUploadFacultyProfile);
+            this.tabPage4.Controls.Add(this.txtFacultyPassword);
+            this.tabPage4.Controls.Add(this.label7);
+            this.tabPage4.Controls.Add(this.txtFacultyTeacherNumber);
+            this.tabPage4.Controls.Add(this.label8);
+            this.tabPage4.Controls.Add(this.txtFacultyMiddlename);
+            this.tabPage4.Controls.Add(this.txtFacultyFirstname);
+            this.tabPage4.Controls.Add(this.txtFacultyLastname);
+            this.tabPage4.Controls.Add(this.label9);
+            this.tabPage4.Controls.Add(this.label10);
+            this.tabPage4.Controls.Add(this.label11);
+            this.tabPage4.Controls.Add(this.label12);
+            this.tabPage4.Controls.Add(this.label13);
+            this.tabPage4.Controls.Add(this.FacultyPictureBox);
+            this.tabPage4.Location = new System.Drawing.Point(4, 28);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(1268, 532);
+            this.tabPage4.TabIndex = 5;
+            this.tabPage4.Text = "Add new Faculty";
+            // 
+            // label14
+            // 
+            this.label14.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(815, 349);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(50, 19);
+            this.label14.TabIndex = 96;
+            this.label14.Text = "Email: ";
+            // 
+            // txtFacultyEmail
+            // 
+            this.txtFacultyEmail.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtFacultyEmail.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFacultyEmail.Location = new System.Drawing.Point(926, 346);
+            this.txtFacultyEmail.MaxLength = 100;
+            this.txtFacultyEmail.Multiline = true;
+            this.txtFacultyEmail.Name = "txtFacultyEmail";
+            this.txtFacultyEmail.Size = new System.Drawing.Size(201, 32);
+            this.txtFacultyEmail.TabIndex = 95;
+            this.txtFacultyEmail.TabStop = false;
+            // 
+            // dtBirthday
+            // 
+            this.dtBirthday.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.dtBirthday.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtBirthday.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtBirthday.Location = new System.Drawing.Point(926, 282);
+            this.dtBirthday.Name = "dtBirthday";
+            this.dtBirthday.Size = new System.Drawing.Size(213, 25);
+            this.dtBirthday.TabIndex = 94;
+            // 
+            // label15
+            // 
+            this.label15.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(801, 287);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(70, 19);
+            this.label15.TabIndex = 93;
+            this.label15.Text = "Birthday: ";
+            // 
+            // label16
+            // 
+            this.label16.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(801, 174);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(64, 19);
+            this.label16.TabIndex = 92;
+            this.label16.Text = "Address:";
+            // 
+            // txtFacultyAddress
+            // 
+            this.txtFacultyAddress.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtFacultyAddress.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFacultyAddress.Location = new System.Drawing.Point(926, 174);
+            this.txtFacultyAddress.Multiline = true;
+            this.txtFacultyAddress.Name = "txtFacultyAddress";
+            this.txtFacultyAddress.Size = new System.Drawing.Size(205, 69);
+            this.txtFacultyAddress.TabIndex = 91;
+            this.txtFacultyAddress.TabStop = false;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.Gray;
+            this.label4.Location = new System.Drawing.Point(27, 305);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(176, 19);
+            this.label4.TabIndex = 90;
+            this.label4.Text = "File extension:  JPEG, PNG";
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.Gray;
+            this.label5.Location = new System.Drawing.Point(27, 282);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(165, 19);
+            this.label5.TabIndex = 89;
+            this.label5.Text = "Maximum file size is 1MB";
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(143)))));
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(1114, 471);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(132, 41);
+            this.button1.TabIndex = 88;
+            this.button1.Text = "Save";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // txtFacultyMobileNumber
+            // 
+            this.txtFacultyMobileNumber.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtFacultyMobileNumber.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFacultyMobileNumber.Location = new System.Drawing.Point(926, 72);
+            this.txtFacultyMobileNumber.Multiline = true;
+            this.txtFacultyMobileNumber.Name = "txtFacultyMobileNumber";
+            this.txtFacultyMobileNumber.Size = new System.Drawing.Size(233, 32);
+            this.txtFacultyMobileNumber.TabIndex = 87;
+            this.txtFacultyMobileNumber.TabStop = false;
+            // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(801, 75);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(111, 19);
+            this.label6.TabIndex = 86;
+            this.label6.Text = "Mobile number: ";
+            // 
+            // cbFacultyGender
+            // 
+            this.cbFacultyGender.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cbFacultyGender.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbFacultyGender.FormattingEnabled = true;
+            this.cbFacultyGender.Items.AddRange(new object[] {
+            "MALE",
+            "FEMALE"});
+            this.cbFacultyGender.Location = new System.Drawing.Point(926, 123);
+            this.cbFacultyGender.Name = "cbFacultyGender";
+            this.cbFacultyGender.Size = new System.Drawing.Size(123, 27);
+            this.cbFacultyGender.TabIndex = 85;
+            this.cbFacultyGender.TabStop = false;
+            // 
+            // btnUploadFacultyProfile
+            // 
+            this.btnUploadFacultyProfile.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnUploadFacultyProfile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(181)))), ((int)(((byte)(254)))));
+            this.btnUploadFacultyProfile.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnUploadFacultyProfile.FlatAppearance.BorderSize = 0;
+            this.btnUploadFacultyProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUploadFacultyProfile.ForeColor = System.Drawing.Color.White;
+            this.btnUploadFacultyProfile.Location = new System.Drawing.Point(28, 338);
+            this.btnUploadFacultyProfile.Name = "btnUploadFacultyProfile";
+            this.btnUploadFacultyProfile.Size = new System.Drawing.Size(113, 41);
+            this.btnUploadFacultyProfile.TabIndex = 84;
+            this.btnUploadFacultyProfile.Text = "Upload profile";
+            this.btnUploadFacultyProfile.UseVisualStyleBackColor = false;
+            this.btnUploadFacultyProfile.Click += new System.EventHandler(this.btnUploadFacultyProfile_Click);
+            // 
+            // txtFacultyPassword
+            // 
+            this.txtFacultyPassword.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtFacultyPassword.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFacultyPassword.Location = new System.Drawing.Point(509, 298);
+            this.txtFacultyPassword.Multiline = true;
+            this.txtFacultyPassword.Name = "txtFacultyPassword";
+            this.txtFacultyPassword.Size = new System.Drawing.Size(233, 32);
+            this.txtFacultyPassword.TabIndex = 82;
+            this.txtFacultyPassword.TabStop = false;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(323, 305);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(77, 19);
+            this.label7.TabIndex = 81;
+            this.label7.Text = "Password: ";
+            // 
+            // txtFacultyTeacherNumber
+            // 
+            this.txtFacultyTeacherNumber.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtFacultyTeacherNumber.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFacultyTeacherNumber.Location = new System.Drawing.Point(509, 240);
+            this.txtFacultyTeacherNumber.Multiline = true;
+            this.txtFacultyTeacherNumber.Name = "txtFacultyTeacherNumber";
+            this.txtFacultyTeacherNumber.Size = new System.Drawing.Size(233, 32);
+            this.txtFacultyTeacherNumber.TabIndex = 80;
+            this.txtFacultyTeacherNumber.TabStop = false;
+            // 
+            // label8
+            // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(321, 247);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(122, 19);
+            this.label8.TabIndex = 79;
+            this.label8.Text = "Teacher Number: ";
+            // 
+            // txtFacultyMiddlename
+            // 
+            this.txtFacultyMiddlename.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtFacultyMiddlename.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFacultyMiddlename.Location = new System.Drawing.Point(509, 120);
+            this.txtFacultyMiddlename.Multiline = true;
+            this.txtFacultyMiddlename.Name = "txtFacultyMiddlename";
+            this.txtFacultyMiddlename.Size = new System.Drawing.Size(233, 32);
+            this.txtFacultyMiddlename.TabIndex = 78;
+            this.txtFacultyMiddlename.TabStop = false;
+            // 
+            // txtFacultyFirstname
+            // 
+            this.txtFacultyFirstname.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtFacultyFirstname.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFacultyFirstname.Location = new System.Drawing.Point(509, 179);
+            this.txtFacultyFirstname.Multiline = true;
+            this.txtFacultyFirstname.Name = "txtFacultyFirstname";
+            this.txtFacultyFirstname.Size = new System.Drawing.Size(233, 32);
+            this.txtFacultyFirstname.TabIndex = 77;
+            this.txtFacultyFirstname.TabStop = false;
+            // 
+            // txtFacultyLastname
+            // 
+            this.txtFacultyLastname.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtFacultyLastname.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFacultyLastname.Location = new System.Drawing.Point(509, 72);
+            this.txtFacultyLastname.Multiline = true;
+            this.txtFacultyLastname.Name = "txtFacultyLastname";
+            this.txtFacultyLastname.Size = new System.Drawing.Size(233, 32);
+            this.txtFacultyLastname.TabIndex = 76;
+            this.txtFacultyLastname.TabStop = false;
+            // 
+            // label9
+            // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(801, 126);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(66, 19);
+            this.label9.TabIndex = 75;
+            this.label9.Text = "Gender: ";
+            // 
+            // label10
+            // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(321, 123);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(92, 19);
+            this.label10.TabIndex = 74;
+            this.label10.Text = "Middlename:";
+            // 
+            // label11
+            // 
+            this.label11.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(323, 189);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(72, 19);
+            this.label11.TabIndex = 73;
+            this.label11.Text = "Firstname:";
+            // 
+            // label12
+            // 
+            this.label12.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(323, 75);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(76, 19);
+            this.label12.TabIndex = 72;
+            this.label12.Text = "Lastname: ";
+            // 
+            // label13
+            // 
+            this.label13.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Tw Cen MT", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(22, 20);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(170, 31);
+            this.label13.TabIndex = 71;
+            this.label13.Text = "Faculty Details";
+            // 
+            // FacultyPictureBox
+            // 
+            this.FacultyPictureBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.FacultyPictureBox.BackColor = System.Drawing.Color.DarkGray;
+            this.FacultyPictureBox.Location = new System.Drawing.Point(28, 75);
+            this.FacultyPictureBox.Name = "FacultyPictureBox";
+            this.FacultyPictureBox.Size = new System.Drawing.Size(212, 191);
+            this.FacultyPictureBox.TabIndex = 83;
+            this.FacultyPictureBox.TabStop = false;
+            // 
             // btnBack
             // 
             this.btnBack.BackColor = System.Drawing.Color.Transparent;
@@ -636,13 +1088,25 @@ namespace LGAConnectSOMS.Views
             this.btnBack.MouseEnter += new System.EventHandler(this.btnBack_MouseEnter);
             this.btnBack.MouseLeave += new System.EventHandler(this.btnBack_MouseLeave);
             // 
+            // lblloadingadmin
+            // 
+            this.lblloadingadmin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.lblloadingadmin.AutoSize = true;
+            this.lblloadingadmin.BackColor = System.Drawing.SystemColors.Control;
+            this.lblloadingadmin.Font = new System.Drawing.Font("Tw Cen MT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblloadingadmin.Location = new System.Drawing.Point(489, 256);
+            this.lblloadingadmin.Name = "lblloadingadmin";
+            this.lblloadingadmin.Size = new System.Drawing.Size(282, 22);
+            this.lblloadingadmin.TabIndex = 37;
+            this.lblloadingadmin.Text = "Please wait while loading the data...";
+            // 
             // FacultyAdminRecords
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
             this.ClientSize = new System.Drawing.Size(1300, 700);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabcontrol);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblFacultyAdmin);
@@ -653,7 +1117,7 @@ namespace LGAConnectSOMS.Views
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FacultyAdminRecords_FormClosing);
             this.Load += new System.EventHandler(this.FacultyAdminRecords_Load);
             this.DragWindowsPanel.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
+            this.tabcontrol.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FacultyDataGridView)).EndInit();
@@ -663,6 +1127,9 @@ namespace LGAConnectSOMS.Views
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AdminPictureBox)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FacultyPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -678,8 +1145,8 @@ namespace LGAConnectSOMS.Views
         private System.Windows.Forms.Button btnMaximize;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.TextBox txtSearchFaculty;
-        private System.Windows.Forms.Label lblSearchStudent;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.Label lblSearchFaculty;
+        private System.Windows.Forms.TabControl tabcontrol;
         private System.Windows.Forms.TabPage tabPage3;
         public System.Windows.Forms.DataGridView FacultyDataGridView;
         private System.Windows.Forms.TabPage tabPage1;
@@ -708,5 +1175,39 @@ namespace LGAConnectSOMS.Views
         private System.Windows.Forms.Label lblLoading;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtFacultyMobileNumber;
+        private System.Windows.Forms.Label label6;
+        public System.Windows.Forms.ComboBox cbFacultyGender;
+        private System.Windows.Forms.Button btnUploadFacultyProfile;
+        private System.Windows.Forms.TextBox txtFacultyPassword;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtFacultyTeacherNumber;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtFacultyMiddlename;
+        private System.Windows.Forms.TextBox txtFacultyFirstname;
+        private System.Windows.Forms.TextBox txtFacultyLastname;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.PictureBox FacultyPictureBox;
+        private System.Windows.Forms.Label label14;
+        public System.Windows.Forms.TextBox txtFacultyEmail;
+        public System.Windows.Forms.DateTimePicker dtBirthday;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        public System.Windows.Forms.TextBox txtFacultyAddress;
+        private System.Windows.Forms.Label label17;
+        public System.Windows.Forms.TextBox txtAdminEmail;
+        public System.Windows.Forms.DateTimePicker dtAdminBirthday;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        public System.Windows.Forms.TextBox txtAdminAddress;
+        private System.Windows.Forms.Label lblloadingadmin;
     }
 }

@@ -38,6 +38,7 @@ namespace LGAConnectSOMS.Views
             this.btnMaximize = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
+            this.lblLoading = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // panel1
@@ -79,7 +80,7 @@ namespace LGAConnectSOMS.Views
             this.flowLayoutNewsAndAnnouncements.AutoScroll = true;
             this.flowLayoutNewsAndAnnouncements.Location = new System.Drawing.Point(12, 155);
             this.flowLayoutNewsAndAnnouncements.Name = "flowLayoutNewsAndAnnouncements";
-            this.flowLayoutNewsAndAnnouncements.Size = new System.Drawing.Size(1276, 533);
+            this.flowLayoutNewsAndAnnouncements.Size = new System.Drawing.Size(1276, 508);
             this.flowLayoutNewsAndAnnouncements.TabIndex = 47;
             // 
             // BtnAddNews
@@ -154,12 +155,24 @@ namespace LGAConnectSOMS.Views
             this.btnBack.MouseEnter += new System.EventHandler(this.btnBack_MouseEnter);
             this.btnBack.MouseLeave += new System.EventHandler(this.btnBack_MouseLeave);
             // 
+            // lblLoading
+            // 
+            this.lblLoading.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblLoading.AutoSize = true;
+            this.lblLoading.Font = new System.Drawing.Font("Tw Cen MT", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLoading.Location = new System.Drawing.Point(12, 670);
+            this.lblLoading.Name = "lblLoading";
+            this.lblLoading.Size = new System.Drawing.Size(247, 24);
+            this.lblLoading.TabIndex = 17;
+            this.lblLoading.Text = "Please wait while loading...";
+            // 
             // ManageNewsView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
             this.ClientSize = new System.Drawing.Size(1300, 700);
+            this.Controls.Add(this.lblLoading);
             this.Controls.Add(this.BtnAddNews);
             this.Controls.Add(this.flowLayoutNewsAndAnnouncements);
             this.Controls.Add(this.btnMinimize);
@@ -191,5 +204,6 @@ namespace LGAConnectSOMS.Views
         private System.Windows.Forms.Label lblClassRecordAdminTitle;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutNewsAndAnnouncements;
         public System.Windows.Forms.Button BtnAddNews;
+        private System.Windows.Forms.Label lblLoading;
     }
 }

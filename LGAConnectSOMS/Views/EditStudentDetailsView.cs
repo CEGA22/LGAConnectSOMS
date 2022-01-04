@@ -263,9 +263,7 @@ namespace LGAConnectSOMS.Views
                     var IsSuccess = await studentRequestService.DeleteStudentRequest(ID);
                     if (IsSuccess)
                     {
-                        MessageBox.Show("Delete student account Successfully");
-                        NewsAndAnnouncementsView newsAndAnnouncements = new NewsAndAnnouncementsView();
-                        newsAndAnnouncements.Show();
+                        MessageBox.Show("Delete student account Successfully");                        
                         this.Hide();
                     }
 

@@ -55,6 +55,7 @@ namespace LGAConnectSOMS.Views
         {
             var id = int.Parse(txtID.Text);
             var image = FacultyPicturebox.Image;
+            var dateonly = dtBirthday.Value.ToShortDateString();
             try
             {
                 SchoolAccountRequestService schoolAccountRequestService = new SchoolAccountRequestService();
@@ -68,6 +69,9 @@ namespace LGAConnectSOMS.Views
                     Password = txtPassword.Text,
                     TeacherProfile = ImageToByteArray(image),
                     MobileNumber = txtMobileNumber.Text,
+                    Birthday = Convert.ToDateTime(dateonly),
+                    Address = txtAddress.Text,
+                    Email = txtEmail.Text,
                     Gender = cbGender.Text,
                     IsAdmin = 0
                 }); ;

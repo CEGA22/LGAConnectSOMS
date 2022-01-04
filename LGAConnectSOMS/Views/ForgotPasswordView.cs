@@ -1,4 +1,6 @@
-﻿using LGAConnectSOMS.Properties;
+﻿using LGAConnectSOMS.Models;
+using LGAConnectSOMS.Properties;
+using LGAConnectSOMS.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,49 +9,30 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Timers;
 using System.Windows.Forms;
 
 namespace LGAConnectSOMS.Views
 {
-    public partial class NewsAndAnnouncementsView : Form
+    public partial class ForgotPasswordView : Form
     {
-        public NewsAndAnnouncementsView()
+        public ForgotPasswordView()
         {
-            InitializeComponent();
+            InitializeComponent();          
         }
 
-        //Load
-        private void NewsAndAnnouncementsView_Load(object sender, EventArgs e)
+        private void ForgotPasswordView_Load(object sender, EventArgs e)
         {
-            //LoadData();
-            this.RestoreWindowPosition();
-            MaximizeIcon();          
-        }
-      
-        //NavigationToOtherForm       
-        private void btnBack_Click_1(object sender, EventArgs e)
-        {
-            if(Settings.Default.IsAdmin == 1)
-            {
-                this.SaveWindowPosition();
-                var LatestNewsList = new ManageNewsView();
-                LatestNewsList.Show();
-                this.Hide();
-            }
-
-            else if(Settings.Default.IsAdmin == 0)
-            {
-                this.SaveWindowPosition();
-                var LatestNewsList = new ManageNewsView();
-                LatestNewsList.BtnAddNews.Hide();
-                LatestNewsList.Show();
-                this.Hide();
-            }
-            
+            RestoreWindowPosition();
+            MaximizeIcon();
         }
 
-        //Buttons Forecolor and background Styles
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.SaveWindowPosition();
+            var login = new LoginPageView();
+            login.Show();
+            this.Hide();
+        }
 
         private void btnBack_MouseEnter(object sender, EventArgs e)
         {
@@ -61,19 +44,57 @@ namespace LGAConnectSOMS.Views
             btnBack.Image = LGAConnectSOMS.Properties.Resources.BackArrow24;
         }
 
+        IEnumerable<SchoolAccount> studentAccounts = new List<SchoolAccount>();       
+        private async void btnRetrieve_Click(object sender, EventArgs e)
+        {                   
+            var email = txtEmail.Text;
+            SchoolAccountService schoolAccountService = new SchoolAccountService();
+            var students = await schoolAccountService.GetSchoolAccountPassword(email);
+            studentAccounts = students.ToList();
+            if (studentAccounts.Any())
+            {
+
+                foreach (var password in studentAccounts)
+                {
+                    string Successmessage = "Your Password: " + password.password;
+                    string Successtitle = "Retrieve password";
+                    MessageBoxButtons buttons = MessageBoxButtons.OK;
+                    DialogResult Successresult = MessageBox.Show(Successmessage, Successtitle, buttons, MessageBoxIcon.Information);
+                  if (Successresult == DialogResult.OK)
+                  {
+                        txtEmail.Text = "";           
+                  }                                                                         
+                }
+            }
+
+            else
+            {
+                string UnSuccessmessage = "Retrieve password unsuccessfull. Cannot find email address";
+                string UnSuccesstitle = "Retrieve password Unsucessfull";             
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                DialogResult Successresult = MessageBox.Show(UnSuccessmessage, UnSuccesstitle, buttons, MessageBoxIcon.Error);
+                if (Successresult == DialogResult.OK)
+                {
+                    
+                }
+            }
+        }
+
         //TitleBarFunction
 
         private void RestoreWindowPosition()
         {
+
             if (Settings.Default.HasSetDefault)
             {
                 this.WindowState = Settings.Default.WindowState;
                 this.Location = Settings.Default.Location;
                 this.Size = Settings.Default.Size;
+
             }
         }
 
-        private void ManageNewsView_FormClosing(object sender, FormClosingEventArgs e)
+        private void ClassRecordAdminView_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.SaveWindowPosition();
         }
@@ -86,6 +107,7 @@ namespace LGAConnectSOMS.Views
             {
                 Settings.Default.Location = this.Location;
                 Settings.Default.Size = this.Size;
+
             }
             else
             {
@@ -101,6 +123,7 @@ namespace LGAConnectSOMS.Views
         private void btnMinimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+
         }
 
         private void btnMaximize_Click(object sender, EventArgs e)
@@ -121,19 +144,6 @@ namespace LGAConnectSOMS.Views
         private void btnClose_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-        public void MaximizeIcon()
-        {
-            if (this.WindowState == FormWindowState.Maximized)
-            {
-                btnMaximize.Image = LGAConnectSOMS.Properties.Resources.NormalBlack;
-            }
-
-            else if (this.WindowState == FormWindowState.Normal)
-            {
-                btnMaximize.Image = LGAConnectSOMS.Properties.Resources.FullScreenBlack;
-            }
         }
 
         //DragWindows
@@ -157,23 +167,17 @@ namespace LGAConnectSOMS.Views
             }
         }
 
-        private void BtnEditNews_Click(object sender, EventArgs e)
+        public void MaximizeIcon()
         {
-            this.SaveWindowPosition();
-            EditAddNewsView editAddNewsView = new EditAddNewsView();
-            editAddNewsView.txtID.Text = lblID.Text;
-            editAddNewsView.txtTitle.Text = lblTitle.Text;
-            editAddNewsView.rtContent.Text = lblContent.Text;
-            editAddNewsView.ContentPhotoPictureBox.Image = ContentPhotoPictureBox.Image;
-            //editAddNewsView.txtAuthorsName.Text = btnAuthor.Text;
-            editAddNewsView.NewsDateTimePicker.Text = btnDate.Text;
-            editAddNewsView.Show();
-            this.Hide();
-        }
+            if (this.WindowState == FormWindowState.Maximized)
+            {
+                btnMaximize.Image = LGAConnectSOMS.Properties.Resources.NormalBlack;
+            }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
+            else if (this.WindowState == FormWindowState.Normal)
+            {
+                btnMaximize.Image = LGAConnectSOMS.Properties.Resources.FullScreenBlack;
+            }
         }
     }
 }

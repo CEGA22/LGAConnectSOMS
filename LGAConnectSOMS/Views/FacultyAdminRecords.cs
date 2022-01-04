@@ -35,26 +35,66 @@ namespace LGAConnectSOMS.Views
 
         private async void LoadData()
         {          
-            lblLoading.Show();                           
+            lblLoading.Show();
+            txtAdminLastname.Enabled = false;
+            txtSearchFaculty.Enabled = false;
             await DisplayFacultyRecordData();
-            await DisplayAdminRecordData();                        
+            await DisplayAdminRecordData();
+            await RandomStudentNumber();
             lblLoading.Hide();          
         }
+
+        private readonly Random _random = new Random();
+        List<int> Adminnumberlist = new List<int>();
+        StringBuilder concatenatedString = new StringBuilder();
+        public async Task RandomStudentNumber()
+        {
+            var num1 = 0;
+            var num2 = 0;
+            Adminnumberlist.Add(num1);
+            Adminnumberlist.Add(num2);
+            for (int i = 1; i <= 8; i++)
+            {
+                int num = _random.Next(10);
+                var studentnumber = num;
+                Adminnumberlist.Add(studentnumber);
+            }
+
+            foreach (int password in Adminnumberlist)
+            {
+                concatenatedString.Append(password);
+            }
+            var result = concatenatedString.ToString();
+            var students = schoolAccounts.ToList();
+            var results = schoolAccounts.Where(x => x.schoolNumber.ToString().Contains(result)).ToList();
+            if (!results.Any())
+            {
+                txtTeacherNumber.Text = result;
+            }
+        }
         public async Task DisplayAdminRecordData()
-        {            
+        {
+            lblloadingadmin.Show();
             var AdminList = schoolAccounts.Where(x => x.isAdmin == 1).ToList();           
             AdminDataGridView.DataSource = AdminList;
+            lblloadingadmin.Hide();
+            txtAdminLastname.Enabled = true;
             AdminDataGridView.CurrentCell = null;
             this.AdminDataGridView.Columns[6].Visible = false;           
         }
         public async Task DisplayFacultyRecordData()
         {
+            
             SchoolAccountService schoolAccountService = new SchoolAccountService();
             schoolAccounts = await Task.Run(() => schoolAccountService.GetSchoolAccountDetails());
             var facultylist = schoolAccounts.Where(x => x.isAdmin == 0).ToList();
             FacultyDataGridView.DataSource = facultylist;
+            txtSearchFaculty.Enabled = true;
             FacultyDataGridView.CurrentCell = null;
-            this.FacultyDataGridView.Columns[6].Visible = false;           
+            this.FacultyDataGridView.Columns[0].Visible = false;
+            this.FacultyDataGridView.Columns[6].Visible = false;
+            this.FacultyDataGridView.Columns[9].Visible = false;
+            this.FacultyDataGridView.Columns[13].Visible = false;
         }
 
         //NavigateToOtherForms
@@ -290,6 +330,33 @@ namespace LGAConnectSOMS.Views
             }
         }
 
+        private void btnUploadFacultyProfile_Click(object sender, EventArgs e)
+        {
+            // open file dialog   
+            OpenFileDialog open = new OpenFileDialog();
+            // image filters  
+            open.Filter = "Image Files(*.jpg; *.jpeg; *.png;)|*.jpg; *.jpeg; *.png;";
+            if (open.ShowDialog() == DialogResult.OK)
+            {
+                FileStream fs = File.OpenRead(open.FileName);
+                if (fs.Length > 1000000)
+                {
+                    MessageBox.Show("Maximum file size is 1MB");
+                    return;
+                }
+                else
+                {
+                    FacultyPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+                    FacultyPictureBox.Image = new Bitmap(open.FileName);
+                    var image = FacultyPictureBox.Image;
+                    ImageToByteArray(image);
+                }
+                // display image in picture box
+
+                // image file path                          
+            }
+        }
+
         public byte[] ImageToByteArray(System.Drawing.Image imageIn)
         {
             using (var ms = new MemoryStream())
@@ -302,6 +369,7 @@ namespace LGAConnectSOMS.Views
         private async void btnAddAdministrator_Click(object sender, EventArgs e)
         {            
             var image = AdminPictureBox.Image;
+            var dateonly = dtAdminBirthday.Value.ToShortDateString();
             try
             {
                 SchoolAccountRequestService schoolAccountRequestService = new SchoolAccountRequestService();
@@ -310,10 +378,13 @@ namespace LGAConnectSOMS.Views
                     LastName = txtLastname.Text,
                     Middlename = txtMiddlename.Text,
                     Firstname = txtFirstname.Text,
-                    SchoolNumber = txtTeacherNumber.Text,
+                    Birthday = Convert.ToDateTime(dateonly),
+                    Address = txtAdminAddress.Text,
+                    Email = txtAdminEmail.Text,
+                    SchoolNumber = txtTeacherNumber.Text,                   
                     Password = txtPassword.Text,
-                    TeacherProfile = ImageToByteArray(image),
                     MobileNumber = txtMobileNumber.Text,
+                    TeacherProfile = ImageToByteArray(image),                   
                     Gender = cbGender.Text,
                     IsAdmin = 1,
                     IsFaculty = 0
@@ -354,6 +425,9 @@ namespace LGAConnectSOMS.Views
             editSchoolAccountDetails.AdminPicturebox.Image = Image.FromStream(ms);
             editSchoolAccountDetails.txtMobileNumber.Text = AdminDataGridView.CurrentRow.Cells[7].Value.ToString();
             editSchoolAccountDetails.cbGender.Text = AdminDataGridView.CurrentRow.Cells[8].Value.ToString();
+            editSchoolAccountDetails.dtBirthday.Text = AdminDataGridView.CurrentRow.Cells[10].Value.ToString();
+            editSchoolAccountDetails.txtAddress.Text = AdminDataGridView.CurrentRow.Cells[11].Value.ToString();
+            editSchoolAccountDetails.txtEmail.Text = AdminDataGridView.CurrentRow.Cells[12].Value.ToString();
             editSchoolAccountDetails.ShowDialog();
         }
       
@@ -374,20 +448,104 @@ namespace LGAConnectSOMS.Views
         }
 
         private void FacultyDataGridView_Click(object sender, EventArgs e)
+        {            
+                EditSchoolFacultyAccountDetails editSchoolFacultyAccountDetails = new EditSchoolFacultyAccountDetails();
+                editSchoolFacultyAccountDetails.txtID.Text = FacultyDataGridView.CurrentRow.Cells[0].Value.ToString();
+                editSchoolFacultyAccountDetails.txtLastname.Text = FacultyDataGridView.CurrentRow.Cells[1].Value.ToString();
+                editSchoolFacultyAccountDetails.txtMiddlename.Text = FacultyDataGridView.CurrentRow.Cells[2].Value.ToString();
+                editSchoolFacultyAccountDetails.txtFirstname.Text = FacultyDataGridView.CurrentRow.Cells[3].Value.ToString();
+                editSchoolFacultyAccountDetails.txtTeacherNumber.Text = FacultyDataGridView.CurrentRow.Cells[4].Value.ToString();
+                editSchoolFacultyAccountDetails.txtPassword.Text = FacultyDataGridView.CurrentRow.Cells[5].Value.ToString();
+                byte[] image = (byte[])FacultyDataGridView.CurrentRow.Cells[6].Value;
+                MemoryStream ms = new MemoryStream(image);
+                editSchoolFacultyAccountDetails.FacultyPicturebox.Image = Image.FromStream(ms);
+                editSchoolFacultyAccountDetails.txtMobileNumber.Text = FacultyDataGridView.CurrentRow.Cells[7].Value.ToString();
+                editSchoolFacultyAccountDetails.cbGender.Text = FacultyDataGridView.CurrentRow.Cells[8].Value.ToString();
+                editSchoolFacultyAccountDetails.dtBirthday.Text = FacultyDataGridView.CurrentRow.Cells[10].Value.ToString();
+                editSchoolFacultyAccountDetails.txtAddress.Text = FacultyDataGridView.CurrentRow.Cells[11].Value.ToString();
+                editSchoolFacultyAccountDetails.txtEmail.Text = FacultyDataGridView.CurrentRow.Cells[12].Value.ToString();
+                editSchoolFacultyAccountDetails.ShowDialog();                     
+        }
+
+        private async void button1_Click(object sender, EventArgs e)
         {
-            EditSchoolFacultyAccountDetails editSchoolFacultyAccountDetails = new EditSchoolFacultyAccountDetails();
-            editSchoolFacultyAccountDetails.txtID.Text = FacultyDataGridView.CurrentRow.Cells[0].Value.ToString();
-            editSchoolFacultyAccountDetails.txtLastname.Text = FacultyDataGridView.CurrentRow.Cells[1].Value.ToString();
-            editSchoolFacultyAccountDetails.txtMiddlename.Text = FacultyDataGridView.CurrentRow.Cells[2].Value.ToString();
-            editSchoolFacultyAccountDetails.txtFirstname.Text = FacultyDataGridView.CurrentRow.Cells[3].Value.ToString();
-            editSchoolFacultyAccountDetails.txtTeacherNumber.Text = FacultyDataGridView.CurrentRow.Cells[4].Value.ToString();
-            editSchoolFacultyAccountDetails.txtPassword.Text = FacultyDataGridView.CurrentRow.Cells[5].Value.ToString();
-            byte[] image = (byte[])FacultyDataGridView.CurrentRow.Cells[6].Value;
-            MemoryStream ms = new MemoryStream(image);           
-            editSchoolFacultyAccountDetails.FacultyPicturebox.Image = Image.FromStream(ms);
-            editSchoolFacultyAccountDetails.txtMobileNumber.Text = FacultyDataGridView.CurrentRow.Cells[7].Value.ToString();
-            editSchoolFacultyAccountDetails.cbGender.Text = FacultyDataGridView.CurrentRow.Cells[8].Value.ToString();
-            editSchoolFacultyAccountDetails.ShowDialog();
+            var image = FacultyPictureBox.Image;
+            var dateonly = dtBirthday.Value.ToShortDateString();
+            try
+            {
+                SchoolAccountRequestService schoolAccountRequestService = new SchoolAccountRequestService();
+                var IsSuccess = await schoolAccountRequestService.CreateSchoolAccountRequest(new SchoolAccountRequest
+                {
+                    LastName = txtFacultyLastname.Text,
+                    Middlename = txtFacultyMiddlename.Text,
+                    Firstname = txtFacultyFirstname.Text,
+                    Birthday = Convert.ToDateTime(dateonly),
+                    Address = txtFacultyAddress.Text,
+                    Email = txtFacultyEmail.Text,
+                    SchoolNumber = txtFacultyTeacherNumber.Text,
+                    Password = txtFacultyPassword.Text,
+                    MobileNumber = txtFacultyMobileNumber.Text,
+                    TeacherProfile = ImageToByteArray(image),
+                    Gender = cbFacultyGender.Text,
+                    IsAdmin = 0,
+                    IsFaculty = 1
+                });
+
+                if (IsSuccess)
+                {
+                    string message = "Added new Faculty Successfully";
+                    string title = "New Faculty account created";
+                    MessageBoxButtons buttons = MessageBoxButtons.OK;
+                    MessageBox.Show(message, title, buttons, MessageBoxIcon.Information);
+                }
+
+                else
+                {
+                    string message = "Added new Faculty Unsucessfull";
+                    string title = "Error";
+                    MessageBoxButtons buttons = MessageBoxButtons.OK;
+                    MessageBox.Show(message, title, buttons, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception x)
+            {
+                MessageBox.Show(x.Message);
+            }
+        }
+
+        private void txtLastname_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void txtMiddlename_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void txtFirstname_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void txtMobileNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void cbGender_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void txtTeacherNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+                e.Handled = true;
         }
     }
 }

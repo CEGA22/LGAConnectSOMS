@@ -1,4 +1,6 @@
-﻿using LGAConnectSOMS.Properties;
+﻿using LGAConnectSOMS.Models;
+using LGAConnectSOMS.Properties;
+using LGAConnectSOMS.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,6 +23,7 @@ namespace LGAConnectSOMS.Views
 
         private void HomeViewTeacher_Load(object sender, EventArgs e)
         {
+            LoadData();
             var profile = Settings.Default.TeacherProfile;
             byte[] convertprofile = System.Convert.FromBase64String(profile);
             var imageMemoryStream = new MemoryStream(convertprofile);
@@ -31,6 +34,147 @@ namespace LGAConnectSOMS.Views
             Menu.Hide();
             lblAccountName.Text = Settings.Default.Fullname;
             lblTitle.Text = "Good Day, " + Settings.Default.Firstname;
+        }
+
+        public async void LoadData()
+        {
+            await ClassSchedulesFaculty();
+            await LoadNewsAndAnnouncements();
+        }
+
+        public List<ClassSchedule> schedulelist;
+        public async Task ClassSchedulesFaculty()
+        {
+            var number = 1;
+            var ID = Settings.Default.ID;
+            DateTime todaysDate = DateTime.Now;
+            var weekday = todaysDate.DayOfWeek.ToString();
+            ClassScheduleService classScheduleService = new ClassScheduleService();
+            var schedules = await Task.Run(() => classScheduleService.GetClassScheduleFacultyDetails(ID));
+            schedulelist = schedules.ToList();
+            var result = schedulelist.Where(x => x.WeekDay == weekday);
+            schedulelist = result.ToList();
+            if (!schedulelist.Any())
+            {
+                Label FreeSchedule = new Label();
+                Panel FreeSchedulePanel = new Panel();
+                PictureBox FreeSchedulePicture = new PictureBox();
+                FreeSchedulePanel.Size = new System.Drawing.Size(720, 478);
+                FreeSchedule.Text = "No Schedule For Today";
+                FreeSchedule.AutoSize = true;
+                FreeSchedule.Font = new Font("TW Cen MT", 24);
+                FreeSchedulePicture.Image = LGAConnectSOMS.Properties.Resources.FreeSchedule;
+                FreeSchedulePicture.SizeMode = PictureBoxSizeMode.Zoom;
+                FreeSchedule.Location = new System.Drawing.Point(200, 100);
+                FreeSchedulePicture.Location = new System.Drawing.Point(300, 50);
+                FreeSchedule.ForeColor = Color.Black;
+                flowLayoutPanel1.Controls.Add(FreeSchedulePanel);
+                FreeSchedulePanel.Controls.Add(FreeSchedulePicture);
+                FreeSchedulePanel.Controls.Add(FreeSchedule);
+            }
+
+            else
+            {
+                foreach (ClassSchedule classSchedule in schedulelist)
+                {
+                    Label Subject = new Label();
+                    Label Teacher = new Label();
+                    Label StartTimeEndTime = new Label();
+                    Panel dynamicPanel = new Panel();
+                    Panel LinePanel = new Panel();
+                    LinePanel.Size = new Size(3, 50);
+                    LinePanel.Location = new System.Drawing.Point(480, 20);
+                    LinePanel.AutoSize = true;
+                    LinePanel.BackColor = Color.White;
+                    PictureBox pictureBox = new PictureBox();
+                    Subject.Font = new Font("TW Cen MT", 16);
+                    Teacher.Font = new Font("TW Cen MT", 16);
+                    StartTimeEndTime.Font = new Font("TW Cen MT", 15);
+                    StartTimeEndTime.AutoSize = true;
+                    //Panel linebox = new Panel();
+                    pictureBox.Image = Properties.Resources.Subject;
+                    pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+                    Subject.Text = classSchedule.Subject;
+                    Subject.ForeColor = ColorTranslator.FromHtml("#fff");
+                    Teacher.Text = classSchedule.Firstname + " " + classSchedule.Lastname;
+                    Teacher.ForeColor = Color.White;
+                    StartTimeEndTime.Text = classSchedule.StartTime + " - " + classSchedule.EndTime;
+                    StartTimeEndTime.ForeColor = Color.White;
+                    Subject.Location = new System.Drawing.Point(85, 20);
+                    Teacher.Location = new System.Drawing.Point(85, 50);
+                    Subject.AutoSize = true;
+                    Teacher.AutoSize = true;
+                    StartTimeEndTime.Location = new System.Drawing.Point(500, 35);
+                    pictureBox.Location = new System.Drawing.Point(0, 15);
+                    //dynamicPanel.Location = new System.Drawing.Point(700, 101);
+                    dynamicPanel.Size = new System.Drawing.Size(700, 94);                    
+                    dynamicPanel.BackColor = Color.LightBlue;
+                    Controls.Add(dynamicPanel);
+                    dynamicPanel.Controls.Add(Subject);
+                    dynamicPanel.Controls.Add(Teacher);
+                    dynamicPanel.Controls.Add(StartTimeEndTime);
+                    dynamicPanel.Controls.Add(pictureBox);
+                    dynamicPanel.Controls.Add(LinePanel);
+                    flowLayoutPanel1.Controls.Add(dynamicPanel);
+
+
+                    var rgb1 = 0;
+                    var rgb2 = 0;
+                    var rgb3 = 0;
+
+                    if (number == 1)
+                    {
+                        rgb1 = 240;
+                        rgb2 = 52;
+                        rgb3 = 52;
+                        number = number + 1;
+                    }
+
+                    else if (number == 2)
+                    {
+                        rgb1 = 250;
+                        rgb2 = 190;
+                        rgb3 = 88;
+                        number = number + 1;
+                    }
+
+                    else if (number == 3)
+                    {
+                        rgb1 = 13;
+                        rgb2 = 180;
+                        rgb3 = 185;
+                        number = number + 1;
+                    }
+
+                    else if (number == 4)
+                    {
+                        rgb1 = 142;
+                        rgb2 = 68;
+                        rgb3 = 173;
+                        number = 1;
+                    }
+
+                    Color randomColor = Color.FromArgb(rgb1, rgb2, rgb3);
+                    var Backcolor = randomColor;
+                    dynamicPanel.BackColor = Backcolor;
+                }
+            }
+        }
+
+        IEnumerable<NewsAndAnnouncements> newsandannouncements = new List<NewsAndAnnouncements>();
+        public async Task LoadNewsAndAnnouncements()
+        {
+            lblLoading.Show();
+            NewsAndAnnouncementsService newsAndAnnouncementsService = new NewsAndAnnouncementsService();
+            newsandannouncements = await Task.Run(() => newsAndAnnouncementsService.GetNewsAndAnnouncements());
+            var newsandannouncementsOrder = newsandannouncements.OrderByDescending(x => x.DateCreated);
+            var latestnews = newsandannouncementsOrder.FirstOrDefault();
+            lblArticleTitle.Text = latestnews.Title;
+            lblArticelDescription.Text = latestnews.Content;
+            byte[] image = (byte[])latestnews.ContentPhoto;
+            MemoryStream ms = new MemoryStream(image);
+            NewsImage.Image = Image.FromStream(ms);
+            lblLoading.Hide();
         }
 
         //NavigationToOtherForm
@@ -50,6 +194,7 @@ namespace LGAConnectSOMS.Views
 
         private void btnManageNews_Click(object sender, EventArgs e)
         {
+            this.SaveWindowPosition();
             ManageNewsView manageNewsView = new ManageNewsView();
             manageNewsView.BtnAddNews.Hide();
             manageNewsView.Show();
@@ -201,6 +346,23 @@ namespace LGAConnectSOMS.Views
             SaveWindowPosition();
             AccountSettingsView accountSettingsView = new AccountSettingsView();
             accountSettingsView.Show();
+            this.Hide();
+        }
+
+        private void lblViewAllSched_Click(object sender, EventArgs e)
+        {
+            this.SaveWindowPosition();
+            ClassScheduleFacultyView classScheduleFacultyView = new ClassScheduleFacultyView();
+            classScheduleFacultyView.Show();
+            this.Hide();
+        }
+
+        private void lblvViewMoreNews_Click(object sender, EventArgs e)
+        {
+            this.SaveWindowPosition();
+            ManageNewsView manageNewsView = new ManageNewsView();
+            manageNewsView.BtnAddNews.Hide();
+            manageNewsView.Show();
             this.Hide();
         }
     }

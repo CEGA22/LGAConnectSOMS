@@ -32,6 +32,8 @@ namespace LGAConnectSOMS.Views
             DateTime date = DateTime.Parse(time);
             DateTime dateTime = DateTime.Now;
             var day = date.ToString("HH:mm:ss");
+            cmbCustomDays.Hide();
+            lblRepeatEvery.Hide();
         }
 
         public async void LoadData()
@@ -112,6 +114,7 @@ namespace LGAConnectSOMS.Views
                     Label Teacher = new Label();
                     Label StartTimeEndTime = new Label();
                     Label WeekDay = new Label();
+                    Label GradeLevelText = new Label();
                     Panel dynamicPanel = new Panel();
                     Panel LinePanel = new Panel();
                     LinePanel.Size = new Size(3, 50);
@@ -126,6 +129,11 @@ namespace LGAConnectSOMS.Views
                     WeekDay.ForeColor = Color.White;
                     WeekDay.Text = classSchedule.WeekDay;
                     WeekDay.Font = new Font("TW Cen MT", 14);
+                    GradeLevelText.AutoSize = true;
+                    GradeLevelText.ForeColor = Color.White;
+                    GradeLevelText.Text = classSchedule.WeekDay;
+                    GradeLevelText.Font = new Font("TW Cen MT", 14);
+                    GradeLevelText.Location = new System.Drawing.Point(95, 50);
                     WeekDay.Location = new System.Drawing.Point(500, 20);
                     StartTimeEndTime.AutoSize = true;                   
                     pictureBox.Image = Properties.Resources.Subject;
@@ -135,16 +143,17 @@ namespace LGAConnectSOMS.Views
                     Teacher.Text = classSchedule.Firstname + " " + classSchedule.Lastname;
                     Teacher.ForeColor = Color.White;
                     StartTimeEndTime.Text = classSchedule.StartTime + " - " + classSchedule.EndTime;
+                    GradeLevelText.Text = classSchedule.GradeLevel;
                     StartTimeEndTime.ForeColor = Color.White;
-                    Subject.Location = new System.Drawing.Point(85, 20);
-                    Teacher.Location = new System.Drawing.Point(85, 50);
+                    Subject.Location = new System.Drawing.Point(95, 20);
+                    Teacher.Location = new System.Drawing.Point(95, 70);
                     Subject.AutoSize = true;
                     Teacher.AutoSize = true;
                     StartTimeEndTime.Location = new System.Drawing.Point(500, 45);
                     pictureBox.Location = new System.Drawing.Point(0, 15);
                     //dynamicPanel.Location = new System.Drawing.Point(500, 101);
                     dynamicPanel.Name = "Panel1";
-                    dynamicPanel.Size = new System.Drawing.Size(700, 94);
+                    dynamicPanel.Size = new System.Drawing.Size(700, 100);
                     dynamicPanel.BackColor = Color.LightBlue;
                     //Controls.Add(dynamicPanel);
 
@@ -154,6 +163,7 @@ namespace LGAConnectSOMS.Views
                     dynamicPanel.Controls.Add(pictureBox);
                     dynamicPanel.Controls.Add(LinePanel);
                     dynamicPanel.Controls.Add(WeekDay);
+                    dynamicPanel.Controls.Add(GradeLevelText);
                     ClassSchedulePanel.Controls.Add(dynamicPanel);
                     dynamicPanel.Margin = new Padding(0, 0, 0, 10);
 
@@ -434,26 +444,21 @@ namespace LGAConnectSOMS.Views
 
         private void cmbGradeLevels_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //var selectedGradeLevel = cmbGradeLevels.SelectedItem;
-            //var selectedSection = cmbSections.SelectedItem;
-            
-            //var gradelevelslist = gradeLevelSections.Where(x => x.GradeLevels.Equals(selectedGradeLevel)).Select(x => x.SectionName);
-            
-            //cmbSections.DataSource = gradelevelslist.ToList();
-           
-
-            //var gradeLevelId = gradeLevelSections.First(x => x.GradeLevels == selectedGradeLevel).Id;
-            //var subjectslist = subjects.Where(x => x.GradeLevel == gradeLevelId).Select(x => x.SubjectName);
-            //cmbSubjects.DataSource = subjectslist.ToList();
+            var selectedGradeLevel = cmbGradeLevels.SelectedItem;
+            var section = facultySubjects.Where(x => x.GradeLevel.Equals(selectedGradeLevel)).Select(x => x.SectionName).Distinct();
+            cmbSections.DataSource = section.ToList();
+            var subjects = facultySubjects.Where(x => x.GradeLevel.Equals(selectedGradeLevel)).Select(x => x.SubjectName);
+            cmbSubjects.DataSource = subjects.ToList();
         }
         public string weekday;
+        public bool IsSuccess;
         private async void btnAddClassSchedule_Click(object sender, EventArgs e)
-        {
+        {                     
             var selectedGradeLevel = (string)cmbGradeLevels.SelectedItem;
             var selectedSection = cmbSections.SelectedItem;
             var selectedteacher = (string)cmbLastname.SelectedItem;
             var selectedSubject = cmbSubjects.SelectedItem;
-            var gradeLevelId = gradeLevelSections.First(x => x.GradeLevels.Equals(selectedGradeLevel) && x.SectionName.Equals(selectedSection)).Id;
+            var gradeLevelId = gradeLevelSections.First(x => x.GradeLevels.Equals(selectedGradeLevel) && x.SectionName.Equals(selectedSection)).GradeLevel;
             var subjectid = subjects.First(x => x.SubjectName.Equals(selectedSubject) && x.GradeLevel == gradeLevelId).GradeLevel;
             var teacherid = schoolAccounts.First(x => x.Fullname == selectedteacher).id;
             var starttime = Convert.ToDateTime(cmbStartTime.Text);
@@ -461,11 +466,49 @@ namespace LGAConnectSOMS.Views
             var startday = starttime.ToString("HH:mm:ss");
             var endday = endtime.ToString("HH:mm:ss");
 
-            if(cmbDays.Text == "Every Weekday (Mon - Fri)")
-            {              
-                for(int i = 0; i <=4; i++)
+            if (cmbDays.Text == "Custom")
+            {
+                weekday = cmbCustomDays.Text;
+                try
                 {
-                    if(i == 0)
+                    ClassScheduleService classScheduleService = new ClassScheduleService();
+                    IsSuccess = await classScheduleService.CreateClassScheduleRequest(new ClassScheduleRequest
+                    {
+                        Subject = subjectid,
+                        StartTime = TimeSpan.Parse(startday),
+                        EndTime = TimeSpan.Parse(endday),
+                        TeacherID = teacherid,
+                        GradeLevel = gradeLevelId,
+                        WeekDay = weekday
+                    });
+                }
+                catch (Exception x)
+                {
+                    MessageBox.Show(x.Message);
+                }
+
+                if (IsSuccess)
+                {
+                    string message = "Added new class schedule Successfully";
+                    string title = "LGA Connect SOMS Class Schedule";
+                    MessageBoxButtons buttons = MessageBoxButtons.OK;
+                    MessageBox.Show(message, title, buttons, MessageBoxIcon.Information);
+                }
+
+                else
+                {
+                    string message = "Added class schedule Unsucessfull";
+                    string title = "Error";
+                    MessageBoxButtons buttons = MessageBoxButtons.OK;
+                    MessageBox.Show(message, title, buttons, MessageBoxIcon.Error);
+                }
+            }
+
+            else
+            {
+                for (int i = 0; i <= 4; i++)
+                {
+                    if (i == 0)
                     {
                         weekday = "Monday";
                     }
@@ -485,48 +528,51 @@ namespace LGAConnectSOMS.Views
                     {
                         weekday = "Friday";
                     }
+
                     try
                     {
                         ClassScheduleService classScheduleService = new ClassScheduleService();
-                        var IsSuccess = await classScheduleService.CreateClassScheduleRequest(new ClassScheduleRequest
+                        IsSuccess = await classScheduleService.CreateClassScheduleRequest(new ClassScheduleRequest
                         {
                             Subject = subjectid,
                             StartTime = TimeSpan.Parse(startday),
                             EndTime = TimeSpan.Parse(endday),
                             TeacherID = teacherid,
                             GradeLevel = gradeLevelId,
-                            WeekDay =  weekday    
-                });
-
-                        if (IsSuccess)
-                        {
-                            string message = "Added new class schedule Successfully";
-                            string title = "LGA Connect SOMS Class Schedule";
-                            MessageBoxButtons buttons = MessageBoxButtons.OK;
-                            MessageBox.Show(message, title, buttons, MessageBoxIcon.Information);
-                        }
-
-                        else
-                        {
-                            string message = "Added class schedule Unsucessfull";
-                            string title = "Error";
-                            MessageBoxButtons buttons = MessageBoxButtons.OK;
-                            MessageBox.Show(message, title, buttons, MessageBoxIcon.Error);
-                        }
+                            WeekDay = weekday
+                        });
                     }
                     catch (Exception x)
                     {
                         MessageBox.Show(x.Message);
                     }
                 }
-            }           
+
+                if (IsSuccess)
+                {
+                    string message = "Added new class schedule Successfully";
+                    string title = "LGA Connect SOMS Class Schedule";
+                    MessageBoxButtons buttons = MessageBoxButtons.OK;
+                    MessageBox.Show(message, title, buttons, MessageBoxIcon.Information);
+                }
+
+                else
+                {
+                    string message = "Added class schedule Unsucessfull";
+                    string title = "Error";
+                    MessageBoxButtons buttons = MessageBoxButtons.OK;
+                    MessageBox.Show(message, title, buttons, MessageBoxIcon.Error);
+                }
+            }                                                        
         }
 
         private void cmbDays_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(cmbDays.SelectedIndex == 1)
             {
-                MessageBox.Show("Custom");
+                cmbCustomDays.Show();
+                lblRepeatEvery.Show();
+                cmbDays.Enabled = false;
             }
         }
 
@@ -542,7 +588,12 @@ namespace LGAConnectSOMS.Views
             var facultysectionsHandled = facultySubjects.Select(x => x.SectionName).Distinct();
             cmbSections.DataSource = facultysectionsHandled.ToList();
             var subjects = facultySubjects.Select(x => x.SubjectName).Distinct();
-            cmbSubjects.DataSource = subjects.ToList();
+            cmbSubjects.DataSource = subjects.ToList();           
+        }
+
+        private void cmbCustomDays_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

@@ -17,5 +17,12 @@ namespace LGAConnectSOMS.Services
             var content = await apiGateway.UpdateClassRecordRequest(request);
             return JsonConvert.DeserializeObject<bool>(content);
         }
+
+        public async Task<bool> UpdateFinalGrade(ClassRecordRequest request)
+        {
+            var apiGateway = new ClassRecordsGateway();
+            var content = await apiGateway.UpdateFinalGrade(request);
+            return JsonConvert.DeserializeObject<bool>(content);
+        }
     }
 }

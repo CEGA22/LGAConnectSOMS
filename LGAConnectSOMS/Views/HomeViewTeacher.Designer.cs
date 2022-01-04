@@ -41,14 +41,11 @@ namespace LGAConnectSOMS.Views
             this.lblAccountName = new System.Windows.Forms.Label();
             this.btnFileRequest = new System.Windows.Forms.Button();
             this.btnEnrolledStudents = new System.Windows.Forms.Button();
-            this.SchedulePanel = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.lblViewAllSched = new System.Windows.Forms.Label();
-            this.lblClassesForTodayTitle = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblvViewMoreNews = new System.Windows.Forms.Label();
             this.lblTitleNewsPanel = new System.Windows.Forms.Label();
             this.NewsPanel = new System.Windows.Forms.Panel();
+            this.lblLoading = new System.Windows.Forms.Label();
             this.NewsImage = new System.Windows.Forms.PictureBox();
             this.lblArticelDescription = new System.Windows.Forms.Label();
             this.lblArticleTitle = new System.Windows.Forms.Label();
@@ -61,14 +58,20 @@ namespace LGAConnectSOMS.Views
             this.btnAbout = new System.Windows.Forms.Button();
             this.btnUserSettings = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.lblViewAllSched = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblClassesForTodayTitle = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.SideBarPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.NewsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NewsImage)).BeginInit();
             this.Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // SideBarPanel
@@ -246,56 +249,6 @@ namespace LGAConnectSOMS.Views
             this.btnEnrolledStudents.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnEnrolledStudents.UseVisualStyleBackColor = false;
             // 
-            // SchedulePanel
-            // 
-            this.SchedulePanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.SchedulePanel.BackColor = System.Drawing.Color.White;
-            this.SchedulePanel.Location = new System.Drawing.Point(269, 121);
-            this.SchedulePanel.Name = "SchedulePanel";
-            this.SchedulePanel.Size = new System.Drawing.Size(779, 259);
-            this.SchedulePanel.TabIndex = 15;
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(143)))));
-            this.panel1.Controls.Add(this.lblViewAllSched);
-            this.panel1.Controls.Add(this.lblClassesForTodayTitle);
-            this.panel1.Location = new System.Drawing.Point(269, 121);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(779, 33);
-            this.panel1.TabIndex = 0;
-            // 
-            // lblViewAllSched
-            // 
-            this.lblViewAllSched.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblViewAllSched.AutoSize = true;
-            this.lblViewAllSched.BackColor = System.Drawing.Color.Transparent;
-            this.lblViewAllSched.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblViewAllSched.Font = new System.Drawing.Font("Tw Cen MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblViewAllSched.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(181)))), ((int)(((byte)(254)))));
-            this.lblViewAllSched.Location = new System.Drawing.Point(716, 8);
-            this.lblViewAllSched.Name = "lblViewAllSched";
-            this.lblViewAllSched.Size = new System.Drawing.Size(57, 17);
-            this.lblViewAllSched.TabIndex = 10;
-            this.lblViewAllSched.Text = "View All";
-            // 
-            // lblClassesForTodayTitle
-            // 
-            this.lblClassesForTodayTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblClassesForTodayTitle.AutoSize = true;
-            this.lblClassesForTodayTitle.BackColor = System.Drawing.Color.Transparent;
-            this.lblClassesForTodayTitle.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClassesForTodayTitle.ForeColor = System.Drawing.Color.Black;
-            this.lblClassesForTodayTitle.Location = new System.Drawing.Point(6, 7);
-            this.lblClassesForTodayTitle.Name = "lblClassesForTodayTitle";
-            this.lblClassesForTodayTitle.Size = new System.Drawing.Size(123, 19);
-            this.lblClassesForTodayTitle.TabIndex = 9;
-            this.lblClassesForTodayTitle.Text = "Classes For Today";
-            // 
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -321,6 +274,7 @@ namespace LGAConnectSOMS.Views
             this.lblvViewMoreNews.Size = new System.Drawing.Size(75, 17);
             this.lblvViewMoreNews.TabIndex = 9;
             this.lblvViewMoreNews.Text = "View More";
+            this.lblvViewMoreNews.Click += new System.EventHandler(this.lblvViewMoreNews_Click);
             // 
             // lblTitleNewsPanel
             // 
@@ -342,6 +296,7 @@ namespace LGAConnectSOMS.Views
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.NewsPanel.BackColor = System.Drawing.Color.White;
+            this.NewsPanel.Controls.Add(this.lblLoading);
             this.NewsPanel.Controls.Add(this.NewsImage);
             this.NewsPanel.Controls.Add(this.lblArticelDescription);
             this.NewsPanel.Controls.Add(this.lblArticleTitle);
@@ -350,12 +305,22 @@ namespace LGAConnectSOMS.Views
             this.NewsPanel.Size = new System.Drawing.Size(779, 295);
             this.NewsPanel.TabIndex = 17;
             // 
+            // lblLoading
+            // 
+            this.lblLoading.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblLoading.AutoSize = true;
+            this.lblLoading.Font = new System.Drawing.Font("Tw Cen MT", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLoading.Location = new System.Drawing.Point(265, 84);
+            this.lblLoading.Name = "lblLoading";
+            this.lblLoading.Size = new System.Drawing.Size(247, 24);
+            this.lblLoading.TabIndex = 17;
+            this.lblLoading.Text = "Please wait while loading...";
+            // 
             // NewsImage
             // 
             this.NewsImage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.NewsImage.Image = global::LGAConnectSOMS.Properties.Resources.StudentKids;
             this.NewsImage.Location = new System.Drawing.Point(16, 39);
             this.NewsImage.Name = "NewsImage";
             this.NewsImage.Size = new System.Drawing.Size(747, 122);
@@ -372,9 +337,8 @@ namespace LGAConnectSOMS.Views
             this.lblArticelDescription.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblArticelDescription.Location = new System.Drawing.Point(15, 208);
             this.lblArticelDescription.Name = "lblArticelDescription";
-            this.lblArticelDescription.Size = new System.Drawing.Size(712, 76);
+            this.lblArticelDescription.Size = new System.Drawing.Size(0, 19);
             this.lblArticelDescription.TabIndex = 7;
-            this.lblArticelDescription.Text = resources.GetString("lblArticelDescription.Text");
             // 
             // lblArticleTitle
             // 
@@ -383,11 +347,10 @@ namespace LGAConnectSOMS.Views
             this.lblArticleTitle.AutoSize = true;
             this.lblArticleTitle.BackColor = System.Drawing.Color.Transparent;
             this.lblArticleTitle.Font = new System.Drawing.Font("Tw Cen MT", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblArticleTitle.Location = new System.Drawing.Point(15, 164);
+            this.lblArticleTitle.Location = new System.Drawing.Point(17, 169);
             this.lblArticleTitle.Name = "lblArticleTitle";
-            this.lblArticleTitle.Size = new System.Drawing.Size(98, 24);
+            this.lblArticleTitle.Size = new System.Drawing.Size(0, 24);
             this.lblArticleTitle.TabIndex = 6;
-            this.lblArticleTitle.Text = "News Title";
             // 
             // DragWindowsPanel
             // 
@@ -521,11 +484,75 @@ namespace LGAConnectSOMS.Views
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
+            // lblViewAllSched
+            // 
+            this.lblViewAllSched.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblViewAllSched.AutoSize = true;
+            this.lblViewAllSched.BackColor = System.Drawing.Color.Transparent;
+            this.lblViewAllSched.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblViewAllSched.Font = new System.Drawing.Font("Tw Cen MT", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblViewAllSched.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(181)))), ((int)(((byte)(254)))));
+            this.lblViewAllSched.Location = new System.Drawing.Point(716, 8);
+            this.lblViewAllSched.Name = "lblViewAllSched";
+            this.lblViewAllSched.Size = new System.Drawing.Size(57, 17);
+            this.lblViewAllSched.TabIndex = 10;
+            this.lblViewAllSched.Text = "View All";
+            this.lblViewAllSched.Click += new System.EventHandler(this.lblViewAllSched_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(143)))));
+            this.panel1.Controls.Add(this.lblViewAllSched);
+            this.panel1.Controls.Add(this.lblClassesForTodayTitle);
+            this.panel1.Location = new System.Drawing.Point(269, 121);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(779, 33);
+            this.panel1.TabIndex = 0;
+            // 
+            // lblClassesForTodayTitle
+            // 
+            this.lblClassesForTodayTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblClassesForTodayTitle.AutoSize = true;
+            this.lblClassesForTodayTitle.BackColor = System.Drawing.Color.Transparent;
+            this.lblClassesForTodayTitle.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClassesForTodayTitle.ForeColor = System.Drawing.Color.Black;
+            this.lblClassesForTodayTitle.Location = new System.Drawing.Point(6, 7);
+            this.lblClassesForTodayTitle.Name = "lblClassesForTodayTitle";
+            this.lblClassesForTodayTitle.Size = new System.Drawing.Size(123, 19);
+            this.lblClassesForTodayTitle.TabIndex = 9;
+            this.lblClassesForTodayTitle.Text = "Classes For Today";
+            // 
+            // panel3
+            // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.flowLayoutPanel1);
+            this.panel3.Location = new System.Drawing.Point(269, 150);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(779, 221);
+            this.panel3.TabIndex = 26;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.White;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(10, 23);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(753, 182);
+            this.flowLayoutPanel1.TabIndex = 26;
+            // 
             // HomeViewTeacher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1300, 700);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.btnMinimize);
             this.Controls.Add(this.btnMaximize);
@@ -535,7 +562,6 @@ namespace LGAConnectSOMS.Views
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.NewsPanel);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.SchedulePanel);
             this.Controls.Add(this.lblUserRole);
             this.Controls.Add(this.SideBarPanel);
             this.Controls.Add(this.lblAccountName);
@@ -550,8 +576,6 @@ namespace LGAConnectSOMS.Views
             this.Load += new System.EventHandler(this.HomeViewTeacher_Load);
             this.SideBarPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.NewsPanel.ResumeLayout(false);
@@ -559,6 +583,9 @@ namespace LGAConnectSOMS.Views
             ((System.ComponentModel.ISupportInitialize)(this.NewsImage)).EndInit();
             this.Menu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -576,8 +603,6 @@ namespace LGAConnectSOMS.Views
         private System.Windows.Forms.Button btnClassSchedule;
         private System.Windows.Forms.Button btnClassRecords;
         private System.Windows.Forms.Button btnHome;
-        private System.Windows.Forms.Panel SchedulePanel;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel NewsPanel;
         private System.Windows.Forms.Label lblvViewMoreNews;
@@ -585,8 +610,6 @@ namespace LGAConnectSOMS.Views
         private System.Windows.Forms.Label lblArticelDescription;
         private System.Windows.Forms.Label lblArticleTitle;
         private System.Windows.Forms.PictureBox NewsImage;
-        private System.Windows.Forms.Label lblViewAllSched;
-        private System.Windows.Forms.Label lblClassesForTodayTitle;
         private System.Windows.Forms.Panel DragWindowsPanel;
         private System.Windows.Forms.Button btnMinimize;
         private System.Windows.Forms.Button btnMaximize;
@@ -597,5 +620,11 @@ namespace LGAConnectSOMS.Views
         private System.Windows.Forms.Button btnUserSettings;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button btnManageNews;
+        private System.Windows.Forms.Label lblViewAllSched;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblClassesForTodayTitle;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Label lblLoading;
     }
 }

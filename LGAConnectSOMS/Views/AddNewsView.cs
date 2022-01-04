@@ -19,12 +19,11 @@ namespace LGAConnectSOMS.Views
         public AddNewsView()
         {
             InitializeComponent();
+            RestoreWindowPosition();
+            MaximizeIcon();
             CalendarEditingControl();
         }
-
-
-        //Load
-     
+        //Load    
         private void btnBack_Click_1(object sender, EventArgs e)
         {
             this.SaveWindowPosition();
@@ -182,10 +181,7 @@ namespace LGAConnectSOMS.Views
                 string title = "LGA Connect SOMS";
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
                 DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Error);
-                if (result == DialogResult.OK)
-                {
-
-                }
+                if (result == DialogResult.OK){}
             }
 
             else
@@ -205,7 +201,16 @@ namespace LGAConnectSOMS.Views
 
                     if (IsSucess)
                     {
-                        MessageBox.Show("Publish Article Successfully");
+                        string Successmessage = "Publish Article Successfully";
+                        string Successtitle = "LGA Connect SOMS News and Announcements";
+                        MessageBoxButtons Successbuttons = MessageBoxButtons.OK;
+                        DialogResult Successresult = MessageBox.Show(Successmessage, Successtitle, Successbuttons, MessageBoxIcon.Information);
+                        if (Successresult == DialogResult.OK)
+                        {
+                            ManageNewsView manageNewsView = new ManageNewsView();
+                            manageNewsView.Show();
+                            this.Hide();
+                        }
                     }
 
                     else

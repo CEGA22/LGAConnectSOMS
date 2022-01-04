@@ -51,6 +51,7 @@ namespace LGAConnectSOMS.Views
             this.txtAmount.Size = new System.Drawing.Size(233, 32);
             this.txtAmount.TabIndex = 61;
             this.txtAmount.TabStop = false;
+            this.txtAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAmount_KeyPress);
             // 
             // lblPassword
             // 
@@ -73,7 +74,7 @@ namespace LGAConnectSOMS.Views
             this.txtStudentNumber.Size = new System.Drawing.Size(233, 32);
             this.txtStudentNumber.TabIndex = 59;
             this.txtStudentNumber.TabStop = false;
-            this.txtStudentNumber.TextChanged += new System.EventHandler(this.txtStudentNumber_TextChanged);
+            this.txtStudentNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStudentNumber_KeyPress);
             // 
             // lblStudentNumber
             // 

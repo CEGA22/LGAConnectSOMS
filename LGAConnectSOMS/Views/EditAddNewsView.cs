@@ -19,6 +19,8 @@ namespace LGAConnectSOMS.Views
         public EditAddNewsView()
         {
             InitializeComponent();
+            this.RestoreWindowPosition();
+            MaximizeIcon();
             CalendarEditingControl();
         }
 
@@ -249,7 +251,10 @@ namespace LGAConnectSOMS.Views
                 int ID = int.Parse(txtID.Text);
                 string message = "Are you sure you want to delete this article?";
                 string title = "LGA Connect SOMS News and Announcements";
+                string Successmessage = "Delete article successfully";
+                string Successtitle = "LGA Connect SOMS News and Announcements";
                 MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                MessageBoxButtons Successbuttons = MessageBoxButtons.OK;
                 DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)
                 {
@@ -257,12 +262,14 @@ namespace LGAConnectSOMS.Views
                     var IsSuccess = await newsAndAnnouncementsService.DeleteNewsAndAnnouncement(ID);
                     if (IsSuccess)
                     {
-                        MessageBox.Show("Delete article Successfully");
-                        NewsAndAnnouncementsView newsAndAnnouncements = new NewsAndAnnouncementsView();
-                        newsAndAnnouncements.Show();
-                        this.Hide();
+                        DialogResult Successresult = MessageBox.Show(Successmessage, Successtitle, Successbuttons, MessageBoxIcon.Information);
+                        if (Successresult == DialogResult.OK)
+                        {                           
+                            ManageNewsView manageNewsView = new ManageNewsView();
+                            manageNewsView.Show();
+                            this.Hide();
+                        }                                                                      
                     }
-
                     else
                     {
                         MessageBox.Show("Delete article Not Successfull");

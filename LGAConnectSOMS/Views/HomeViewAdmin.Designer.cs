@@ -43,6 +43,7 @@ namespace LGAConnectSOMS
             this.btnMinimize = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.NewsPanel = new System.Windows.Forms.Panel();
+            this.lblLoading = new System.Windows.Forms.Label();
             this.lblArticelDescription = new System.Windows.Forms.Label();
             this.lblArticleTitle = new System.Windows.Forms.Label();
             this.NewsImage = new System.Windows.Forms.PictureBox();
@@ -290,6 +291,7 @@ namespace LGAConnectSOMS
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.NewsPanel.BackColor = System.Drawing.Color.White;
+            this.NewsPanel.Controls.Add(this.lblLoading);
             this.NewsPanel.Controls.Add(this.lblArticelDescription);
             this.NewsPanel.Controls.Add(this.lblArticleTitle);
             this.NewsPanel.Controls.Add(this.NewsImage);
@@ -298,6 +300,17 @@ namespace LGAConnectSOMS
             this.NewsPanel.Name = "NewsPanel";
             this.NewsPanel.Size = new System.Drawing.Size(782, 510);
             this.NewsPanel.TabIndex = 1;
+            // 
+            // lblLoading
+            // 
+            this.lblLoading.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblLoading.AutoSize = true;
+            this.lblLoading.Font = new System.Drawing.Font("Tw Cen MT", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLoading.Location = new System.Drawing.Point(283, 189);
+            this.lblLoading.Name = "lblLoading";
+            this.lblLoading.Size = new System.Drawing.Size(247, 24);
+            this.lblLoading.TabIndex = 16;
+            this.lblLoading.Text = "Please wait while loading...";
             // 
             // lblArticelDescription
             // 
@@ -308,9 +321,8 @@ namespace LGAConnectSOMS
             this.lblArticelDescription.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblArticelDescription.Location = new System.Drawing.Point(12, 401);
             this.lblArticelDescription.Name = "lblArticelDescription";
-            this.lblArticelDescription.Size = new System.Drawing.Size(753, 75);
+            this.lblArticelDescription.Size = new System.Drawing.Size(0, 22);
             this.lblArticelDescription.TabIndex = 5;
-            this.lblArticelDescription.Text = resources.GetString("lblArticelDescription.Text");
             this.lblArticelDescription.UseCompatibleTextRendering = true;
             // 
             // lblArticleTitle
@@ -323,7 +335,6 @@ namespace LGAConnectSOMS
             this.lblArticleTitle.Name = "lblArticleTitle";
             this.lblArticleTitle.Size = new System.Drawing.Size(96, 29);
             this.lblArticleTitle.TabIndex = 4;
-            this.lblArticleTitle.Text = "News Title";
             this.lblArticleTitle.UseCompatibleTextRendering = true;
             // 
             // NewsImage
@@ -331,7 +342,6 @@ namespace LGAConnectSOMS
             this.NewsImage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.NewsImage.Image = global::LGAConnectSOMS.Properties.Resources.StudentKids;
             this.NewsImage.Location = new System.Drawing.Point(16, 50);
             this.NewsImage.Name = "NewsImage";
             this.NewsImage.Size = new System.Drawing.Size(747, 291);
@@ -563,6 +573,7 @@ namespace LGAConnectSOMS
         private System.Windows.Forms.Button btnAbout;
         private System.Windows.Forms.Button btnFacultyAdmin;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lblLoading;
     }
 }
 

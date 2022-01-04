@@ -29,5 +29,11 @@ namespace LGAConnectSOMS.Models
         public int IsAdmin { get; set; }
 
         public int IsFaculty { get; set; }
+
+        public DateTime Birthday { get; set; }
+
+        public string Address { get; set; }
+
+        public string Email { get; set; }
     }
 }

@@ -34,5 +34,11 @@ namespace LGAConnectSOMS.Gateway
             string url = $"{BaseUrl}/update_grades";
             return await WebMethods.MakePostRequest(url, request);
         }
+
+        public async Task<string> UpdateFinalGrade(ClassRecordRequest request)
+        {
+            string url = $"{BaseUrl}/update_finalgrades";
+            return await WebMethods.MakePostRequest(url, request);
+        }
     }
 }

@@ -20,7 +20,6 @@ namespace LGAConnectSOMS.Views
             InitializeComponent();
         }
 
-
         //Load
         private void PaymentRecordsView_Load(object sender, EventArgs e)
         {
@@ -37,15 +36,15 @@ namespace LGAConnectSOMS.Views
             cmbPaymentScheme.SelectedIndex = -1;
         }
         
-
         public async Task DisplayStudentBalance()
         {
             StudentBalanceService studentBalanceService = new StudentBalanceService();
             var studentbalancelist = await Task.Run(() => studentBalanceService.GetStudentBalance());
             StudentsBalanceDataGridView.DataSource = studentbalancelist;
             StudentsBalanceDataGridView.CurrentCell = null;
+            StudentsBalanceDataGridView.Columns[0].Visible = false;
+            StudentsBalanceDataGridView.Columns[9].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;           
         }
-
 
         public async Task DisplayTransactionHistory()
         {
@@ -53,8 +52,18 @@ namespace LGAConnectSOMS.Views
             var transactionhistorylist = await Task.Run(() => transactionHistoryService.GetTransactionHistory());
             TransactionHistoryDataGridView.DataSource = transactionhistorylist;
             TransactionHistoryDataGridView.Columns[5].Visible = false;
-            TransactionHistoryDataGridView.Columns[9].Visible = false;
+            TransactionHistoryDataGridView.Columns[7].Visible = false;          
+            TransactionHistoryDataGridView.Columns[10].Visible = false;
             TransactionHistoryDataGridView.CurrentCell = null;
+            TransactionHistoryDataGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            TransactionHistoryDataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            TransactionHistoryDataGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            TransactionHistoryDataGridView.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            TransactionHistoryDataGridView.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            TransactionHistoryDataGridView.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;           
+            TransactionHistoryDataGridView.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            TransactionHistoryDataGridView.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+
         }
 
         IEnumerable<PaymentScheme> paymentScheme = new List<PaymentScheme>();
@@ -65,13 +74,16 @@ namespace LGAConnectSOMS.Views
             var paymentSchemeDetails = paymentScheme.Select(x => x.PaymentMode);
             cmbPaymentScheme.DataSource = paymentSchemeDetails.ToList();           
             cmbPaymentScheme.SelectedIndex = -1;
+            txtDescription.Text = "";
+            txtDownPayment.Text = "";
+            txtTotalTuition.Text = "";
         }
 
         IEnumerable<StudentAccount> studentaccount = new List<StudentAccount>();
         public async Task StudentAccount()
         {
             StudentService studentService = new StudentService(); 
-            studentaccount = await Task.Run(() => studentService.GetStudentAccount());
+            studentaccount = await Task.Run(() => studentService.GetStudentAccountOnly());
             var studentnumberlist = studentaccount.Select(x => x.StudentNumber);
         }
 
@@ -93,7 +105,6 @@ namespace LGAConnectSOMS.Views
             }
         }
             
-
         //NavigationToOtherForm
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -177,6 +188,28 @@ namespace LGAConnectSOMS.Views
             Application.Exit();
         }
 
+        //DragWindows
+        private Point _mouseLoc;
+        private void DragWindowsPanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+            _mouseLoc = e.Location;
+        }
+
+        private void DragWindowsPanel_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                int dx = e.Location.X - _mouseLoc.X;
+                int dy = e.Location.Y - _mouseLoc.Y;
+                this.Location = new Point(this.Location.X + dx, this.Location.Y + dy);
+                btnMaximize.Image = LGAConnectSOMS.Properties.Resources.FullScreenBlack;
+            }
+        }
+
         private void btnAddTransaction_Click(object sender, EventArgs e)
         {
             PaymentTransactionView paymentTransactionView = new PaymentTransactionView();
@@ -184,40 +217,56 @@ namespace LGAConnectSOMS.Views
         }
 
         private async void btnAddStudent_Click(object sender, EventArgs e)
+        {          
+            if (!string.IsNullOrEmpty(txtStudentNumber.Text))
+            {
+                var datetime = DateTime.Now.ToString("yyyy");
+                var studentNumber = txtStudentNumber.Text;
+                var studentid = studentaccount.First(x => x.StudentNumber == studentNumber).ID;
+                var schoolyear = studentaccount.First(x => x.StudentNumber == studentNumber).SchoolYearStart;
+                //var totaltuition = txtTotalTuition.Text.ToString();
+                //var downpayment = txtDownPayment.Text.ToString();
+                var Balance = int.Parse(totaltuition) - int.Parse(downpayment);
+                try
+                {
+                    StudentBalanceRequestService studentBalanceRequestService = new StudentBalanceRequestService();
+                    var IsSuccess = await studentBalanceRequestService.CreateStudentBalanceRequest(new StudentBalanceRequest
+                    {
+                        StudentID = studentid,
+                        Total = int.Parse(totaltuition),
+                        Balance = Balance,
+                        PaymentMode = paymentSchemeid,
+                        SchoolYear = int.Parse(schoolyear)
+                    });
+
+                    if (IsSuccess)
+                    {
+                        MessageBox.Show("Added New Student Balance Successfully");
+                    }
+
+                    else
+                    {
+                        MessageBox.Show("Added New Student Balance Not Successfull");
+                    }
+                }
+                catch (Exception x)
+                {
+
+                    MessageBox.Show(x.Message);
+                }
+            }
+
+            else
+            {
+                MessageBox.Show("Please enter student number!", "LGA Connect SOMS Student Balance");
+            }
+            
+        }
+
+        private void txtStudentNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
-            var datetime = DateTime.Now.ToString("yyyy");
-            var studentNumber = txtStudentNumber.Text;
-            var studentid = studentaccount.First(x => x.StudentNumber == studentNumber).ID;
-            //var totaltuition = txtTotalTuition.Text.ToString();
-            //var downpayment = txtDownPayment.Text.ToString();
-            var Balance = int.Parse(totaltuition) - int.Parse(downpayment);
-            try
-            {
-                StudentBalanceRequestService studentBalanceRequestService = new StudentBalanceRequestService();
-                var IsSuccess = await studentBalanceRequestService.CreateStudentBalanceRequest(new StudentBalanceRequest
-                {
-                    StudentID = studentid,
-                    Total = int.Parse(totaltuition),
-                    Balance = Balance,
-                    PaymentMode = paymentSchemeid,
-                    SchoolYear = int.Parse(datetime)
-                });
-
-                if (IsSuccess)
-                {
-                    MessageBox.Show("Added New Student Balance Successfully");
-                }
-
-                else
-                {
-                    MessageBox.Show("Added New Student Balance Not Successfull");
-                }
-            }
-            catch (Exception x)
-            {
-
-                MessageBox.Show(x.Message);
-            }
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+                e.Handled = true;
         }
     }
 }

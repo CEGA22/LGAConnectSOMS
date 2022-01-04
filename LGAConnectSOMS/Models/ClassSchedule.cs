@@ -23,5 +23,7 @@ namespace LGAConnectSOMS.Models
         public string WeekDay { get; set; }
 
         public string Teacher { get; set; }
+
+        public string GradeLevel { get; set; }
     }
 }

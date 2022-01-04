@@ -117,6 +117,9 @@
     <Compile Include="Models\ClassScheduleRequest.cs" />
     <Compile Include="Models\FacultySubjects.cs" />
     <Compile Include="Models\FinalGrade.cs" />
+    <Compile Include="Models\FinalGradePerSubject.cs" />
+    <Compile Include="Models\FinalGrades.cs" />
+    <Compile Include="Models\Final_Grade.cs" />
     <Compile Include="Models\GradeLevel.cs" />
     <Compile Include="Models\GradeLevelModel.cs" />
     <Compile Include="Models\GradeLevelRequest.cs" />
@@ -198,6 +201,12 @@
     <Compile Include="Views\ClassRecordFacultyView.Designer.cs">
       <DependentUpon>ClassRecordFacultyView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\ClassScheduleCustomView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ClassScheduleCustomView.Designer.cs">
+      <DependentUpon>ClassScheduleCustomView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\ClassScheduleFacultyView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -245,6 +254,12 @@
     </Compile>
     <Compile Include="Views\FacultyAdminRecords.Designer.cs">
       <DependentUpon>FacultyAdminRecords.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ForgotPasswordView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ForgotPasswordView.Designer.cs">
+      <DependentUpon>ForgotPasswordView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\HomeViewAdmin.cs">
       <SubType>Form</SubType>
@@ -329,6 +344,9 @@
     <EmbeddedResource Include="Views\ClassRecordFacultyView.resx">
       <DependentUpon>ClassRecordFacultyView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\ClassScheduleCustomView.resx">
+      <DependentUpon>ClassScheduleCustomView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\ClassScheduleFacultyView.resx">
       <DependentUpon>ClassScheduleFacultyView.cs</DependentUpon>
     </EmbeddedResource>
@@ -352,6 +370,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FacultyAdminRecords.resx">
       <DependentUpon>FacultyAdminRecords.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ForgotPasswordView.resx">
+      <DependentUpon>ForgotPasswordView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\HomeViewAdmin.resx">
       <DependentUpon>HomeViewAdmin.cs</DependentUpon>
@@ -587,6 +608,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\editNewsAnnouncement.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3293465.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
