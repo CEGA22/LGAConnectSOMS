@@ -190,9 +190,16 @@ namespace LGAConnectSOMS.Views
 
                     if (IsSucess)
                     {
-                        MessageBox.Show("Update Student information Successfully");
+                        string Updatemessage = "Update student record successfully";
+                        string UpdateTitle = "LGA Connect SOMS Student Records";
+                        MessageBoxButtons buttons = MessageBoxButtons.OK;
+                        DialogResult result = MessageBox.Show(Updatemessage, UpdateTitle, buttons, MessageBoxIcon.Information);
+                        if (result == DialogResult.OK)
+                        {                            
+                            this.Close();
+                        }                        
                     }
-
+                  
                     else
                     {
                         MessageBox.Show("Update Student information Not Successfull");

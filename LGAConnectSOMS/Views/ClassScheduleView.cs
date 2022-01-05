@@ -40,10 +40,10 @@ namespace LGAConnectSOMS.Views
         {
             DateTime todaysDate = DateTime.Now;
             var weekday = todaysDate.DayOfWeek.ToString();
-            await ClassSchedules(weekday);           
             await LoadFaculty();
             await LoadSubjects();
             await LoadGradeLevelSection();
+            await ClassSchedules(weekday);         
         }
 
         //NavigationToOtherForm
@@ -437,7 +437,7 @@ namespace LGAConnectSOMS.Views
         public async Task LoadFaculty()
         {
             SchoolAccountService schoolAccountService = new SchoolAccountService();
-            schoolAccounts = await Task.Run(() => schoolAccountService.GetSchoolAccountDetails());
+            schoolAccounts = await Task.Run(() => schoolAccountService.GetSchoolAccountOnly());
             var facultylist = schoolAccounts.Where(x => x.isAdmin == 0).Select(x => x.Fullname);
             cmbLastname.DataSource = facultylist.ToList();
         }
@@ -573,6 +573,7 @@ namespace LGAConnectSOMS.Views
                 cmbCustomDays.Show();
                 lblRepeatEvery.Show();
                 cmbDays.Enabled = false;
+                cmbCustomDays.SelectedIndex = -1;
             }
         }
 
@@ -593,7 +594,13 @@ namespace LGAConnectSOMS.Views
 
         private void cmbCustomDays_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            if(cmbCustomDays.Text == "Cancel")
+            {
+                cmbDays.Enabled = true;
+                cmbCustomDays.Hide();
+                lblRepeatEvery.Hide();
+                cmbDays.SelectedIndex = -1;
+            }
         }
     }
 }

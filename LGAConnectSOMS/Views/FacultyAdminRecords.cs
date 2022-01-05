@@ -40,38 +40,96 @@ namespace LGAConnectSOMS.Views
             txtSearchFaculty.Enabled = false;
             await DisplayFacultyRecordData();
             await DisplayAdminRecordData();
-            await RandomStudentNumber();
+            RandomAdminNumber();
+            RandomFacultyNumber();
             lblLoading.Hide();          
         }
 
         private readonly Random _random = new Random();
-        List<int> Adminnumberlist = new List<int>();
+        List<int> AdminnumberList = new List<int>();
         StringBuilder concatenatedString = new StringBuilder();
-        public async Task RandomStudentNumber()
-        {
-            var num1 = 0;
-            var num2 = 0;
-            Adminnumberlist.Add(num1);
-            Adminnumberlist.Add(num2);
-            for (int i = 1; i <= 8; i++)
-            {
-                int num = _random.Next(10);
-                var studentnumber = num;
-                Adminnumberlist.Add(studentnumber);
-            }
-
-            foreach (int password in Adminnumberlist)
-            {
-                concatenatedString.Append(password);
-            }
-            var result = concatenatedString.ToString();
+        public void RandomAdminNumber()
+        {           
+            var result = verification();
             var students = schoolAccounts.ToList();
             var results = schoolAccounts.Where(x => x.schoolNumber.ToString().Contains(result)).ToList();
             if (!results.Any())
             {
                 txtTeacherNumber.Text = result;
             }
+
+            else
+            {
+                AdminnumberList.Clear();
+                concatenatedString.Clear();
+                RandomAdminNumber();
+            }
         }
+
+        public string verification()
+        {
+            var num1 = 0;
+            var num2 = 0;
+            AdminnumberList.Add(num1);
+            AdminnumberList.Add(num2);
+            for (int i = 1; i <= 8; i++)
+            {
+                int num = _random.Next(10);
+                var studentnumber = num;
+                AdminnumberList.Add(studentnumber);
+            }
+
+            foreach (int password in AdminnumberList)
+            {
+                concatenatedString.Append(password);
+            }
+
+            return concatenatedString.ToString();
+        }
+
+
+        private readonly Random _randomFaculty = new Random();
+        List<int> FacultynumberList = new List<int>();
+        StringBuilder concatenatedStringFaculty = new StringBuilder();
+        public void RandomFacultyNumber()
+        {
+            var result = verificationFaculty();
+            var students = schoolAccounts.ToList();
+            var results = schoolAccounts.Where(x => x.schoolNumber.ToString().Contains(result)).ToList();
+            if (!results.Any())
+            {
+                txtFacultyTeacherNumber.Text = result;
+            }
+
+            else
+            {
+                FacultynumberList.Clear();
+                concatenatedString.Clear();
+                RandomFacultyNumber();
+            }
+        }
+
+        public string verificationFaculty()
+        {
+            var num1 = 0;
+            var num2 = 0;
+            FacultynumberList.Add(num1);
+            FacultynumberList.Add(num2);
+            for (int i = 1; i <= 8; i++)
+            {
+                int num = _randomFaculty.Next(10);
+                var studentnumber = num;
+                FacultynumberList.Add(studentnumber);
+            }
+
+            foreach (int password in FacultynumberList)
+            {
+                concatenatedStringFaculty.Append(password);
+            }
+
+            return concatenatedStringFaculty.ToString();
+        }
+
         public async Task DisplayAdminRecordData()
         {
             lblloadingadmin.Show();
@@ -370,45 +428,56 @@ namespace LGAConnectSOMS.Views
         {            
             var image = AdminPictureBox.Image;
             var dateonly = dtAdminBirthday.Value.ToShortDateString();
-            try
+            if (txtLastname.Text == "" || txtMiddlename.Text == "" || txtFirstname.Text == "" || txtTeacherNumber.Text == "" || txtPassword.Text == "" || txtMobileNumber.Text == "" || cbGender.Text == "" || txtAdminAddress.Text == "" || txtAdminEmail.Text == "" || AdminPictureBox.Image == null)
             {
-                SchoolAccountRequestService schoolAccountRequestService = new SchoolAccountRequestService();
-                var IsSuccess = await schoolAccountRequestService.CreateSchoolAccountRequest(new SchoolAccountRequest
-                {
-                    LastName = txtLastname.Text,
-                    Middlename = txtMiddlename.Text,
-                    Firstname = txtFirstname.Text,
-                    Birthday = Convert.ToDateTime(dateonly),
-                    Address = txtAdminAddress.Text,
-                    Email = txtAdminEmail.Text,
-                    SchoolNumber = txtTeacherNumber.Text,                   
-                    Password = txtPassword.Text,
-                    MobileNumber = txtMobileNumber.Text,
-                    TeacherProfile = ImageToByteArray(image),                   
-                    Gender = cbGender.Text,
-                    IsAdmin = 1,
-                    IsFaculty = 0
-                });
-
-                if (IsSuccess)
-                {
-                    string message = "Added new Administrator Successfully";
-                    string title = "New Administrator account created";
-                    MessageBoxButtons buttons = MessageBoxButtons.OK;
-                    MessageBox.Show(message, title, buttons, MessageBoxIcon.Information);
-                }
-
-                else
-                {                    
-                    string message = "Added new Administrator Unsucessfull";
-                    string title = "Error";
-                    MessageBoxButtons buttons = MessageBoxButtons.OK;
-                    MessageBox.Show(message, title, buttons, MessageBoxIcon.Error);                 
-                }
+                string message = "Please Fill in All Fields!";
+                string title = "LGA Connect SOMS";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Error);
+                if (result == DialogResult.OK) { }
             }
-            catch (Exception x)
+            else
             {
-                MessageBox.Show(x.Message);
+                try
+                {
+                    SchoolAccountRequestService schoolAccountRequestService = new SchoolAccountRequestService();
+                    var IsSuccess = await schoolAccountRequestService.CreateSchoolAccountRequest(new SchoolAccountRequest
+                    {
+                        LastName = txtLastname.Text,
+                        Middlename = txtMiddlename.Text,
+                        Firstname = txtFirstname.Text,
+                        Birthday = Convert.ToDateTime(dateonly),
+                        Address = txtAdminAddress.Text,
+                        Email = txtAdminEmail.Text,
+                        SchoolNumber = txtTeacherNumber.Text,
+                        Password = txtPassword.Text,
+                        MobileNumber = txtMobileNumber.Text,                      
+                        Gender = cbGender.Text,
+                        IsAdmin = 1,
+                        IsFaculty = 0,
+                        TeacherProfile = ImageToByteArray(image),
+                    });
+
+                    if (IsSuccess)
+                    {
+                        string message = "Added new Administrator Successfully";
+                        string title = "New Administrator account created";
+                        MessageBoxButtons buttons = MessageBoxButtons.OK;
+                        MessageBox.Show(message, title, buttons, MessageBoxIcon.Information);
+                    }
+
+                    else
+                    {
+                        string message = "Added new Administrator Unsucessfull";
+                        string title = "Error";
+                        MessageBoxButtons buttons = MessageBoxButtons.OK;
+                        MessageBox.Show(message, title, buttons, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception x)
+                {
+                    MessageBox.Show(x.Message);
+                }
             }
         }
         private void AdminDataGridView_Click(object sender, EventArgs e)
@@ -434,7 +503,7 @@ namespace LGAConnectSOMS.Views
         private void txtAdminLastname_TextChanged(object sender, EventArgs e)
         {
             var lastname = txtAdminLastname.Text;
-            var listbyLastname = schoolAccounts.Where(x => x.lastName.ToString().ToLower().Contains(lastname) && x.isAdmin == 1).ToList();
+            var listbyLastname = schoolAccounts.Where(x => x.lastName.ToString().Contains(lastname) && x.isAdmin == 1).ToList();
             AdminDataGridView.DataSource = listbyLastname;          
             AdminDataGridView.CurrentCell = null;           
         }
@@ -442,7 +511,7 @@ namespace LGAConnectSOMS.Views
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             var lastname = txtSearchFaculty.Text;
-            var listbyLastname = schoolAccounts.Where(x => x.lastName.ToString().ToLower().Contains(lastname) && x.isAdmin == 0).ToList();
+            var listbyLastname = schoolAccounts.Where(x => x.lastName.ToString().Contains(lastname) && x.isAdmin == 0).ToList();
             FacultyDataGridView.DataSource = listbyLastname;
             FacultyDataGridView.CurrentCell = null;
         }
@@ -471,46 +540,59 @@ namespace LGAConnectSOMS.Views
         {
             var image = FacultyPictureBox.Image;
             var dateonly = dtBirthday.Value.ToShortDateString();
-            try
+            if (txtFacultyLastname.Text == "" || txtFacultyMiddlename.Text == "" || txtFacultyFirstname.Text == "" || txtFacultyTeacherNumber.Text == "" || txtFacultyPassword.Text == "" || txtFacultyMobileNumber.Text == "" || cbFacultyGender.Text == "" || txtFacultyAddress.Text == "" || txtFacultyEmail.Text == "" || FacultyPictureBox.Image == null)
             {
-                SchoolAccountRequestService schoolAccountRequestService = new SchoolAccountRequestService();
-                var IsSuccess = await schoolAccountRequestService.CreateSchoolAccountRequest(new SchoolAccountRequest
-                {
-                    LastName = txtFacultyLastname.Text,
-                    Middlename = txtFacultyMiddlename.Text,
-                    Firstname = txtFacultyFirstname.Text,
-                    Birthday = Convert.ToDateTime(dateonly),
-                    Address = txtFacultyAddress.Text,
-                    Email = txtFacultyEmail.Text,
-                    SchoolNumber = txtFacultyTeacherNumber.Text,
-                    Password = txtFacultyPassword.Text,
-                    MobileNumber = txtFacultyMobileNumber.Text,
-                    TeacherProfile = ImageToByteArray(image),
-                    Gender = cbFacultyGender.Text,
-                    IsAdmin = 0,
-                    IsFaculty = 1
-                });
+                string message = "Please Fill in All Fields!";
+                string title = "LGA Connect SOMS";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Error);
+                if (result == DialogResult.OK) { }
+            }
 
-                if (IsSuccess)
+            else
+            {
+                try
                 {
-                    string message = "Added new Faculty Successfully";
-                    string title = "New Faculty account created";
-                    MessageBoxButtons buttons = MessageBoxButtons.OK;
-                    MessageBox.Show(message, title, buttons, MessageBoxIcon.Information);
+                    SchoolAccountRequestService schoolAccountRequestService = new SchoolAccountRequestService();
+                    var IsSuccess = await schoolAccountRequestService.CreateSchoolAccountRequest(new SchoolAccountRequest
+                    {
+                        LastName = txtFacultyLastname.Text,
+                        Middlename = txtFacultyMiddlename.Text,
+                        Firstname = txtFacultyFirstname.Text,
+                        Birthday = Convert.ToDateTime(dateonly),
+                        Address = txtFacultyAddress.Text,
+                        Email = txtFacultyEmail.Text,
+                        SchoolNumber = txtFacultyTeacherNumber.Text,
+                        Password = txtFacultyPassword.Text,
+                        MobileNumber = txtFacultyMobileNumber.Text,
+                        TeacherProfile = ImageToByteArray(image),
+                        Gender = cbFacultyGender.Text,                       
+                        IsAdmin = 0,
+                        IsFaculty = 1
+                    });
+
+                    if (IsSuccess)
+                    {
+                        string message = "Added new Faculty Successfully";
+                        string title = "New Faculty account created";
+                        MessageBoxButtons buttons = MessageBoxButtons.OK;
+                        MessageBox.Show(message, title, buttons, MessageBoxIcon.Information);
+                    }
+
+                    else
+                    {
+                        string message = "Added new Faculty Unsucessfull";
+                        string title = "Error";
+                        MessageBoxButtons buttons = MessageBoxButtons.OK;
+                        MessageBox.Show(message, title, buttons, MessageBoxIcon.Error);
+                    }
                 }
-
-                else
+                catch (Exception x)
                 {
-                    string message = "Added new Faculty Unsucessfull";
-                    string title = "Error";
-                    MessageBoxButtons buttons = MessageBoxButtons.OK;
-                    MessageBox.Show(message, title, buttons, MessageBoxIcon.Error);
+                    MessageBox.Show(x.Message);
                 }
             }
-            catch (Exception x)
-            {
-                MessageBox.Show(x.Message);
-            }
+              
         }
 
         private void txtLastname_KeyPress(object sender, KeyPressEventArgs e)
@@ -543,6 +625,43 @@ namespace LGAConnectSOMS.Views
         }
 
         private void txtTeacherNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+                e.Handled = true;
+        }
+     
+        private void txtFacultyLastname_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void txtFacultyMiddlename_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void txtFacultyFirstname_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void txtFacultyTeacherNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            //    e.Handled = true;
+        }
+
+        
+
+        private void cbFacultyGender_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void txtFacultyMobileNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
                 e.Handled = true;

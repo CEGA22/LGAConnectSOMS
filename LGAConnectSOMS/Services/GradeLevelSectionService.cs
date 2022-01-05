@@ -31,5 +31,12 @@ namespace LGAConnectSOMS.Services
             var content = await apiGateway.UpdateGradeLevelSectionRequest(request);
             return JsonConvert.DeserializeObject<bool>(content);
         }
+
+        public async Task<bool> DeleteSection(int ID)
+        {
+            var apiGateway = new GradeLevelSectionGateway();
+            var content = await apiGateway.DeleteSection(ID);
+            return JsonConvert.DeserializeObject<bool>(content);
+        }
     }
 }

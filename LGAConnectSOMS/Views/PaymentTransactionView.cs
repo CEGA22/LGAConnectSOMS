@@ -35,14 +35,14 @@ namespace LGAConnectSOMS.Views
 
         private void btnClose_MouseEnter(object sender, EventArgs e)
         {
-            btnClose.BackColor = Color.FromArgb(240, 52, 52);
-            btnClose.Image = LGAConnectSOMS.Properties.Resources.close_button;
+            //btnClose.BackColor = Color.FromArgb(240, 52, 52);
+            //btnClose.Image = LGAConnectSOMS.Properties.Resources.close_button;
         }
 
         private void btnClose_MouseLeave(object sender, EventArgs e)
         {
-            btnClose.BackColor = Color.Transparent;
-            btnClose.Image = LGAConnectSOMS.Properties.Resources.CloseBlack;
+            //btnClose.BackColor = Color.Transparent;
+            //btnClose.Image = LGAConnectSOMS.Properties.Resources.CloseBlack;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -75,14 +75,22 @@ namespace LGAConnectSOMS.Views
 
                 if (IsSuccess)
                 {
-                    MessageBox.Show("Transaction Complete");
-                    this.Close();
+                    string Successmessage = "Transaction complete";
+                    string Successtitle = "LGA Connect SOMS Payment History";
+                    MessageBoxButtons Successbuttons = MessageBoxButtons.OK;
+
+                    DialogResult Successresult = MessageBox.Show(Successmessage, Successtitle, Successbuttons, MessageBoxIcon.Information);
+                    if (Successresult == DialogResult.OK)
+                    {
+                        this.Hide();
+                    }
                 }
 
                 else
                 {
                     MessageBox.Show("Transaction failed");
-                }
+                }                       
+               
             }
             catch (Exception ex)
             {
@@ -101,6 +109,11 @@ namespace LGAConnectSOMS.Views
         {
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
                 e.Handled = true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }

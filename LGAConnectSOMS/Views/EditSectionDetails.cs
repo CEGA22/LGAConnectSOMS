@@ -38,9 +38,11 @@ namespace LGAConnectSOMS.Views
         IEnumerable<GradeLevelSection> gradeLevelSections = new List<GradeLevelSection>();
         private async Task LoadGradeLevels()
         {
+            btnAddStudent.Enabled = false;
             GradeLevelSectionService gradeLevelSectionService = new GradeLevelSectionService();
             gradeLevelSections = await Task.Run(() => gradeLevelSectionService.GetGradeLevel());
-            var gradelevelslist = gradeLevelSections.Select(x => x.GradeLevels).Distinct().ToList();           
+            var gradelevelslist = gradeLevelSections.Select(x => x.GradeLevels).Distinct().ToList();
+            btnAddStudent.Enabled = true;
         }
 
         private async void btnAddStudent_Click(object sender, EventArgs e)
@@ -59,20 +61,77 @@ namespace LGAConnectSOMS.Views
 
                 if (IsSucess)
                 {
-                    MessageBox.Show("Update Section Details Successfully");
+                    string message = "Update Section Details Successfully";
+                    string title = "LGA Connect SOMS Section";
+                    MessageBoxButtons buttons = MessageBoxButtons.OK;
+                    DialogResult results = MessageBox.Show(message, title, buttons, MessageBoxIcon.Information);
+                    if (results == DialogResult.OK)
+                    {
+                        this.Hide();
+                    }                  
                 }
 
                 else
                 {
-                    MessageBox.Show("Added Details Not Successfull");
+                    string message = "Update Section Details Unsuccessful";
+                    string title = "LGA Connect SOMS Section";
+                    MessageBoxButtons buttons = MessageBoxButtons.OK;
+                    DialogResult results = MessageBox.Show(message, title, buttons, MessageBoxIcon.Error);
+                    if (results == DialogResult.OK)
+                    {
+                        this.Hide();
+                    }                   
                 }
-
             }
             catch (Exception x)
             {
                 MessageBox.Show(x.Message);
             }
         }
-        
+
+        private async void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
+
+        private async void btnCancel_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                int ID = int.Parse(txtID.Text);
+                string message = "Are you sure you want to delete this section?";
+                string title = "LGA Connect SOMS Section";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                {
+                    GradeLevelSectionService gradeLevelSectionService = new GradeLevelSectionService();
+                    var IsSuccess = await gradeLevelSectionService.DeleteSection(ID);
+                    if (IsSuccess)
+                    {
+                        string Successmessage = "Delete section successfully";
+                        string Successtitle = "LGA Connect SOMS Section";
+                        MessageBoxButtons Successbuttons = MessageBoxButtons.OK;
+                        DialogResult Successresult = MessageBox.Show(Successmessage, Successtitle, Successbuttons, MessageBoxIcon.Information);
+                        if (Successresult == DialogResult.OK)
+                        {
+                            this.Hide();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Delete section Unsuccessful");
+                    }
+                }
+                else if (result == DialogResult.No)
+                {
+
+                }
+            }
+            catch (Exception x)
+            {
+
+            }
+        }
     }
 }

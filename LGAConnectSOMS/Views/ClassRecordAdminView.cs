@@ -91,6 +91,7 @@ namespace LGAConnectSOMS.Views
 
         private async void LoadData()
         {
+            btnAddGradeLevel.Hide();
             LoadYear();
             //GenerateStudentNumberandPassword();
             await DisplayGradeLevels();            
@@ -170,6 +171,7 @@ namespace LGAConnectSOMS.Views
             gradeLevels = await Task.Run(() => gradeLevelService.GetGradeLevel());
             var gradelevelslist = gradeLevels;
             GradeLevelDataGridView.DataSource = gradelevelslist.ToList();
+            this.GradeLevelDataGridView.Columns[0].Visible = false;
             GradeLevelDataGridView.CurrentCell = null;
             lblloadingGradeLevel.Hide();
             
@@ -205,6 +207,7 @@ namespace LGAConnectSOMS.Views
             var students = await Task.Run(() => studentService.GetStudentAccount());
             studentAccounts = students.ToList();
             ClassRecordDataGridView.DataSource = studentAccounts;
+            
             lblloading.Hide();
             txtSearchStudent.Enabled = true;
             CBGradeLevel.Enabled = true;
@@ -232,20 +235,10 @@ namespace LGAConnectSOMS.Views
 
         private void txtSearchStudent_TextChanged(object sender, EventArgs e)
         {
-            //if (!string.IsNullOrWhiteSpace(txtSearchStudent.Text))
-            //{               
-            //    var lastname = txtSearchStudent.Text;
-            //    var listbyLastname = studentAccounts.Where(x => x.Lastname.ToString().Contains(lastname)).ToList();
-            //    ClassRecordDataGridView.DataSource = listbyLastname;
-            //    //this.ClassRecordDataGridView.Columns[9].Visible = false;
-            //    ClassRecordDataGridView.CurrentCell = null;
-            //}
-            //else
-            //{
-            //    ClassRecordDataGridView.DataSource = studentAccounts;
-            //    this.ClassRecordDataGridView.Columns[9].Visible = false;
-            //    ClassRecordDataGridView.CurrentCell = null;
-            //}
+            if (string.IsNullOrWhiteSpace(txtSearchStudent.Text))
+            {
+                ClassRecordDataGridView.DataSource = studentAccounts.ToList();
+            }           
         }
 
         IEnumerable<Subjects> subjects = new List<Subjects>();
@@ -258,7 +251,7 @@ namespace LGAConnectSOMS.Views
         public bool IsSucess;
         private async void btnAddStudent_Click_1(object sender, EventArgs e)
         {                   
-                if (txtLastname.Text == "" || txtMiddlename.Text == "" || txtFirstname.Text == "" || txtStudentNumber.Text == "" || txtPassword.Text == "" || txtMobileNumber.Text == "" || cbGender.Text == "" || cmbGradeLevels.Text == "" || cmbSections.Text == "" || cmbSYStart.Text == "" || StudentProfilePictureBox.Image == null)
+                if (txtLastname.Text == "" || txtMiddlename.Text == "" || txtFirstname.Text == "" || txtStudentNumber.Text == "" || txtPassword.Text == "" || txtMobileNumber.Text == "" || cbGender.Text == "" || cmbGradeLevels.Text == "" || cmbSections.Text == "" || cmbSYStart.Text == "" || txtAddress.Text == "" || txtParentsname.Text == "" || txtEmail.Text == "" || StudentProfilePictureBox.Image == null)
                 {
                     string message = "Please Fill in All Fields!";
                     string title = "LGA Connect SOMS";
@@ -696,6 +689,7 @@ namespace LGAConnectSOMS.Views
             {
                 MessageBox.Show("Please select grade level!");
             }
+            
             else
             {
                 var lastname = txtSearchStudent.Text;
@@ -713,7 +707,6 @@ namespace LGAConnectSOMS.Views
                     ClassRecordDataGridView.DataSource = result;
                     ClassRecordDataGridView.CurrentCell = null;
                 }
-
             }
         }
 
@@ -767,6 +760,11 @@ namespace LGAConnectSOMS.Views
                 CBGradeLevel.Hide();
                 CBSection.Hide();
             }
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            
         }
     }
     }

@@ -58,6 +58,9 @@ namespace LGAConnectSOMS
             this.btnAbout = new System.Windows.Forms.Button();
             this.btnUserSettings = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.EnrolledStudentsPanel = new System.Windows.Forms.Panel();
+            this.lblEnrolledStudentsCount = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SideBarPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LGAConnectLogo)).BeginInit();
             this.NewsPanel.SuspendLayout();
@@ -65,6 +68,7 @@ namespace LGAConnectSOMS
             this.NewsPanelYellow.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.EnrolledStudentsPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // SideBarPanel
@@ -508,15 +512,49 @@ namespace LGAConnectSOMS
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // EnrolledStudentsPanel
+            // 
+            this.EnrolledStudentsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.EnrolledStudentsPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(77)))), ((int)(((byte)(144)))));
+            this.EnrolledStudentsPanel.Controls.Add(this.lblEnrolledStudentsCount);
+            this.EnrolledStudentsPanel.Controls.Add(this.label1);
+            this.EnrolledStudentsPanel.Location = new System.Drawing.Point(1057, 121);
+            this.EnrolledStudentsPanel.Name = "EnrolledStudentsPanel";
+            this.EnrolledStudentsPanel.Size = new System.Drawing.Size(231, 188);
+            this.EnrolledStudentsPanel.TabIndex = 16;
+            // 
+            // lblEnrolledStudentsCount
+            // 
+            this.lblEnrolledStudentsCount.AutoSize = true;
+            this.lblEnrolledStudentsCount.Font = new System.Drawing.Font("Tw Cen MT", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEnrolledStudentsCount.ForeColor = System.Drawing.Color.White;
+            this.lblEnrolledStudentsCount.Location = new System.Drawing.Point(5, 123);
+            this.lblEnrolledStudentsCount.Name = "lblEnrolledStudentsCount";
+            this.lblEnrolledStudentsCount.Size = new System.Drawing.Size(79, 55);
+            this.lblEnrolledStudentsCount.TabIndex = 1;
+            this.lblEnrolledStudentsCount.Text = ".....";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Tw Cen MT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(5, 7);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(75, 44);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Enrolled \r\nStudents";
+            // 
             // HomeViewAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(242)))), ((int)(((byte)(245)))));
             this.ClientSize = new System.Drawing.Size(1300, 700);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.EnrolledStudentsPanel);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnMaximize);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnMinimize);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.btnClose);
@@ -540,6 +578,8 @@ namespace LGAConnectSOMS
             this.NewsPanelYellow.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.EnrolledStudentsPanel.ResumeLayout(false);
+            this.EnrolledStudentsPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -574,6 +614,9 @@ namespace LGAConnectSOMS
         private System.Windows.Forms.Button btnFacultyAdmin;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblLoading;
+        private System.Windows.Forms.Panel EnrolledStudentsPanel;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblEnrolledStudentsCount;
     }
 }
 

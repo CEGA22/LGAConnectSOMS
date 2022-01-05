@@ -42,13 +42,11 @@ namespace LGAConnectSOMS
             MaximizeIcon();            
         }
 
-
         public async void LoadData()
         {
             await DynamicHomeViewAdminPanel();
-            await LoadNewsAndAnnouncements();
+            await LoadNewsAndAnnouncements();        
         }
-
 
         //public void CustomFont()
         //{
@@ -133,58 +131,46 @@ namespace LGAConnectSOMS
             this.Hide();
         }
 
-
-        //Commands
-
-        public async Task DynamicHomeViewAdminPanel()
+        private void EnrolledStudentsPanel_Click(object sender, EventArgs e)
         {
-            //StudentService studentService = new StudentService();
-            //var students = await studentService.GetStudentAccount();
-            //var studentsList = students.Select(x => x.ID).ToList();
-            
-            Panel EnrolledStudentsPanel = new Panel();
-            Panel FileRequestPanel = new Panel();
-            EnrolledStudentsPanel.Size = new System.Drawing.Size(219, 188);
-            EnrolledStudentsPanel.Location = new System.Drawing.Point(1069, 121);
-            EnrolledStudentsPanel.BackColor = Color.FromArgb(233, 77, 144);
-            EnrolledStudentsPanel.TabIndex = 0;
-            FileRequestPanel.Size = new System.Drawing.Size(219, 188);
-            FileRequestPanel.Location = new System.Drawing.Point(1069, 326);
-            FileRequestPanel.BackColor = Color.FromArgb(33, 209, 255);
-            FileRequestPanel.TabIndex = 0;
-            Controls.Add(EnrolledStudentsPanel);
-            Controls.Add(FileRequestPanel);
-            Label lblEnrolledStudents = new Label();
-            Label lblEnrolledStudentsCount = new Label();
-            Label lblFileRequestCount = new Label();
-            lblEnrolledStudents.Text = "Enrolled\nStudents";
-            lblEnrolledStudents.ForeColor = Color.White;
-            lblEnrolledStudents.Font = new Font("Tw Cen MT", 14);
-            lblEnrolledStudents.AutoSize = true;            
-            lblEnrolledStudentsCount.ForeColor = Color.White;
-            lblEnrolledStudentsCount.Font = new Font("Tw Cen MT", 36);
-            lblEnrolledStudentsCount.AutoSize = true;
-            lblEnrolledStudentsCount.Location = new System.Drawing.Point(0,130);
-            Label lblFileRequest = new Label();
-            lblFileRequest.Text = "File\nRequest";
-            lblFileRequest.ForeColor = Color.White;
-            lblFileRequest.Font = new Font("Tw Cen MT", 14);
-            lblFileRequest.AutoSize = true;
-            lblFileRequestCount.Text = "10";
-            lblFileRequestCount.ForeColor = Color.White;
-            lblFileRequestCount.Font = new Font("Tw Cen MT", 36);
-            lblFileRequestCount.AutoSize = true;
-            lblFileRequestCount.Location = new System.Drawing.Point(0, 130);
-            EnrolledStudentsPanel.Controls.Add(lblEnrolledStudents);
-            EnrolledStudentsPanel.Controls.Add(lblEnrolledStudentsCount);
-            FileRequestPanel.Controls.Add(lblFileRequest);
-            FileRequestPanel.Controls.Add(lblFileRequestCount);
-            EnrolledStudentsPanel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            FileRequestPanel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            EnrolledStudentsPanel.Cursor = Cursors.Hand;
-            //lblEnrolledStudentsCount.Text = studentsList.Count.ToString();
+            this.SaveWindowPosition();
+            ClassRecordAdminView classRecordAdminView = new ClassRecordAdminView();
+            classRecordAdminView.Show();
+            this.Hide();
         }
 
+        //Commands
+        public async Task DynamicHomeViewAdminPanel()
+        {
+
+            StudentService studentService = new StudentService();
+            var students = await studentService.GetStudentAccountOnly();
+            var studentsList = students.Select(x => x.ID).ToList();
+            //Panel EnrolledStudentsPanel = new Panel();         
+            //EnrolledStudentsPanel.Size = new System.Drawing.Size(219, 188);
+            //EnrolledStudentsPanel.Location = new System.Drawing.Point(1069, 121);
+            //EnrolledStudentsPanel.BackColor = Color.FromArgb(233, 77, 144);
+            //EnrolledStudentsPanel.TabIndex = 0;           
+            //Controls.Add(EnrolledStudentsPanel);         
+            //Label lblEnrolledStudents = new Label();
+            //Label lblEnrolledStudentsCount = new Label();
+            //Label lblFileRequestCount = new Label();
+            //lblEnrolledStudents.Text = "Enrolled\nStudents";
+            //lblEnrolledStudents.ForeColor = Color.White;
+            //lblEnrolledStudents.Font = new Font("Tw Cen MT", 14);
+            //lblEnrolledStudents.AutoSize = true;            
+            //lblEnrolledStudentsCount.ForeColor = Color.White;
+            //lblEnrolledStudentsCount.Font = new Font("Tw Cen MT", 36);
+            //lblEnrolledStudentsCount.AutoSize = true;
+            //lblEnrolledStudentsCount.Location = new System.Drawing.Point(0,130);                   
+            //EnrolledStudentsPanel.Controls.Add(lblEnrolledStudents);
+            //EnrolledStudentsPanel.Controls.Add(lblEnrolledStudentsCount);         
+            EnrolledStudentsPanel.Cursor = Cursors.Hand;          
+            //lblEnrolledStudentsCount.Text = studentsList.Count.ToString();
+            lblEnrolledStudentsCount.Text = studentsList.Count.ToString();
+            EnrolledStudentsPanel.Click += new System.EventHandler(this.EnrolledStudentsPanel_Click);
+        }
+      
         IEnumerable<NewsAndAnnouncements> newsandannouncements = new List<NewsAndAnnouncements>();
         public async Task LoadNewsAndAnnouncements()
         {
@@ -252,11 +238,8 @@ namespace LGAConnectSOMS
             btnPaymentRecords.ForeColor = Color.White;
         }
 
-
-
         //TitleBarFunction
-
-        private void RestoreWindowPosition()
+       private void RestoreWindowPosition()
         {
             
             try
@@ -367,7 +350,6 @@ namespace LGAConnectSOMS
         }
 
         //DragWIindows
-
         private Point _mouseLoc;        
         private void DragWindowsPanel_MouseDown(object sender, MouseEventArgs e)
         {

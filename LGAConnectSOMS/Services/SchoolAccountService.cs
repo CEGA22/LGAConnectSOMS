@@ -18,6 +18,13 @@ namespace LGAConnectSOMS.Services
             return content;
         }
 
+        public async Task<IEnumerable<SchoolAccount>> GetSchoolAccountOnly()
+        {
+            var apiGateway = new SchoolAccountGateway();
+            var content = await apiGateway.GetSchoolAccountOnly();
+            return content;
+        }
+
         public async Task<IEnumerable<SchoolAccount>> GetSchoolAccountPassword(string email)
         {
             var apiGateway = new SchoolAccountGateway();

@@ -143,13 +143,22 @@ namespace LGAConnectSOMS.Views
 
                 if (IsSuccess)
                 {
-                    MessageBox.Show("You have updated Administrator Details");
+                    string Successmessage = "You have updated Administrator Details";
+                    string Successtitle = "LGA Connect SOMS Admin records";
+                    MessageBoxButtons Successbuttons = MessageBoxButtons.OK;
+
+                    DialogResult Successresult = MessageBox.Show(Successmessage, Successtitle, Successbuttons, MessageBoxIcon.Information);
+                    if (Successresult == DialogResult.OK)
+                    {
+                        this.Hide();
+                    }
                 }
 
                 else
                 {
-                    MessageBox.Show("Update Administrator Details Not Successfull");
-                }
+                    MessageBox.Show("Update Administrator Details Unsuccessful");
+                }               
+                             
             }
             catch (Exception x)
             {

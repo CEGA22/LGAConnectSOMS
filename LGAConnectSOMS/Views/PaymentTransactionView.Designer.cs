@@ -38,7 +38,7 @@ namespace LGAConnectSOMS.Views
             this.lbFacultyTitle = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.Note = new System.Windows.Forms.RichTextBox();
-            this.btnClose = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtAmount
@@ -96,9 +96,9 @@ namespace LGAConnectSOMS.Views
             this.btnAddTransactionRecord.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddTransactionRecord.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddTransactionRecord.ForeColor = System.Drawing.Color.Black;
-            this.btnAddTransactionRecord.Location = new System.Drawing.Point(263, 358);
+            this.btnAddTransactionRecord.Location = new System.Drawing.Point(581, 394);
             this.btnAddTransactionRecord.Name = "btnAddTransactionRecord";
-            this.btnAddTransactionRecord.Size = new System.Drawing.Size(233, 41);
+            this.btnAddTransactionRecord.Size = new System.Drawing.Size(133, 41);
             this.btnAddTransactionRecord.TabIndex = 57;
             this.btnAddTransactionRecord.Text = "Save";
             this.btnAddTransactionRecord.UseVisualStyleBackColor = false;
@@ -144,31 +144,32 @@ namespace LGAConnectSOMS.Views
             this.Note.TabIndex = 89;
             this.Note.Text = "";
             // 
-            // btnClose
+            // button1
             // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnClose.FlatAppearance.BorderSize = 0;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Image = global::LGAConnectSOMS.Properties.Resources.CloseBlack;
-            this.btnClose.Location = new System.Drawing.Point(683, 0);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(45, 35);
-            this.btnClose.TabIndex = 85;
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            this.btnClose.MouseEnter += new System.EventHandler(this.btnClose_MouseEnter);
-            this.btnClose.MouseLeave += new System.EventHandler(this.btnClose_MouseLeave);
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.BackColor = System.Drawing.Color.Gainsboro;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(430, 394);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(133, 41);
+            this.button1.TabIndex = 90;
+            this.button1.Text = "Cancel";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // PaymentTransactionView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
-            this.ClientSize = new System.Drawing.Size(726, 411);
+            this.ClientSize = new System.Drawing.Size(726, 447);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.Note);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lbFacultyTitle);
             this.Controls.Add(this.txtAmount);
@@ -192,10 +193,10 @@ namespace LGAConnectSOMS.Views
         private System.Windows.Forms.TextBox txtStudentNumber;
         private System.Windows.Forms.Label lblStudentNumber;
         private System.Windows.Forms.Button btnAddTransactionRecord;
-        private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lbFacultyTitle;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RichTextBox Note;
+        private System.Windows.Forms.Button button1;
     }
 }

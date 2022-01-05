@@ -39,5 +39,11 @@ namespace LGAConnectSOMS.Gateway
             string url = $"{BaseUrl}/update_information";
             return await WebMethods.MakePostRequest(url, request);
         }
+
+        public async Task<string> DeleteSection(int ID)
+        {
+            string url = $"{BaseUrl}/delete_information/{ID}";
+            return await WebMethods.MakePostRequest(url, ID);
+        }
     }
 }

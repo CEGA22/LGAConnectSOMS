@@ -29,6 +29,21 @@ namespace LGAConnectSOMS.Gateway
             }
         }
 
+        public async Task<IEnumerable<SchoolAccount>> GetSchoolAccountOnly()
+        {
+            try
+            {
+                string url = BaseUrl + "/get_accountOnly";
+                var content = await WebMethods.MakeGetRequest(url);
+                var result = JsonConvert.DeserializeObject<IEnumerable<SchoolAccount>>(content);
+                return result;
+            }
+            catch
+            {
+                return Enumerable.Empty<SchoolAccount>();
+            }
+        }
+
         public async Task<IEnumerable<SchoolAccount>> GetSchoolAccountPassword(string email)
         {
             try
