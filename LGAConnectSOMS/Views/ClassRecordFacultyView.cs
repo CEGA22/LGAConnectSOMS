@@ -42,12 +42,14 @@ namespace LGAConnectSOMS.Views
 
         public async void LoadData()
         {
+            PanelLoadingSaveGrades.Hide();
             await ClassRecords();
             await FinalGradeRecords();
             await LoadFacultySubjects();
             await LoadSubjects();
             GradeLvelDropDown();
             await DataGridFlickerFix();
+            
             //SetupDataGrid();
         }
 
@@ -2784,6 +2786,7 @@ namespace LGAConnectSOMS.Views
                 var subjectid = Subjects.First(x => x.SubjectName.Equals(subject) && x.GradeLevel == gradelevel).ID;
                 try
                 {
+                    PanelLoadingSaveGrades.Show();
                     ClassRecordRequestService classRecordRequestService = new ClassRecordRequestService();
                     IsSuccess = await classRecordRequestService.UpdateClassRecordRequest(new ClassRecordRequest
                     {
@@ -3013,6 +3016,7 @@ namespace LGAConnectSOMS.Views
                 }
             }
 
+            PanelLoadingSaveGrades.Hide();
             MessageBox.Show("Successfully Save");
         }
 

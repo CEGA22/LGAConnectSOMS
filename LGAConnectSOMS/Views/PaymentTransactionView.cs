@@ -81,7 +81,7 @@ namespace LGAConnectSOMS.Views
 
                     DialogResult Successresult = MessageBox.Show(Successmessage, Successtitle, Successbuttons, MessageBoxIcon.Information);
                     if (Successresult == DialogResult.OK)
-                    {
+                    {                       
                         this.Hide();
                     }
                 }

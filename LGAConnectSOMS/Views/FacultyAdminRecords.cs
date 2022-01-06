@@ -141,8 +141,7 @@ namespace LGAConnectSOMS.Views
             this.AdminDataGridView.Columns[6].Visible = false;           
         }
         public async Task DisplayFacultyRecordData()
-        {
-            
+        {          
             SchoolAccountService schoolAccountService = new SchoolAccountService();
             schoolAccounts = await Task.Run(() => schoolAccountService.GetSchoolAccountDetails());
             var facultylist = schoolAccounts.Where(x => x.isAdmin == 0).ToList();
@@ -665,6 +664,16 @@ namespace LGAConnectSOMS.Views
         {
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
                 e.Handled = true;
+        }
+
+        private async void btnRefresh_Click(object sender, EventArgs e)
+        {
+            await DisplayFacultyRecordData();
+        }
+
+        private async void button2_Click(object sender, EventArgs e)
+        {
+            await DisplayAdminRecordData();
         }
     }
 }

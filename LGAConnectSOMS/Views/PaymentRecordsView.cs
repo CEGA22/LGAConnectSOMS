@@ -268,5 +268,11 @@ namespace LGAConnectSOMS.Views
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
                 e.Handled = true;
         }
+
+        private async void btnRefresh_Click(object sender, EventArgs e)
+        {
+
+            await DisplayTransactionHistory();
+        }
     }
 }

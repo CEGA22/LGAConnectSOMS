@@ -88,7 +88,7 @@ namespace LGAConnectSOMS.Views
                     if (IsSuccess)
                     {                        
                         MessageBox.Show("Delete Admin Account Successfully");
-                        clearEditData();                       
+                        this.Hide();                      
                     }
 
                     else

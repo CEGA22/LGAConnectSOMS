@@ -117,7 +117,7 @@ namespace LGAConnectSOMS.Views
                     if (IsSuccess)
                     {
                         MessageBox.Show("Delete Faculty Account Successfully");
-                        clearEditData();
+                        this.Hide();
                     }
 
                     else

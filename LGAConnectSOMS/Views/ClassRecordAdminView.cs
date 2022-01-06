@@ -766,5 +766,11 @@ namespace LGAConnectSOMS.Views
         {
             
         }
+
+        private async void btnRefresh_Click(object sender, EventArgs e)
+        {
+            ClassRecordDataGridView.DataSource = null;
+            await DisplayClassRecordData();
+        }
     }
     }
