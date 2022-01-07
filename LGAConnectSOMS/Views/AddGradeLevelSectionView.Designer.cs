@@ -151,6 +151,7 @@ namespace LGAConnectSOMS.Views
             this.HighestPossiblescorePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.HighestPossiblescorePictureBox.TabIndex = 61;
             this.HighestPossiblescorePictureBox.TabStop = false;
+            this.HighestPossiblescorePictureBox.Visible = false;
             // 
             // txtSchoolYearEnd
             // 
@@ -162,6 +163,7 @@ namespace LGAConnectSOMS.Views
             this.txtSchoolYearEnd.Size = new System.Drawing.Size(115, 27);
             this.txtSchoolYearEnd.TabIndex = 62;
             this.txtSchoolYearEnd.TabStop = false;
+            this.txtSchoolYearEnd.Visible = false;
             // 
             // CYStart
             // 
@@ -173,6 +175,7 @@ namespace LGAConnectSOMS.Views
             this.CYStart.Size = new System.Drawing.Size(115, 27);
             this.CYStart.TabIndex = 63;
             this.CYStart.TabStop = false;
+            this.CYStart.Visible = false;
             // 
             // AddGradeLevelSectionView
             // 

@@ -49,7 +49,7 @@ namespace LGAConnectSOMS.Views
         List<int> AdminnumberList = new List<int>();
         StringBuilder concatenatedString = new StringBuilder();
         public void RandomAdminNumber()
-        {           
+        {
             var result = verification();
             var students = schoolAccounts.ToList();
             var results = schoolAccounts.Where(x => x.schoolNumber.ToString().Contains(result)).ToList();
@@ -141,11 +141,13 @@ namespace LGAConnectSOMS.Views
             this.AdminDataGridView.Columns[6].Visible = false;           
         }
         public async Task DisplayFacultyRecordData()
-        {          
+        {
+            lblLoading.Show();
             SchoolAccountService schoolAccountService = new SchoolAccountService();
             schoolAccounts = await Task.Run(() => schoolAccountService.GetSchoolAccountDetails());
             var facultylist = schoolAccounts.Where(x => x.isAdmin == 0).ToList();
             FacultyDataGridView.DataSource = facultylist;
+            lblLoading.Hide();
             txtSearchFaculty.Enabled = true;
             FacultyDataGridView.CurrentCell = null;
             this.FacultyDataGridView.Columns[0].Visible = false;
@@ -463,11 +465,21 @@ namespace LGAConnectSOMS.Views
                         string title = "New Administrator account created";
                         MessageBoxButtons buttons = MessageBoxButtons.OK;
                         MessageBox.Show(message, title, buttons, MessageBoxIcon.Information);
+                        txtLastname.Text = "";
+                        txtMiddlename.Text = "";
+                        txtFirstname.Text = "";
+                        txtTeacherNumber.Text = "";
+                        txtPassword.Text = "";
+                        txtMobileNumber.Text = "";
+                        cbGender.Text = "";
+                        txtAdminAddress.Text = "";
+                        txtAdminEmail.Text = "";
+                        AdminPictureBox.Image = null;
                     }
 
                     else
                     {
-                        string message = "Added new Administrator Unsucessfull";
+                        string message = "Added new Administrator Unsucessful";
                         string title = "Error";
                         MessageBoxButtons buttons = MessageBoxButtons.OK;
                         MessageBox.Show(message, title, buttons, MessageBoxIcon.Error);
@@ -563,11 +575,11 @@ namespace LGAConnectSOMS.Views
                         Email = txtFacultyEmail.Text,
                         SchoolNumber = txtFacultyTeacherNumber.Text,
                         Password = txtFacultyPassword.Text,
-                        MobileNumber = txtFacultyMobileNumber.Text,
-                        TeacherProfile = ImageToByteArray(image),
+                        MobileNumber = txtFacultyMobileNumber.Text,                        
                         Gender = cbFacultyGender.Text,                       
                         IsAdmin = 0,
-                        IsFaculty = 1
+                        IsFaculty = 1,
+                        TeacherProfile = ImageToByteArray(image),
                     });
 
                     if (IsSuccess)
@@ -576,11 +588,21 @@ namespace LGAConnectSOMS.Views
                         string title = "New Faculty account created";
                         MessageBoxButtons buttons = MessageBoxButtons.OK;
                         MessageBox.Show(message, title, buttons, MessageBoxIcon.Information);
+                        txtFacultyLastname.Text = "";
+                        txtFacultyMiddlename.Text = "";
+                        txtFacultyFirstname.Text = "";
+                        txtFacultyTeacherNumber.Text = "";
+                        txtFacultyPassword.Text = "";
+                        txtFacultyMobileNumber.Text = "";
+                        cbFacultyGender.Text = "";
+                        txtFacultyAddress.Text = "";
+                        txtFacultyEmail.Text = "";
+                        FacultyPictureBox.Image = null;
                     }
 
                     else
                     {
-                        string message = "Added new Faculty Unsucessfull";
+                        string message = "Added new Faculty Unsucessful";
                         string title = "Error";
                         MessageBoxButtons buttons = MessageBoxButtons.OK;
                         MessageBox.Show(message, title, buttons, MessageBoxIcon.Error);
@@ -668,11 +690,13 @@ namespace LGAConnectSOMS.Views
 
         private async void btnRefresh_Click(object sender, EventArgs e)
         {
+            FacultyDataGridView.DataSource = null;
             await DisplayFacultyRecordData();
         }
 
         private async void button2_Click(object sender, EventArgs e)
         {
+            AdminDataGridView.DataSource = null;
             await DisplayAdminRecordData();
         }
     }

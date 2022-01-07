@@ -40,10 +40,10 @@ namespace LGAConnectSOMS.Views
         {
             DateTime todaysDate = DateTime.Now;
             var weekday = todaysDate.DayOfWeek.ToString();
+            await ClassSchedules(weekday);
             await LoadFaculty();
             await LoadSubjects();
-            await LoadGradeLevelSection();
-            await ClassSchedules(weekday);         
+            await LoadGradeLevelSection();              
         }
 
         //NavigationToOtherForm
@@ -66,11 +66,13 @@ namespace LGAConnectSOMS.Views
             facultySubjects = result.ToList();
         }
         public List<ClassSchedule> schedulelist;
+        public IEnumerable<ClassSchedule> schedule = new List<ClassSchedule>();
         public async Task ClassSchedules(string weekday)
         {
             var number = 1;
             ClassScheduleService classScheduleService = new ClassScheduleService();          
             var schedules = await classScheduleService.GetClassScheduleDetails();
+            schedule = await classScheduleService.GetClassScheduleDetails();
             schedulelist = schedules.ToList();           
             ClassScheduleDataGridView.DataSource = schedulelist;
             ClassScheduleDataGridView.Columns[0].Visible = false;
@@ -422,7 +424,7 @@ namespace LGAConnectSOMS.Views
         public async Task LoadGradeLevelSection()
         {
             GradeLevelSectionService gradeLevelSectionService = new GradeLevelSectionService();
-            gradeLevelSections = await Task.Run(() => gradeLevelSectionService.GetGradeLevel());
+            gradeLevelSections = await gradeLevelSectionService.GetGradeLevel();
             var gradelevelslist = gradeLevelSections.ToList();
         }
 
@@ -430,14 +432,14 @@ namespace LGAConnectSOMS.Views
         public async Task LoadSubjects()
         {
             SubjectsService subjectsService = new SubjectsService();
-            subjects = await Task.Run(() => subjectsService.GetSubjects());
+            subjects = await subjectsService.GetSubjects();
         }
 
         IEnumerable<SchoolAccount> schoolAccounts = new List<SchoolAccount>();
         public async Task LoadFaculty()
         {
             SchoolAccountService schoolAccountService = new SchoolAccountService();
-            schoolAccounts = await Task.Run(() => schoolAccountService.GetSchoolAccountOnly());
+            schoolAccounts = await schoolAccountService.GetSchoolAccountOnly();
             var facultylist = schoolAccounts.Where(x => x.isAdmin == 0).Select(x => x.Fullname);
             cmbLastname.DataSource = facultylist.ToList();
         }
@@ -600,6 +602,48 @@ namespace LGAConnectSOMS.Views
                 cmbCustomDays.Hide();
                 lblRepeatEvery.Hide();
                 cmbDays.SelectedIndex = -1;
+            }
+        }
+
+        private void ClassScheduleDataGridView_Click(object sender, EventArgs e)
+        {
+            var selectedFullnameTeacher = ClassScheduleDataGridView.CurrentRow.Cells[2].Value.ToString() + " " + ClassScheduleDataGridView.CurrentRow.Cells[1].Value.ToString();
+            var selectedFirstnameTeacher = ClassScheduleDataGridView.CurrentRow.Cells[2].Value.ToString();
+            var selectedLastnameTeacher = ClassScheduleDataGridView.CurrentRow.Cells[1].Value.ToString();
+            var selectedGradelevel = ClassScheduleDataGridView.CurrentRow.Cells[8].Value.ToString();
+            //var selectedSection = ClassScheduleDataGridView.CurrentRow.Cells[0].Value.ToString();          
+            var selectedsubject = ClassScheduleDataGridView.CurrentRow.Cells[5].Value.ToString();
+            var selectedStartTime = ClassScheduleDataGridView.CurrentRow.Cells[3].Value.ToString();
+            var selectedEndTime = ClassScheduleDataGridView.CurrentRow.Cells[4].Value.ToString();
+            var selecteddays = ClassScheduleDataGridView.CurrentRow.Cells[6].Value.ToString();
+
+            //var result = schedule.Where(x => x.Firstname.Equals(selectedFirstnameTeacher) && x.Lastname.Equals(selectedLastnameTeacher) && x.GradeLevel.Equals(selectedGradelevel) && x.Subject.Equals(selectedsubject) && x.StartTime.Equals(selectedStartTime) && x.EndTime.Equals(selectedEndTime) && x.WeekDay.Equals(selecteddays));
+
+            var result = schedule.Where(x => x.Firstname.Equals(selectedFirstnameTeacher) && x.Lastname.Equals(selectedLastnameTeacher) && x.GradeLevel.Equals(selectedGradelevel) && x.Subject.Equals(selectedsubject) && x.StartTime.Equals(selectedStartTime) && x.EndTime.Equals(selectedEndTime));
+
+            var count = result.Count();
+            EditClassScheduleView editClassScheduleView = new EditClassScheduleView();
+            if (count == 5)
+            {
+                
+                editClassScheduleView.cmbDays.Text = "Every weekday (Mon - Fri)";
+                editClassScheduleView.txtFullname.Text = selectedFirstnameTeacher + " " + selectedLastnameTeacher;
+                editClassScheduleView.txtGradeLevel.Text = selectedGradelevel;
+                editClassScheduleView.txtSubject.Text = selectedsubject;
+                editClassScheduleView.cmbStartTime.Text = selectedStartTime;
+                editClassScheduleView.cmbEndTime.Text = selectedEndTime;                
+                editClassScheduleView.ShowDialog();
+            }
+
+            else
+            {
+                editClassScheduleView.cmbDays.Text = selecteddays;                
+                editClassScheduleView.txtFullname.Text = selectedFirstnameTeacher + " " + selectedLastnameTeacher;
+                editClassScheduleView.txtGradeLevel.Text = selectedGradelevel;
+                editClassScheduleView.txtSubject.Text = selectedsubject;
+                editClassScheduleView.cmbStartTime.Text = selectedStartTime;
+                editClassScheduleView.cmbEndTime.Text = selectedEndTime;
+                editClassScheduleView.ShowDialog();
             }
         }
     }

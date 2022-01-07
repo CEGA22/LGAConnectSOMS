@@ -10,6 +10,8 @@ namespace LGAConnectSOMS.Models
     {
         public int TeacherID { get; set; }
 
+        public int SubjectID { get; set; }
+
         public string SubjectName { get; set; }
 
         public string GradeLevel { get; set; }

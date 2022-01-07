@@ -116,7 +116,10 @@ namespace LGAConnectSOMS.Views
 
                     if (IsSuccess)
                     {
-                        MessageBox.Show("Delete Faculty Account Successfully");
+                        string Deletemessage = "Delete Faculty record Successfully";
+                        string Deletetitle = "LGA Connect SOMS";
+                        MessageBoxButtons Deletebuttons = MessageBoxButtons.OK;
+                        MessageBox.Show(Deletemessage, Deletetitle, Deletebuttons, MessageBoxIcon.Information);                     
                         this.Hide();
                     }
 

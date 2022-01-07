@@ -332,24 +332,24 @@ namespace LGAConnectSOMS.Views
             // 
             this.lblArticelDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblArticelDescription.AutoSize = true;
+            this.lblArticelDescription.AutoEllipsis = true;
             this.lblArticelDescription.BackColor = System.Drawing.Color.Transparent;
             this.lblArticelDescription.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblArticelDescription.Location = new System.Drawing.Point(15, 208);
             this.lblArticelDescription.Name = "lblArticelDescription";
-            this.lblArticelDescription.Size = new System.Drawing.Size(0, 19);
+            this.lblArticelDescription.Size = new System.Drawing.Size(748, 72);
             this.lblArticelDescription.TabIndex = 7;
             // 
             // lblArticleTitle
             // 
             this.lblArticleTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblArticleTitle.AutoSize = true;
+            this.lblArticleTitle.AutoEllipsis = true;
             this.lblArticleTitle.BackColor = System.Drawing.Color.Transparent;
             this.lblArticleTitle.Font = new System.Drawing.Font("Tw Cen MT", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblArticleTitle.Location = new System.Drawing.Point(17, 169);
+            this.lblArticleTitle.Location = new System.Drawing.Point(15, 174);
             this.lblArticleTitle.Name = "lblArticleTitle";
-            this.lblArticleTitle.Size = new System.Drawing.Size(0, 24);
+            this.lblArticleTitle.Size = new System.Drawing.Size(352, 24);
             this.lblArticleTitle.TabIndex = 6;
             // 
             // DragWindowsPanel

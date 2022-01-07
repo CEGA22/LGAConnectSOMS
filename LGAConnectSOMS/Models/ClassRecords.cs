@@ -66,11 +66,11 @@ namespace LGAConnectSOMS.Models
 
         public double QuarterlyGrade { get; set; }
 
-        public string SubjectName { get; set; }
+        public int SubjectName { get; set; }
 
         public string SchoolYearStart { get; set; }
 
-        public int Grade_Level { get; set; }     
+        public string Grade_Level { get; set; }     
 
         public string SectionName { get; set; }
 

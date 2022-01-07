@@ -86,13 +86,17 @@ namespace LGAConnectSOMS.Views
                     var IsSuccess = await schoolAccountRequestService.DeleteSchoolAccountRequest(id);
 
                     if (IsSuccess)
-                    {                        
-                        MessageBox.Show("Delete Admin Account Successfully");
+                    {
+                        string Deletemessage = "Delete Admin record Successfully";
+                        string Deletetitle = "LGA Connect SOMS";
+                        MessageBoxButtons Deletebuttons = MessageBoxButtons.OK;
+                        MessageBox.Show(Deletemessage, Deletetitle, Deletebuttons, MessageBoxIcon.Information);                      
                         this.Hide();                      
                     }
 
                     else
                     {
+                        
                         MessageBox.Show("Delete Admin Account Not Successfull");
                     }
                 }

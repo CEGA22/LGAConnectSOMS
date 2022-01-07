@@ -66,8 +66,7 @@ namespace LGAConnectSOMS.Views
                 return ms.ToArray();
             }
         }
-
-
+      
         private async void btnAddStudent_Click(object sender, EventArgs e)
         {
             
@@ -88,39 +87,22 @@ namespace LGAConnectSOMS.Views
                     var IsSucess = await gradeLevelSectionService.CreateGradeLevelSectionRequest(new GradeLevelSection
                     {
                         GradeLevel = gradelevelid,
-                        SectionName = txtSectionName.Text
+                        SectionName = txtSectionName.Text,
+                        Lastname = "Highest possible score",
+                        Middlename = "H",
+                        Firstname = "(HPS)",
+                        Address = "ASASAS",
+                        Birthday = Convert.ToDateTime(dateonly),
+                        ParentsName = "SASA",
+                        StudentNumber = "0000000000",
+                        Password = "HPS123",
+                        mobileNumber = "01234567891",
+                        Email = "SASASA",
+                        Gender = "MALE",
+                        StudentProfile = ImageToByteArray(image),                      
+                        SchoolYearStart = int.Parse(CYStart.Text),
+                        SchoolYearEnd = int.Parse(txtSchoolYearEnd.Text),
                     });
-                   
-                    try
-                    {
-                        await DisplayGradeLevelSections();
-                        var selectedGradeLevelInsert = cmbGradelevel.SelectedItem;
-                        var gradelevelidInsert = gradeLevelSections.First(x => x.GradeLevels.Equals(selectedGradeLevelInsert) && x.SectionName.Equals(txtSectionName.Text)).Id;                       
-                        StudentRequestService studentRequestService = new StudentRequestService();
-                        IsSucess = await studentRequestService.CreateStudentRequest(new StudentRequest
-                        {
-                            Lastname = "Highest possible score",
-                            Middlename = "H",
-                            Firstname = "(HPS)",
-                            Address = "ASASAS",
-                            Birthday = Convert.ToDateTime(dateonly),
-                            ParentsName = "SASA",
-                            StudentNumber = "0000000000",
-                            Password = "HPS123",
-                            mobileNumber = "01234567891",
-                            Email = "SASASA",
-                            Gender = "MALE",
-                            GradeLevelid = gradelevelidInsert,
-                            StudentProfile = ImageToByteArray(image),
-                            SchoolYearStart = int.Parse(CYStart.Text),
-                            SchoolYearEnd = int.Parse(txtSchoolYearEnd.Text),
-                            //SubjectsName = subjectid
-                        });
-                    }
-                    catch (Exception x)
-                    {
-                        MessageBox.Show(x.Message);
-                    }
 
                     if (IsSucess)
                     {
@@ -131,7 +113,7 @@ namespace LGAConnectSOMS.Views
                         if (results == DialogResult.OK)
                         {
                             this.Hide();
-                        }                                             
+                        }
                     }
 
                     else
@@ -141,15 +123,15 @@ namespace LGAConnectSOMS.Views
                         MessageBoxButtons buttons = MessageBoxButtons.OK;
                         DialogResult results = MessageBox.Show(message, title, buttons, MessageBoxIcon.Error);
                         if (results == DialogResult.OK)
-                        {                           
-                        }                       
+                        {
+                        }
                     }
 
                 }
                 catch (Exception x)
                 {
                     MessageBox.Show(x.Message);
-                }
+                }                         
             }
             else
             {

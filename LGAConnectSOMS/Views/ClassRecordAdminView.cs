@@ -135,7 +135,7 @@ namespace LGAConnectSOMS.Views
             CBGradeLevel.DataSource = gradelevelslist.ToList();
             var addgradelevelslist = gradeLevelSections.Select(x => x.GradeLevels).Distinct().ToList();
             cmbGradeLevels.DataSource = addgradelevelslist.ToList();
-            cmbGradeLevels.SelectedIndex = -1;
+            cmbGradeLevels.SelectedIndex = -1;           
             //CBGradeLevel.SelectedIndex = 0;
             //CBSection.SelectedIndex = 0;
         }
@@ -156,9 +156,26 @@ namespace LGAConnectSOMS.Views
             GradeLevelSectionService gradeLevelSectionService = new GradeLevelSectionService();
             gradeLevelSections = await Task.Run(() => gradeLevelSectionService.GetGradeLevel());
             var gradelevelslist = gradeLevelSections;
-            GradeLevelSectionDataGridView.DataSource = gradelevelslist.ToList();                     
+            GradeLevelSectionDataGridView.DataSource = gradelevelslist.ToList();
             GradeLevelSectionDataGridView.Columns[0].Visible = false;
             GradeLevelSectionDataGridView.Columns[1].Visible = false;
+            GradeLevelSectionDataGridView.Columns[4].Visible = false;
+            GradeLevelSectionDataGridView.Columns[5].Visible = false;
+            GradeLevelSectionDataGridView.Columns[6].Visible = false;
+            GradeLevelSectionDataGridView.Columns[7].Visible = false;
+            GradeLevelSectionDataGridView.Columns[8].Visible = false;
+            GradeLevelSectionDataGridView.Columns[9].Visible = false;
+            GradeLevelSectionDataGridView.Columns[10].Visible = false;
+            GradeLevelSectionDataGridView.Columns[11].Visible = false;
+            GradeLevelSectionDataGridView.Columns[12].Visible = false;
+            GradeLevelSectionDataGridView.Columns[13].Visible = false;
+            GradeLevelSectionDataGridView.Columns[14].Visible = false;
+            GradeLevelSectionDataGridView.Columns[15].Visible = false;
+            GradeLevelSectionDataGridView.Columns[16].Visible = false;
+            GradeLevelSectionDataGridView.Columns[17].Visible = false;
+            GradeLevelSectionDataGridView.Columns[18].Visible = false;
+            GradeLevelSectionDataGridView.Columns[19].Visible = false;
+            GradeLevelSectionDataGridView.Columns[20].Visible = false;
             lblLoadingGradeLevelSection.Hide();
             GradeLevelSectionDataGridView.CurrentCell = null;
         }

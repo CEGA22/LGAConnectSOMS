@@ -320,12 +320,12 @@ namespace LGAConnectSOMS
             // 
             this.lblArticelDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblArticelDescription.AutoSize = true;
+            this.lblArticelDescription.AutoEllipsis = true;
             this.lblArticelDescription.BackColor = System.Drawing.Color.Transparent;
             this.lblArticelDescription.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblArticelDescription.Location = new System.Drawing.Point(12, 401);
             this.lblArticelDescription.Name = "lblArticelDescription";
-            this.lblArticelDescription.Size = new System.Drawing.Size(0, 22);
+            this.lblArticelDescription.Size = new System.Drawing.Size(741, 95);
             this.lblArticelDescription.TabIndex = 5;
             this.lblArticelDescription.UseCompatibleTextRendering = true;
             // 
@@ -333,11 +333,12 @@ namespace LGAConnectSOMS
             // 
             this.lblArticleTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblArticleTitle.AutoEllipsis = true;
             this.lblArticleTitle.BackColor = System.Drawing.Color.Transparent;
             this.lblArticleTitle.Font = new System.Drawing.Font("Tw Cen MT", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblArticleTitle.Location = new System.Drawing.Point(12, 357);
             this.lblArticleTitle.Name = "lblArticleTitle";
-            this.lblArticleTitle.Size = new System.Drawing.Size(96, 29);
+            this.lblArticleTitle.Size = new System.Drawing.Size(267, 29);
             this.lblArticleTitle.TabIndex = 4;
             this.lblArticleTitle.UseCompatibleTextRendering = true;
             // 
