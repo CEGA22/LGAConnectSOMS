@@ -61,8 +61,8 @@ namespace LGAConnectSOMS.Views
         public List<FacultySubjects> facultySubjects;
         public async Task SubjectsHandled(int ID)
         {           
-            FacultySubjectsService facultySubjectsService = new FacultySubjectsService();
-            var result = await facultySubjectsService.GetFacultySubjects(ID);
+            FacultyService facultyService = new FacultyService();
+            var result = await facultyService.GetFacultySubjects(ID);
             facultySubjects = result.ToList();
         }
         public List<ClassSchedule> schedulelist;
@@ -583,8 +583,8 @@ namespace LGAConnectSOMS.Views
         {
             var selectedTeacher = cmbLastname.Text;
             var teacherid = schoolAccounts.First(x => x.Fullname == selectedTeacher).id;
-            FacultySubjectsService facultySubjectsService = new FacultySubjectsService();
-            var result = await facultySubjectsService.GetFacultySubjects(teacherid);
+            FacultyService facultyService = new FacultyService();
+            var result = await facultyService.GetFacultySubjects(teacherid);
             facultySubjects = result.ToList();
             var gradelevel = facultySubjects.Select(x => x.GradeLevel).Distinct();
             cmbGradeLevels.DataSource = gradelevel.ToList();

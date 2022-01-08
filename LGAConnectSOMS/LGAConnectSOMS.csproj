@@ -93,7 +93,7 @@
     <Compile Include="Gateway\AboutGateway.cs" />
     <Compile Include="Gateway\ClassRecordsGateway.cs" />
     <Compile Include="Gateway\ClassScheduleGateway.cs" />
-    <Compile Include="Gateway\FacultySubjectsGateway.cs" />
+    <Compile Include="Gateway\FacultyGateway.cs" />
     <Compile Include="Gateway\FinalGradeGateway.cs" />
     <Compile Include="Gateway\GradeLevelGateway.cs" />
     <Compile Include="Gateway\GradeLevelRequestGateway.cs" />
@@ -115,6 +115,7 @@
     <Compile Include="Models\ClassRecords.cs" />
     <Compile Include="Models\ClassSchedule.cs" />
     <Compile Include="Models\ClassScheduleRequest.cs" />
+    <Compile Include="Models\FacultyModel.cs" />
     <Compile Include="Models\FacultySubjects.cs" />
     <Compile Include="Models\FinalGrade.cs" />
     <Compile Include="Models\FinalGradePerSubject.cs" />
@@ -130,6 +131,8 @@
     <Compile Include="Models\PaymentScheme.cs" />
     <Compile Include="Models\SchoolAccount.cs" />
     <Compile Include="Models\SchoolAccountRequest.cs" />
+    <Compile Include="Models\SectionsHandled.cs" />
+    <Compile Include="Models\SectionsHandledRequest.cs" />
     <Compile Include="Models\StudentAccount.cs" />
     <Compile Include="Models\StudentBalance.cs" />
     <Compile Include="Models\StudentBalanceRequest.cs" />
@@ -143,7 +146,7 @@
     <Compile Include="Services\ClassRecordsService.cs" />
     <Compile Include="Services\ClassScheduleService.cs" />
     <Compile Include="Services\DataAccess.cs" />
-    <Compile Include="Services\FacultySubjectsService.cs" />
+    <Compile Include="Services\FacultyService.cs" />
     <Compile Include="Services\FinalGradeService.cs" />
     <Compile Include="Services\GradeLevelRequestService.cs" />
     <Compile Include="Services\GradeLevelSectionService.cs" />
@@ -335,6 +338,12 @@
     <Compile Include="Views\PaymentTransactionView.Designer.cs">
       <DependentUpon>PaymentTransactionView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\SectionsManagementView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\SectionsManagementView.Designer.cs">
+      <DependentUpon>SectionsManagementView.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Views\AboutPageView.resx">
       <DependentUpon>AboutPageView.cs</DependentUpon>
     </EmbeddedResource>
@@ -431,6 +440,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\PaymentTransactionView.resx">
       <DependentUpon>PaymentTransactionView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\SectionsManagementView.resx">
+      <DependentUpon>SectionsManagementView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

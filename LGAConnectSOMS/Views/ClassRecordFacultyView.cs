@@ -2079,7 +2079,7 @@ namespace LGAConnectSOMS.Views
         public async Task LoadFacultySubjects()
         {
             var ID = Settings.Default.ID;
-            FacultySubjectsService facultySubjectsService = new FacultySubjectsService();
+            FacultyService facultySubjectsService = new FacultyService();
             var facultySubjectList = await facultySubjectsService.GetFacultySubjects(ID);
             FacultySubjects = facultySubjectList.ToList();
         }
