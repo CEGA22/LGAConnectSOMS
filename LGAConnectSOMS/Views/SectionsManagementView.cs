@@ -74,7 +74,7 @@ namespace LGAConnectSOMS.Views
                 lblFacultyLoading.Invoke((MethodInvoker)(() => lblFacultyLoading.Visible = true));
 
                 SchoolAccountService schoolAccountService = new SchoolAccountService();
-                _schoolAccounts = await schoolAccountService.GetSchoolAccountDetails();
+                _schoolAccounts = await schoolAccountService.GetSchoolAccountOnly();
             }
             catch
             {

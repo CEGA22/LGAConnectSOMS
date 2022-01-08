@@ -12,6 +12,8 @@ namespace LGAConnectSOMS.Models
 
         public string StudentName { get; set; }
 
+        public string SectionName { get; set; }
+
         public int SubjectID { get; set; }
 
         public string SubjectName { get; set; }

@@ -25,8 +25,11 @@ namespace LGAConnectSOMS.Views
         List<ClassRecords> FirstGradingList = new List<ClassRecords>();
         List<ClassRecords> SecondGradingList = new List<ClassRecords>();
         List<ClassRecords> ThirdGradingList = new List<ClassRecords>();
-        List<ClassRecords> FourthGradingList = new List<ClassRecords>();      
+        List<ClassRecords> FourthGradingList = new List<ClassRecords>();
 
+        private string _selectedSection;
+
+        IEnumerable<FinalGrade> finalGrades = Enumerable.Empty<FinalGrade>();
         public ClassRecordFacultyView()
         {
             InitializeComponent();
@@ -46,8 +49,7 @@ namespace LGAConnectSOMS.Views
             await LoadFacultySubjects();
             await LoadSubjects();
             GradeLvelDropDown();
-            await ClassRecords();
-            await FinalGradeRecords();           
+            await ClassRecords();        
             await DataGridFlickerFix();
             
             //SetupDataGrid();
@@ -2084,18 +2086,18 @@ namespace LGAConnectSOMS.Views
             FacultySubjects = facultySubjectList.ToList();
         }
 
-        IEnumerable<FinalGrade> finalGrades = new List<FinalGrade>();
         IEnumerable<FinalGrade> finalGradesfiltered = new List<FinalGrade>();
         public async Task FinalGradeRecords()
         {           
             var ID = Settings.Default.ID;
             FinalGradeService finalGradeService = new FinalGradeService();
-            var records = await finalGradeService.GetFinalGrade(ID);
-            finalGrades = records.ToList();
-            var subjectsList = records.Select(x => x.SubjectName).Distinct().ToList();
-            var studentsList = records.Select(x => x.StudentName).Distinct();
+            finalGrades = await finalGradeService.GetFinalGrade(ID);
+
+            var subjectsList = finalGrades.Where(x => x.SectionName == _selectedSection).Select(x => x.SubjectName).Distinct().ToList();
+            var studentsList = finalGrades.Where(x => x.SectionName == _selectedSection).Select(x => x.StudentName).Distinct();
 
             FinalGradeDataGridView.AutoGenerateColumns = false;
+            FinalGradeDataGridView.Columns.Clear();
             FinalGradeDataGridView.Columns.Add("Fullname", "Fullname");
 
             foreach (var subject in subjectsList)
@@ -2118,15 +2120,16 @@ namespace LGAConnectSOMS.Views
 
                 for (var x = 0; x < subjectCtr; x++)
                 {
-                    row.Cells[x + 1].Value = records.FirstOrDefault(o => o.SubjectName.ToLowerInvariant() == subjectsList[x].ToLowerInvariant() && o.StudentName.ToLowerInvariant() == student.ToLowerInvariant()).finalGrade;
+                    row.Cells[x + 1].Value = finalGrades.FirstOrDefault(o => o.SubjectName.ToLowerInvariant() == subjectsList[x].ToLowerInvariant() && o.StudentName.ToLowerInvariant() == student.ToLowerInvariant()).finalGrade;
                 }
 
-                row.Cells[subjectCtr + 1].Value = records.FirstOrDefault(o => o.StudentName.ToLowerInvariant() == student.ToLowerInvariant()).Average;
+                row.Cells[subjectCtr + 1].Value = finalGrades.FirstOrDefault(o => o.StudentName.ToLowerInvariant() == student.ToLowerInvariant()).Average;
 
                 FinalGradeDataGridView.Rows.Add(row);
+                studentCtr++;
             }
 
-            FinalGradeDataGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;          
+            FinalGradeDataGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
         }
 
         int globalgradingperiod;
@@ -2402,9 +2405,10 @@ namespace LGAConnectSOMS.Views
 
         private async void tabcontrol_SelectedIndexChanged(object sender, EventArgs e)
         {
+            panelSubjects.Visible = tabcontrol.SelectedIndex != 4;
             await ClassRecords(tabcontrol.SelectedIndex);
             if(tabcontrol.SelectedIndex == 4)
-            {
+            {            
                 //CBGradeLevel.Hide();
                 //CBSection.Hide();
                 ////CBSubject.Hide();
@@ -2761,14 +2765,18 @@ namespace LGAConnectSOMS.Views
 
         private async void CBSection_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var selectedSection = CBSection.SelectedItem;
-            var subjectlist = FacultySubjects.Where(x => x.SectionName.Equals((string)selectedSection)).Select(x => x.SubjectName).Distinct();
+            _selectedSection = (string)CBSection.SelectedItem;
+            var subjectlist = FacultySubjects.Where(x => x.SectionName.Equals(_selectedSection)).Select(x => x.SubjectName).Distinct();
             CBSubject.DataSource = subjectlist.ToList();
 
             if (CBSection.SelectedIndex > -1)
             {
                 await ClassRecords(tabcontrol.SelectedIndex);
+                await FinalGradeRecords();
             }
+
+            //else
+
         }
 
         IEnumerable<Subjects> Subjects = new List<Subjects>();

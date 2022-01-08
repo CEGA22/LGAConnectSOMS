@@ -215,12 +215,13 @@ namespace LGAConnectSOMS.Views
             this.lblSection = new System.Windows.Forms.Label();
             this.CBGradeLevel = new System.Windows.Forms.ComboBox();
             this.lblGradeLevel = new System.Windows.Forms.Label();
-            this.CBSubject = new System.Windows.Forms.ComboBox();
-            this.lblSubject = new System.Windows.Forms.Label();
             this.CBSY = new System.Windows.Forms.ComboBox();
             this.lblSY = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.panelSubjects = new System.Windows.Forms.Panel();
+            this.CBSubject = new System.Windows.Forms.ComboBox();
+            this.lblSubject = new System.Windows.Forms.Label();
             this.DragWindowsPanel.SuspendLayout();
             this.tabcontrol.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -234,6 +235,7 @@ namespace LGAConnectSOMS.Views
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FinalGradeDataGridView)).BeginInit();
             this.PanelLoadingSaveGradesFirst.SuspendLayout();
+            this.panelSubjects.SuspendLayout();
             this.SuspendLayout();
             // 
             // DragWindowsPanel
@@ -1937,28 +1939,6 @@ namespace LGAConnectSOMS.Views
             this.lblGradeLevel.TabIndex = 37;
             this.lblGradeLevel.Text = "Grade Level: ";
             // 
-            // CBSubject
-            // 
-            this.CBSubject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CBSubject.Font = new System.Drawing.Font("Tw Cen MT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CBSubject.FormattingEnabled = true;
-            this.CBSubject.ItemHeight = 22;
-            this.CBSubject.Location = new System.Drawing.Point(696, 137);
-            this.CBSubject.Name = "CBSubject";
-            this.CBSubject.Size = new System.Drawing.Size(218, 30);
-            this.CBSubject.TabIndex = 42;
-            this.CBSubject.SelectedIndexChanged += new System.EventHandler(this.CBSubject_SelectedIndexChanged);
-            // 
-            // lblSubject
-            // 
-            this.lblSubject.AutoSize = true;
-            this.lblSubject.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSubject.Location = new System.Drawing.Point(635, 140);
-            this.lblSubject.Name = "lblSubject";
-            this.lblSubject.Size = new System.Drawing.Size(62, 19);
-            this.lblSubject.TabIndex = 41;
-            this.lblSubject.Text = "Subject: ";
-            // 
             // CBSY
             // 
             this.CBSY.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -2016,21 +1996,50 @@ namespace LGAConnectSOMS.Views
             this.button2.Visible = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // panelSubjects
+            // 
+            this.panelSubjects.Controls.Add(this.CBSubject);
+            this.panelSubjects.Controls.Add(this.lblSubject);
+            this.panelSubjects.Location = new System.Drawing.Point(623, 126);
+            this.panelSubjects.Name = "panelSubjects";
+            this.panelSubjects.Size = new System.Drawing.Size(309, 49);
+            this.panelSubjects.TabIndex = 47;
+            // 
+            // CBSubject
+            // 
+            this.CBSubject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CBSubject.Font = new System.Drawing.Font("Tw Cen MT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CBSubject.FormattingEnabled = true;
+            this.CBSubject.ItemHeight = 22;
+            this.CBSubject.Location = new System.Drawing.Point(76, 9);
+            this.CBSubject.Name = "CBSubject";
+            this.CBSubject.Size = new System.Drawing.Size(218, 30);
+            this.CBSubject.TabIndex = 44;
+            // 
+            // lblSubject
+            // 
+            this.lblSubject.AutoSize = true;
+            this.lblSubject.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSubject.Location = new System.Drawing.Point(15, 12);
+            this.lblSubject.Name = "lblSubject";
+            this.lblSubject.Size = new System.Drawing.Size(62, 19);
+            this.lblSubject.TabIndex = 43;
+            this.lblSubject.Text = "Subject: ";
+            // 
             // ClassRecordFacultyView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
             this.ClientSize = new System.Drawing.Size(1300, 700);
+            this.Controls.Add(this.panelSubjects);
             this.Controls.Add(this.PanelLoadingSaveGradesFirst);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnSaveClassRecords);
             this.Controls.Add(this.CBSY);
             this.Controls.Add(this.lblSY);
-            this.Controls.Add(this.CBSubject);
             this.Controls.Add(this.btnBack);
-            this.Controls.Add(this.lblSubject);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.CBSection);
             this.Controls.Add(this.lblClassRecordAdminTitle);
@@ -2059,6 +2068,8 @@ namespace LGAConnectSOMS.Views
             ((System.ComponentModel.ISupportInitialize)(this.FinalGradeDataGridView)).EndInit();
             this.PanelLoadingSaveGradesFirst.ResumeLayout(false);
             this.PanelLoadingSaveGradesFirst.PerformLayout();
+            this.panelSubjects.ResumeLayout(false);
+            this.panelSubjects.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2083,8 +2094,6 @@ namespace LGAConnectSOMS.Views
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.ComboBox CBSubject;
-        private System.Windows.Forms.Label lblSubject;
         public System.Windows.Forms.DataGridView SecondGradingGradebook;
         public System.Windows.Forms.DataGridView ThirdGradingGradebook;
         public System.Windows.Forms.DataGridView FourthGradingGradebook;
@@ -2233,5 +2242,8 @@ namespace LGAConnectSOMS.Views
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel PanelLoadingSaveGradesFirst;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panelSubjects;
+        private System.Windows.Forms.ComboBox CBSubject;
+        private System.Windows.Forms.Label lblSubject;
     }
 }

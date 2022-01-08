@@ -47,7 +47,7 @@ namespace LGAConnectSOMS.Gateway
 
         public async Task<bool> SaveSectionsHandled(SectionsHandledRequest request) 
         {
-            string url = $"http://localhost:2195/api/lga/sectionsHandled";
+            string url = $"{BaseUrl}/sectionsHandled/";
             var result =  await WebMethods.MakePostRequest(url, request);
             return Convert.ToBoolean(result);
         }
