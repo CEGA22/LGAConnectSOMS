@@ -12,6 +12,7 @@ namespace LGAConnectSOMS.Gateway
     public class GradeLevelSectionGateway
     {
         static string BaseUrl = "http://cegagabrang-001-site1.btempurl.com/api/lga/gradelevelsection";
+        static string BaseUrl2 = "http://cegagabrang-001-site1.btempurl.com/api/lga/sectionsHandled";
 
         public async Task<IEnumerable<GradeLevelSection>> GetGradeLevel ()
         {
@@ -25,6 +26,21 @@ namespace LGAConnectSOMS.Gateway
             catch
             {
                 return Enumerable.Empty<GradeLevelSection>();
+            }
+        }
+
+        public async Task<IEnumerable<SectionsHandled>> GetGradeLevel(int id)
+        {
+            try
+            {
+                string url = $"{BaseUrl2}/get_all/{id}";
+                var content = await WebMethods.MakeGetRequest(url);
+                var result = JsonConvert.DeserializeObject<IEnumerable<SectionsHandled>>(content);
+                return result;
+            }
+            catch
+            {
+                return Enumerable.Empty<SectionsHandled>();
             }
         }
 

@@ -487,6 +487,14 @@ namespace LGAConnectSOMS
             this.Hide();
         }
 
+        private void btnSectionManagement_Click(object sender, EventArgs e) 
+        {
+            SaveWindowPosition();
+            SectionsManagementView view = new SectionsManagementView();
+            view.Show();
+            this.Hide();
+        }
+
         private void lblvViewMoreNews_Click(object sender, EventArgs e)
         {
             this.SaveWindowPosition();
