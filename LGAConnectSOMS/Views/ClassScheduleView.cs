@@ -14,11 +14,27 @@ using System.Windows.Forms;
 namespace LGAConnectSOMS.Views
 {
     public partial class ClassScheduleView : Form
-    {       
-        
+    {
+
+        private readonly SchoolAccountService _schoolAccountService;
+        private readonly FacultyService _facultyService;
+        private readonly SubjectsService _subjectsService;
+
+        private IEnumerable<SchoolAccount> _facultyList = Enumerable.Empty<SchoolAccount>();
+        IEnumerable<SchoolAccount> _schoolAccounts = Enumerable.Empty<SchoolAccount>();
+        IEnumerable<SectionsHandled> _sectionsHandled = Enumerable.Empty<SectionsHandled>();
+
+        private FacultyModel _selectedFaculty;
+        private SectionsHandled _selectedGradeLevel;
+        private Subjects _selectedSubjects;
+
         public ClassScheduleView()
         {
             InitializeComponent();
+
+            _schoolAccountService = new SchoolAccountService();
+            _facultyService = new FacultyService();
+            _subjectsService = new SubjectsService();
         }
 
         //Load
@@ -42,8 +58,8 @@ namespace LGAConnectSOMS.Views
             var weekday = todaysDate.DayOfWeek.ToString();
             await ClassSchedules(weekday);
             await LoadFaculty();
-            await LoadSubjects();
-            await LoadGradeLevelSection();              
+            //await LoadSubjects();
+            //await LoadGradeLevelSection();
         }
 
         //NavigationToOtherForm
@@ -60,20 +76,21 @@ namespace LGAConnectSOMS.Views
 
         public List<FacultySubjects> facultySubjects;
         public async Task SubjectsHandled(int ID)
-        {           
+        {
             FacultyService facultyService = new FacultyService();
             var result = await facultyService.GetFacultySubjects(ID);
             facultySubjects = result.ToList();
         }
         public List<ClassSchedule> schedulelist;
         public IEnumerable<ClassSchedule> schedule = new List<ClassSchedule>();
+
         public async Task ClassSchedules(string weekday)
         {
             var number = 1;
-            ClassScheduleService classScheduleService = new ClassScheduleService();          
+            ClassScheduleService classScheduleService = new ClassScheduleService();
             var schedules = await classScheduleService.GetClassScheduleDetails();
             schedule = await classScheduleService.GetClassScheduleDetails();
-            schedulelist = schedules.ToList();           
+            schedulelist = schedules.ToList();
             ClassScheduleDataGridView.DataSource = schedulelist;
             ClassScheduleDataGridView.Columns[0].Visible = false;
             ClassScheduleDataGridView.Columns[7].Visible = false;
@@ -87,7 +104,7 @@ namespace LGAConnectSOMS.Views
                 var filteredscheduledlist = schedulelist.Where(x => x.WeekDay == weekday);
                 schedulelist = filteredscheduledlist.ToList();
             }
-           
+
             if (!schedulelist.Any())
             {
                 Label FreeSchedule = new Label();
@@ -137,7 +154,7 @@ namespace LGAConnectSOMS.Views
                     GradeLevelText.Font = new Font("TW Cen MT", 14);
                     GradeLevelText.Location = new System.Drawing.Point(95, 50);
                     WeekDay.Location = new System.Drawing.Point(500, 20);
-                    StartTimeEndTime.AutoSize = true;                   
+                    StartTimeEndTime.AutoSize = true;
                     pictureBox.Image = Properties.Resources.Subject;
                     pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
                     Subject.Text = classSchedule.Subject;
@@ -210,9 +227,9 @@ namespace LGAConnectSOMS.Views
                     dynamicPanel.BackColor = Backcolor;
                     label1.Text = weekday;
                 }
-            }          
+            }
         }
-    
+
         private async void lblMonday_Click(object sender, EventArgs e)
         {
             label1.Text = "Monday";
@@ -226,7 +243,7 @@ namespace LGAConnectSOMS.Views
             label1.Text = "Tuesday";
             ClassDaysPanel.Hide();
             ClassSchedulePanel.Controls.Clear();
-            await ClassSchedules(label1.Text);          
+            await ClassSchedules(label1.Text);
         }
 
         private async void lblWednesday_Click(object sender, EventArgs e)
@@ -234,7 +251,7 @@ namespace LGAConnectSOMS.Views
             label1.Text = "Wednesday";
             ClassDaysPanel.Hide();
             ClassSchedulePanel.Controls.Clear();
-            await ClassSchedules(label1.Text);          
+            await ClassSchedules(label1.Text);
         }
 
         private async void lblThursday_Click(object sender, EventArgs e)
@@ -429,40 +446,76 @@ namespace LGAConnectSOMS.Views
         }
 
         IEnumerable<Subjects> subjects = new List<Subjects>();
-        public async Task LoadSubjects()
-        {
-            SubjectsService subjectsService = new SubjectsService();
-            subjects = await subjectsService.GetSubjects();
-        }
-
-        IEnumerable<SchoolAccount> schoolAccounts = new List<SchoolAccount>();
+        
         public async Task LoadFaculty()
         {
-            SchoolAccountService schoolAccountService = new SchoolAccountService();
-            schoolAccounts = await schoolAccountService.GetSchoolAccountOnly();
-            var facultylist = schoolAccounts.Where(x => x.isAdmin == 0).Select(x => x.Fullname);
-            cmbLastname.DataSource = facultylist.ToList();
+            _schoolAccounts = await _schoolAccountService.GetSchoolAccountOnly();
+            _facultyList = _schoolAccounts.Where(x => x.isAdmin == 0).OrderBy(o => o.firstname);
+
+            cmbFaculty.ValueMember = "Id";
+            cmbFaculty.DisplayMember = "FullName";
+
+            var facultyList = new List<FacultyModel>();
+
+            foreach (var faculty in _facultyList)
+            {
+                facultyList.Add(new FacultyModel
+                {
+                    Id = faculty.id,
+                    FullName = faculty.Fullname
+                });
+            }
+
+            cmbFaculty.DataSource = facultyList;
         }
 
-        private void cmbGradeLevels_SelectedIndexChanged(object sender, EventArgs e)
+        private async Task LoadGradeLevels()
         {
-            var selectedGradeLevel = cmbGradeLevels.SelectedItem;
-            var section = facultySubjects.Where(x => x.GradeLevel.Equals(selectedGradeLevel)).Select(x => x.SectionName).Distinct();
-            cmbSections.DataSource = section.ToList();
-            var subjects = facultySubjects.Where(x => x.GradeLevel.Equals(selectedGradeLevel)).Select(x => x.SubjectName);
-            cmbSubjects.DataSource = subjects.ToList();
+            _sectionsHandled = await _facultyService.GetSectionsHandled(_selectedFaculty.Id);
+
+            cmbGradeLevels.ValueMember = "GradeLevelID";
+            cmbGradeLevels.DisplayMember = "DisplayText";
+
+            cmbGradeLevels.DataSource = _sectionsHandled;
         }
+
+        public async Task LoadSubjects()
+        {
+            var gradeLevel = _selectedGradeLevel.GradeLevel.Replace("Grade ", "");
+            var result = (await _subjectsService.GetSubjectsByGradeLevel(int.Parse(gradeLevel))).OrderBy(x => x.SubjectName).ToList();
+
+            cmbSubjects.ValueMember = "ID";
+            cmbSubjects.DisplayMember = "SubjectName";
+
+            cmbSubjects.DataSource = result;
+        }
+
+        private async void cmbGradeLevels_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _selectedGradeLevel = (SectionsHandled)cmbGradeLevels.SelectedItem;
+
+            if(_selectedGradeLevel != null) 
+            {
+                await LoadSubjects();
+            }
+        }
+
         public string weekday;
         public bool IsSuccess;
         private async void btnAddClassSchedule_Click(object sender, EventArgs e)
-        {                     
-            var selectedGradeLevel = (string)cmbGradeLevels.SelectedItem;
-            var selectedSection = cmbSections.SelectedItem;
-            var selectedteacher = (string)cmbLastname.SelectedItem;
-            var selectedSubject = cmbSubjects.SelectedItem;
-            var gradeLevelId = gradeLevelSections.First(x => x.GradeLevels.Equals(selectedGradeLevel) && x.SectionName.Equals(selectedSection)).GradeLevel;
-            var subjectid = subjects.First(x => x.SubjectName.Equals(selectedSubject) && x.GradeLevel == gradeLevelId).GradeLevel;
-            var teacherid = schoolAccounts.First(x => x.Fullname == selectedteacher).id;
+        {
+            //var selectedGradeLevel = (string)cmbGradeLevels.SelectedItem;
+            //var selectedSection = cmbSections.SelectedItem;
+            //var selectedteacher = (string)cmbFaculty.SelectedItem;
+            //var selectedSubject = cmbSubjects.SelectedItem;
+            //var gradeLevelId = gradeLevelSections.First(x => x.GradeLevels.Equals(selectedGradeLevel) && x.SectionName.Equals(selectedSection)).GradeLevel;
+            //var subjectid = subjects.First(x => x.SubjectName.Equals(selectedSubject) && x.GradeLevel == gradeLevelId).GradeLevel;
+            //var teacherid = _schoolAccounts.First(x => x.Fullname == selectedteacher).id;
+
+            var subjectid = _selectedSubjects.ID;
+            var teacherid = _selectedFaculty.Id;
+            var gradeLevelId = _selectedGradeLevel.GradeLevelID;
+
             var starttime = Convert.ToDateTime(cmbStartTime.Text);
             var endtime = Convert.ToDateTime(cmbEndTime.Text);
             var startday = starttime.ToString("HH:mm:ss");
@@ -565,12 +618,12 @@ namespace LGAConnectSOMS.Views
                     MessageBoxButtons buttons = MessageBoxButtons.OK;
                     MessageBox.Show(message, title, buttons, MessageBoxIcon.Error);
                 }
-            }                                                        
+            }
         }
 
         private void cmbDays_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cmbDays.SelectedIndex == 1)
+            if (cmbDays.SelectedIndex == 1)
             {
                 cmbCustomDays.Show();
                 lblRepeatEvery.Show();
@@ -581,22 +634,29 @@ namespace LGAConnectSOMS.Views
 
         private async void cmbLastname_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var selectedTeacher = cmbLastname.Text;
-            var teacherid = schoolAccounts.First(x => x.Fullname == selectedTeacher).id;
-            FacultyService facultyService = new FacultyService();
-            var result = await facultyService.GetFacultySubjects(teacherid);
-            facultySubjects = result.ToList();
-            var gradelevel = facultySubjects.Select(x => x.GradeLevel).Distinct();
-            cmbGradeLevels.DataSource = gradelevel.ToList();
-            var facultysectionsHandled = facultySubjects.Select(x => x.SectionName).Distinct();
-            cmbSections.DataSource = facultysectionsHandled.ToList();
-            var subjects = facultySubjects.Select(x => x.SubjectName).Distinct();
-            cmbSubjects.DataSource = subjects.ToList();           
+            _selectedFaculty = (FacultyModel)cmbFaculty.SelectedItem;
+
+            if (_selectedFaculty != null)
+            {
+                await LoadGradeLevels();
+            }
+
+            //var selectedTeacher = cmbFaculty.Text;
+            //var teacherid = _schoolAccounts.First(x => x.Fullname == selectedTeacher).id;
+            //FacultyService facultyService = new FacultyService();
+            //var result = await facultyService.GetFacultySubjects(teacherid);
+            //facultySubjects = result.ToList();
+            //var gradelevel = facultySubjects.Select(x => x.GradeLevel).Distinct();
+            //cmbGradeLevels.DataSource = gradelevel.ToList();
+            //var facultysectionsHandled = facultySubjects.Select(x => x.SectionName).Distinct();
+            //cmbSections.DataSource = facultysectionsHandled.ToList();
+            //var subjects = facultySubjects.Select(x => x.SubjectName).Distinct();
+            //cmbSubjects.DataSource = subjects.ToList();
         }
 
         private void cmbCustomDays_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cmbCustomDays.Text == "Cancel")
+            if (cmbCustomDays.Text == "Cancel")
             {
                 cmbDays.Enabled = true;
                 cmbCustomDays.Hide();
@@ -625,19 +685,8 @@ namespace LGAConnectSOMS.Views
             EditClassScheduleView editClassScheduleView = new EditClassScheduleView();
             if (count == 5)
             {
-                
-                editClassScheduleView.cmbDays.Text = "Every weekday (Mon - Fri)";
-                editClassScheduleView.txtFullname.Text = selectedFirstnameTeacher + " " + selectedLastnameTeacher;
-                editClassScheduleView.txtGradeLevel.Text = selectedGradelevel;
-                editClassScheduleView.txtSubject.Text = selectedsubject;
-                editClassScheduleView.cmbStartTime.Text = selectedStartTime;
-                editClassScheduleView.cmbEndTime.Text = selectedEndTime;                
-                editClassScheduleView.ShowDialog();
-            }
 
-            else
-            {
-                editClassScheduleView.cmbDays.Text = selecteddays;                
+                editClassScheduleView.cmbDays.Text = "Every weekday (Mon - Fri)";
                 editClassScheduleView.txtFullname.Text = selectedFirstnameTeacher + " " + selectedLastnameTeacher;
                 editClassScheduleView.txtGradeLevel.Text = selectedGradelevel;
                 editClassScheduleView.txtSubject.Text = selectedsubject;
@@ -645,6 +694,22 @@ namespace LGAConnectSOMS.Views
                 editClassScheduleView.cmbEndTime.Text = selectedEndTime;
                 editClassScheduleView.ShowDialog();
             }
+
+            else
+            {
+                editClassScheduleView.cmbDays.Text = selecteddays;
+                editClassScheduleView.txtFullname.Text = selectedFirstnameTeacher + " " + selectedLastnameTeacher;
+                editClassScheduleView.txtGradeLevel.Text = selectedGradelevel;
+                editClassScheduleView.txtSubject.Text = selectedsubject;
+                editClassScheduleView.cmbStartTime.Text = selectedStartTime;
+                editClassScheduleView.cmbEndTime.Text = selectedEndTime;
+                editClassScheduleView.ShowDialog();
+            }
+        }
+
+        private void cmbSubjects_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _selectedSubjects = (Subjects)cmbSubjects.SelectedItem;
         }
     }
 }
