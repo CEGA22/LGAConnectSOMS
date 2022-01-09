@@ -8,9 +8,9 @@ namespace LGAConnectSOMS.Models
 {
     public class SubjectsHandledRequest
     {
-        public int TeacherID { get; set; }
+        public IEnumerable<SubjectsHandled> SubjectsHandled { get; set; }
 
-        public int SubjectID { get; set; }
+        public int TeacherID { get; set; }
 
         public int GradeLevelID { get; set; }
     }

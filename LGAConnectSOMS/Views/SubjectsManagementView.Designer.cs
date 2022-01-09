@@ -30,16 +30,16 @@ namespace LGAConnectSOMS.Views
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle101 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle102 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle103 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle104 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle105 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle106 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle107 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle108 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle109 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle110 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblDisplayResult = new System.Windows.Forms.Label();
             this.btnRemoveSubjectsHandled = new System.Windows.Forms.Button();
             this.dtSubjectsHandled = new System.Windows.Forms.DataGridView();
@@ -77,7 +77,7 @@ namespace LGAConnectSOMS.Views
             this.lblDisplayResult.AutoSize = true;
             this.lblDisplayResult.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDisplayResult.ForeColor = System.Drawing.Color.DarkGreen;
-            this.lblDisplayResult.Location = new System.Drawing.Point(406, 636);
+            this.lblDisplayResult.Location = new System.Drawing.Point(822, 635);
             this.lblDisplayResult.Name = "lblDisplayResult";
             this.lblDisplayResult.Size = new System.Drawing.Size(126, 19);
             this.lblDisplayResult.TabIndex = 174;
@@ -93,7 +93,7 @@ namespace LGAConnectSOMS.Views
             this.btnRemoveSubjectsHandled.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRemoveSubjectsHandled.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemoveSubjectsHandled.ForeColor = System.Drawing.Color.White;
-            this.btnRemoveSubjectsHandled.Location = new System.Drawing.Point(572, 630);
+            this.btnRemoveSubjectsHandled.Location = new System.Drawing.Point(989, 630);
             this.btnRemoveSubjectsHandled.Name = "btnRemoveSubjectsHandled";
             this.btnRemoveSubjectsHandled.Size = new System.Drawing.Size(96, 29);
             this.btnRemoveSubjectsHandled.TabIndex = 172;
@@ -109,49 +109,49 @@ namespace LGAConnectSOMS.Views
             this.dtSubjectsHandled.AllowUserToOrderColumns = true;
             this.dtSubjectsHandled.AllowUserToResizeColumns = false;
             this.dtSubjectsHandled.AllowUserToResizeRows = false;
-            dataGridViewCellStyle101.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
-            this.dtSubjectsHandled.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle101;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
+            this.dtSubjectsHandled.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtSubjectsHandled.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtSubjectsHandled.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtSubjectsHandled.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dtSubjectsHandled.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle102.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle102.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(143)))));
-            dataGridViewCellStyle102.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle102.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle102.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle102.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle102.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtSubjectsHandled.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle102;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(143)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtSubjectsHandled.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dtSubjectsHandled.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtSubjectsHandled.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1});
             this.dtSubjectsHandled.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle103.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle103.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(242)))), ((int)(((byte)(245)))));
-            dataGridViewCellStyle103.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle103.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle103.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle103.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle103.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtSubjectsHandled.DefaultCellStyle = dataGridViewCellStyle103;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(242)))), ((int)(((byte)(245)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtSubjectsHandled.DefaultCellStyle = dataGridViewCellStyle3;
             this.dtSubjectsHandled.EnableHeadersVisualStyles = false;
-            this.dtSubjectsHandled.Location = new System.Drawing.Point(410, 174);
+            this.dtSubjectsHandled.Location = new System.Drawing.Point(826, 179);
             this.dtSubjectsHandled.Name = "dtSubjectsHandled";
             this.dtSubjectsHandled.ReadOnly = true;
-            dataGridViewCellStyle104.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle104.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle104.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle104.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle104.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle104.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle104.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtSubjectsHandled.RowHeadersDefaultCellStyle = dataGridViewCellStyle104;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtSubjectsHandled.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dtSubjectsHandled.RowHeadersVisible = false;
-            dataGridViewCellStyle105.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtSubjectsHandled.RowsDefaultCellStyle = dataGridViewCellStyle105;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtSubjectsHandled.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dtSubjectsHandled.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtSubjectsHandled.Size = new System.Drawing.Size(360, 445);
             this.dtSubjectsHandled.TabIndex = 169;
@@ -176,7 +176,7 @@ namespace LGAConnectSOMS.Views
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Tw Cen MT", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(406, 148);
+            this.label2.Location = new System.Drawing.Point(825, 149);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(148, 23);
             this.label2.TabIndex = 171;
@@ -191,7 +191,7 @@ namespace LGAConnectSOMS.Views
             this.btnSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSubmit.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSubmit.ForeColor = System.Drawing.Color.White;
-            this.btnSubmit.Location = new System.Drawing.Point(674, 630);
+            this.btnSubmit.Location = new System.Drawing.Point(1091, 630);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(96, 29);
             this.btnSubmit.TabIndex = 173;
@@ -205,7 +205,7 @@ namespace LGAConnectSOMS.Views
             this.lblSubjectsHandledLoading.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblSubjectsHandledLoading.AutoSize = true;
             this.lblSubjectsHandledLoading.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSubjectsHandledLoading.Location = new System.Drawing.Point(406, 635);
+            this.lblSubjectsHandledLoading.Location = new System.Drawing.Point(822, 634);
             this.lblSubjectsHandledLoading.Name = "lblSubjectsHandledLoading";
             this.lblSubjectsHandledLoading.Size = new System.Drawing.Size(152, 19);
             this.lblSubjectsHandledLoading.TabIndex = 170;
@@ -216,7 +216,7 @@ namespace LGAConnectSOMS.Views
             this.lblFacultyLoading.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblFacultyLoading.AutoSize = true;
             this.lblFacultyLoading.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFacultyLoading.Location = new System.Drawing.Point(37, 207);
+            this.lblFacultyLoading.Location = new System.Drawing.Point(111, 212);
             this.lblFacultyLoading.Name = "lblFacultyLoading";
             this.lblFacultyLoading.Size = new System.Drawing.Size(152, 19);
             this.lblFacultyLoading.TabIndex = 162;
@@ -230,7 +230,7 @@ namespace LGAConnectSOMS.Views
             this.cmbFaculty.Items.AddRange(new object[] {
             "MALE",
             "FEMALE"});
-            this.cmbFaculty.Location = new System.Drawing.Point(41, 174);
+            this.cmbFaculty.Location = new System.Drawing.Point(115, 179);
             this.cmbFaculty.Name = "cmbFaculty";
             this.cmbFaculty.Size = new System.Drawing.Size(300, 30);
             this.cmbFaculty.TabIndex = 160;
@@ -242,7 +242,7 @@ namespace LGAConnectSOMS.Views
             this.lblSubjectsLoading.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblSubjectsLoading.AutoSize = true;
             this.lblSubjectsLoading.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSubjectsLoading.Location = new System.Drawing.Point(37, 635);
+            this.lblSubjectsLoading.Location = new System.Drawing.Point(466, 635);
             this.lblSubjectsLoading.Name = "lblSubjectsLoading";
             this.lblSubjectsLoading.Size = new System.Drawing.Size(152, 19);
             this.lblSubjectsLoading.TabIndex = 168;
@@ -253,7 +253,7 @@ namespace LGAConnectSOMS.Views
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Tw Cen MT", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(37, 362);
+            this.label5.Location = new System.Drawing.Point(469, 149);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(156, 23);
             this.label5.TabIndex = 166;
@@ -264,7 +264,7 @@ namespace LGAConnectSOMS.Views
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tw Cen MT", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(37, 255);
+            this.label1.Location = new System.Drawing.Point(114, 256);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(111, 23);
             this.label1.TabIndex = 164;
@@ -275,7 +275,7 @@ namespace LGAConnectSOMS.Views
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Tw Cen MT", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(37, 148);
+            this.label4.Location = new System.Drawing.Point(114, 149);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(66, 23);
             this.label4.TabIndex = 159;
@@ -288,51 +288,51 @@ namespace LGAConnectSOMS.Views
             this.dtSubjects.AllowUserToOrderColumns = true;
             this.dtSubjects.AllowUserToResizeColumns = false;
             this.dtSubjects.AllowUserToResizeRows = false;
-            dataGridViewCellStyle106.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
-            this.dtSubjects.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle106;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
+            this.dtSubjects.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dtSubjects.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtSubjects.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtSubjects.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dtSubjects.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle107.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle107.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(143)))));
-            dataGridViewCellStyle107.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle107.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle107.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle107.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle107.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtSubjects.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle107;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(143)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtSubjects.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dtSubjects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtSubjects.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Subject});
             this.dtSubjects.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle108.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle108.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(242)))), ((int)(((byte)(245)))));
-            dataGridViewCellStyle108.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle108.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle108.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle108.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle108.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtSubjects.DefaultCellStyle = dataGridViewCellStyle108;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(242)))), ((int)(((byte)(245)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtSubjects.DefaultCellStyle = dataGridViewCellStyle8;
             this.dtSubjects.EnableHeadersVisualStyles = false;
-            this.dtSubjects.Location = new System.Drawing.Point(41, 388);
+            this.dtSubjects.Location = new System.Drawing.Point(470, 179);
             this.dtSubjects.Name = "dtSubjects";
             this.dtSubjects.ReadOnly = true;
-            dataGridViewCellStyle109.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle109.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle109.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle109.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle109.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle109.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle109.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtSubjects.RowHeadersDefaultCellStyle = dataGridViewCellStyle109;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtSubjects.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dtSubjects.RowHeadersVisible = false;
-            dataGridViewCellStyle110.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtSubjects.RowsDefaultCellStyle = dataGridViewCellStyle110;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtSubjects.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.dtSubjects.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtSubjects.Size = new System.Drawing.Size(300, 231);
+            this.dtSubjects.Size = new System.Drawing.Size(300, 445);
             this.dtSubjects.TabIndex = 167;
             // 
             // cmbGradeLevel
@@ -343,7 +343,7 @@ namespace LGAConnectSOMS.Views
             this.cmbGradeLevel.Items.AddRange(new object[] {
             "MALE",
             "FEMALE"});
-            this.cmbGradeLevel.Location = new System.Drawing.Point(41, 281);
+            this.cmbGradeLevel.Location = new System.Drawing.Point(115, 286);
             this.cmbGradeLevel.Name = "cmbGradeLevel";
             this.cmbGradeLevel.Size = new System.Drawing.Size(300, 30);
             this.cmbGradeLevel.TabIndex = 165;
@@ -371,7 +371,7 @@ namespace LGAConnectSOMS.Views
             this.lblGradeLevelLoading.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblGradeLevelLoading.AutoSize = true;
             this.lblGradeLevelLoading.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGradeLevelLoading.Location = new System.Drawing.Point(37, 314);
+            this.lblGradeLevelLoading.Location = new System.Drawing.Point(111, 319);
             this.lblGradeLevelLoading.Name = "lblGradeLevelLoading";
             this.lblGradeLevelLoading.Size = new System.Drawing.Size(152, 19);
             this.lblGradeLevelLoading.TabIndex = 163;
@@ -396,7 +396,7 @@ namespace LGAConnectSOMS.Views
             this.btnSelectSubject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSelectSubject.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSelectSubject.ForeColor = System.Drawing.Color.White;
-            this.btnSelectSubject.Location = new System.Drawing.Point(245, 636);
+            this.btnSelectSubject.Location = new System.Drawing.Point(674, 630);
             this.btnSelectSubject.Name = "btnSelectSubject";
             this.btnSelectSubject.Size = new System.Drawing.Size(96, 29);
             this.btnSelectSubject.TabIndex = 161;
@@ -408,6 +408,7 @@ namespace LGAConnectSOMS.Views
             // tmrSaveResult
             // 
             this.tmrSaveResult.Interval = 3000;
+            this.tmrSaveResult.Tick += new System.EventHandler(this.tmrSaveResult_Tick);
             // 
             // DragWindowsPanel
             // 

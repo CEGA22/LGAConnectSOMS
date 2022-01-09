@@ -135,7 +135,8 @@ namespace LGAConnectSOMS.Views
                 lblSubjectsLoading.Invoke((MethodInvoker)(() => lblSubjectsLoading.Visible = true));
                 btnSelectSubject.Invoke((MethodInvoker)(() => btnSelectSubject.Visible = false));
 
-                var result = (await _subjectsService.GetSubjectsByGradeLevel(_selectedGradeLevel.GradeLevelID)).OrderBy(x => x.SubjectName);
+                var gradeLevel = _selectedGradeLevel.GradeLevel.Replace("Grade ", "");
+                var result = (await _subjectsService.GetSubjectsByGradeLevel(int.Parse(gradeLevel))).OrderBy(x => x.SubjectName);
 
                 _subjects.Clear();
                 _allSubjects.Clear();
@@ -187,7 +188,7 @@ namespace LGAConnectSOMS.Views
                 lblSubjectsHandledLoading.Invoke((MethodInvoker)(() => lblSubjectsHandledLoading.Visible = true));
                 btnSubmit.Invoke((MethodInvoker)(() => btnSubmit.Visible = false));
 
-                var result = (await _subjectsService.GetSubjectsHandled(_selectedFaculty.Id)).OrderBy(x => x.SubjectName);
+                var result = (await _subjectsService.GetSubjectsHandled(_selectedFaculty.Id, _selectedGradeLevel.GradeLevelID)).OrderBy(x => x.SubjectName);
 
                 _subjectsHandled.Clear();
 
@@ -417,7 +418,7 @@ namespace LGAConnectSOMS.Views
                     _subjectsHandled.Add(new SubjectsHandled
                     {
                         GradeLevel = selectedItem.Grade_Level,
-                        GradeLevelId = selectedItem.GradeLevel,
+                        GradeLevelId = _selectedGradeLevel.GradeLevelID,
                         SubjectCode = selectedItem.SubjectCode,
                         SubjectId = selectedItem.ID,
                         SubjectName = selectedItem.SubjectName,
@@ -459,11 +460,62 @@ namespace LGAConnectSOMS.Views
 
             RemoveSubjectsHandled(itemsToRemove);
 
+            btnRemoveSubjectsHandled.Visible = _subjectsHandled.Any();
+
         }
 
-        private void btnSubmit_Click(object sender, EventArgs e)
+        private async void btnSubmit_Click(object sender, EventArgs e)
         {
+            try
+            {
+                btnSubmit.Invoke((MethodInvoker)(() => btnSubmit.Visible = false));
+                btnRemoveSubjectsHandled.Invoke((MethodInvoker)(() => btnRemoveSubjectsHandled.Visible = false));
+                lblSubjectsHandledLoading.Invoke((MethodInvoker)(() => lblSubjectsHandledLoading.Visible = true));
+                lblSubjectsHandledLoading.Invoke((MethodInvoker)(() => lblSubjectsHandledLoading.Text = "Saving... Please wait..."));
 
+                var service = new SubjectsService();
+
+                var isSuccess = await service.SaveSubjectsHandled(new SubjectsHandledRequest
+                {
+                    GradeLevelID = _selectedGradeLevel.GradeLevelID,
+                    SubjectsHandled = _subjectsHandled,
+                    TeacherID = _selectedFaculty.Id
+                });;
+
+                if (isSuccess)
+                {
+                    lblDisplayResult.Invoke((MethodInvoker)(() => lblDisplayResult.Text = "Successfully saved!"));
+                    lblDisplayResult.Invoke((MethodInvoker)(() => lblDisplayResult.Visible = true));
+                    lblDisplayResult.Invoke((MethodInvoker)(() => lblDisplayResult.ForeColor = Color.DarkGreen));
+                }
+               
+            }
+            catch (Exception ex)
+            {
+                btnSubmit.Invoke((MethodInvoker)(() => btnSubmit.Visible = true));
+                btnRemoveSubjectsHandled.Invoke((MethodInvoker)(() => btnRemoveSubjectsHandled.Visible = true));
+                lblSubjectsHandledLoading.Invoke((MethodInvoker)(() => lblSubjectsHandledLoading.Visible = false));
+                lblSubjectsHandledLoading.Invoke((MethodInvoker)(() => lblSubjectsHandledLoading.Text = "Loading... Please wait..."));
+
+                lblDisplayResult.Invoke((MethodInvoker)(() => lblDisplayResult.Text = ex.Message));
+                lblDisplayResult.Invoke((MethodInvoker)(() => lblDisplayResult.Visible = true));
+                lblDisplayResult.Invoke((MethodInvoker)(() => lblDisplayResult.ForeColor = Color.DarkRed));
+            }
+            finally
+            {
+                btnSubmit.Invoke((MethodInvoker)(() => btnSubmit.Visible = true));
+                btnRemoveSubjectsHandled.Invoke((MethodInvoker)(() => btnRemoveSubjectsHandled.Visible = _sectionsHandled.Any()));
+                lblSubjectsHandledLoading.Invoke((MethodInvoker)(() => lblSubjectsHandledLoading.Visible = false));
+                lblSubjectsHandledLoading.Invoke((MethodInvoker)(() => lblSubjectsHandledLoading.Text = "Loading... Please wait..."));
+
+                tmrSaveResult.Start();
+            }
+        }
+
+        private void tmrSaveResult_Tick(object sender, EventArgs e)
+        {
+            lblDisplayResult.Invoke((MethodInvoker)(() => lblDisplayResult.Visible = false));
+            tmrSaveResult.Stop();
         }
     }
 }

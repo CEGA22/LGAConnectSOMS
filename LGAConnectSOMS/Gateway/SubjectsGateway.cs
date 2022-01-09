@@ -43,11 +43,11 @@ namespace LGAConnectSOMS.Gateway
             }
         }
 
-        public async Task<IEnumerable<SubjectsHandled>> GetSubjectsHandled(int id)
+        public async Task<IEnumerable<SubjectsHandled>> GetSubjectsHandled(int teacherId, int gradeLevel)
         {
             try
             {
-                string url = $"{BaseUrl}/get_subjects_handled/{id}";
+                string url = $"{BaseUrl}/get_subjects_handled/{teacherId}/{gradeLevel}";
                 var content = await WebMethods.MakeGetRequest(url);
                 var result = JsonConvert.DeserializeObject<IEnumerable<SubjectsHandled>>(content);
                 return result;
@@ -56,6 +56,13 @@ namespace LGAConnectSOMS.Gateway
             {
                 return Enumerable.Empty<SubjectsHandled>();
             }
+        }
+
+        public async Task<bool> SaveSubjectsHandled(SubjectsHandledRequest request)
+        {
+            string url = $"{BaseUrl}/subjectsHandled/";
+            var result = await WebMethods.MakePostRequest(url, request);
+            return Convert.ToBoolean(result);
         }
     }
 }
