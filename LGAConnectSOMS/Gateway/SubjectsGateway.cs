@@ -58,6 +58,21 @@ namespace LGAConnectSOMS.Gateway
             }
         }
 
+        public async Task<IEnumerable<SubjectsHandled>> GetSubjectsHandledAll()
+        {
+            try
+            {
+                string url = $"{BaseUrl}/get_All_subjects_handled";
+                var content = await WebMethods.MakeGetRequest(url);
+                var result = JsonConvert.DeserializeObject<IEnumerable<SubjectsHandled>>(content);
+                return result;
+            }
+            catch
+            {
+                return Enumerable.Empty<SubjectsHandled>();
+            }
+        }
+
         public async Task<bool> SaveSubjectsHandled(SubjectsHandledRequest request)
         {
             string url = $"{BaseUrl}/subjectsHandled/";

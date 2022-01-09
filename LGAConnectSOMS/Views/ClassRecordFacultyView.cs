@@ -2168,8 +2168,8 @@ namespace LGAConnectSOMS.Views
 
 
             FirstGradingGradebook.DataSource = FirstGradingList;
-                this.FirstGradingGradebook.Columns[28].Visible = false;
-                this.FirstGradingGradebook.Columns[30].Visible = false;
+            this.FirstGradingGradebook.Columns[28].Visible = false;
+            this.FirstGradingGradebook.Columns[30].Visible = false;
                 //CBSubject_SelectedIndexChanged(null, null);
 
                 if (FirstGradingList.Any())
