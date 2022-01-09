@@ -16,5 +16,19 @@ namespace LGAConnectSOMS.Services
             var content = await apiGateway.GetSubjects();
             return content;
         }
+
+        public async Task<IEnumerable<Subjects>> GetSubjectsByGradeLevel(int id)
+        {
+            var apiGateway = new SubjectsGateway();
+            var content = await apiGateway.GetSubjectsByGradeLevel(id);
+            return content;
+        }
+
+        public async Task<IEnumerable<SubjectsHandled>> GetSubjectsHandled(int id)
+        {
+            var apiGateway = new SubjectsGateway();
+            var content = await apiGateway.GetSubjectsHandled(id);
+            return content;
+        }
     }
 }

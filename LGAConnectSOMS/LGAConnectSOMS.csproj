@@ -140,6 +140,8 @@
     <Compile Include="Models\StudentRequest.cs" />
     <Compile Include="Models\Students.cs" />
     <Compile Include="Models\Subjects.cs" />
+    <Compile Include="Models\SubjectsHandled.cs" />
+    <Compile Include="Models\SubjectsHandledRequest.cs" />
     <Compile Include="Models\TransactionHistory.cs" />
     <Compile Include="Services\AboutServices.cs" />
     <Compile Include="Services\ClassRecordRequestService.cs" />
@@ -344,6 +346,12 @@
     <Compile Include="Views\SectionsManagementView.Designer.cs">
       <DependentUpon>SectionsManagementView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\SubjectsManagementView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\SubjectsManagementView.Designer.cs">
+      <DependentUpon>SubjectsManagementView.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Views\AboutPageView.resx">
       <DependentUpon>AboutPageView.cs</DependentUpon>
     </EmbeddedResource>
@@ -443,6 +451,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\SectionsManagementView.resx">
       <DependentUpon>SectionsManagementView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\SubjectsManagementView.resx">
+      <DependentUpon>SubjectsManagementView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

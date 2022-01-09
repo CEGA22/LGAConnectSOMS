@@ -502,5 +502,13 @@ namespace LGAConnectSOMS
             manageNewsView.Show();
             this.Hide();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SaveWindowPosition();
+            SubjectsManagementView view = new SubjectsManagementView();
+            view.Show();
+            this.Hide();
+        }
     }    
 }
