@@ -145,28 +145,8 @@ namespace LGAConnectSOMS
 
             StudentService studentService = new StudentService();
             var students = await studentService.GetStudentAccountOnly();
-            var studentsList = students.Select(x => x.ID).ToList();
-            //Panel EnrolledStudentsPanel = new Panel();         
-            //EnrolledStudentsPanel.Size = new System.Drawing.Size(219, 188);
-            //EnrolledStudentsPanel.Location = new System.Drawing.Point(1069, 121);
-            //EnrolledStudentsPanel.BackColor = Color.FromArgb(233, 77, 144);
-            //EnrolledStudentsPanel.TabIndex = 0;           
-            //Controls.Add(EnrolledStudentsPanel);         
-            //Label lblEnrolledStudents = new Label();
-            //Label lblEnrolledStudentsCount = new Label();
-            //Label lblFileRequestCount = new Label();
-            //lblEnrolledStudents.Text = "Enrolled\nStudents";
-            //lblEnrolledStudents.ForeColor = Color.White;
-            //lblEnrolledStudents.Font = new Font("Tw Cen MT", 14);
-            //lblEnrolledStudents.AutoSize = true;            
-            //lblEnrolledStudentsCount.ForeColor = Color.White;
-            //lblEnrolledStudentsCount.Font = new Font("Tw Cen MT", 36);
-            //lblEnrolledStudentsCount.AutoSize = true;
-            //lblEnrolledStudentsCount.Location = new System.Drawing.Point(0,130);                   
-            //EnrolledStudentsPanel.Controls.Add(lblEnrolledStudents);
-            //EnrolledStudentsPanel.Controls.Add(lblEnrolledStudentsCount);         
-            EnrolledStudentsPanel.Cursor = Cursors.Hand;          
-            //lblEnrolledStudentsCount.Text = studentsList.Count.ToString();
+            var studentsList = students.Select(x => x.ID).ToList();                  
+            EnrolledStudentsPanel.Cursor = Cursors.Hand;                   
             lblEnrolledStudentsCount.Text = studentsList.Count.ToString();
             EnrolledStudentsPanel.Click += new System.EventHandler(this.EnrolledStudentsPanel_Click);
         }
@@ -392,11 +372,6 @@ namespace LGAConnectSOMS
             }
         }
 
-        private void DragWindowsPanel_MouseUp(object sender, MouseEventArgs e)
-        {
-           
-        }
-
         public void MaximizeIcon()
         {
 
@@ -434,18 +409,6 @@ namespace LGAConnectSOMS
             else if(panel1.Visible == true)
             {
                 panel1.Hide();
-            }
-        }
-
-        public const int Form_DropShadow = 0x00020000;
-
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                cp.ClassStyle |= Form_DropShadow;
-                return cp;
             }
         }
 

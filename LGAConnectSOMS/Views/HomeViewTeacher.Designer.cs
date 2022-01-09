@@ -39,8 +39,6 @@ namespace LGAConnectSOMS.Views
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblUserRole = new System.Windows.Forms.Label();
             this.lblAccountName = new System.Windows.Forms.Label();
-            this.btnFileRequest = new System.Windows.Forms.Button();
-            this.btnEnrolledStudents = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblvViewMoreNews = new System.Windows.Forms.Label();
             this.lblTitleNewsPanel = new System.Windows.Forms.Label();
@@ -63,6 +61,9 @@ namespace LGAConnectSOMS.Views
             this.lblClassesForTodayTitle = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.SectionsHandledPanel = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblSectionsHandled = new System.Windows.Forms.Label();
             this.SideBarPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -72,6 +73,7 @@ namespace LGAConnectSOMS.Views
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.SectionsHandledPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // SideBarPanel
@@ -216,38 +218,6 @@ namespace LGAConnectSOMS.Views
             this.lblAccountName.TabIndex = 13;
             this.lblAccountName.Text = "Username";
             this.lblAccountName.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // btnFileRequest
-            // 
-            this.btnFileRequest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFileRequest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(209)))), ((int)(((byte)(255)))));
-            this.btnFileRequest.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFileRequest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFileRequest.Font = new System.Drawing.Font("Tw Cen MT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFileRequest.ForeColor = System.Drawing.Color.White;
-            this.btnFileRequest.Location = new System.Drawing.Point(1069, 326);
-            this.btnFileRequest.Name = "btnFileRequest";
-            this.btnFileRequest.Size = new System.Drawing.Size(219, 188);
-            this.btnFileRequest.TabIndex = 11;
-            this.btnFileRequest.Text = "Your Sections\r\nHandled";
-            this.btnFileRequest.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnFileRequest.UseVisualStyleBackColor = false;
-            // 
-            // btnEnrolledStudents
-            // 
-            this.btnEnrolledStudents.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEnrolledStudents.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(77)))), ((int)(((byte)(144)))));
-            this.btnEnrolledStudents.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEnrolledStudents.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEnrolledStudents.Font = new System.Drawing.Font("Tw Cen MT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEnrolledStudents.ForeColor = System.Drawing.Color.White;
-            this.btnEnrolledStudents.Location = new System.Drawing.Point(1069, 121);
-            this.btnEnrolledStudents.Name = "btnEnrolledStudents";
-            this.btnEnrolledStudents.Size = new System.Drawing.Size(219, 188);
-            this.btnEnrolledStudents.TabIndex = 10;
-            this.btnEnrolledStudents.Text = "Your Students \r\nHandled\r\n\r\n\r\n\r\n ";
-            this.btnEnrolledStudents.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnEnrolledStudents.UseVisualStyleBackColor = false;
             // 
             // panel2
             // 
@@ -547,6 +517,39 @@ namespace LGAConnectSOMS.Views
             this.flowLayoutPanel1.Size = new System.Drawing.Size(753, 182);
             this.flowLayoutPanel1.TabIndex = 26;
             // 
+            // SectionsHandledPanel
+            // 
+            this.SectionsHandledPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SectionsHandledPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(209)))), ((int)(((byte)(255)))));
+            this.SectionsHandledPanel.Controls.Add(this.lblSectionsHandled);
+            this.SectionsHandledPanel.Controls.Add(this.label1);
+            this.SectionsHandledPanel.Location = new System.Drawing.Point(1059, 121);
+            this.SectionsHandledPanel.Name = "SectionsHandledPanel";
+            this.SectionsHandledPanel.Size = new System.Drawing.Size(219, 188);
+            this.SectionsHandledPanel.TabIndex = 27;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Tw Cen MT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(8, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(114, 44);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Your Sections \r\nHandled";
+            // 
+            // lblSectionsHandled
+            // 
+            this.lblSectionsHandled.AutoSize = true;
+            this.lblSectionsHandled.Font = new System.Drawing.Font("Tw Cen MT", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSectionsHandled.ForeColor = System.Drawing.Color.White;
+            this.lblSectionsHandled.Location = new System.Drawing.Point(3, 125);
+            this.lblSectionsHandled.Name = "lblSectionsHandled";
+            this.lblSectionsHandled.Size = new System.Drawing.Size(57, 55);
+            this.lblSectionsHandled.TabIndex = 1;
+            this.lblSectionsHandled.Text = "...";
+            // 
             // HomeViewTeacher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -558,6 +561,7 @@ namespace LGAConnectSOMS.Views
             this.Controls.Add(this.btnMaximize);
             this.Controls.Add(this.Menu);
             this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.SectionsHandledPanel);
             this.Controls.Add(this.DragWindowsPanel);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.NewsPanel);
@@ -566,8 +570,6 @@ namespace LGAConnectSOMS.Views
             this.Controls.Add(this.SideBarPanel);
             this.Controls.Add(this.lblAccountName);
             this.Controls.Add(this.lblTitle);
-            this.Controls.Add(this.btnEnrolledStudents);
-            this.Controls.Add(this.btnFileRequest);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "HomeViewTeacher";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -586,6 +588,8 @@ namespace LGAConnectSOMS.Views
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
+            this.SectionsHandledPanel.ResumeLayout(false);
+            this.SectionsHandledPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -598,8 +602,6 @@ namespace LGAConnectSOMS.Views
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label lblUserRole;
         private System.Windows.Forms.Label lblAccountName;
-        private System.Windows.Forms.Button btnFileRequest;
-        private System.Windows.Forms.Button btnEnrolledStudents;
         private System.Windows.Forms.Button btnClassSchedule;
         private System.Windows.Forms.Button btnClassRecords;
         private System.Windows.Forms.Button btnHome;
@@ -626,5 +628,8 @@ namespace LGAConnectSOMS.Views
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label lblLoading;
+        private System.Windows.Forms.Panel SectionsHandledPanel;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblSectionsHandled;
     }
 }

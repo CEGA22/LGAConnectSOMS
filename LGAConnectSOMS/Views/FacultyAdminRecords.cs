@@ -34,10 +34,13 @@ namespace LGAConnectSOMS.Views
         }
 
         private async void LoadData()
-        {          
+        {
+            Random random = new Random();
+            int randomNumber1 = random.Next(0, 10);
+            int randomNumber2 = random.Next(0, 10);
             lblLoading.Show();
             txtAdminLastname.Enabled = false;
-            txtSearchFaculty.Enabled = false;
+            txtSearchFaculty.Enabled = false;           
             await DisplayFacultyRecordData();
             await DisplayAdminRecordData();
             RandomAdminNumber();
@@ -46,24 +49,28 @@ namespace LGAConnectSOMS.Views
         }
 
         private readonly Random _random = new Random();
-        List<int> AdminnumberList = new List<int>();
+        List<int> AdminnumberList = new List<int>();     
         StringBuilder concatenatedString = new StringBuilder();
-        public void RandomAdminNumber()
-        {
-            var result = verification();
-            var students = schoolAccounts.ToList();
-            var results = schoolAccounts.Where(x => x.schoolNumber.ToString().Contains(result)).ToList();
-            if (!results.Any())
-            {
-                txtTeacherNumber.Text = result;
-            }
+        private readonly Random facultyRandom = new Random();
+        List<int> FacultynumberList = new List<int>();
+        StringBuilder concatenatedStringFaculty = new StringBuilder();
 
-            else
-            {
-                AdminnumberList.Clear();
-                concatenatedString.Clear();
-                RandomAdminNumber();
-            }
+        public void RandomAdminNumber()
+        {            
+                var result = verification();
+                var students = schoolAccounts.ToList();
+                var results = schoolAccounts.Where(x => x.schoolNumber.ToString().Contains(result)).ToList();
+                if (!results.Any())
+                {                  
+                  txtTeacherNumber.Text = result;            
+                }
+
+                else
+                {
+                    AdminnumberList.Clear();
+                    concatenatedString.Clear();
+                    RandomAdminNumber();
+                }
         }
 
         public string verification()
@@ -75,8 +82,8 @@ namespace LGAConnectSOMS.Views
             for (int i = 1; i <= 8; i++)
             {
                 int num = _random.Next(10);
-                var studentnumber = num;
-                AdminnumberList.Add(studentnumber);
+                var AdminNumber = num;
+                AdminnumberList.Add(AdminNumber);
             }
 
             foreach (int password in AdminnumberList)
@@ -87,10 +94,6 @@ namespace LGAConnectSOMS.Views
             return concatenatedString.ToString();
         }
 
-
-        private readonly Random _randomFaculty = new Random();
-        List<int> FacultynumberList = new List<int>();
-        StringBuilder concatenatedStringFaculty = new StringBuilder();
         public void RandomFacultyNumber()
         {
             var result = verificationFaculty();
@@ -104,7 +107,7 @@ namespace LGAConnectSOMS.Views
             else
             {
                 FacultynumberList.Clear();
-                concatenatedString.Clear();
+                concatenatedStringFaculty.Clear();
                 RandomFacultyNumber();
             }
         }
@@ -117,9 +120,9 @@ namespace LGAConnectSOMS.Views
             FacultynumberList.Add(num2);
             for (int i = 1; i <= 8; i++)
             {
-                int num = _randomFaculty.Next(10);
-                var studentnumber = num;
-                FacultynumberList.Add(studentnumber);
+                int num = facultyRandom.Next(10);
+                var FacultyNumber = num;
+                FacultynumberList.Add(FacultyNumber);
             }
 
             foreach (int password in FacultynumberList)
@@ -129,6 +132,48 @@ namespace LGAConnectSOMS.Views
 
             return concatenatedStringFaculty.ToString();
         }
+
+        //private readonly Random _randomFaculty = new Random();
+        //List<int> FacultynumberList = new List<int>();
+        //StringBuilder concatenatedStringFaculty = new StringBuilder();
+        //public void RandomFacultyNumber()
+        //{
+        //    var result = verificationFaculty();
+        //    var students = schoolAccounts.ToList();
+        //    var results = schoolAccounts.Where(x => x.schoolNumber.ToString().Contains(result)).ToList();
+        //    if (!results.Any())
+        //    {
+        //        txtFacultyTeacherNumber.Text = result;
+        //    }
+
+        //    else
+        //    {
+        //        FacultynumberList.Clear();
+        //        concatenatedString.Clear();
+        //        RandomFacultyNumber();
+        //    }
+        //}
+
+        //public string verificationFaculty()
+        //{
+        //    var num1 = 0;
+        //    var num2 = 0;
+        //    FacultynumberList.Add(num1);
+        //    FacultynumberList.Add(num2);
+        //    for (int i = 1; i <= 8; i++)
+        //    {
+        //        int num = _randomFaculty.Next(10);
+        //        var facultynumber = num;
+        //        FacultynumberList.Add(facultynumber);
+        //    }
+
+        //    foreach (int password in FacultynumberList)
+        //    {
+        //        concatenatedStringFaculty.Append(password);
+        //    }
+
+        //    return concatenatedStringFaculty.ToString();
+        //}
 
         public async Task DisplayAdminRecordData()
         {

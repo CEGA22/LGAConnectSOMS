@@ -162,6 +162,8 @@ namespace LGAConnectSOMS.Views
             this.cmbCustomDays.Size = new System.Drawing.Size(216, 27);
             this.cmbCustomDays.TabIndex = 67;
             this.cmbCustomDays.TabStop = false;
+            this.cmbCustomDays.SelectedIndexChanged += new System.EventHandler(this.cmbCustomDays_SelectedIndexChanged);
+            this.cmbCustomDays.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbCustomDays_KeyPress);
             // 
             // lblRepeatEvery
             // 
@@ -187,6 +189,8 @@ namespace LGAConnectSOMS.Views
             this.cmbDays.Size = new System.Drawing.Size(194, 27);
             this.cmbDays.TabIndex = 65;
             this.cmbDays.TabStop = false;
+            this.cmbDays.SelectedIndexChanged += new System.EventHandler(this.cmbDays_SelectedIndexChanged);
+            this.cmbDays.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbDays_KeyPress);
             // 
             // txtFullname
             // 

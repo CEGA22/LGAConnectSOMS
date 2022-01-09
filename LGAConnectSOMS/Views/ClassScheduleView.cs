@@ -101,7 +101,7 @@ namespace LGAConnectSOMS.Views
                 FreeSchedulePicture.SizeMode = PictureBoxSizeMode.Zoom;
                 FreeSchedule.Location = new System.Drawing.Point(200, 200);
                 FreeSchedulePicture.Location = new System.Drawing.Point(300, 120);
-                FreeSchedule.ForeColor = Color.White;
+                FreeSchedule.ForeColor = Color.Black;
                 ClassSchedulePanel.Controls.Add(FreeSchedulePanel);
                 FreeSchedulePanel.Controls.Add(FreeSchedulePicture);
                 FreeSchedulePanel.Controls.Add(FreeSchedule);
@@ -446,11 +446,23 @@ namespace LGAConnectSOMS.Views
 
         private void cmbGradeLevels_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var selectedGradeLevel = cmbGradeLevels.SelectedItem;
-            var section = facultySubjects.Where(x => x.GradeLevel.Equals(selectedGradeLevel)).Select(x => x.SectionName).Distinct();
-            cmbSections.DataSource = section.ToList();
-            var subjects = facultySubjects.Where(x => x.GradeLevel.Equals(selectedGradeLevel)).Select(x => x.SubjectName);
-            cmbSubjects.DataSource = subjects.ToList();
+
+            if (cmbGradeLevels.SelectedIndex > -1)
+            {
+                int selectedIndex = cmbGradeLevels.SelectedIndex;
+                var selectedGradeLevel = cmbGradeLevels.SelectedItem;
+                
+
+                var sectionlist = facultySubjects.Where(x => x.GradeLevel.Equals(selectedGradeLevel)).Select(x => x.SectionName).Distinct();
+                cmbSections.DataSource = sectionlist.ToList();
+
+                
+                var selectedSection = cmbSections.SelectedItem;
+                var selectedSubject = cmbSubjects.SelectedItem;               
+                //var selectedSubjectID = FacultySubjects.First(x => x.SubjectName.Equals(selectedSubject) && x.GradeLevel.Equals(selectedGradeLevel)).SubjectID;
+
+            }
+            
         }
         public string weekday;
         public bool IsSuccess;

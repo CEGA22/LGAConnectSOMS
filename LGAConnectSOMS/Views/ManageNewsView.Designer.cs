@@ -157,14 +157,13 @@ namespace LGAConnectSOMS.Views
             // 
             // lblLoading
             // 
-            this.lblLoading.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblLoading.AutoSize = true;
             this.lblLoading.Font = new System.Drawing.Font("Tw Cen MT", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLoading.Location = new System.Drawing.Point(12, 670);
+            this.lblLoading.Location = new System.Drawing.Point(12, 120);
             this.lblLoading.Name = "lblLoading";
-            this.lblLoading.Size = new System.Drawing.Size(247, 24);
+            this.lblLoading.Size = new System.Drawing.Size(141, 24);
             this.lblLoading.TabIndex = 17;
-            this.lblLoading.Text = "Please wait while loading...";
+            this.lblLoading.Text = "Loading news...";
             // 
             // ManageNewsView
             // 

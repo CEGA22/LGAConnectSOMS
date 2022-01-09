@@ -57,8 +57,8 @@ namespace LGAConnectSOMS.Views
             //DateTime todaysDate = DateTime.Now;          
             //var weekday = todaysDate.DayOfWeek.ToString();
             ClassScheduleService classScheduleService = new ClassScheduleService();
-            var schedules = await Task.Run(() => classScheduleService.GetClassScheduleFacultyDetails(ID));
-            schedulelist = schedules.ToList();
+            var schedules = await Task.Run(() => classScheduleService.GetClassScheduleDetails());
+            schedulelist = schedules.Where(x => x.SchoolID == ID).ToList();
             if (weekday == "Entire Week")
             {              
                 schedulelist = schedules.ToList();
@@ -94,6 +94,14 @@ namespace LGAConnectSOMS.Views
             {
                 foreach (ClassSchedule classSchedule in schedulelist)
                 {
+
+                    Label GradeLevelSection = new Label();
+                    GradeLevelSection.Text = classSchedule.GradeLevel + " " + classSchedule.SectionName;
+                    GradeLevelSection.AutoSize = true;
+                    GradeLevelSection.Font = new Font("TW Cen MT", 16);
+                    GradeLevelSection.ForeColor = ColorTranslator.FromHtml("#fff");
+                    GradeLevelSection.Location = new System.Drawing.Point(95, 50);
+
                     Label WeekDay = new Label();
                     WeekDay.AutoSize = true;
                     WeekDay.ForeColor = Color.White;
@@ -123,15 +131,15 @@ namespace LGAConnectSOMS.Views
                     Teacher.ForeColor = Color.White;
                     StartTimeEndTime.Text = classSchedule.StartTime + " - " + classSchedule.EndTime;
                     StartTimeEndTime.ForeColor = Color.White;
-                    Subject.Location = new System.Drawing.Point(85, 20);
-                    Teacher.Location = new System.Drawing.Point(85, 50);
+                    Subject.Location = new System.Drawing.Point(95, 20);
+                    Teacher.Location = new System.Drawing.Point(95, 75);
                     Subject.AutoSize = true;
                     Teacher.AutoSize = true;
                     StartTimeEndTime.Location = new System.Drawing.Point(500, 45);
                     pictureBox.Location = new System.Drawing.Point(0, 15);
                     //dynamicPanel.Location = new System.Drawing.Point(500, 101);
                     dynamicPanel.Name = "Panel1";
-                    dynamicPanel.Size = new System.Drawing.Size(700, 94);
+                    dynamicPanel.Size = new System.Drawing.Size(700, 110);
                     dynamicPanel.BackColor = Color.LightBlue;
                     Controls.Add(dynamicPanel);
 
@@ -141,6 +149,7 @@ namespace LGAConnectSOMS.Views
                     dynamicPanel.Controls.Add(pictureBox);
                     dynamicPanel.Controls.Add(LinePanel);
                     dynamicPanel.Controls.Add(WeekDay);
+                    dynamicPanel.Controls.Add(GradeLevelSection);
                     ClassSchedulePanel.Controls.Add(dynamicPanel);
                     dynamicPanel.Margin = new Padding(0, 0, 0, 10);
 
@@ -222,6 +231,12 @@ namespace LGAConnectSOMS.Views
                 foreach (ClassSchedule classSchedule in result)
                 {
                     Label Subject = new Label();
+                    Label GradeLevelSection = new Label();
+                    GradeLevelSection.Text = classSchedule.GradeLevel + " " + classSchedule.SectionName;
+                    GradeLevelSection.AutoSize = true;
+                    GradeLevelSection.Font = new Font("TW Cen MT", 16);
+                    GradeLevelSection.ForeColor = ColorTranslator.FromHtml("#fff");
+                    GradeLevelSection.Location = new System.Drawing.Point(85, 70);
                     Label Teacher = new Label();
                     Label StartTimeEndTime = new Label();                   
                     Panel dynamicPanel = new Panel();
@@ -232,6 +247,7 @@ namespace LGAConnectSOMS.Views
                     LinePanel.BackColor = Color.White;
                     PictureBox pictureBox = new PictureBox();
                     Subject.Font = new Font("TW Cen MT", 16);
+                   
                     Teacher.Font = new Font("TW Cen MT", 16);                   
                     StartTimeEndTime.Font = new Font("TW Cen MT", 15);
                     StartTimeEndTime.AutoSize = true;
@@ -239,7 +255,9 @@ namespace LGAConnectSOMS.Views
                     pictureBox.Image = Properties.Resources.Subject;
                     pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
                     Subject.Text = classSchedule.Subject;
+                   
                     Subject.ForeColor = ColorTranslator.FromHtml("#fff");
+                    
                     Teacher.Text = classSchedule.Firstname + " " + classSchedule.Lastname;
                     Teacher.ForeColor = Color.White;
                     StartTimeEndTime.Text = classSchedule.StartTime + " - " + classSchedule.EndTime;
@@ -251,7 +269,7 @@ namespace LGAConnectSOMS.Views
                     StartTimeEndTime.Location = new System.Drawing.Point(500, 35);
                     pictureBox.Location = new System.Drawing.Point(0, 15);
                     dynamicPanel.Location = new System.Drawing.Point(500, 101);
-                    dynamicPanel.Size = new System.Drawing.Size(700, 94);
+                    dynamicPanel.Size = new System.Drawing.Size(700, 100);
                     dynamicPanel.BackColor = Color.LightBlue;
                     Controls.Add(dynamicPanel);
                     dynamicPanel.Controls.Add(Subject);
@@ -259,6 +277,7 @@ namespace LGAConnectSOMS.Views
                     dynamicPanel.Controls.Add(StartTimeEndTime);
                     dynamicPanel.Controls.Add(pictureBox);
                     dynamicPanel.Controls.Add(LinePanel);
+                    dynamicPanel.Controls.Add(GradeLevelSection);
                     ClassSchedulePanel.Controls.Add(dynamicPanel);
 
 

@@ -38,8 +38,18 @@ namespace LGAConnectSOMS.Views
 
         public async void LoadData()
         {
+            await SectionsHandled();
             await ClassSchedulesFaculty();
             await LoadNewsAndAnnouncements();
+        }
+
+
+        public async Task SectionsHandled()
+        {
+            var ID = Settings.Default.ID;
+            var sections = await SectionsHandledService.GetSectionsHandled(ID);
+            var count = sections.ToList();
+            lblSectionsHandled.Text = count.Count.ToString();
         }
 
         public List<ClassSchedule> schedulelist;
@@ -364,6 +374,11 @@ namespace LGAConnectSOMS.Views
             manageNewsView.BtnAddNews.Hide();
             manageNewsView.Show();
             this.Hide();
+        }
+
+        private void btnFileRequest_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

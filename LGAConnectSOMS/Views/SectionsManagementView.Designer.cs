@@ -105,6 +105,64 @@ namespace LGAConnectSOMS.Views
             this.DragWindowsPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DragWindowsPanel_MouseDown);
             this.DragWindowsPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DragWindowsPanel_MouseMove);
             // 
+            // btnMinimize
+            // 
+            this.btnMinimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMinimize.FlatAppearance.BorderSize = 0;
+            this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMinimize.Image = global::LGAConnectSOMS.Properties.Resources.MinimizeBlack1;
+            this.btnMinimize.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnMinimize.Location = new System.Drawing.Point(1209, 10);
+            this.btnMinimize.Name = "btnMinimize";
+            this.btnMinimize.Size = new System.Drawing.Size(24, 24);
+            this.btnMinimize.TabIndex = 22;
+            this.btnMinimize.UseVisualStyleBackColor = true;
+            this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
+            // 
+            // btnMaximize
+            // 
+            this.btnMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMaximize.FlatAppearance.BorderSize = 0;
+            this.btnMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMaximize.Image = global::LGAConnectSOMS.Properties.Resources.FullScreenBlack;
+            this.btnMaximize.Location = new System.Drawing.Point(1239, 10);
+            this.btnMaximize.Name = "btnMaximize";
+            this.btnMaximize.Size = new System.Drawing.Size(24, 24);
+            this.btnMaximize.TabIndex = 21;
+            this.btnMaximize.UseVisualStyleBackColor = true;
+            this.btnMaximize.Click += new System.EventHandler(this.btnMaximize_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Image = global::LGAConnectSOMS.Properties.Resources.CloseBlack;
+            this.btnClose.Location = new System.Drawing.Point(1269, 10);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(24, 24);
+            this.btnClose.TabIndex = 20;
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnBack
+            // 
+            this.btnBack.BackColor = System.Drawing.Color.Transparent;
+            this.btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBack.FlatAppearance.BorderSize = 0;
+            this.btnBack.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnBack.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBack.Image = global::LGAConnectSOMS.Properties.Resources.BackArrow24;
+            this.btnBack.Location = new System.Drawing.Point(21, 31);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(36, 36);
+            this.btnBack.TabIndex = 39;
+            this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            this.btnBack.MouseEnter += new System.EventHandler(this.btnBack_MouseEnter);
+            this.btnBack.MouseLeave += new System.EventHandler(this.btnBack_MouseLeave);
+            // 
             // dtSectionsHandledPreview
             // 
             this.dtSectionsHandledPreview.AllowUserToAddRows = false;
@@ -113,9 +171,7 @@ namespace LGAConnectSOMS.Views
             this.dtSectionsHandledPreview.AllowUserToResizeRows = false;
             dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
             this.dtSectionsHandledPreview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
-            this.dtSectionsHandledPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtSectionsHandledPreview.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dtSectionsHandledPreview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtSectionsHandledPreview.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dtSectionsHandledPreview.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -192,7 +248,7 @@ namespace LGAConnectSOMS.Views
             // 
             // btnRemoveGraceSection
             // 
-            this.btnRemoveGraceSection.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRemoveGraceSection.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnRemoveGraceSection.BackColor = System.Drawing.Color.Crimson;
             this.btnRemoveGraceSection.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRemoveGraceSection.FlatAppearance.BorderColor = System.Drawing.Color.Crimson;
@@ -210,7 +266,7 @@ namespace LGAConnectSOMS.Views
             // 
             // btnAddGradeSection
             // 
-            this.btnAddGradeSection.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddGradeSection.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnAddGradeSection.BackColor = System.Drawing.Color.Teal;
             this.btnAddGradeSection.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAddGradeSection.FlatAppearance.BorderColor = System.Drawing.Color.Teal;
@@ -234,9 +290,7 @@ namespace LGAConnectSOMS.Views
             this.dtGradeSection.AllowUserToResizeRows = false;
             dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
             this.dtGradeSection.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
-            this.dtGradeSection.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtGradeSection.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dtGradeSection.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtGradeSection.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dtGradeSection.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -366,7 +420,7 @@ namespace LGAConnectSOMS.Views
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSubmit.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnSubmit.BackColor = System.Drawing.Color.Blue;
             this.btnSubmit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSubmit.FlatAppearance.BorderColor = System.Drawing.Color.Blue;

@@ -45,13 +45,17 @@ namespace LGAConnectSOMS.Views
 
         public async void LoadData()
         {
+            lblLoadingGrades.Visible = true;
+            this.Cursor = Cursors.WaitCursor;           
             PanelLoadingSaveGradesFirst.Hide();
+            await FinalGradeRecords();
             await LoadFacultySubjects();
             await LoadSubjects();
-            GradeLvelDropDown();
-            await ClassRecords();        
+            GradeLvelDropDown();          
+            await ClassRecords();           
             await DataGridFlickerFix();
-            
+            lblLoadingGrades.Visible = false;
+            this.Cursor = Cursors.Default;        
             //SetupDataGrid();
         }
 
@@ -295,7 +299,7 @@ namespace LGAConnectSOMS.Views
 
 
                 if (Convert.ToDouble(highestpossiblescoreWW) != 0)
-                {
+                {                    
                     WWTotalPercentage = (WWTotal / Convert.ToDouble(highestpossiblescoreWW) * 100);
                 }
 
@@ -2134,85 +2138,107 @@ namespace LGAConnectSOMS.Views
 
         int globalgradingperiod;
         IEnumerable<ClassRecords> recordslist = new List<ClassRecords>();
-        public async Task ClassRecords(int gradingperiod = 0)
+        public async Task ClassRecords()
         {
+            //int gradingperiod = 0
             var ID = Settings.Default.ID;
             ClassRecordsService classRecordsService = new ClassRecordsService();
             var records = await classRecordsService.GetClassRecrodsDetails(ID);
             recordslist = records.ToList();
-            globalgradingperiod = gradingperiod;
+            var schoolyear = recordslist.Select(x => x.SchoolYearStart).Distinct();
+            CBSY.DataSource = schoolyear.ToList();
+            //globalgradingperiod = gradingperiod;
 
             var selectedGradeLevel = CBGradeLevel.SelectedItem;
             var selectedSection = CBSection.SelectedItem;
             var selectedSubject = CBSubject.SelectedItem;
-            var selectedSubjectID = FacultySubjects.First(x => x.SubjectName.Equals(selectedSubject)).SubjectID;
+            var selectedSchoolYear = CBSY.SelectedItem;
+            var selectedSubjectID = FacultySubjects.First(x => x.SubjectName.Equals(selectedSubject) && x.GradeLevel.Equals(selectedGradeLevel)).SubjectID;
             var selectedGradingPeriod = tabcontrol.SelectedIndex;
 
-            if (selectedGradingPeriod == 0)
-            {
-                globalgradingperiod = gradingperiod;
+            //if (selectedGradingPeriod == 0)
+            //{
+               // globalgradingperiod = gradingperiod;
                 FirstGradingGradebook.AutoGenerateColumns = false;
 
-                FirstGradingList = recordslist.Where(x => x.GradingPeriod == gradingperiod + 1 && x.SubjectName == selectedSubjectID && x.SectionName.Equals((string)selectedSection)).ToList();
+                FirstGradingList = recordslist.Where(x => x.GradingPeriod == 1 && x.SubjectName == selectedSubjectID && x.SectionName.Equals((string)selectedSection) && x.Grade_Level.Equals(selectedGradeLevel)).ToList();
 
-                FirstGradingGradebook.DataSource = FirstGradingList;
+            //FirstGradingList = recordslist.Where(x => x.GradingPeriod == gradingperiod + 1 && x.SubjectName == selectedSubjectID && x.SectionName.Equals((string)selectedSection) && x.Grade_Level.Equals(selectedGradeLevel)).ToList();
+
+
+
+            FirstGradingGradebook.DataSource = FirstGradingList;
+                this.FirstGradingGradebook.Columns[28].Visible = false;
+                this.FirstGradingGradebook.Columns[30].Visible = false;
                 //CBSubject_SelectedIndexChanged(null, null);
 
                 if (FirstGradingList.Any())
                     FirstGradingGradebook.BeginEdit(true);
                 //FirstGradingGradebook.ClearSelection();
 
-            }
+             //  }
 
-            else if (selectedGradingPeriod == 1)
-            {
-                globalgradingperiod = gradingperiod + 1;
+                //else if (selectedGradingPeriod == 1)
+                //{
+                    //globalgradingperiod = gradingperiod + 1;
                 SecondGradingGradebook.AutoGenerateColumns = false;
                 //CBSubject_SelectedIndexChanged(null, null);
-                SecondGradingList = recordslist.Where(x => x.GradingPeriod == gradingperiod + 1 && x.SubjectName == selectedSubjectID && x.SectionName == (string)selectedSection).ToList();
+                SecondGradingList = recordslist.Where(x => x.GradingPeriod == 2 && x.SubjectName == selectedSubjectID && x.SectionName == (string)selectedSection && x.Grade_Level.Equals(selectedGradeLevel)).ToList();
 
-                SecondGradingGradebook.DataSource = SecondGradingList;
+            //SecondGradingList = recordslist.Where(x => x.GradingPeriod == gradingperiod + 1 && x.SubjectName == selectedSubjectID && x.SectionName == (string)selectedSection && x.Grade_Level.Equals(selectedGradeLevel)).ToList();
+
+            SecondGradingGradebook.DataSource = SecondGradingList;
+                this.SecondGradingGradebook.Columns[28].Visible = false;
+                this.SecondGradingGradebook.Columns[30].Visible = false;
 
 
-                if (SecondGradingList.Any())
+                //if (SecondGradingList.Any())
 
-                    SecondGradingGradebook.BeginEdit(true);
+                //    SecondGradingGradebook.BeginEdit(true);
                 //SecondGradingGradebook.ClearSelection();
-            }
+               // }
 
-            else if (selectedGradingPeriod == 2)
-            {
-                globalgradingperiod = gradingperiod;
+            //else if (selectedGradingPeriod == 2)
+            //{
+                //globalgradingperiod = gradingperiod;
                 ThirdGradingGradebook.AutoGenerateColumns = false;
-                ThirdGradingList = recordslist.Where(x => x.GradingPeriod == gradingperiod + 1 && x.SubjectName == selectedSubjectID && x.SectionName == (string)selectedSection).ToList();
+                ThirdGradingList = recordslist.Where(x => x.GradingPeriod == 3 && x.SubjectName == selectedSubjectID && x.SectionName == (string)selectedSection && x.Grade_Level.Equals(selectedGradeLevel)).ToList();
 
-                ThirdGradingGradebook.DataSource = ThirdGradingList;
+            //ThirdGradingList = recordslist.Where(x => x.GradingPeriod == gradingperiod + 1 && x.SubjectName == selectedSubjectID && x.SectionName == (string)selectedSection && x.Grade_Level.Equals(selectedGradeLevel)).ToList();
+
+            ThirdGradingGradebook.DataSource = ThirdGradingList;
+                this.ThirdGradingGradebook.Columns[28].Visible = false;
+                this.ThirdGradingGradebook.Columns[30].Visible = false;
+
                 //CBSubject_SelectedIndexChanged(null, null);
 
-                if (ThirdGradingList.Any())
-                    ThirdGradingGradebook.BeginEdit(true);
+                //if (ThirdGradingList.Any())
+                //    ThirdGradingGradebook.BeginEdit(true);
 
                 //ThirdGradingGradebook.ClearSelection();
 
-            }
+           // }
 
-            else if (selectedGradingPeriod == 3)
-            {
-                globalgradingperiod = gradingperiod;
+            //else if (selectedGradingPeriod == 3)
+            //{
+                //globalgradingperiod = gradingperiod;
 
                 FourthGradingGradebook.AutoGenerateColumns = false;
 
-                FourthGradingList = recordslist.Where(x => x.GradingPeriod == gradingperiod + 1 && x.SubjectName == selectedSubjectID && x.SectionName == (string)selectedSection).ToList();
+                FourthGradingList = recordslist.Where(x => x.GradingPeriod == 4 && x.SubjectName == selectedSubjectID && x.SectionName == (string)selectedSection && x.Grade_Level.Equals(selectedGradeLevel)).ToList();
 
-                FourthGradingGradebook.DataSource = FourthGradingList;
+            //FourthGradingList = recordslist.Where(x => x.GradingPeriod == gradingperiod + 1 && x.SubjectName == selectedSubjectID && x.SectionName == (string)selectedSection && x.Grade_Level.Equals(selectedGradeLevel)).ToList();
+
+            FourthGradingGradebook.DataSource = FourthGradingList;
+                this.FourthGradingGradebook.Columns[28].Visible = false;
+                this.FourthGradingGradebook.Columns[30].Visible = false;
                 //CBSubject_SelectedIndexChanged(null, null);
 
-                if (FourthGradingList.Any())
-                    FourthGradingGradebook.BeginEdit(true);
+                //if (FourthGradingList.Any())
+                //    FourthGradingGradebook.BeginEdit(true);
 
-                //FourthGradingGradebook.ClearSelection();
-
-            }
+                FourthGradingGradebook.ClearSelection();
+           // }
 
             //FirstGradingGradebook.Columns[0].DataPropertyName = "ID";
             FirstGradingGradebook.Columns[0].DataPropertyName = "Fullname";
@@ -2406,9 +2432,9 @@ namespace LGAConnectSOMS.Views
         private async void tabcontrol_SelectedIndexChanged(object sender, EventArgs e)
         {
             panelSubjects.Visible = tabcontrol.SelectedIndex != 4;
-            await ClassRecords(tabcontrol.SelectedIndex);
-            if(tabcontrol.SelectedIndex == 4)
-            {            
+            
+            if (tabcontrol.SelectedIndex == 4)
+            {
                 //CBGradeLevel.Hide();
                 //CBSection.Hide();
                 ////CBSubject.Hide();
@@ -2417,19 +2443,24 @@ namespace LGAConnectSOMS.Views
                 //lblSection.Hide();
                 //lblSubject.Hide();
                 //lblSY.Hide();
+                ComputeFinalGrade();
             }
-
             else
             {
-                //CBGradeLevel.Show();
-                //CBSection.Show();
-                //CBSubject.Show();
-                //CBSY.Show();
-                //lblGradeLevel.Show();
-                //lblSection.Show();
-                //lblSubject.Show();
-                //lblSY.Show();
+                //await ClassRecords(tabcontrol.SelectedIndex);
             }
+
+            //else
+            //{
+            //    //CBGradeLevel.Show();
+            //    //CBSection.Show();
+            //    //CBSubject.Show();
+            //    //CBSY.Show();
+            //    //lblGradeLevel.Show();
+            //    //lblSection.Show();
+            //    //lblSubject.Show();
+            //    //lblSY.Show();
+            //}
         }
 
         private async Task SubjectDropDown()
@@ -2681,7 +2712,8 @@ namespace LGAConnectSOMS.Views
         {
             if (CBSubject.SelectedIndex > -1)
             {
-                await ClassRecords(tabcontrol.SelectedIndex);
+                await ClassRecords();
+                //await ClassRecords(//tabcontrol.SelectedIndex);
             }
             //int selectedIndex = CBSubject.SelectedIndex;
 
@@ -2771,7 +2803,8 @@ namespace LGAConnectSOMS.Views
 
             if (CBSection.SelectedIndex > -1)
             {
-                await ClassRecords(tabcontrol.SelectedIndex);
+                await ClassRecords();
+                //await ClassRecords(tabcontrol.SelectedIndex);
                 await FinalGradeRecords();
             }
 
@@ -3029,10 +3062,16 @@ namespace LGAConnectSOMS.Views
                 {
                     MessageBox.Show(x.Message);
                 }
-            }
-
+            }           
+           
             PanelLoadingSaveGradesFirst.Hide();
-            MessageBox.Show("Successfully Save");
+            string Successmessage = "Successfully saved!";
+            string Successtitle = "LGA Connect SOMS Class Records";
+            MessageBoxButtons Successbuttons = MessageBoxButtons.OK;
+
+            DialogResult Successresult = MessageBox.Show(Successmessage, Successtitle, Successbuttons, MessageBoxIcon.Information);
+            if (Successresult == DialogResult.OK)
+            { }
         }
 
         private void FinalGradeDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -3060,6 +3099,35 @@ namespace LGAConnectSOMS.Views
             //        row.Cells[FinalGradeDataGridView.Columns["Average"].Index].Value = roundoffWW;
             //    }
             //}
+        }
+
+        public void ComputeFinalGrade()
+        {
+            string subjectsselected = CBSubject.SelectedItem.ToString();
+            for (int grades = 0; grades < FirstGradingGradebook.Rows.Count; grades++)
+            {
+                if (grades != 0)
+                {
+                    double firstgrading = Convert.ToDouble(FirstGradingGradebook.Rows[grades].Cells[26].Value);
+                    double secondgrading = Convert.ToDouble(SecondGradingGradebook.Rows[grades].Cells[26].Value);
+                    double thirdgrading = Convert.ToDouble(ThirdGradingGradebook.Rows[grades].Cells[26].Value);
+                    double fourthgrading = Convert.ToDouble(FourthGradingGradebook.Rows[grades].Cells[26].Value);
+                    var averagepersubject = firstgrading + secondgrading + thirdgrading + fourthgrading;
+                    var totals = averagepersubject / 4;
+
+                    FinalGradeDataGridView.Rows[grades - 1].Cells[subjectsselected].Value = totals;
+                }
+
+                foreach (DataGridViewRow row in FinalGradeDataGridView.Rows)
+                {
+                    var average = Convert.ToDouble(row.Cells[FinalGradeDataGridView.Columns[1].Index].Value) + Convert.ToDouble(row.Cells[FinalGradeDataGridView.Columns[2].Index].Value) + Convert.ToDouble(row.Cells[FinalGradeDataGridView.Columns[3].Index].Value) + Convert.ToDouble(row.Cells[FinalGradeDataGridView.Columns[4].Index].Value) + Convert.ToDouble(row.Cells[FinalGradeDataGridView.Columns[5].Index].Value) + Convert.ToDouble(row.Cells[FinalGradeDataGridView.Columns[6].Index].Value) + Convert.ToDouble(row.Cells[FinalGradeDataGridView.Columns[7].Index].Value);
+                    var columns = FinalGradeDataGridView.Columns.Count - 2;
+                    
+                        columns +=  columns - 2;
+                        var roundoffWW = String.Format("{0:0.##}", Math.Round(average / columns, 2));
+                        row.Cells[FinalGradeDataGridView.Columns["Average"].Index].Value = roundoffWW; 
+                }
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -3140,6 +3208,14 @@ namespace LGAConnectSOMS.Views
                 {
                     MessageBox.Show("Not Success");
                 }
+        }
+
+        private async void CBSY_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //if(CBSY.SelectedIndex > -1)
+            //{
+            //    await ClassRecords(tabcontrol.SelectedIndex);
+            //}
         }
     }
 }

@@ -101,7 +101,7 @@ namespace LGAConnectSOMS
             this.btnSectionManagement.ForeColor = System.Drawing.Color.White;
             this.btnSectionManagement.Image = global::LGAConnectSOMS.Properties.Resources.Class_Record;
             this.btnSectionManagement.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnSectionManagement.Location = new System.Drawing.Point(0, 393);
+            this.btnSectionManagement.Location = new System.Drawing.Point(0, 401);
             this.btnSectionManagement.Name = "btnSectionManagement";
             this.btnSectionManagement.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.btnSectionManagement.Size = new System.Drawing.Size(265, 44);
@@ -122,7 +122,7 @@ namespace LGAConnectSOMS
             this.btnFacultyAdmin.ForeColor = System.Drawing.Color.White;
             this.btnFacultyAdmin.Image = global::LGAConnectSOMS.Properties.Resources.Class_Record;
             this.btnFacultyAdmin.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnFacultyAdmin.Location = new System.Drawing.Point(0, 328);
+            this.btnFacultyAdmin.Location = new System.Drawing.Point(0, 323);
             this.btnFacultyAdmin.Name = "btnFacultyAdmin";
             this.btnFacultyAdmin.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.btnFacultyAdmin.Size = new System.Drawing.Size(265, 67);
@@ -169,7 +169,7 @@ namespace LGAConnectSOMS
             this.btnManageNews.Location = new System.Drawing.Point(0, 566);
             this.btnManageNews.Name = "btnManageNews";
             this.btnManageNews.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.btnManageNews.Size = new System.Drawing.Size(265, 41);
+            this.btnManageNews.Size = new System.Drawing.Size(262, 41);
             this.btnManageNews.TabIndex = 10;
             this.btnManageNews.Text = "Manage News ";
             this.btnManageNews.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -214,7 +214,7 @@ namespace LGAConnectSOMS
             this.btnClassRecords.ForeColor = System.Drawing.Color.White;
             this.btnClassRecords.Image = ((System.Drawing.Image)(resources.GetObject("btnClassRecords.Image")));
             this.btnClassRecords.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnClassRecords.Location = new System.Drawing.Point(0, 268);
+            this.btnClassRecords.Location = new System.Drawing.Point(0, 262);
             this.btnClassRecords.Name = "btnClassRecords";
             this.btnClassRecords.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.btnClassRecords.Size = new System.Drawing.Size(265, 41);
@@ -271,8 +271,7 @@ namespace LGAConnectSOMS
             this.DragWindowsPanel.Size = new System.Drawing.Size(914, 29);
             this.DragWindowsPanel.TabIndex = 13;
             this.DragWindowsPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DragWindowsPanel_MouseDown);
-            this.DragWindowsPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DragWindowsPanel_MouseMove);
-            this.DragWindowsPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DragWindowsPanel_MouseUp);
+            this.DragWindowsPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DragWindowsPanel_MouseMove);        
             // 
             // btnMaximize
             // 
@@ -335,11 +334,11 @@ namespace LGAConnectSOMS
             this.lblLoading.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblLoading.AutoSize = true;
             this.lblLoading.Font = new System.Drawing.Font("Tw Cen MT", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLoading.Location = new System.Drawing.Point(283, 189);
+            this.lblLoading.Location = new System.Drawing.Point(326, 183);
             this.lblLoading.Name = "lblLoading";
-            this.lblLoading.Size = new System.Drawing.Size(247, 24);
+            this.lblLoading.Size = new System.Drawing.Size(141, 24);
             this.lblLoading.TabIndex = 16;
-            this.lblLoading.Text = "Please wait while loading...";
+            this.lblLoading.Text = "Loading news...";
             // 
             // lblArticelDescription
             // 
