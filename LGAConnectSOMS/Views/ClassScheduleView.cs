@@ -26,7 +26,7 @@ namespace LGAConnectSOMS.Views
 
         private FacultyModel _selectedFaculty;
         private SectionsHandled _selectedGradeLevel;
-        private Subjects _selectedSubjects;
+        private SubjectsHandled _selectedSubjects;
 
         public ClassScheduleView()
         {
@@ -481,10 +481,9 @@ namespace LGAConnectSOMS.Views
 
         public async Task LoadSubjects()
         {
-            var gradeLevel = _selectedGradeLevel.GradeLevel.Replace("Grade ", "");
-            var result = (await _subjectsService.GetSubjectsByGradeLevel(int.Parse(gradeLevel))).OrderBy(x => x.SubjectName).ToList();
+            var result = (await _subjectsService.GetSubjectsHandled(_selectedFaculty.Id, _selectedGradeLevel.GradeLevelID)).OrderBy(x => x.SubjectName).ToList();
 
-            cmbSubjects.ValueMember = "ID";
+            cmbSubjects.ValueMember = "SubjectId";
             cmbSubjects.DisplayMember = "SubjectName";
 
             cmbSubjects.DataSource = result;
@@ -512,7 +511,7 @@ namespace LGAConnectSOMS.Views
             //var subjectid = subjects.First(x => x.SubjectName.Equals(selectedSubject) && x.GradeLevel == gradeLevelId).GradeLevel;
             //var teacherid = _schoolAccounts.First(x => x.Fullname == selectedteacher).id;
 
-            var subjectid = _selectedSubjects.ID;
+            var subjectid = _selectedSubjects.SubjectId;
             var teacherid = _selectedFaculty.Id;
             var gradeLevelId = _selectedGradeLevel.GradeLevelID;
 
@@ -709,7 +708,7 @@ namespace LGAConnectSOMS.Views
 
         private void cmbSubjects_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _selectedSubjects = (Subjects)cmbSubjects.SelectedItem;
+            _selectedSubjects = (SubjectsHandled)cmbSubjects.SelectedItem;
         }
     }
 }
