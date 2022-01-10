@@ -122,7 +122,13 @@ namespace LGAConnectSOMS.Views
             }
             finally
             {
-                cmbGradeLevel.Invoke((MethodInvoker)(() => cmbGradeLevel.Enabled = true));
+                if (!_sectionsHandled.Any())
+                {
+                    cmbGradeLevel.Invoke((MethodInvoker)(() => cmbGradeLevel.Text = string.Empty));
+                    cmbGradeLevel_SelectedIndexChanged(this, null);
+                }
+
+                cmbGradeLevel.Invoke((MethodInvoker)(() => cmbGradeLevel.Enabled = _sectionsHandled.Any()));
                 lblGradeLevelLoading.Invoke((MethodInvoker)(() => lblGradeLevelLoading.Visible = false));
             }
         }
@@ -366,6 +372,20 @@ namespace LGAConnectSOMS.Views
             {
                 await FetchSubjectHandled();
                 await FetchSubjectByGradeLevel();
+            }
+            else
+            {
+                _subjectsHandled.Clear();
+                _subjectsHandledBindingSource.ResetBindings(true);
+
+                btnRemoveSubjectsHandled.Visible = false;
+                btnSubmit.Visible = false;
+
+                _subjects.Clear();
+                _allSubjects.Clear();
+                _subjectsBindingSource.ResetBindings(true);
+
+                btnSelectSubject.Visible = false;
             }
         }
 
