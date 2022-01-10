@@ -73,7 +73,7 @@ namespace LGAConnectSOMS.Gateway
             }
         }
 
-        public async Task<string> CreateClassScheduleRequest(ClassScheduleRequest request)
+        public async Task<string> CreateClassScheduleRequest(IEnumerable<ClassScheduleRequest> request)
         {
             string url = $"{BaseUrl}/information";
             return await WebMethods.MakePostRequest(url, request);

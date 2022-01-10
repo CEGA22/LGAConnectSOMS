@@ -38,6 +38,7 @@ namespace LGAConnectSOMS.Views
             this.label1 = new System.Windows.Forms.Label();
             this.lblClassRecordAdminTitle = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
+            this.btnClose = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -146,12 +147,26 @@ namespace LGAConnectSOMS.Views
             this.txtID.Size = new System.Drawing.Size(100, 20);
             this.txtID.TabIndex = 67;
             // 
+            // btnClose
+            // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Image = global::LGAConnectSOMS.Properties.Resources.CloseBlack;
+            this.btnClose.Location = new System.Drawing.Point(525, -1);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(33, 34);
+            this.btnClose.TabIndex = 76;
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // EditGradeLevelSectionView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
             this.ClientSize = new System.Drawing.Size(559, 339);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.txtSectionName);
@@ -180,5 +195,6 @@ namespace LGAConnectSOMS.Views
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblClassRecordAdminTitle;
         private System.Windows.Forms.TextBox txtID;
+        private System.Windows.Forms.Button btnClose;
     }
 }

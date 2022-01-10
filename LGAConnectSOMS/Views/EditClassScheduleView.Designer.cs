@@ -200,6 +200,7 @@ namespace LGAConnectSOMS.Views
             this.txtFullname.Location = new System.Drawing.Point(313, 100);
             this.txtFullname.Multiline = true;
             this.txtFullname.Name = "txtFullname";
+            this.txtFullname.ReadOnly = true;
             this.txtFullname.Size = new System.Drawing.Size(233, 32);
             this.txtFullname.TabIndex = 68;
             this.txtFullname.TabStop = false;
@@ -211,6 +212,7 @@ namespace LGAConnectSOMS.Views
             this.txtGradeLevel.Location = new System.Drawing.Point(313, 162);
             this.txtGradeLevel.Multiline = true;
             this.txtGradeLevel.Name = "txtGradeLevel";
+            this.txtGradeLevel.ReadOnly = true;
             this.txtGradeLevel.Size = new System.Drawing.Size(233, 32);
             this.txtGradeLevel.TabIndex = 69;
             this.txtGradeLevel.TabStop = false;
@@ -222,6 +224,7 @@ namespace LGAConnectSOMS.Views
             this.txtSection.Location = new System.Drawing.Point(313, 214);
             this.txtSection.Multiline = true;
             this.txtSection.Name = "txtSection";
+            this.txtSection.ReadOnly = true;
             this.txtSection.Size = new System.Drawing.Size(233, 32);
             this.txtSection.TabIndex = 70;
             this.txtSection.TabStop = false;
@@ -233,6 +236,7 @@ namespace LGAConnectSOMS.Views
             this.txtSubject.Location = new System.Drawing.Point(313, 273);
             this.txtSubject.Multiline = true;
             this.txtSubject.Name = "txtSubject";
+            this.txtSubject.ReadOnly = true;
             this.txtSubject.Size = new System.Drawing.Size(233, 32);
             this.txtSubject.TabIndex = 71;
             this.txtSubject.TabStop = false;
@@ -392,6 +396,7 @@ namespace LGAConnectSOMS.Views
             this.Name = "EditClassScheduleView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EditClassScheduleView";
+            this.Load += new System.EventHandler(this.EditClassScheduleView_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
