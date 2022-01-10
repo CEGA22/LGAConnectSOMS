@@ -872,5 +872,16 @@ namespace LGAConnectSOMS.Views
             ClassRecordDataGridView.DataSource = null;
             await DisplayClassRecordData();
         }
+
+        private async void btnRefreshSection_Click(object sender, EventArgs e)
+        {
+            GradeLevelSectionDataGridView.DataSource = null;
+            await DisplayGradeLevelSections();
+        }
+
+        private void txtMobileNumber_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
     }

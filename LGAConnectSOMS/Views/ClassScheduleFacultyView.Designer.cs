@@ -29,6 +29,7 @@ namespace LGAConnectSOMS.Views
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClassScheduleFacultyView));
             this.DragWindowsPanel = new System.Windows.Forms.Panel();
             this.btnMinimize = new System.Windows.Forms.Button();
             this.btnMaximize = new System.Windows.Forms.Button();
@@ -324,6 +325,7 @@ namespace LGAConnectSOMS.Views
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.DragWindowsPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ClassScheduleFacultyView";
             this.Text = "ClassScheduleFacultyView";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ClassScheduleFacultyView_FormClosing);

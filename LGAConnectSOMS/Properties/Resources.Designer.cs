@@ -313,6 +313,16 @@ namespace LGAConnectSOMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap FacultyAdmin {
+            get {
+                object obj = ResourceManager.GetObject("FacultyAdmin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap FacultyAdminRecords {
             get {
                 object obj = ResourceManager.GetObject("FacultyAdminRecords", resourceCulture);
@@ -413,6 +423,16 @@ namespace LGAConnectSOMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap newspaper {
+            get {
+                object obj = ResourceManager.GetObject("newspaper", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap NormalBlack {
             get {
                 object obj = ResourceManager.GetObject("NormalBlack", resourceCulture);
@@ -443,6 +463,26 @@ namespace LGAConnectSOMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap sched {
+            get {
+                object obj = ResourceManager.GetObject("sched", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap section {
+            get {
+                object obj = ResourceManager.GetObject("section", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Student {
             get {
                 object obj = ResourceManager.GetObject("Student", resourceCulture);
@@ -463,6 +503,16 @@ namespace LGAConnectSOMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap studentrecords {
+            get {
+                object obj = ResourceManager.GetObject("studentrecords", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Subject {
             get {
                 object obj = ResourceManager.GetObject("Subject", resourceCulture);
@@ -473,9 +523,29 @@ namespace LGAConnectSOMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap subjects {
+            get {
+                object obj = ResourceManager.GetObject("subjects", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap UserSettings {
             get {
                 object obj = ResourceManager.GetObject("UserSettings", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap wallet_symbol {
+            get {
+                object obj = ResourceManager.GetObject("wallet_symbol", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

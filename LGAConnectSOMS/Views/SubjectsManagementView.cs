@@ -43,7 +43,8 @@ namespace LGAConnectSOMS.Views
         public SubjectsManagementView()
         {
             InitializeComponent();
-
+            this.RestoreWindowPosition();
+            MaximizeIcon();
             _schoolAccountService = new SchoolAccountService();
             _subjectsService = new SubjectsService();
         }
@@ -304,6 +305,28 @@ namespace LGAConnectSOMS.Views
                 Settings.Default.HasSetDefault = true;
 
                 Settings.Default.Save();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public void MaximizeIcon()
+        {
+
+            try
+            {
+                if (this.WindowState == FormWindowState.Maximized)
+                {
+                    btnMaximize.Image = LGAConnectSOMS.Properties.Resources.NormalBlack;
+                }
+
+                else if (this.WindowState == FormWindowState.Normal)
+                {
+                    btnMaximize.Image = LGAConnectSOMS.Properties.Resources.FullScreenBlack;
+                }
             }
             catch (Exception)
             {

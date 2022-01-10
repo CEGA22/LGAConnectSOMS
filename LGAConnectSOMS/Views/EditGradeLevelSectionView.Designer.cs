@@ -29,6 +29,7 @@ namespace LGAConnectSOMS.Views
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditGradeLevelSectionView));
             this.btnCancel = new System.Windows.Forms.Button();
             this.txtSectionName = new System.Windows.Forms.TextBox();
             this.lblLastname = new System.Windows.Forms.Label();
@@ -160,6 +161,7 @@ namespace LGAConnectSOMS.Views
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblClassRecordAdminTitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EditGradeLevelSectionView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EditGradeLevelSectionView";

@@ -228,12 +228,30 @@ namespace LGAConnectSOMS.Views
 
                     if (IsSucess)
                     {
-                        MessageBox.Show("Updated Successfully");
+                        string Successmessage = "Updated Successfully";
+                        string Successtitle = "LGA Connect SOMS News and announcements";
+                        MessageBoxButtons Successbuttons = MessageBoxButtons.OK;
+
+                        DialogResult Successresult = MessageBox.Show(Successmessage, Successtitle, Successbuttons, MessageBoxIcon.Information);
+                        if (Successresult == DialogResult.OK)
+                        {
+                            ManageNewsView manageNewsView = new ManageNewsView();
+                            manageNewsView.Show();
+                            this.Hide();
+                        }                     
                     }
 
                     else
                     {
-                        MessageBox.Show("Update Not Successfull");
+                        string Successmessage = "Update Not Successfull";
+                        string Successtitle = "LGA Connect SOMS News and announcements";
+                        MessageBoxButtons Successbuttons = MessageBoxButtons.OK;
+
+                        DialogResult Successresult = MessageBox.Show(Successmessage, Successtitle, Successbuttons, MessageBoxIcon.Error);
+                        if (Successresult == DialogResult.OK)
+                        {
+
+                        }                       
                     }
 
                 }

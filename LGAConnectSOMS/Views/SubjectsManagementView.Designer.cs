@@ -40,6 +40,7 @@ namespace LGAConnectSOMS.Views
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SubjectsManagementView));
             this.lblDisplayResult = new System.Windows.Forms.Label();
             this.btnRemoveSubjectsHandled = new System.Windows.Forms.Button();
             this.dtSubjectsHandled = new System.Windows.Forms.DataGridView();
@@ -86,7 +87,7 @@ namespace LGAConnectSOMS.Views
             // 
             // btnRemoveSubjectsHandled
             // 
-            this.btnRemoveSubjectsHandled.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRemoveSubjectsHandled.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnRemoveSubjectsHandled.BackColor = System.Drawing.Color.Crimson;
             this.btnRemoveSubjectsHandled.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRemoveSubjectsHandled.FlatAppearance.BorderColor = System.Drawing.Color.Crimson;
@@ -111,9 +112,7 @@ namespace LGAConnectSOMS.Views
             this.dtSubjectsHandled.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
             this.dtSubjectsHandled.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dtSubjectsHandled.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtSubjectsHandled.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dtSubjectsHandled.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtSubjectsHandled.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dtSubjectsHandled.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -184,7 +183,7 @@ namespace LGAConnectSOMS.Views
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSubmit.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnSubmit.BackColor = System.Drawing.Color.Blue;
             this.btnSubmit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSubmit.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
@@ -290,9 +289,7 @@ namespace LGAConnectSOMS.Views
             this.dtSubjects.AllowUserToResizeRows = false;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
             this.dtSubjects.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
-            this.dtSubjects.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtSubjects.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dtSubjects.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtSubjects.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dtSubjects.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -365,6 +362,8 @@ namespace LGAConnectSOMS.Views
             this.btnBack.TabIndex = 157;
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            this.btnBack.MouseEnter += new System.EventHandler(this.btnBack_MouseEnter);
+            this.btnBack.MouseLeave += new System.EventHandler(this.btnBack_MouseLeave);
             // 
             // lblGradeLevelLoading
             // 
@@ -389,7 +388,7 @@ namespace LGAConnectSOMS.Views
             // 
             // btnSelectSubject
             // 
-            this.btnSelectSubject.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSelectSubject.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnSelectSubject.BackColor = System.Drawing.Color.Teal;
             this.btnSelectSubject.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSelectSubject.FlatAppearance.BorderColor = System.Drawing.Color.Teal;
@@ -498,6 +497,7 @@ namespace LGAConnectSOMS.Views
             this.Controls.Add(this.btnSelectSubject);
             this.Controls.Add(this.DragWindowsPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SubjectsManagementView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SubjectsManagementView";

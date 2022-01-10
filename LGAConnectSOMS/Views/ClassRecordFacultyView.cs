@@ -46,16 +46,17 @@ namespace LGAConnectSOMS.Views
         public async void LoadData()
         {
             lblLoadingGrades.Visible = true;
-            this.Cursor = Cursors.WaitCursor;           
+            //this.Cursor = Cursors.WaitCursor;           
             PanelLoadingSaveGradesFirst.Hide();
-            await FinalGradeRecords();
+           
             await LoadFacultySubjects();
             await LoadSubjects();
             GradeLvelDropDown();          
             await ClassRecords();           
             await DataGridFlickerFix();
+            await FinalGradeRecords();
             lblLoadingGrades.Visible = false;
-            this.Cursor = Cursors.Default;        
+            //this.Cursor = Cursors.Default;        
             //SetupDataGrid();
         }
 
@@ -2104,6 +2105,8 @@ namespace LGAConnectSOMS.Views
             FinalGradeDataGridView.Columns.Clear();
             FinalGradeDataGridView.Columns.Add("Fullname", "Fullname");
 
+            FinalGradeDataGridView.Rows.Clear();
+
             foreach (var subject in subjectsList)
             {
                 var subjectId = subject;
@@ -2167,9 +2170,7 @@ namespace LGAConnectSOMS.Views
 
 
 
-            FirstGradingGradebook.DataSource = FirstGradingList;
-            this.FirstGradingGradebook.Columns[28].Visible = false;
-            this.FirstGradingGradebook.Columns[30].Visible = false;
+            FirstGradingGradebook.DataSource = FirstGradingList;        
                 //CBSubject_SelectedIndexChanged(null, null);
 
                 if (FirstGradingList.Any())
@@ -2275,6 +2276,11 @@ namespace LGAConnectSOMS.Views
             FirstGradingGradebook.Columns[31].DataPropertyName = "SaveasDraft";
             FirstGradingGradebook.Columns[32].DataPropertyName = "SaveDraft";
             FirstGradingGradebook.Columns[33].DataPropertyName = "GradingPeriod";
+            this.FirstGradingGradebook.Columns[27].Visible = false;
+            this.FirstGradingGradebook.Columns[28].Visible = false;
+            this.FirstGradingGradebook.Columns[29].Visible = false;
+            this.FirstGradingGradebook.Columns[30].Visible = false;
+            this.FirstGradingGradebook.Columns[31].Visible = false;
 
             SecondGradingGradebook.Columns[0].DataPropertyName = "Fullname";
             SecondGradingGradebook.Columns[1].DataPropertyName = "WrittenWork1";
@@ -2310,6 +2316,11 @@ namespace LGAConnectSOMS.Views
             SecondGradingGradebook.Columns[31].DataPropertyName = "SaveasDraft";
             SecondGradingGradebook.Columns[32].DataPropertyName = "SaveDraft";
             SecondGradingGradebook.Columns[33].DataPropertyName = "GradingPeriod";
+            this.SecondGradingGradebook.Columns[27].Visible = false;
+            this.SecondGradingGradebook.Columns[28].Visible = false;
+            this.SecondGradingGradebook.Columns[29].Visible = false;
+            this.SecondGradingGradebook.Columns[30].Visible = false;
+            this.SecondGradingGradebook.Columns[31].Visible = false;
 
             ThirdGradingGradebook.Columns[0].DataPropertyName = "Fullname";
             ThirdGradingGradebook.Columns[1].DataPropertyName = "WrittenWork1";
@@ -2345,6 +2356,11 @@ namespace LGAConnectSOMS.Views
             ThirdGradingGradebook.Columns[31].DataPropertyName = "SaveasDraft";
             ThirdGradingGradebook.Columns[32].DataPropertyName = "SaveDraft";
             ThirdGradingGradebook.Columns[33].DataPropertyName = "GradingPeriod";
+            this.ThirdGradingGradebook.Columns[27].Visible = false;
+            this.ThirdGradingGradebook.Columns[28].Visible = false;
+            this.ThirdGradingGradebook.Columns[29].Visible = false;
+            this.ThirdGradingGradebook.Columns[30].Visible = false;
+            this.ThirdGradingGradebook.Columns[31].Visible = false;
 
             FourthGradingGradebook.Columns[0].DataPropertyName = "Fullname";
             FourthGradingGradebook.Columns[1].DataPropertyName = "WrittenWork1";
@@ -2380,6 +2396,11 @@ namespace LGAConnectSOMS.Views
             FourthGradingGradebook.Columns[31].DataPropertyName = "SaveasDraft";
             FourthGradingGradebook.Columns[32].DataPropertyName = "SaveDraft";
             FourthGradingGradebook.Columns[33].DataPropertyName = "GradingPeriod";
+            this.FourthGradingGradebook.Columns[27].Visible = false;
+            this.FourthGradingGradebook.Columns[28].Visible = false;
+            this.FourthGradingGradebook.Columns[29].Visible = false;
+            this.FourthGradingGradebook.Columns[30].Visible = false;
+            this.FourthGradingGradebook.Columns[31].Visible = false;
 
             if (FirstGradingList.Any())
                 FirstGradingGradebook_CellEndEdit(null, null);
@@ -2809,7 +2830,6 @@ namespace LGAConnectSOMS.Views
             }
 
             //else
-
         }
 
         IEnumerable<Subjects> Subjects = new List<Subjects>();
@@ -3062,16 +3082,34 @@ namespace LGAConnectSOMS.Views
                 {
                     MessageBox.Show(x.Message);
                 }
-            }           
-           
-            PanelLoadingSaveGradesFirst.Hide();
-            string Successmessage = "Successfully saved!";
-            string Successtitle = "LGA Connect SOMS Class Records";
-            MessageBoxButtons Successbuttons = MessageBoxButtons.OK;
+            }
 
-            DialogResult Successresult = MessageBox.Show(Successmessage, Successtitle, Successbuttons, MessageBoxIcon.Information);
-            if (Successresult == DialogResult.OK)
-            { }
+            //if (IsSuccess)
+            //{
+                PanelLoadingSaveGradesFirst.Hide();
+                string Successmessage = "Successfully saved!";
+                string Successtitle = "LGA Connect SOMS Class Records";
+                MessageBoxButtons Successbuttons = MessageBoxButtons.OK;
+
+                DialogResult Successresult = MessageBox.Show(Successmessage, Successtitle, Successbuttons, MessageBoxIcon.Information);
+                if (Successresult == DialogResult.OK)
+                { }
+                //MessageBox.Show("Success");
+           // }
+
+            //else
+            //{
+            //    MessageBox.Show("Not Success");
+            //}
+
+            //PanelLoadingSaveGradesFirst.Hide();
+            //string Successmessage = "Successfully saved!";
+            //string Successtitle = "LGA Connect SOMS Class Records";
+            //MessageBoxButtons Successbuttons = MessageBoxButtons.OK;
+
+            //DialogResult Successresult = MessageBox.Show(Successmessage, Successtitle, Successbuttons, MessageBoxIcon.Information);
+            //if (Successresult == DialogResult.OK)
+            //{ }
         }
 
         private void FinalGradeDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -3121,11 +3159,11 @@ namespace LGAConnectSOMS.Views
                 foreach (DataGridViewRow row in FinalGradeDataGridView.Rows)
                 {
                     var average = Convert.ToDouble(row.Cells[FinalGradeDataGridView.Columns[1].Index].Value) + Convert.ToDouble(row.Cells[FinalGradeDataGridView.Columns[2].Index].Value) + Convert.ToDouble(row.Cells[FinalGradeDataGridView.Columns[3].Index].Value) + Convert.ToDouble(row.Cells[FinalGradeDataGridView.Columns[4].Index].Value) + Convert.ToDouble(row.Cells[FinalGradeDataGridView.Columns[5].Index].Value) + Convert.ToDouble(row.Cells[FinalGradeDataGridView.Columns[6].Index].Value) + Convert.ToDouble(row.Cells[FinalGradeDataGridView.Columns[7].Index].Value);
+
                     var columns = FinalGradeDataGridView.Columns.Count - 2;
-                    
-                        columns +=  columns - 2;
-                        var roundoffWW = String.Format("{0:0.##}", Math.Round(average / columns, 2));
-                        row.Cells[FinalGradeDataGridView.Columns["Average"].Index].Value = roundoffWW; 
+
+                    var roundoffWW = String.Format("{0:0.##}", Math.Round(average / columns, 2));
+                    row.Cells[FinalGradeDataGridView.Columns["Average"].Index].Value = roundoffWW;
                 }
             }
         }
@@ -3164,11 +3202,14 @@ namespace LGAConnectSOMS.Views
         {
             DateTime dateTime = DateTime.Now;
             DateTime other = DateTime.SpecifyKind(dateTime, DateTimeKind.Utc);
+            var selectedgradelevel = CBGradeLevel.SelectedItem;
+            var selectedsection = CBSection.SelectedItem;
+            PanelLoadingSaveGradesFirst.Show();
             for (int grades = 0; grades <= FinalGradeDataGridView.Rows.Count - 1; grades++)
             {                             
                 var studentName = Convert.ToString(FinalGradeDataGridView.Rows[grades].Cells[0].Value);               
                 var finalaverage = FinalGradeDataGridView.Rows[grades].Cells[8].Value;
-                var subject = finalGrades.Select(x => x.SubjectName).Distinct();             
+                var subject = finalGrades.Where(x => x.SectionName == (string)selectedsection).Select(x => x.SubjectName).Distinct();             
 
                 foreach (var sub in subject)
                 {
@@ -3201,15 +3242,31 @@ namespace LGAConnectSOMS.Views
 
             if (IsSuccess)
                 {
-                    MessageBox.Show("Success");
+                     PanelLoadingSaveGradesFirst.Hide();
+                string Successmessage = "Successfully saved";
+                string Successtitle = "LGA Connect SOMS Class records";
+                MessageBoxButtons Successbuttons = MessageBoxButtons.OK;
+
+                DialogResult Successresult = MessageBox.Show(Successmessage, Successtitle, Successbuttons, MessageBoxIcon.Information);
+                if (Successresult == DialogResult.OK)
+                {
+                    
+                }                               
                 }
 
                 else
                 {
-                    MessageBox.Show("Not Success");
-                }
-        }
+                string Successmessage = "Not successfull";
+                string Successtitle = "LGA Connect SOMS Class records";
+                MessageBoxButtons Successbuttons = MessageBoxButtons.OK;
 
+                DialogResult Successresult = MessageBox.Show(Successmessage, Successtitle, Successbuttons, MessageBoxIcon.Error);
+                if (Successresult == DialogResult.OK)
+                {
+
+                }
+            }          
+                }       
         private async void CBSY_SelectedIndexChanged(object sender, EventArgs e)
         {
             //if(CBSY.SelectedIndex > -1)

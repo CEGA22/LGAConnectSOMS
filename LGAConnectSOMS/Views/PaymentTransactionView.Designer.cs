@@ -29,6 +29,7 @@ namespace LGAConnectSOMS.Views
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PaymentTransactionView));
             this.txtAmount = new System.Windows.Forms.TextBox();
             this.lblPassword = new System.Windows.Forms.Label();
             this.txtStudentNumber = new System.Windows.Forms.TextBox();
@@ -178,6 +179,7 @@ namespace LGAConnectSOMS.Views
             this.Controls.Add(this.lblStudentNumber);
             this.Controls.Add(this.btnAddTransactionRecord);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "PaymentTransactionView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "PaymentTransactionView";

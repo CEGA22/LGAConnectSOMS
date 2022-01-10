@@ -444,7 +444,7 @@ namespace LGAConnectSOMS
 
         private void btnUserSettings_Click(object sender, EventArgs e)
         {
-            SaveWindowPosition();
+            this.SaveWindowPosition();
             AccountSettingsView accountSettingsView = new AccountSettingsView();
             accountSettingsView.Show();
             this.Hide();
@@ -452,7 +452,7 @@ namespace LGAConnectSOMS
 
         private void btnSectionManagement_Click(object sender, EventArgs e) 
         {
-            SaveWindowPosition();
+            this.SaveWindowPosition();
             SectionsManagementView view = new SectionsManagementView();
             view.Show();
             this.Hide();
@@ -468,7 +468,7 @@ namespace LGAConnectSOMS
 
         private void button1_Click(object sender, EventArgs e)
         {
-            SaveWindowPosition();
+            this.SaveWindowPosition();
             SubjectsManagementView view = new SubjectsManagementView();
             view.Show();
             this.Hide();

@@ -29,6 +29,7 @@ namespace LGAConnectSOMS.Views
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageNewsView));
             this.panel1 = new System.Windows.Forms.Panel();
             this.DragWindowsPanel = new System.Windows.Forms.Panel();
             this.lblClassRecordAdminTitle = new System.Windows.Forms.Label();
@@ -182,6 +183,7 @@ namespace LGAConnectSOMS.Views
             this.Controls.Add(this.DragWindowsPanel);
             this.Controls.Add(this.lblClassRecordAdminTitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ManageNewsView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ManageNewsView";

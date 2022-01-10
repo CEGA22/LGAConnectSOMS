@@ -190,6 +190,7 @@ namespace LGAConnectSOMS.Views
         //NavigationToOtherForm
         private void btnClassRecords_Click(object sender, EventArgs e)
         {
+            this.SaveWindowPosition();
             ClassRecordFacultyView classRecordFacultyView = new ClassRecordFacultyView();
             classRecordFacultyView.Show();
             this.Hide();

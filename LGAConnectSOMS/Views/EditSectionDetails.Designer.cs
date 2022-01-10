@@ -29,6 +29,7 @@ namespace LGAConnectSOMS.Views
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditSectionDetails));
             this.txtSectionName = new System.Windows.Forms.TextBox();
             this.lblLastname = new System.Windows.Forms.Label();
             this.btnAddStudent = new System.Windows.Forms.Button();
@@ -170,6 +171,7 @@ namespace LGAConnectSOMS.Views
             this.Controls.Add(this.lblClassRecordAdminTitle);
             this.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "EditSectionDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

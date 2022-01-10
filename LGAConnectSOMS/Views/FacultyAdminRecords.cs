@@ -34,10 +34,7 @@ namespace LGAConnectSOMS.Views
         }
 
         private async void LoadData()
-        {
-            Random random = new Random();
-            int randomNumber1 = random.Next(0, 10);
-            int randomNumber2 = random.Next(0, 10);
+        {           
             lblLoading.Show();
             txtAdminLastname.Enabled = false;
             txtSearchFaculty.Enabled = false;           
@@ -178,7 +175,10 @@ namespace LGAConnectSOMS.Views
         public async Task DisplayAdminRecordData()
         {
             lblloadingadmin.Show();
-            var AdminList = schoolAccounts.Where(x => x.isAdmin == 1).ToList();           
+            SchoolAccountService schoolAccountService = new SchoolAccountService();
+            schoolAccounts = await Task.Run(() => schoolAccountService.GetSchoolAccountDetails());
+            var AdminList = schoolAccounts.Where(x => x.isAdmin == 1).ToList();
+            //var AdminList = schoolAccounts.Where(x => x.isAdmin == 1).ToList();           
             AdminDataGridView.DataSource = AdminList;
             lblloadingadmin.Hide();
             txtAdminLastname.Enabled = true;
@@ -719,9 +719,7 @@ namespace LGAConnectSOMS.Views
             //if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
             //    e.Handled = true;
         }
-
-        
-
+     
         private void cbFacultyGender_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
@@ -743,6 +741,70 @@ namespace LGAConnectSOMS.Views
         {
             AdminDataGridView.DataSource = null;
             await DisplayAdminRecordData();
+        }
+
+        private void txtLastname_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtLastname.Text))
+            {
+                var lastname = txtLastname.Text;
+                var monthanddate = dtBirthday.Value.ToString("dd-MM");
+                var year = DateTime.Now.ToString("yyyy");
+                string newmonthanddate;
+                string oldmonthanddate = monthanddate;
+                newmonthanddate = oldmonthanddate.Replace("-", "");
+                txtPassword.Text = lastname + newmonthanddate + year;
+            }
+
+            else
+            {
+                txtPassword.Text = "";
+            }
+        }
+
+        private void dtAdminBirthday_ValueChanged(object sender, EventArgs e)
+        {
+            var monthanddate = dtAdminBirthday.Value.ToString("dd-MM");
+            string newmonthanddate;
+            string oldmonthanddate = monthanddate;
+            newmonthanddate = oldmonthanddate.Replace("-", "");
+            var year = DateTime.Now.ToString("yyyy");
+            var studentNumber = "00" + newmonthanddate + year;
+            //txtStudentNumber.Text = studentNumber;
+            var lastname = txtLastname.Text;
+            txtPassword.Text = lastname + newmonthanddate + year;
+        }
+
+        private void txtFacultyLastname_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtFacultyLastname.Text))
+            {
+                var lastname = txtFacultyLastname.Text;
+                var monthanddate = dtBirthday.Value.ToString("dd-MM");
+                var year = DateTime.Now.ToString("yyyy");
+                string newmonthanddate;
+                string oldmonthanddate = monthanddate;
+                newmonthanddate = oldmonthanddate.Replace("-", "");
+                txtFacultyPassword.Text = lastname + newmonthanddate + year;
+            }
+
+            else
+            {
+                txtFacultyPassword.Text = "";
+            }
+        }
+
+        private void dtBirthday_ValueChanged(object sender, EventArgs e)
+        {
+            var monthanddate = dtBirthday.Value.ToString("dd-MM");
+            string newmonthanddate;
+            string oldmonthanddate = monthanddate;
+            newmonthanddate = oldmonthanddate.Replace("-", "");
+            var year = DateTime.Now.ToString("yyyy");
+            var studentNumber = "00" + newmonthanddate + year;
+            //txtStudentNumber.Text = studentNumber;
+            var lastname = txtFacultyLastname.Text;
+            txtFacultyPassword.Text = lastname + newmonthanddate + year;
         }
     }
 }

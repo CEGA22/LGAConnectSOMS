@@ -48,7 +48,8 @@ namespace LGAConnectSOMS.Views
                 {
 
                     //save to persitence data                    
-                    SavePersistentData(result.ID, result.Firstname, result.Lastname, result.Fullname, result.IsAdmin, result.TeacherProfile);                   
+                    SavePersistentData(result.ID, result.Firstname, result.Lastname, result.Fullname, result.IsAdmin, result.TeacherProfile);
+                    this.SaveWindowPosition();
                     HomeViewAdmin homeViewAdmin = new HomeViewAdmin();                  
                     homeViewAdmin.Show();
                     this.Hide();
@@ -60,6 +61,7 @@ namespace LGAConnectSOMS.Views
                 {
                     //save to persitence data
                     SavePersistentData(result.ID, result.Firstname, result.Lastname, result.Fullname, result.IsAdmin, result.TeacherProfile);
+                    this.SaveWindowPosition();
                     HomeViewTeacher homeViewTeacher = new HomeViewTeacher();
                     panel1.Hide();
                     homeViewTeacher.Show();

@@ -29,6 +29,7 @@ namespace LGAConnectSOMS.Views
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddNewsView));
             this.BtnUpdatePhoto = new System.Windows.Forms.Button();
             this.BtnSave = new System.Windows.Forms.Button();
             this.ContentPhotoPictureBox = new System.Windows.Forms.PictureBox();
@@ -255,6 +256,7 @@ namespace LGAConnectSOMS.Views
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnBack);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddNewsView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddNewsView";

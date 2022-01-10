@@ -29,6 +29,7 @@ namespace LGAConnectSOMS.Views
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClassScheduleCustomView));
             this.lblClassScheduleTitle = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbCustomDays = new System.Windows.Forms.ComboBox();
@@ -131,6 +132,7 @@ namespace LGAConnectSOMS.Views
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblClassScheduleTitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ClassScheduleCustomView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ClassScheduleCustomView";

@@ -29,7 +29,11 @@ namespace LGAConnectSOMS.Views
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginPageView));
             this.LoginPanel = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblForgotPassword = new System.Windows.Forms.Label();
             this.lblShowHide = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
             this.txtPassword = new System.Windows.Forms.TextBox();
@@ -38,9 +42,6 @@ namespace LGAConnectSOMS.Views
             this.lblID = new System.Windows.Forms.Label();
             this.lblLogInTitle = new System.Windows.Forms.Label();
             this.DragWindowsPanel = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblForgotPassword = new System.Windows.Forms.Label();
             this.btnMaximize = new System.Windows.Forms.Button();
             this.btnMinimize = new System.Windows.Forms.Button();
             this.LGAConnectSOMSLogo = new System.Windows.Forms.PictureBox();
@@ -68,6 +69,42 @@ namespace LGAConnectSOMS.Views
             this.LoginPanel.Name = "LoginPanel";
             this.LoginPanel.Size = new System.Drawing.Size(591, 703);
             this.LoginPanel.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Location = new System.Drawing.Point(42, 497);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(378, 100);
+            this.panel1.TabIndex = 18;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Tw Cen MT", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label1.Location = new System.Drawing.Point(85, 34);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(210, 24);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Logging in. Please wait";
+            // 
+            // lblForgotPassword
+            // 
+            this.lblForgotPassword.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblForgotPassword.AutoSize = true;
+            this.lblForgotPassword.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblForgotPassword.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblForgotPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(138)))), ((int)(((byte)(255)))));
+            this.lblForgotPassword.Location = new System.Drawing.Point(38, 458);
+            this.lblForgotPassword.Name = "lblForgotPassword";
+            this.lblForgotPassword.Size = new System.Drawing.Size(121, 19);
+            this.lblForgotPassword.TabIndex = 7;
+            this.lblForgotPassword.Text = "Forgot password?";
+            this.lblForgotPassword.Click += new System.EventHandler(this.lblForgotPassword_Click);
             // 
             // lblShowHide
             // 
@@ -166,42 +203,6 @@ namespace LGAConnectSOMS.Views
             this.DragWindowsPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DragWindowsPanel_MouseDown_1);
             this.DragWindowsPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DragWindowsPanel_MouseMove);
             // 
-            // panel1
-            // 
-            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(42, 497);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(378, 100);
-            this.panel1.TabIndex = 18;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Tw Cen MT", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label1.Location = new System.Drawing.Point(85, 34);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(210, 24);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Logging in. Please wait";
-            // 
-            // lblForgotPassword
-            // 
-            this.lblForgotPassword.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lblForgotPassword.AutoSize = true;
-            this.lblForgotPassword.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblForgotPassword.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblForgotPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(138)))), ((int)(((byte)(255)))));
-            this.lblForgotPassword.Location = new System.Drawing.Point(38, 458);
-            this.lblForgotPassword.Name = "lblForgotPassword";
-            this.lblForgotPassword.Size = new System.Drawing.Size(121, 19);
-            this.lblForgotPassword.TabIndex = 7;
-            this.lblForgotPassword.Text = "Forgot password?";
-            this.lblForgotPassword.Click += new System.EventHandler(this.lblForgotPassword_Click);
-            // 
             // btnMaximize
             // 
             this.btnMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -270,6 +271,7 @@ namespace LGAConnectSOMS.Views
             this.Controls.Add(this.DragWindowsPanel);
             this.Controls.Add(this.LoginPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LoginPageView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoginPageView";
