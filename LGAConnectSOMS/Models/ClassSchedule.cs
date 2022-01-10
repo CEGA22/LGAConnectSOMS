@@ -29,5 +29,10 @@ namespace LGAConnectSOMS.Models
         public string GradeLevel { get; set; }
 
         public string SectionName { get; set; }
+
+        public string FullName
+        {
+            get => $"{Firstname} {Lastname}";
+        }
     }
 }

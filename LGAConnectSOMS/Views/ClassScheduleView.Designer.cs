@@ -75,6 +75,7 @@ namespace LGAConnectSOMS.Views
             this.labelGradeLevel = new System.Windows.Forms.Label();
             this.lblLastname = new System.Windows.Forms.Label();
             this.lblClassScheduleDetailsTitle = new System.Windows.Forms.Label();
+            this.btnEditSchedule = new System.Windows.Forms.Button();
             this.DragWindowsPanel.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -375,12 +376,14 @@ namespace LGAConnectSOMS.Views
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage3.Controls.Add(this.btnEditSchedule);
             this.tabPage3.Controls.Add(this.ClassScheduleDataGridView);
             this.tabPage3.Location = new System.Drawing.Point(4, 28);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(1268, 511);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "List of Class Schedule";
+            this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
             // 
             // ClassScheduleDataGridView
             // 
@@ -414,6 +417,7 @@ namespace LGAConnectSOMS.Views
             this.ClassScheduleDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.ClassScheduleDataGridView.EnableHeadersVisualStyles = false;
             this.ClassScheduleDataGridView.Location = new System.Drawing.Point(-1, 69);
+            this.ClassScheduleDataGridView.MultiSelect = false;
             this.ClassScheduleDataGridView.Name = "ClassScheduleDataGridView";
             this.ClassScheduleDataGridView.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -430,6 +434,7 @@ namespace LGAConnectSOMS.Views
             this.ClassScheduleDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ClassScheduleDataGridView.Size = new System.Drawing.Size(1271, 446);
             this.ClassScheduleDataGridView.TabIndex = 27;
+            this.ClassScheduleDataGridView.SelectionChanged += new System.EventHandler(this.ClassScheduleDataGridView_SelectionChanged);
             this.ClassScheduleDataGridView.Click += new System.EventHandler(this.ClassScheduleDataGridView_Click);
             // 
             // tabPage2
@@ -561,42 +566,42 @@ namespace LGAConnectSOMS.Views
             this.cmbEndTime.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEndTime.FormattingEnabled = true;
             this.cmbEndTime.Items.AddRange(new object[] {
-            "6:00 am",
-            "6:30 am",
-            "7:00 am",
-            "7:30 am",
-            "8:00 am",
-            "8:30 am",
-            "9:00 am",
-            "9:30 am",
-            "10:00 am",
-            "10:30 am",
-            "11:00 am",
-            "11:30 am",
-            "12:00 pm",
-            "12:30pm",
-            "1:00 pm",
-            "1:30 pm",
-            "2:00 pm",
-            "2:30 pm",
-            "3:00 pm",
-            "3:00 pm",
-            "4:00 pm",
-            "4:30 pm",
-            "5:00 pm",
-            "5:30 pm",
-            "6:00 pm",
-            "6:30 pm",
-            "7:00 pm",
-            "7:30 pm",
-            "8:00 pm",
-            "8:30 pm",
-            "9:00 pm",
-            "9:30 pm",
-            "10:00 pm",
-            "10:30 pm",
-            "11:00 pm",
-            "11:30 pm"});
+            "6:00AM",
+            "6:30AM",
+            "7:00AM",
+            "7:30AM",
+            "8:00AM",
+            "8:30AM",
+            "9:00AM",
+            "9:30AM",
+            "10:00AM",
+            "10:30AM",
+            "11:00AM",
+            "11:30AM",
+            "12:00PM",
+            "12:30PM",
+            "1:00PM",
+            "1:30PM",
+            "2:00PM",
+            "2:30PM",
+            "3:00PM",
+            "3:00PM",
+            "4:00PM",
+            "4:30PM",
+            "5:00PM",
+            "5:30PM",
+            "6:00PM",
+            "6:30PM",
+            "7:00PM",
+            "7:30PM",
+            "8:00PM",
+            "8:30PM",
+            "9:00PM",
+            "9:30PM",
+            "10:00PM",
+            "10:30PM",
+            "11:00PM",
+            "11:30PM"});
             this.cmbEndTime.Location = new System.Drawing.Point(664, 236);
             this.cmbEndTime.Name = "cmbEndTime";
             this.cmbEndTime.Size = new System.Drawing.Size(113, 27);
@@ -610,42 +615,42 @@ namespace LGAConnectSOMS.Views
             this.cmbStartTime.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbStartTime.FormattingEnabled = true;
             this.cmbStartTime.Items.AddRange(new object[] {
-            "6:00 am",
-            "6:30 am",
-            "7:00 am",
-            "7:30 am",
-            "8:00 am",
-            "8:30 am",
-            "9:00 am",
-            "9:30 am",
-            "10:00 am",
-            "10:30 am",
-            "11:00 am",
-            "11:30 am",
-            "12:00 pm",
-            "12:30pm",
-            "1:00 pm",
-            "1:30 pm",
-            "2:00 pm",
-            "2:30 pm",
-            "3:00 pm",
-            "3:00 pm",
-            "4:00 pm",
-            "4:30 pm",
-            "5:00 pm",
-            "5:30 pm",
-            "6:00 pm",
-            "6:30 pm",
-            "7:00 pm",
-            "7:30 pm",
-            "8:00 pm",
-            "8:30 pm",
-            "9:00 pm",
-            "9:30 pm",
-            "10:00 pm",
-            "10:30 pm",
-            "11:00 pm",
-            "11:30 pm"});
+            "6:00AM",
+            "6:30AM",
+            "7:00AM",
+            "7:30AM",
+            "8:00AM",
+            "8:30AM",
+            "9:00AM",
+            "9:30AM",
+            "10:00AM",
+            "10:30AM",
+            "11:00AM",
+            "11:30AM",
+            "12:00PM",
+            "12:30PM",
+            "1:00PM",
+            "1:30PM",
+            "2:00PM",
+            "2:30PM",
+            "3:00PM",
+            "3:00PM",
+            "4:00PM",
+            "4:30PM",
+            "5:00PM",
+            "5:30PM",
+            "6:00PM",
+            "6:30PM",
+            "7:00PM",
+            "7:30PM",
+            "8:00PM",
+            "8:30PM",
+            "9:00PM",
+            "9:30PM",
+            "10:00PM",
+            "10:30PM",
+            "11:00PM",
+            "11:30PM"});
             this.cmbStartTime.Location = new System.Drawing.Point(508, 236);
             this.cmbStartTime.Name = "cmbStartTime";
             this.cmbStartTime.Size = new System.Drawing.Size(113, 27);
@@ -724,6 +729,24 @@ namespace LGAConnectSOMS.Views
             this.lblClassScheduleDetailsTitle.TabIndex = 0;
             this.lblClassScheduleDetailsTitle.Text = "Class Schedule Details";
             // 
+            // btnEditSchedule
+            // 
+            this.btnEditSchedule.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnEditSchedule.BackColor = System.Drawing.Color.Teal;
+            this.btnEditSchedule.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEditSchedule.FlatAppearance.BorderColor = System.Drawing.Color.Teal;
+            this.btnEditSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditSchedule.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditSchedule.ForeColor = System.Drawing.Color.White;
+            this.btnEditSchedule.Location = new System.Drawing.Point(1160, 15);
+            this.btnEditSchedule.Name = "btnEditSchedule";
+            this.btnEditSchedule.Size = new System.Drawing.Size(96, 29);
+            this.btnEditSchedule.TabIndex = 162;
+            this.btnEditSchedule.Text = "Edit";
+            this.btnEditSchedule.UseVisualStyleBackColor = false;
+            this.btnEditSchedule.Visible = false;
+            this.btnEditSchedule.Click += new System.EventHandler(this.btnEditSchedule_Click);
+            // 
             // ClassScheduleView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -796,5 +819,6 @@ namespace LGAConnectSOMS.Views
         public System.Windows.Forms.ComboBox cmbFaculty;
         public System.Windows.Forms.ComboBox cmbCustomDays;
         private System.Windows.Forms.Label lblRepeatEvery;
+        private System.Windows.Forms.Button btnEditSchedule;
     }
 }

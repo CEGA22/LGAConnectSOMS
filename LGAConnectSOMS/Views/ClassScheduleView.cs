@@ -27,6 +27,7 @@ namespace LGAConnectSOMS.Views
         private FacultyModel _selectedFaculty;
         private SectionsHandled _selectedGradeLevel;
         private SubjectsHandled _selectedSubjects;
+        private ClassSchedule _selectedSchedule;
 
         public ClassScheduleView()
         {
@@ -446,7 +447,7 @@ namespace LGAConnectSOMS.Views
         }
 
         IEnumerable<Subjects> subjects = new List<Subjects>();
-        
+
         public async Task LoadFaculty()
         {
             _schoolAccounts = await _schoolAccountService.GetSchoolAccountOnly();
@@ -477,6 +478,15 @@ namespace LGAConnectSOMS.Views
             cmbGradeLevels.DisplayMember = "DisplayText";
 
             cmbGradeLevels.DataSource = _sectionsHandled;
+
+            if (_selectedSchedule != null)
+            {
+                cmbGradeLevels.Text = $"{_selectedSchedule.GradeLevel} - {_selectedSchedule.SectionName}";
+                //if (_sectionsHandled.Any(x => x.GradeLevel == _selectedSchedule.GradeLevel && x.SectionName == _selectedSchedule.SectionName))
+                //{
+                //    cmbGradeLevels.Text = $"{_selectedSchedule.GradeLevel} - {_selectedSchedule.SectionName}";
+                //}
+            }
         }
 
         public async Task LoadSubjects()
@@ -487,13 +497,18 @@ namespace LGAConnectSOMS.Views
             cmbSubjects.DisplayMember = "SubjectName";
 
             cmbSubjects.DataSource = result;
+
+            if (_selectedSchedule != null)
+            {
+                cmbSubjects.Text = _selectedSchedule.Subject;
+            }
         }
 
         private async void cmbGradeLevels_SelectedIndexChanged(object sender, EventArgs e)
         {
             _selectedGradeLevel = (SectionsHandled)cmbGradeLevels.SelectedItem;
 
-            if(_selectedGradeLevel != null) 
+            if (_selectedGradeLevel != null)
             {
                 await LoadSubjects();
             }
@@ -511,82 +526,98 @@ namespace LGAConnectSOMS.Views
             //var subjectid = subjects.First(x => x.SubjectName.Equals(selectedSubject) && x.GradeLevel == gradeLevelId).GradeLevel;
             //var teacherid = _schoolAccounts.First(x => x.Fullname == selectedteacher).id;
 
+            MessageBoxButtons buttons = MessageBoxButtons.OK;
+
             var subjectid = _selectedSubjects.SubjectId;
             var teacherid = _selectedFaculty.Id;
             var gradeLevelId = _selectedGradeLevel.GradeLevelID;
 
-            var starttime = Convert.ToDateTime(cmbStartTime.Text);
-            var endtime = Convert.ToDateTime(cmbEndTime.Text);
-            var startday = starttime.ToString("HH:mm:ss");
-            var endday = endtime.ToString("HH:mm:ss");
-
-            if (cmbDays.Text == "Custom")
+            if (!string.IsNullOrEmpty(cmbStartTime.Text) && !string.IsNullOrEmpty(cmbEndTime.Text) && !string.IsNullOrEmpty(cmbDays.Text))
             {
-                weekday = cmbCustomDays.Text;
-                try
+                if (cmbDays.Text == "Custom" && string.IsNullOrEmpty(cmbCustomDays.Text))
                 {
-                    ClassScheduleService classScheduleService = new ClassScheduleService();
-                    IsSuccess = await classScheduleService.CreateClassScheduleRequest(new ClassScheduleRequest
-                    {
-                        Subject = subjectid,
-                        StartTime = TimeSpan.Parse(startday),
-                        EndTime = TimeSpan.Parse(endday),
-                        TeacherID = teacherid,
-                        GradeLevel = gradeLevelId,
-                        WeekDay = weekday
-                    });
-                }
-                catch (Exception x)
-                {
-                    MessageBox.Show(x.Message);
+                    MessageBox.Show("Please fill in all fields!", "Error", buttons, MessageBoxIcon.Information);
+                    return;
                 }
 
-                if (IsSuccess)
+                var starttime = Convert.ToDateTime(cmbStartTime.Text);
+                var endtime = Convert.ToDateTime(cmbEndTime.Text);
+                var startday = starttime.ToString("HH:mm:ss");
+                var endday = endtime.ToString("HH:mm:ss");
+
+                ClassScheduleService classScheduleService = new ClassScheduleService();
+
+                if (cmbDays.Text == "Custom")
                 {
-                    string message = "Added new class schedule Successfully";
-                    string title = "LGA Connect SOMS Class Schedule";
-                    MessageBoxButtons buttons = MessageBoxButtons.OK;
-                    MessageBox.Show(message, title, buttons, MessageBoxIcon.Information);
+                    weekday = cmbCustomDays.Text;
+                    try
+                    {
+                        IsSuccess = await classScheduleService.CreateClassScheduleRequest(new List<ClassScheduleRequest>
+                    {
+                        new ClassScheduleRequest
+                        {
+                            Subject = subjectid,
+                            StartTime = TimeSpan.Parse(startday),
+                            EndTime = TimeSpan.Parse(endday),
+                            TeacherID = teacherid,
+                            GradeLevel = gradeLevelId,
+                            WeekDay = weekday
+                        }
+                    });
+                    }
+                    catch (Exception x)
+                    {
+                        MessageBox.Show(x.Message);
+                    }
+
+                    if (IsSuccess)
+                    {
+                        _selectedSchedule = null;
+                        string message = "Added new class schedule Successfully";
+                        string title = "LGA Connect SOMS Class Schedule";
+                        MessageBox.Show(message, title, buttons, MessageBoxIcon.Information);
+
+                        tabControl1.SelectedIndex = 1;
+
+                        await ClassSchedules(label1.Text);
+                    }
+
+                    else
+                    {
+                        string message = "Added class schedule Unsucessfull";
+                        string title = "Error";
+                        MessageBox.Show(message, title, buttons, MessageBoxIcon.Error);
+                    }
                 }
 
                 else
                 {
-                    string message = "Added class schedule Unsucessfull";
-                    string title = "Error";
-                    MessageBoxButtons buttons = MessageBoxButtons.OK;
-                    MessageBox.Show(message, title, buttons, MessageBoxIcon.Error);
-                }
-            }
+                    var itemsToSave = new List<ClassScheduleRequest>();
 
-            else
-            {
-                for (int i = 0; i <= 4; i++)
-                {
-                    if (i == 0)
+                    for (int i = 0; i <= 4; i++)
                     {
-                        weekday = "Monday";
-                    }
-                    else if (i == 1)
-                    {
-                        weekday = "Tuesday";
-                    }
-                    else if (i == 2)
-                    {
-                        weekday = "Wednesday";
-                    }
-                    else if (i == 3)
-                    {
-                        weekday = "Thursday";
-                    }
-                    else if (i == 4)
-                    {
-                        weekday = "Friday";
-                    }
+                        if (i == 0)
+                        {
+                            weekday = "Monday";
+                        }
+                        else if (i == 1)
+                        {
+                            weekday = "Tuesday";
+                        }
+                        else if (i == 2)
+                        {
+                            weekday = "Wednesday";
+                        }
+                        else if (i == 3)
+                        {
+                            weekday = "Thursday";
+                        }
+                        else if (i == 4)
+                        {
+                            weekday = "Friday";
+                        }
 
-                    try
-                    {
-                        ClassScheduleService classScheduleService = new ClassScheduleService();
-                        IsSuccess = await classScheduleService.CreateClassScheduleRequest(new ClassScheduleRequest
+                        itemsToSave.Add(new ClassScheduleRequest
                         {
                             Subject = subjectid,
                             StartTime = TimeSpan.Parse(startday),
@@ -596,27 +627,41 @@ namespace LGAConnectSOMS.Views
                             WeekDay = weekday
                         });
                     }
+
+                    try
+                    {
+                        IsSuccess = await classScheduleService.CreateClassScheduleRequest(itemsToSave);
+                    }
                     catch (Exception x)
                     {
                         MessageBox.Show(x.Message);
                     }
+
+                    if (IsSuccess)
+                    {
+                        _selectedSchedule = null;
+                        string message = "Added new class schedule Successfully";
+                        string title = "LGA Connect SOMS Class Schedule";
+                        MessageBox.Show(message, title, buttons, MessageBoxIcon.Information);
+
+                        tabControl1.SelectedIndex = 1;
+
+                        await ClassSchedules(label1.Text);
+                    }
+
+                    else
+                    {
+                        string message = "Added class schedule Unsucessfull";
+                        string title = "Error";
+                        MessageBox.Show(message, title, buttons, MessageBoxIcon.Error);
+                    }
                 }
 
-                if (IsSuccess)
-                {
-                    string message = "Added new class schedule Successfully";
-                    string title = "LGA Connect SOMS Class Schedule";
-                    MessageBoxButtons buttons = MessageBoxButtons.OK;
-                    MessageBox.Show(message, title, buttons, MessageBoxIcon.Information);
-                }
 
-                else
-                {
-                    string message = "Added class schedule Unsucessfull";
-                    string title = "Error";
-                    MessageBoxButtons buttons = MessageBoxButtons.OK;
-                    MessageBox.Show(message, title, buttons, MessageBoxIcon.Error);
-                }
+            }
+            else
+            {
+                MessageBox.Show("Please fill in all fields!", "Error", buttons, MessageBoxIcon.Information);
             }
         }
 
@@ -666,49 +711,109 @@ namespace LGAConnectSOMS.Views
 
         private void ClassScheduleDataGridView_Click(object sender, EventArgs e)
         {
-            var selectedFullnameTeacher = ClassScheduleDataGridView.CurrentRow.Cells[2].Value.ToString() + " " + ClassScheduleDataGridView.CurrentRow.Cells[1].Value.ToString();
-            var selectedFirstnameTeacher = ClassScheduleDataGridView.CurrentRow.Cells[2].Value.ToString();
-            var selectedLastnameTeacher = ClassScheduleDataGridView.CurrentRow.Cells[1].Value.ToString();
-            var selectedGradelevel = ClassScheduleDataGridView.CurrentRow.Cells[8].Value.ToString();
-            //var selectedSection = ClassScheduleDataGridView.CurrentRow.Cells[0].Value.ToString();          
-            var selectedsubject = ClassScheduleDataGridView.CurrentRow.Cells[5].Value.ToString();
-            var selectedStartTime = ClassScheduleDataGridView.CurrentRow.Cells[3].Value.ToString();
-            var selectedEndTime = ClassScheduleDataGridView.CurrentRow.Cells[4].Value.ToString();
-            var selecteddays = ClassScheduleDataGridView.CurrentRow.Cells[6].Value.ToString();
 
-            //var result = schedule.Where(x => x.Firstname.Equals(selectedFirstnameTeacher) && x.Lastname.Equals(selectedLastnameTeacher) && x.GradeLevel.Equals(selectedGradelevel) && x.Subject.Equals(selectedsubject) && x.StartTime.Equals(selectedStartTime) && x.EndTime.Equals(selectedEndTime) && x.WeekDay.Equals(selecteddays));
+            //var selectedFullnameTeacher = ClassScheduleDataGridView.CurrentRow.Cells[2].Value.ToString() + " " + ClassScheduleDataGridView.CurrentRow.Cells[1].Value.ToString();
+            //var selectedFirstnameTeacher = ClassScheduleDataGridView.CurrentRow.Cells[2].Value.ToString();
+            //var selectedLastnameTeacher = ClassScheduleDataGridView.CurrentRow.Cells[1].Value.ToString();
+            //var selectedGradelevel = ClassScheduleDataGridView.CurrentRow.Cells[8].Value.ToString();
+            ////var selectedSection = ClassScheduleDataGridView.CurrentRow.Cells[0].Value.ToString();          
+            //var selectedsubject = ClassScheduleDataGridView.CurrentRow.Cells[5].Value.ToString();
+            //var selectedStartTime = ClassScheduleDataGridView.CurrentRow.Cells[3].Value.ToString();
+            //var selectedEndTime = ClassScheduleDataGridView.CurrentRow.Cells[4].Value.ToString();
+            //var selecteddays = ClassScheduleDataGridView.CurrentRow.Cells[6].Value.ToString();
 
-            var result = schedule.Where(x => x.Firstname.Equals(selectedFirstnameTeacher) && x.Lastname.Equals(selectedLastnameTeacher) && x.GradeLevel.Equals(selectedGradelevel) && x.Subject.Equals(selectedsubject) && x.StartTime.Equals(selectedStartTime) && x.EndTime.Equals(selectedEndTime));
+            ////var result = schedule.Where(x => x.Firstname.Equals(selectedFirstnameTeacher) && x.Lastname.Equals(selectedLastnameTeacher) && x.GradeLevel.Equals(selectedGradelevel) && x.Subject.Equals(selectedsubject) && x.StartTime.Equals(selectedStartTime) && x.EndTime.Equals(selectedEndTime) && x.WeekDay.Equals(selecteddays));
 
-            var count = result.Count();
-            EditClassScheduleView editClassScheduleView = new EditClassScheduleView();
-            if (count == 5)
-            {
+            //var result = schedule.Where(x => x.Firstname.Equals(selectedFirstnameTeacher) && x.Lastname.Equals(selectedLastnameTeacher) && x.GradeLevel.Equals(selectedGradelevel) && x.Subject.Equals(selectedsubject) && x.StartTime.Equals(selectedStartTime) && x.EndTime.Equals(selectedEndTime));
 
-                editClassScheduleView.cmbDays.Text = "Every weekday (Mon - Fri)";
-                editClassScheduleView.txtFullname.Text = selectedFirstnameTeacher + " " + selectedLastnameTeacher;
-                editClassScheduleView.txtGradeLevel.Text = selectedGradelevel;
-                editClassScheduleView.txtSubject.Text = selectedsubject;
-                editClassScheduleView.cmbStartTime.Text = selectedStartTime;
-                editClassScheduleView.cmbEndTime.Text = selectedEndTime;
-                editClassScheduleView.ShowDialog();
-            }
+            //var count = result.Count();
+            //EditClassScheduleView editClassScheduleView = new EditClassScheduleView();
+            //if (count == 5)
+            //{
 
-            else
-            {
-                editClassScheduleView.cmbDays.Text = selecteddays;
-                editClassScheduleView.txtFullname.Text = selectedFirstnameTeacher + " " + selectedLastnameTeacher;
-                editClassScheduleView.txtGradeLevel.Text = selectedGradelevel;
-                editClassScheduleView.txtSubject.Text = selectedsubject;
-                editClassScheduleView.cmbStartTime.Text = selectedStartTime;
-                editClassScheduleView.cmbEndTime.Text = selectedEndTime;
-                editClassScheduleView.ShowDialog();
-            }
+            //    editClassScheduleView.cmbDays.Text = "Every weekday (Mon - Fri)";
+            //    editClassScheduleView.txtFullname.Text = selectedFirstnameTeacher + " " + selectedLastnameTeacher;
+            //    editClassScheduleView.txtGradeLevel.Text = selectedGradelevel;
+            //    editClassScheduleView.txtSubject.Text = selectedsubject;
+            //    editClassScheduleView.cmbStartTime.Text = selectedStartTime;
+            //    editClassScheduleView.cmbEndTime.Text = selectedEndTime;
+            //    editClassScheduleView.ShowDialog();
+            //}
+
+            //else
+            //{
+            //    editClassScheduleView.cmbDays.Text = selecteddays;
+            //    editClassScheduleView.txtFullname.Text = selectedFirstnameTeacher + " " + selectedLastnameTeacher;
+            //    editClassScheduleView.txtGradeLevel.Text = selectedGradelevel;
+            //    editClassScheduleView.txtSubject.Text = selectedsubject;
+            //    editClassScheduleView.cmbStartTime.Text = selectedStartTime;
+            //    editClassScheduleView.cmbEndTime.Text = selectedEndTime;
+            //    editClassScheduleView.ShowDialog();
+            //}
         }
 
         private void cmbSubjects_SelectedIndexChanged(object sender, EventArgs e)
         {
             _selectedSubjects = (SubjectsHandled)cmbSubjects.SelectedItem;
+        }
+
+        private void ClassScheduleDataGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            btnEditSchedule.Visible = ClassScheduleDataGridView.SelectedRows.Count > 0;
+        }
+
+        private void ClassScheduleDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void ClassScheduleDataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            EditClassScheduleView editClassScheduleView = new EditClassScheduleView(_selectedSchedule);
+            editClassScheduleView.ShowDialog();
+        }
+
+        private void btnEditSchedule_Click(object sender, EventArgs e)
+        {
+            if (ClassScheduleDataGridView.SelectedRows.Count > 0)
+            {
+
+                tabControl1.SelectedIndex = 2;
+
+                foreach (DataGridViewRow row in ClassScheduleDataGridView.SelectedRows)
+                {
+                    _selectedSchedule = ClassScheduleDataGridView.Rows[row.Index].DataBoundItem as ClassSchedule;
+
+                    if (_selectedSchedule.FullName != cmbFaculty.Text)
+                    {
+                        cmbFaculty.Text = _selectedSchedule.FullName;
+                    }
+                    else
+                    {
+                        cmbLastname_SelectedIndexChanged(this, null);
+                    }
+
+                    _selectedFaculty = new FacultyModel
+                    {
+                        Id = _selectedSchedule.SchoolID,
+                        FullName = _selectedSchedule.FullName
+                    };
+
+                    cmbStartTime.Text = _selectedSchedule.StartTime;
+                    cmbEndTime.Text = _selectedSchedule.EndTime;
+
+                    var result = schedule.Where(x => x.FullName.Equals(_selectedSchedule.FullName) && x.GradeLevel.Equals(_selectedSchedule.GradeLevel) && x.Subject.Equals(_selectedSchedule.Subject) && x.StartTime.Equals(_selectedSchedule.StartTime) && x.EndTime.Equals(_selectedSchedule.EndTime));
+
+                    cmbDays.Text = result.Count() == 5 ? "Every weekday (Mon - Fri)" : "Custom";
+                    cmbCustomDays.Visible = result.Count() != 5;
+                    cmbCustomDays.Text = _selectedSchedule.WeekDay;
+                }
+            }
+        }
+
+        private void tabPage3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -14,10 +14,30 @@ namespace LGAConnectSOMS.Views
 {
     public partial class EditClassScheduleView : Form
     {
-        public EditClassScheduleView()
+
+        private ClassSchedule _classSchedule;
+
+        public EditClassScheduleView(ClassSchedule classSchedule)
         {
             InitializeComponent();
+
+            _classSchedule = classSchedule;
+
+            if (_classSchedule != null)
+                PreparePageBinding();
+
             LoadData();
+        }
+
+        private void PreparePageBinding() 
+        {
+            txtFullname.Text = _classSchedule.FullName;
+            txtGradeLevel.Text = _classSchedule.GradeLevel;
+            txtSection.Text = _classSchedule.SectionName;
+            txtSubject.Text = _classSchedule.Subject;
+            cmbStartTime.Text = _classSchedule.StartTime;
+            cmbEndTime.Text = _classSchedule.EndTime;
+            cmbDays.Text = _classSchedule.WeekDay;
         }
 
         public async void LoadData()
@@ -102,6 +122,11 @@ namespace LGAConnectSOMS.Views
         private void cmbCustomDays_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
+        }
+
+        private void EditClassScheduleView_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

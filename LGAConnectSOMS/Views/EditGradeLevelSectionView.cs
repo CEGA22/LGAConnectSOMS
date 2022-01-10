@@ -57,5 +57,10 @@ namespace LGAConnectSOMS.Views
 
             }
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
     }
 }

@@ -39,7 +39,7 @@ namespace LGAConnectSOMS.Services
             return content;
         }
 
-        public async Task<bool> CreateClassScheduleRequest(ClassScheduleRequest request)
+        public async Task<bool> CreateClassScheduleRequest(IEnumerable<ClassScheduleRequest> request)
         {
             var apiGateway = new ClassScheduleGateway();
             var content = await apiGateway.CreateClassScheduleRequest(request);
