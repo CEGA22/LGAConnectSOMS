@@ -12,6 +12,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using System.IO;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
 
 namespace LGAConnectSOMS.Views
 {
@@ -29,6 +32,19 @@ namespace LGAConnectSOMS.Views
 
         private string _selectedSection;
 
+        public void IsMenuVisible()
+        {
+            if (panel2.Visible == false)
+            {
+                panel2.Show();
+            }
+
+            else if (panel2.Visible == true)
+            {
+                panel2.Hide();
+            }
+        }
+
         IEnumerable<FinalGrade> finalGrades = Enumerable.Empty<FinalGrade>();
         public ClassRecordFacultyView()
         {
@@ -45,7 +61,9 @@ namespace LGAConnectSOMS.Views
 
         public async void LoadData()
         {
+            panel2.Hide();
             lblLoadingGrades.Visible = true;
+            btnExport.Hide();
             //this.Cursor = Cursors.WaitCursor;           
             PanelLoadingSaveGradesFirst.Hide();
            
@@ -55,6 +73,7 @@ namespace LGAConnectSOMS.Views
             await ClassRecords();           
             await DataGridFlickerFix();
             await FinalGradeRecords();
+            btnExport.Show();
             lblLoadingGrades.Visible = false;
             //this.Cursor = Cursors.Default;        
             //SetupDataGrid();
@@ -3273,6 +3292,253 @@ namespace LGAConnectSOMS.Views
             //{
             //    await ClassRecords(tabcontrol.SelectedIndex);
             //}
+        }
+
+
+        public byte[] ImageToByteArray(System.Drawing.Image imageIn)
+        {
+            using (var ms = new MemoryStream())
+            {
+                imageIn.Save(ms, imageIn.RawFormat);
+                return ms.ToArray();
+            }
+        }
+        private void btnExportToPdf(object sender, EventArgs e)
+        {
+            
+            IsMenuVisible();           
+        }
+
+        public void GeneratePDF(int gradingperiod, string quarter)
+        {
+            var selectedGradeLevel = CBGradeLevel.SelectedItem;
+            var selectedSection = CBSection.SelectedItem;
+            var selectedSubject = CBSubject.SelectedItem;
+            var selectedSubjectID = FacultySubjects.First(x => x.SubjectName.Equals(selectedSubject) && x.GradeLevel.Equals(selectedGradeLevel)).SubjectID;
+            var selectedGradingPeriod = tabcontrol.SelectedIndex;
+
+            var generateToPdf = recordslist.Where(x => x.GradingPeriod == gradingperiod && x.SubjectName == selectedSubjectID && x.SectionName.Equals((string)selectedSection) && x.Grade_Level.Equals(selectedGradeLevel)).Select(i => new { i.Fullname, i.WrittenWork1, i.WrittenWork2, i.WrittenWork3, i.WrittenWork4, i.WrittenWork5, i.WrittenWork6, i.WrittenWork7, i.WrittenWork8, i.WrittenWork9, i.WrittenWork10, i.WrittenWorkTotal, i.WrittenWorkPercentage, i.TaskPerformance1, i.TaskPerformance2, i.TaskPerformance3, i.TaskPerformance4, i.TaskPerformance5, i.TaskPerformance6, i.TaskPerformance7, i.TaskPerformance8, i.TaskPerformance9, i.TaskPerformance10, i.TaskPerformanceTotal, i.TaskPerformancePercentage, i.InitialGrade, i.QuarterlyGrade }).ToList();
+
+            DataGridView pdfgradebook = new DataGridView();
+            this.Controls.Add(pdfgradebook);
+            pdfgradebook.Hide();
+
+            pdfgradebook.DataSource = generateToPdf.ToList();
+            if (pdfgradebook.Rows.Count > 0)
+            {
+                var datetime = DateTime.Now.ToString("yyyy");
+                var schoolYearEnd = int.Parse(datetime) + 1;
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Filter = "PDF (*.pdf)|*.pdf";
+                sfd.FileName = "Ladder of Gems Academy Class Record.pdf";
+                bool fileError = false;
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    if (File.Exists(sfd.FileName))
+                    {
+                        try
+                        {
+                            File.Delete(sfd.FileName);
+                        }
+                        catch (IOException ex)
+                        {
+                            fileError = true;
+                            MessageBox.Show("It wasn't possible to write the data to the disk." + ex.Message);
+                        }
+                    }
+                    if (!fileError)
+                    {
+                        try
+                        {
+                            PdfPTable pdfTable = new PdfPTable(pdfgradebook.Columns.Count);
+                            pdfTable.DefaultCell.Padding = 3;
+                            pdfTable.SpacingBefore = 30;
+                            pdfTable.WidthPercentage = 100;
+                            pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
+
+                            foreach (DataGridViewColumn column in pdfgradebook.Columns)
+                            {
+                                PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText));
+                                iTextSharp.text.Font fon = FontFactory.GetFont("ARIAL", 5);
+                                pdfTable.AddCell(cell);
+                            }
+
+                            foreach (DataGridViewRow row in pdfgradebook.Rows)
+                            {
+                                foreach (DataGridViewCell cell in row.Cells)
+                                {
+                                    pdfTable.AddCell(Convert.ToString(cell.Value));
+                                }
+                            }
+
+                            using (FileStream stream = new FileStream(sfd.FileName, FileMode.Create))
+                            {
+
+                                Document pdfDoc = new Document(PageSize.TABLOID.Rotate());
+                                PdfWriter.GetInstance(pdfDoc, stream);
+                                Paragraph p = new Paragraph("Ladder of Gems Academy, Inc.");
+                                Paragraph a = new Paragraph(selectedGradeLevel + " " + selectedSection);
+                                Paragraph s = new Paragraph(selectedSubject.ToString() + " | " + quarter);
+                                Paragraph c = new Paragraph("Class record");
+                                Paragraph y1 = new Paragraph(datetime + " - " + schoolYearEnd);
+                                p.Alignment = Element.ALIGN_CENTER;
+                                a.Alignment = Element.ALIGN_CENTER;
+                                y1.Alignment = Element.ALIGN_CENTER;
+                                s.Alignment = Element.ALIGN_CENTER;
+                                c.Alignment = Element.ALIGN_CENTER;
+                                pdfDoc.Open();
+                                pdfDoc.Add(p);
+                                pdfDoc.Add(a);
+                                pdfDoc.Add(s);
+                                pdfDoc.Add(c);
+                                pdfDoc.Add(y1);
+                                pdfDoc.Add(pdfTable);
+                                pdfDoc.Close();
+                                stream.Close();
+                            }
+
+                            MessageBox.Show("Data Exported Successfully !!!", "Info");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error :" + ex.Message);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("No Record To Export !!!", "Info");
+            }
+        }
+
+        public void GeneratePDFFinalGrade()
+        {
+            var selectedGradeLevel = CBGradeLevel.SelectedItem;
+            var selectedSection = CBSection.SelectedItem;
+            var selectedSubject = CBSubject.SelectedItem;
+            var selectedSubjectID = FacultySubjects.First(x => x.SubjectName.Equals(selectedSubject) && x.GradeLevel.Equals(selectedGradeLevel)).SubjectID;
+            var selectedGradingPeriod = tabcontrol.SelectedIndex;
+                   
+            if (FinalGradeDataGridView.Rows.Count > 0)
+            {
+                var datetime = DateTime.Now.ToString("yyyy");
+                var schoolYearEnd = int.Parse(datetime) + 1;
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Filter = "PDF (*.pdf)|*.pdf";
+                sfd.FileName = "Ladder of Gems Academy Class Record.pdf";
+                bool fileError = false;
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    if (File.Exists(sfd.FileName))
+                    {
+                        try
+                        {
+                            File.Delete(sfd.FileName);
+                        }
+                        catch (IOException ex)
+                        {
+                            fileError = true;
+                            MessageBox.Show("It wasn't possible to write the data to the disk." + ex.Message);
+                        }
+                    }
+                    if (!fileError)
+                    {
+                        try
+                        {
+                            PdfPTable pdfTable = new PdfPTable(FinalGradeDataGridView.Columns.Count);
+                            pdfTable.DefaultCell.Padding = 3;
+                            pdfTable.SpacingBefore = 30;
+                            pdfTable.WidthPercentage = 100;
+                            pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
+
+                            foreach (DataGridViewColumn column in FinalGradeDataGridView.Columns)
+                            {
+                                PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText));
+                                iTextSharp.text.Font fon = FontFactory.GetFont("ARIAL", 5);
+                                pdfTable.AddCell(cell);
+                            }
+
+                            foreach (DataGridViewRow row in FinalGradeDataGridView.Rows)
+                            {
+                                foreach (DataGridViewCell cell in row.Cells)
+                                {
+                                    pdfTable.AddCell(Convert.ToString(cell.Value));
+                                }
+                            }
+
+                            using (FileStream stream = new FileStream(sfd.FileName, FileMode.Create))
+                            {
+
+                                Document pdfDoc = new Document(PageSize.TABLOID.Rotate());
+                                PdfWriter.GetInstance(pdfDoc, stream);
+                                Paragraph p = new Paragraph("Ladder of Gems Academy, Inc.");
+                                Paragraph a = new Paragraph(selectedGradeLevel + " " + selectedSection);
+                                Paragraph s = new Paragraph("Final Grades");
+                                Paragraph c = new Paragraph("Class record");
+                                Paragraph y1 = new Paragraph(datetime + " - " + schoolYearEnd);
+                                p.Alignment = Element.ALIGN_CENTER;
+                                a.Alignment = Element.ALIGN_CENTER;
+                                y1.Alignment = Element.ALIGN_CENTER;
+                                s.Alignment = Element.ALIGN_CENTER;
+                                c.Alignment = Element.ALIGN_CENTER;
+                                pdfDoc.Open();
+                                pdfDoc.Add(p);
+                                pdfDoc.Add(a);
+                                pdfDoc.Add(s);
+                                pdfDoc.Add(c);
+                                pdfDoc.Add(y1);
+                                pdfDoc.Add(pdfTable);
+                                pdfDoc.Close();
+                                stream.Close();
+                            }
+
+                            MessageBox.Show("Data Exported Successfully !!!", "Info");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error :" + ex.Message);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("No Record To Export !!!", "Info");
+            }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if (rdFirstGrading.Checked)
+            {
+                GeneratePDF(1, "First Quarter");
+                panel2.Hide();
+            }
+
+            else if (rdSecondGrading.Checked)
+            {
+                GeneratePDF(2, "Second Quarter");
+                panel2.Hide();
+            }
+
+            else if (rdThirdGrading.Checked)
+            {
+                GeneratePDF(3, "Third Quarter");
+                panel2.Hide();
+            }
+
+            else if (rdFourthGrading.Checked)
+            {
+                GeneratePDF(4, "Fourth Quarter");
+                panel2.Hide();
+            }
+
+            else if (rdFinalGrade.Checked)
+            {
+                GeneratePDFFinalGrade();
+                panel2.Hide();
+            }
         }
     }
 }

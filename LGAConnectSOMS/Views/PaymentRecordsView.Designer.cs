@@ -44,7 +44,6 @@ namespace LGAConnectSOMS.Views
             this.lblPaymentRecordsTitle = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.btnAddStudentBalance = new System.Windows.Forms.Button();
             this.txtSearchFaculty = new System.Windows.Forms.TextBox();
             this.lblSearchStudent = new System.Windows.Forms.Label();
             this.StudentsBalanceDataGridView = new System.Windows.Forms.DataGridView();
@@ -115,7 +114,6 @@ namespace LGAConnectSOMS.Views
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.Transparent;
-            this.tabPage1.Controls.Add(this.btnAddStudentBalance);
             this.tabPage1.Controls.Add(this.txtSearchFaculty);
             this.tabPage1.Controls.Add(this.lblSearchStudent);
             this.tabPage1.Controls.Add(this.StudentsBalanceDataGridView);
@@ -125,19 +123,6 @@ namespace LGAConnectSOMS.Views
             this.tabPage1.Size = new System.Drawing.Size(1268, 513);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "List of Students Balance";
-            // 
-            // btnAddStudentBalance
-            // 
-            this.btnAddStudentBalance.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddStudentBalance.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAddStudentBalance.FlatAppearance.BorderSize = 0;
-            this.btnAddStudentBalance.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddStudentBalance.Image = global::LGAConnectSOMS.Properties.Resources.AddButtonTransaction;
-            this.btnAddStudentBalance.Location = new System.Drawing.Point(1208, 6);
-            this.btnAddStudentBalance.Name = "btnAddStudentBalance";
-            this.btnAddStudentBalance.Size = new System.Drawing.Size(54, 46);
-            this.btnAddStudentBalance.TabIndex = 36;
-            this.btnAddStudentBalance.UseVisualStyleBackColor = true;
             // 
             // txtSearchFaculty
             // 
@@ -568,7 +553,6 @@ namespace LGAConnectSOMS.Views
         private System.Windows.Forms.Label lblSearchStudent;
         private System.Windows.Forms.Button btnAddTransaction;
         public System.Windows.Forms.DataGridView TransactionHistoryDataGridView;
-        private System.Windows.Forms.Button btnAddStudentBalance;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TextBox txtDownPayment;
         private System.Windows.Forms.Label label1;

@@ -223,6 +223,14 @@ namespace LGAConnectSOMS.Views
             this.CBSubject = new System.Windows.Forms.ComboBox();
             this.lblSubject = new System.Windows.Forms.Label();
             this.lblLoadingGrades = new System.Windows.Forms.Label();
+            this.btnExport = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.rdFinalGrade = new System.Windows.Forms.RadioButton();
+            this.rdFourthGrading = new System.Windows.Forms.RadioButton();
+            this.rdThirdGrading = new System.Windows.Forms.RadioButton();
+            this.rdSecondGrading = new System.Windows.Forms.RadioButton();
+            this.rdFirstGrading = new System.Windows.Forms.RadioButton();
             this.DragWindowsPanel.SuspendLayout();
             this.tabcontrol.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -237,6 +245,7 @@ namespace LGAConnectSOMS.Views
             ((System.ComponentModel.ISupportInitialize)(this.FinalGradeDataGridView)).BeginInit();
             this.PanelLoadingSaveGradesFirst.SuspendLayout();
             this.panelSubjects.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // DragWindowsPanel
@@ -2026,12 +2035,123 @@ namespace LGAConnectSOMS.Views
             this.lblLoadingGrades.TabIndex = 48;
             this.lblLoadingGrades.Text = "Please wait while loading...";
             // 
+            // btnExport
+            // 
+            this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(139)))), ((int)(((byte)(195)))));
+            this.btnExport.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExport.FlatAppearance.BorderSize = 0;
+            this.btnExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExport.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExport.ForeColor = System.Drawing.Color.White;
+            this.btnExport.Location = new System.Drawing.Point(1170, 213);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(120, 29);
+            this.btnExport.TabIndex = 49;
+            this.btnExport.Text = "Export to PDF";
+            this.btnExport.UseVisualStyleBackColor = false;
+            this.btnExport.Click += new System.EventHandler(this.btnExportToPdf);
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.rdFinalGrade);
+            this.panel2.Controls.Add(this.rdFourthGrading);
+            this.panel2.Controls.Add(this.rdThirdGrading);
+            this.panel2.Controls.Add(this.rdSecondGrading);
+            this.panel2.Controls.Add(this.rdFirstGrading);
+            this.panel2.Location = new System.Drawing.Point(1016, 248);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(276, 198);
+            this.panel2.TabIndex = 27;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(163)))), ((int)(((byte)(156)))));
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(144, 159);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(120, 29);
+            this.button1.TabIndex = 50;
+            this.button1.Text = "Export";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // rdFinalGrade
+            // 
+            this.rdFinalGrade.AutoSize = true;
+            this.rdFinalGrade.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdFinalGrade.Location = new System.Drawing.Point(88, 112);
+            this.rdFinalGrade.Name = "rdFinalGrade";
+            this.rdFinalGrade.Size = new System.Drawing.Size(103, 23);
+            this.rdFinalGrade.TabIndex = 9;
+            this.rdFinalGrade.TabStop = true;
+            this.rdFinalGrade.Text = "Final Grade";
+            this.rdFinalGrade.UseVisualStyleBackColor = true;
+            // 
+            // rdFourthGrading
+            // 
+            this.rdFourthGrading.AutoSize = true;
+            this.rdFourthGrading.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdFourthGrading.Location = new System.Drawing.Point(154, 70);
+            this.rdFourthGrading.Name = "rdFourthGrading";
+            this.rdFourthGrading.Size = new System.Drawing.Size(123, 23);
+            this.rdFourthGrading.TabIndex = 8;
+            this.rdFourthGrading.TabStop = true;
+            this.rdFourthGrading.Text = "Fourth Grading";
+            this.rdFourthGrading.UseVisualStyleBackColor = true;
+            // 
+            // rdThirdGrading
+            // 
+            this.rdThirdGrading.AutoSize = true;
+            this.rdThirdGrading.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdThirdGrading.Location = new System.Drawing.Point(154, 26);
+            this.rdThirdGrading.Name = "rdThirdGrading";
+            this.rdThirdGrading.Size = new System.Drawing.Size(116, 23);
+            this.rdThirdGrading.TabIndex = 7;
+            this.rdThirdGrading.TabStop = true;
+            this.rdThirdGrading.Text = "Third Grading";
+            this.rdThirdGrading.UseVisualStyleBackColor = true;
+            // 
+            // rdSecondGrading
+            // 
+            this.rdSecondGrading.AutoSize = true;
+            this.rdSecondGrading.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdSecondGrading.Location = new System.Drawing.Point(16, 70);
+            this.rdSecondGrading.Name = "rdSecondGrading";
+            this.rdSecondGrading.Size = new System.Drawing.Size(131, 23);
+            this.rdSecondGrading.TabIndex = 6;
+            this.rdSecondGrading.TabStop = true;
+            this.rdSecondGrading.Text = "Second Grading";
+            this.rdSecondGrading.UseVisualStyleBackColor = true;
+            // 
+            // rdFirstGrading
+            // 
+            this.rdFirstGrading.AutoSize = true;
+            this.rdFirstGrading.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdFirstGrading.Location = new System.Drawing.Point(16, 26);
+            this.rdFirstGrading.Name = "rdFirstGrading";
+            this.rdFirstGrading.Size = new System.Drawing.Size(109, 23);
+            this.rdFirstGrading.TabIndex = 5;
+            this.rdFirstGrading.TabStop = true;
+            this.rdFirstGrading.Text = "First Grading";
+            this.rdFirstGrading.UseVisualStyleBackColor = true;
+            // 
             // ClassRecordFacultyView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
             this.ClientSize = new System.Drawing.Size(1300, 700);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.btnExport);
             this.Controls.Add(this.lblLoadingGrades);
             this.Controls.Add(this.panelSubjects);
             this.Controls.Add(this.PanelLoadingSaveGradesFirst);
@@ -2070,6 +2190,8 @@ namespace LGAConnectSOMS.Views
             this.PanelLoadingSaveGradesFirst.PerformLayout();
             this.panelSubjects.ResumeLayout(false);
             this.panelSubjects.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2245,5 +2367,13 @@ namespace LGAConnectSOMS.Views
         private System.Windows.Forms.ComboBox CBSubject;
         private System.Windows.Forms.Label lblSubject;
         private System.Windows.Forms.Label lblLoadingGrades;
+        private System.Windows.Forms.Button btnExport;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.RadioButton rdFinalGrade;
+        private System.Windows.Forms.RadioButton rdFourthGrading;
+        private System.Windows.Forms.RadioButton rdThirdGrading;
+        private System.Windows.Forms.RadioButton rdSecondGrading;
+        private System.Windows.Forms.RadioButton rdFirstGrading;
+        private System.Windows.Forms.Button button1;
     }
 }

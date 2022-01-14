@@ -50,9 +50,12 @@ namespace LGAConnectSOMS.Views
             this.lblMonday = new System.Windows.Forms.Label();
             this.Title = new System.Windows.Forms.Label();
             this.ClassSchedulePanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.ClassScheduleDataGridView = new System.Windows.Forms.DataGridView();
+            this.btnExportToPDF = new System.Windows.Forms.Button();
             this.DragWindowsPanel.SuspendLayout();
             this.panel2.SuspendLayout();
             this.ClassDaysPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ClassScheduleDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // DragWindowsPanel
@@ -314,12 +317,39 @@ namespace LGAConnectSOMS.Views
             this.ClassSchedulePanel.TabIndex = 32;
             this.ClassSchedulePanel.WrapContents = false;
             // 
+            // ClassScheduleDataGridView
+            // 
+            this.ClassScheduleDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ClassScheduleDataGridView.Location = new System.Drawing.Point(14, 538);
+            this.ClassScheduleDataGridView.Name = "ClassScheduleDataGridView";
+            this.ClassScheduleDataGridView.Size = new System.Drawing.Size(240, 150);
+            this.ClassScheduleDataGridView.TabIndex = 33;
+            this.ClassScheduleDataGridView.Visible = false;
+            // 
+            // btnExportToPDF
+            // 
+            this.btnExportToPDF.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(139)))), ((int)(((byte)(195)))));
+            this.btnExportToPDF.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExportToPDF.FlatAppearance.BorderColor = System.Drawing.Color.Teal;
+            this.btnExportToPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExportToPDF.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportToPDF.ForeColor = System.Drawing.Color.White;
+            this.btnExportToPDF.Location = new System.Drawing.Point(1168, 122);
+            this.btnExportToPDF.Name = "btnExportToPDF";
+            this.btnExportToPDF.Size = new System.Drawing.Size(120, 29);
+            this.btnExportToPDF.TabIndex = 164;
+            this.btnExportToPDF.Text = "Export to PDF";
+            this.btnExportToPDF.UseVisualStyleBackColor = false;
+            this.btnExportToPDF.Click += new System.EventHandler(this.btnExportToPDF_Click);
+            // 
             // ClassScheduleFacultyView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
             this.ClientSize = new System.Drawing.Size(1300, 700);
+            this.Controls.Add(this.btnExportToPDF);
+            this.Controls.Add(this.ClassScheduleDataGridView);
             this.Controls.Add(this.ClassDaysPanel);
             this.Controls.Add(this.ClassSchedulePanel);
             this.Controls.Add(this.panel2);
@@ -335,6 +365,7 @@ namespace LGAConnectSOMS.Views
             this.panel2.ResumeLayout(false);
             this.ClassDaysPanel.ResumeLayout(false);
             this.ClassDaysPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ClassScheduleDataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -361,5 +392,7 @@ namespace LGAConnectSOMS.Views
         private System.Windows.Forms.Label lblMonday;
         private System.Windows.Forms.Label Title;
         private System.Windows.Forms.FlowLayoutPanel ClassSchedulePanel;
+        private System.Windows.Forms.DataGridView ClassScheduleDataGridView;
+        private System.Windows.Forms.Button btnExportToPDF;
     }
 }

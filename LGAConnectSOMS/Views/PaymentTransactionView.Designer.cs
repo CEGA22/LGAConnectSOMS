@@ -40,6 +40,10 @@ namespace LGAConnectSOMS.Views
             this.label1 = new System.Windows.Forms.Label();
             this.Note = new System.Windows.Forms.RichTextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.TransactionDate = new System.Windows.Forms.DateTimePicker();
+            this.txtReferenceNumber = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtAmount
@@ -97,7 +101,7 @@ namespace LGAConnectSOMS.Views
             this.btnAddTransactionRecord.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddTransactionRecord.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddTransactionRecord.ForeColor = System.Drawing.Color.Black;
-            this.btnAddTransactionRecord.Location = new System.Drawing.Point(581, 394);
+            this.btnAddTransactionRecord.Location = new System.Drawing.Point(581, 499);
             this.btnAddTransactionRecord.Name = "btnAddTransactionRecord";
             this.btnAddTransactionRecord.Size = new System.Drawing.Size(133, 41);
             this.btnAddTransactionRecord.TabIndex = 57;
@@ -130,7 +134,7 @@ namespace LGAConnectSOMS.Views
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tw Cen MT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(75, 259);
+            this.label1.Location = new System.Drawing.Point(75, 393);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 22);
             this.label1.TabIndex = 87;
@@ -139,7 +143,7 @@ namespace LGAConnectSOMS.Views
             // Note
             // 
             this.Note.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Note.Location = new System.Drawing.Point(263, 237);
+            this.Note.Location = new System.Drawing.Point(263, 371);
             this.Note.Name = "Note";
             this.Note.Size = new System.Drawing.Size(349, 96);
             this.Note.TabIndex = 89;
@@ -154,7 +158,7 @@ namespace LGAConnectSOMS.Views
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(430, 394);
+            this.button1.Location = new System.Drawing.Point(430, 499);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(133, 41);
             this.button1.TabIndex = 90;
@@ -162,12 +166,60 @@ namespace LGAConnectSOMS.Views
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Tw Cen MT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(77, 254);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(142, 22);
+            this.label2.TabIndex = 91;
+            this.label2.Text = "Transaction Date: ";
+            // 
+            // TransactionDate
+            // 
+            this.TransactionDate.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.TransactionDate.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TransactionDate.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.TransactionDate.Location = new System.Drawing.Point(263, 250);
+            this.TransactionDate.Name = "TransactionDate";
+            this.TransactionDate.Size = new System.Drawing.Size(233, 25);
+            this.TransactionDate.TabIndex = 95;
+            this.TransactionDate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TransactionDate_Keypress);
+            // 
+            // txtReferenceNumber
+            // 
+            this.txtReferenceNumber.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtReferenceNumber.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtReferenceNumber.Location = new System.Drawing.Point(263, 307);
+            this.txtReferenceNumber.Multiline = true;
+            this.txtReferenceNumber.Name = "txtReferenceNumber";
+            this.txtReferenceNumber.Size = new System.Drawing.Size(233, 32);
+            this.txtReferenceNumber.TabIndex = 97;
+            this.txtReferenceNumber.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Tw Cen MT", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(77, 314);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(161, 22);
+            this.label3.TabIndex = 96;
+            this.label3.Text = "Reference Number: ";
+            // 
             // PaymentTransactionView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
-            this.ClientSize = new System.Drawing.Size(726, 447);
+            this.ClientSize = new System.Drawing.Size(726, 552);
+            this.Controls.Add(this.txtReferenceNumber);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.TransactionDate);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Note);
             this.Controls.Add(this.label1);
@@ -200,5 +252,9 @@ namespace LGAConnectSOMS.Views
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RichTextBox Note;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker TransactionDate;
+        private System.Windows.Forms.TextBox txtReferenceNumber;
+        private System.Windows.Forms.Label label3;
     }
 }

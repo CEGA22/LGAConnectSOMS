@@ -11,7 +11,7 @@ namespace LGAConnectSOMS.Gateway
 {
     public class ClassScheduleGateway
     {
-        static string BaseUrl = "http://cegagabrang-001-site1.btempurl.com/api/lga/classSchedule";
+        static string BaseUrl = "http://cega07-001-site1.gtempurl.com/api/lga/classSchedule";
 
         public async Task<IEnumerable<ClassSchedule>> GetClassSchedule()
         {
@@ -77,6 +77,18 @@ namespace LGAConnectSOMS.Gateway
         {
             string url = $"{BaseUrl}/information";
             return await WebMethods.MakePostRequest(url, request);
+        }
+
+        public async Task<string> UpdateClassScheduleRequest(IEnumerable<ClassScheduleRequest> request)
+        {
+            string url = $"{BaseUrl}/update_information";
+            return await WebMethods.MakePostRequest(url, request);
+        }
+
+        public async Task<string> DeleteClassScheduleRequest(int teacherId, int subjectId, int gradeLevel)
+        {
+            string url = $"{BaseUrl}/delete_information/{teacherId}/{subjectId}/{gradeLevel}";
+            return await WebMethods.MakeGetRequest(url);
         }
     }
 }

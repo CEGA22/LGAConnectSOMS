@@ -58,8 +58,11 @@ namespace LGAConnectSOMS.Views
             this.label1 = new System.Windows.Forms.Label();
             this.ClassSchedulePanel = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btnExportToPDF = new System.Windows.Forms.Button();
+            this.btnEditSchedule = new System.Windows.Forms.Button();
             this.ClassScheduleDataGridView = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnDeleteClassSchedule = new System.Windows.Forms.Button();
             this.cmbCustomDays = new System.Windows.Forms.ComboBox();
             this.lblRepeatEvery = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -75,7 +78,6 @@ namespace LGAConnectSOMS.Views
             this.labelGradeLevel = new System.Windows.Forms.Label();
             this.lblLastname = new System.Windows.Forms.Label();
             this.lblClassScheduleDetailsTitle = new System.Windows.Forms.Label();
-            this.btnEditSchedule = new System.Windows.Forms.Button();
             this.DragWindowsPanel.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -376,6 +378,7 @@ namespace LGAConnectSOMS.Views
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage3.Controls.Add(this.btnExportToPDF);
             this.tabPage3.Controls.Add(this.btnEditSchedule);
             this.tabPage3.Controls.Add(this.ClassScheduleDataGridView);
             this.tabPage3.Location = new System.Drawing.Point(4, 28);
@@ -385,8 +388,42 @@ namespace LGAConnectSOMS.Views
             this.tabPage3.Text = "List of Class Schedule";
             this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
             // 
+            // btnExportToPDF
+            // 
+            this.btnExportToPDF.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(139)))), ((int)(((byte)(195)))));
+            this.btnExportToPDF.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExportToPDF.FlatAppearance.BorderColor = System.Drawing.Color.Teal;
+            this.btnExportToPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExportToPDF.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportToPDF.ForeColor = System.Drawing.Color.White;
+            this.btnExportToPDF.Location = new System.Drawing.Point(10, 15);
+            this.btnExportToPDF.Name = "btnExportToPDF";
+            this.btnExportToPDF.Size = new System.Drawing.Size(120, 29);
+            this.btnExportToPDF.TabIndex = 163;
+            this.btnExportToPDF.Text = "Export to PDF";
+            this.btnExportToPDF.UseVisualStyleBackColor = false;
+            this.btnExportToPDF.Click += new System.EventHandler(this.btnExportToPDF_Click);
+            // 
+            // btnEditSchedule
+            // 
+            this.btnEditSchedule.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditSchedule.BackColor = System.Drawing.Color.Teal;
+            this.btnEditSchedule.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEditSchedule.FlatAppearance.BorderColor = System.Drawing.Color.Teal;
+            this.btnEditSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditSchedule.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditSchedule.ForeColor = System.Drawing.Color.White;
+            this.btnEditSchedule.Location = new System.Drawing.Point(1160, 15);
+            this.btnEditSchedule.Name = "btnEditSchedule";
+            this.btnEditSchedule.Size = new System.Drawing.Size(96, 29);
+            this.btnEditSchedule.TabIndex = 162;
+            this.btnEditSchedule.Text = "Edit";
+            this.btnEditSchedule.UseVisualStyleBackColor = false;
+            this.btnEditSchedule.Click += new System.EventHandler(this.btnEditSchedule_Click);
+            // 
             // ClassScheduleDataGridView
             // 
+            this.ClassScheduleDataGridView.AllowUserToAddRows = false;
             this.ClassScheduleDataGridView.AllowUserToResizeColumns = false;
             this.ClassScheduleDataGridView.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
@@ -440,6 +477,7 @@ namespace LGAConnectSOMS.Views
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage2.Controls.Add(this.btnDeleteClassSchedule);
             this.tabPage2.Controls.Add(this.cmbCustomDays);
             this.tabPage2.Controls.Add(this.lblRepeatEvery);
             this.tabPage2.Controls.Add(this.label5);
@@ -461,6 +499,22 @@ namespace LGAConnectSOMS.Views
             this.tabPage2.Size = new System.Drawing.Size(1268, 511);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Add New Schedule";
+            // 
+            // btnDeleteClassSchedule
+            // 
+            this.btnDeleteClassSchedule.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnDeleteClassSchedule.BackColor = System.Drawing.Color.Red;
+            this.btnDeleteClassSchedule.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDeleteClassSchedule.FlatAppearance.BorderSize = 0;
+            this.btnDeleteClassSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteClassSchedule.ForeColor = System.Drawing.Color.White;
+            this.btnDeleteClassSchedule.Location = new System.Drawing.Point(508, 445);
+            this.btnDeleteClassSchedule.Name = "btnDeleteClassSchedule";
+            this.btnDeleteClassSchedule.Size = new System.Drawing.Size(269, 41);
+            this.btnDeleteClassSchedule.TabIndex = 62;
+            this.btnDeleteClassSchedule.Text = "Delete";
+            this.btnDeleteClassSchedule.UseVisualStyleBackColor = false;
+            this.btnDeleteClassSchedule.Click += new System.EventHandler(this.btnDeleteClassSchedule_Click);
             // 
             // cmbCustomDays
             // 
@@ -689,7 +743,7 @@ namespace LGAConnectSOMS.Views
             this.btnAddClassSchedule.FlatAppearance.BorderSize = 0;
             this.btnAddClassSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddClassSchedule.ForeColor = System.Drawing.Color.Black;
-            this.btnAddClassSchedule.Location = new System.Drawing.Point(508, 418);
+            this.btnAddClassSchedule.Location = new System.Drawing.Point(508, 385);
             this.btnAddClassSchedule.Name = "btnAddClassSchedule";
             this.btnAddClassSchedule.Size = new System.Drawing.Size(269, 41);
             this.btnAddClassSchedule.TabIndex = 11;
@@ -728,24 +782,6 @@ namespace LGAConnectSOMS.Views
             this.lblClassScheduleDetailsTitle.Size = new System.Drawing.Size(253, 31);
             this.lblClassScheduleDetailsTitle.TabIndex = 0;
             this.lblClassScheduleDetailsTitle.Text = "Class Schedule Details";
-            // 
-            // btnEditSchedule
-            // 
-            this.btnEditSchedule.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnEditSchedule.BackColor = System.Drawing.Color.Teal;
-            this.btnEditSchedule.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEditSchedule.FlatAppearance.BorderColor = System.Drawing.Color.Teal;
-            this.btnEditSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditSchedule.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditSchedule.ForeColor = System.Drawing.Color.White;
-            this.btnEditSchedule.Location = new System.Drawing.Point(1160, 15);
-            this.btnEditSchedule.Name = "btnEditSchedule";
-            this.btnEditSchedule.Size = new System.Drawing.Size(96, 29);
-            this.btnEditSchedule.TabIndex = 162;
-            this.btnEditSchedule.Text = "Edit";
-            this.btnEditSchedule.UseVisualStyleBackColor = false;
-            this.btnEditSchedule.Visible = false;
-            this.btnEditSchedule.Click += new System.EventHandler(this.btnEditSchedule_Click);
             // 
             // ClassScheduleView
             // 
@@ -820,5 +856,7 @@ namespace LGAConnectSOMS.Views
         public System.Windows.Forms.ComboBox cmbCustomDays;
         private System.Windows.Forms.Label lblRepeatEvery;
         private System.Windows.Forms.Button btnEditSchedule;
+        private System.Windows.Forms.Button btnExportToPDF;
+        private System.Windows.Forms.Button btnDeleteClassSchedule;
     }
 }

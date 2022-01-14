@@ -113,6 +113,16 @@ namespace LGAConnectSOMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap announcements {
+            get {
+                object obj = ResourceManager.GetObject("announcements", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Author {
             get {
                 object obj = ResourceManager.GetObject("Author", resourceCulture);
@@ -526,6 +536,16 @@ namespace LGAConnectSOMS.Properties {
         internal static System.Drawing.Bitmap subjects {
             get {
                 object obj = ResourceManager.GetObject("subjects", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap TeacherRecords {
+            get {
+                object obj = ResourceManager.GetObject("TeacherRecords", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

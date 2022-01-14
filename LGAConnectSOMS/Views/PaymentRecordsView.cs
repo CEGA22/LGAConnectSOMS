@@ -43,24 +43,23 @@ namespace LGAConnectSOMS.Views
             StudentsBalanceDataGridView.DataSource = studentbalancelist;
             StudentsBalanceDataGridView.CurrentCell = null;
             StudentsBalanceDataGridView.Columns[0].Visible = false;
-            StudentsBalanceDataGridView.Columns[9].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;           
+            StudentsBalanceDataGridView.Columns[9].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
         }
 
         public async Task DisplayTransactionHistory()
         {
             TransactionHistoryService transactionHistoryService = new TransactionHistoryService();
-            var transactionhistorylist = await Task.Run(() => transactionHistoryService.GetTransactionHistory());
+            var transactionhistorylist = await transactionHistoryService.GetTransactionHistory();
             TransactionHistoryDataGridView.DataSource = transactionhistorylist;
-            TransactionHistoryDataGridView.Columns[5].Visible = false;
-            TransactionHistoryDataGridView.Columns[7].Visible = false;          
-            TransactionHistoryDataGridView.Columns[10].Visible = false;
+            TransactionHistoryDataGridView.Columns[9].Visible = false;
+            TransactionHistoryDataGridView.Columns[11].Visible = false;
             TransactionHistoryDataGridView.CurrentCell = null;
             TransactionHistoryDataGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             TransactionHistoryDataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             TransactionHistoryDataGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             TransactionHistoryDataGridView.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             TransactionHistoryDataGridView.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            TransactionHistoryDataGridView.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;           
+            TransactionHistoryDataGridView.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             TransactionHistoryDataGridView.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             TransactionHistoryDataGridView.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
 

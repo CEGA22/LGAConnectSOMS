@@ -11,7 +11,7 @@ namespace LGAConnectSOMS.Gateway
 {
     public class SubjectsGateway
     {
-        static string BaseUrl = "http://cegagabrang-001-site1.btempurl.com/api/lga/subjects";
+        static string BaseUrl = "http://cega07-001-site1.gtempurl.com/api/lga/subjects";
 
         public async Task<IEnumerable<Subjects>> GetSubjects()
         {
@@ -70,6 +70,21 @@ namespace LGAConnectSOMS.Gateway
             catch
             {
                 return Enumerable.Empty<SubjectsHandled>();
+            }
+        }
+
+        public async Task<IEnumerable<UnHandledSubjects>> GetAllUnHandledSubjectsHandled()
+        {
+            try
+            {
+                string url = $"{BaseUrl}/get_All_UnHandledsubjects";
+                var content = await WebMethods.MakeGetRequest(url);
+                var result = JsonConvert.DeserializeObject<IEnumerable<UnHandledSubjects>>(content);
+                return result;
+            }
+            catch
+            {
+                return Enumerable.Empty<UnHandledSubjects>();
             }
         }
 

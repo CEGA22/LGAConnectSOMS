@@ -1,4 +1,6 @@
-﻿using LGAConnectSOMS.Models;
+﻿using iTextSharp.text;
+using iTextSharp.text.pdf;
+using LGAConnectSOMS.Models;
 using LGAConnectSOMS.Properties;
 using LGAConnectSOMS.Services;
 using System;
@@ -6,6 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,14 +23,13 @@ namespace LGAConnectSOMS.Views
         {
             InitializeComponent();
         }
-
+        
         private void ClassScheduleFacultyView_Load(object sender, EventArgs e)
         {
             this.RestoreWindowPosition();
             MaximizeIcon();
             ClassDaysPanel.Hide();           
-            loadData();
-            
+            loadData();                
         }
 
         public async void loadData()
@@ -57,11 +59,12 @@ namespace LGAConnectSOMS.Views
             //DateTime todaysDate = DateTime.Now;          
             //var weekday = todaysDate.DayOfWeek.ToString();
             ClassScheduleService classScheduleService = new ClassScheduleService();
-            var schedules = await Task.Run(() => classScheduleService.GetClassScheduleDetails());
+            var schedules = await classScheduleService.GetClassScheduleDetails();                     
             schedulelist = schedules.Where(x => x.SchoolID == ID).ToList();
             if (weekday == "Entire Week")
-            {              
-                schedulelist = schedules.ToList();
+            {
+                schedulelist = schedules.Where(x => x.SchoolID == ID).ToList();
+                //schedulelist = schedules.ToList();
             }
 
             else
@@ -78,7 +81,7 @@ namespace LGAConnectSOMS.Views
                 FreeSchedulePanel.Size = new System.Drawing.Size(736, 478);
                 FreeSchedule.Text = "No Schedule For Today";
                 FreeSchedule.AutoSize = true;
-                FreeSchedule.Font = new Font("TW Cen MT", 24);
+                FreeSchedule.Font = new System.Drawing.Font("TW Cen MT", 24);
                 FreeSchedulePicture.Image = LGAConnectSOMS.Properties.Resources.FreeSchedule;
                 FreeSchedulePicture.SizeMode = PictureBoxSizeMode.Zoom;
                 FreeSchedule.Location = new System.Drawing.Point(200, 200);
@@ -98,7 +101,7 @@ namespace LGAConnectSOMS.Views
                     Label GradeLevelSection = new Label();
                     GradeLevelSection.Text = classSchedule.GradeLevel + " " + classSchedule.SectionName;
                     GradeLevelSection.AutoSize = true;
-                    GradeLevelSection.Font = new Font("TW Cen MT", 16);
+                    GradeLevelSection.Font = new System.Drawing.Font("TW Cen MT", 16);
                     GradeLevelSection.ForeColor = ColorTranslator.FromHtml("#fff");
                     GradeLevelSection.Location = new System.Drawing.Point(95, 50);
 
@@ -106,7 +109,7 @@ namespace LGAConnectSOMS.Views
                     WeekDay.AutoSize = true;
                     WeekDay.ForeColor = Color.White;
                     WeekDay.Text = classSchedule.WeekDay;
-                    WeekDay.Font = new Font("TW Cen MT", 14);
+                    WeekDay.Font = new System.Drawing.Font("TW Cen MT", 14);
                     WeekDay.Location = new System.Drawing.Point(500, 20);
                     Label Subject = new Label();
                     Label Teacher = new Label();                   
@@ -118,9 +121,9 @@ namespace LGAConnectSOMS.Views
                     LinePanel.AutoSize = true;
                     LinePanel.BackColor = Color.White;
                     PictureBox pictureBox = new PictureBox();
-                    Subject.Font = new Font("TW Cen MT", 16);
-                    Teacher.Font = new Font("TW Cen MT", 16);                   
-                    StartTimeEndTime.Font = new Font("TW Cen MT", 15);
+                    Subject.Font = new System.Drawing.Font("TW Cen MT", 16);
+                    Teacher.Font = new System.Drawing.Font("TW Cen MT", 16);                   
+                    StartTimeEndTime.Font = new System.Drawing.Font("TW Cen MT", 15);
                     StartTimeEndTime.AutoSize = true;
                     //Panel linebox = new Panel();
                     pictureBox.Image = Properties.Resources.Subject;
@@ -194,8 +197,7 @@ namespace LGAConnectSOMS.Views
                     dynamicPanel.BackColor = Backcolor;
                     label1.Text = classSchedule.WeekDay;
                 }
-            }
-           
+            }          
         }
 
         public void WeekDaySelection(string selectedweekday)
@@ -215,7 +217,7 @@ namespace LGAConnectSOMS.Views
                 FreeSchedulePanel.Size = new System.Drawing.Size(736, 478);
                 FreeSchedule.Text = "No Schedule For Today";
                 FreeSchedule.AutoSize = true;
-                FreeSchedule.Font = new Font("TW Cen MT", 24);
+                FreeSchedule.Font = new System.Drawing.Font("TW Cen MT", 24);
                 FreeSchedulePicture.Image = LGAConnectSOMS.Properties.Resources.FreeSchedule;
                 FreeSchedulePicture.SizeMode = PictureBoxSizeMode.Zoom;
                 FreeSchedule.Location = new System.Drawing.Point(200, 200);
@@ -234,7 +236,7 @@ namespace LGAConnectSOMS.Views
                     Label GradeLevelSection = new Label();
                     GradeLevelSection.Text = classSchedule.GradeLevel + " " + classSchedule.SectionName;
                     GradeLevelSection.AutoSize = true;
-                    GradeLevelSection.Font = new Font("TW Cen MT", 16);
+                    GradeLevelSection.Font = new System.Drawing.Font("TW Cen MT", 16);
                     GradeLevelSection.ForeColor = ColorTranslator.FromHtml("#fff");
                     GradeLevelSection.Location = new System.Drawing.Point(85, 70);
                     Label Teacher = new Label();
@@ -246,10 +248,10 @@ namespace LGAConnectSOMS.Views
                     LinePanel.AutoSize = true;
                     LinePanel.BackColor = Color.White;
                     PictureBox pictureBox = new PictureBox();
-                    Subject.Font = new Font("TW Cen MT", 16);
+                    Subject.Font = new System.Drawing.Font("TW Cen MT", 16);
                    
-                    Teacher.Font = new Font("TW Cen MT", 16);                   
-                    StartTimeEndTime.Font = new Font("TW Cen MT", 15);
+                    Teacher.Font = new System.Drawing.Font("TW Cen MT", 16);                   
+                    StartTimeEndTime.Font = new System.Drawing.Font("TW Cen MT", 15);
                     StartTimeEndTime.AutoSize = true;
                     //Panel linebox = new Panel();
                     pictureBox.Image = Properties.Resources.Subject;
@@ -619,6 +621,100 @@ namespace LGAConnectSOMS.Views
             ClassSchedulePanel.Controls.Clear();
             await ClassSchedulesFaculty(label1.Text);
             label1.Text = "Entire Week";
-        }       
+        }
+
+        private void btnExportToPDF_Click(object sender, EventArgs e)
+        {
+            var ID = Settings.Default.ID;
+            var classSchedulelistWithoutid = schedulelist.Where(x => x.SchoolID == ID).Select(x => new { x.FullName, x.GradeLevel, x.SectionName, x.Subject, x.WeekDay, x.StartTime, x.EndTime }).ToList();
+
+            var facultyname = schedulelist.First(x => x.SchoolID == ID).FullName;
+
+            ClassScheduleDataGridView.DataSource = classSchedulelistWithoutid.ToList();
+
+            if (ClassScheduleDataGridView.Rows.Count > 0)
+            {
+                var datetime = DateTime.Now.ToString("yyyy");
+                var schoolYearEnd = int.Parse(datetime) + 1;
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Filter = "PDF (*.pdf)|*.pdf";
+                sfd.FileName = "Ladder of Gems Academy Class Schedule.pdf";
+                bool fileError = false;
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    if (File.Exists(sfd.FileName))
+                    {
+                        try
+                        {
+                            File.Delete(sfd.FileName);
+                        }
+                        catch (IOException ex)
+                        {
+                            fileError = true;
+                            MessageBox.Show("It wasn't possible to write the data to the disk." + ex.Message);
+                        }
+                    }
+                    if (!fileError)
+                    {
+                        try
+                        {
+                            PdfPTable pdfTable = new PdfPTable(ClassScheduleDataGridView.Columns.Count);
+                            pdfTable.DefaultCell.Padding = 3;
+                            pdfTable.SpacingBefore = 30;
+                            pdfTable.WidthPercentage = 100;
+                            pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
+
+                            foreach (DataGridViewColumn column in ClassScheduleDataGridView.Columns)
+                            {
+                                PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText));
+                                iTextSharp.text.Font fon = FontFactory.GetFont("ARIAL", 5);
+                                pdfTable.AddCell(cell);
+                            }
+
+                            foreach (DataGridViewRow row in ClassScheduleDataGridView.Rows)
+                            {
+                                foreach (DataGridViewCell cell in row.Cells)
+                                {
+                                    pdfTable.AddCell(Convert.ToString(cell.Value));
+                                }
+                            }
+
+                            using (FileStream stream = new FileStream(sfd.FileName, FileMode.Create))
+                            {
+
+                                Document pdfDoc = new Document(PageSize.TABLOID.Rotate());
+                                PdfWriter.GetInstance(pdfDoc, stream);
+                                Paragraph p = new Paragraph("Ladder of Gems Academy, Inc.");                              
+                                Paragraph c = new Paragraph("Class Schedule");
+                                Paragraph y1 = new Paragraph(datetime + " - " + schoolYearEnd);
+                                Paragraph t = new Paragraph("Teacher: " + facultyname);
+                                p.Alignment = Element.ALIGN_CENTER;                                
+                                y1.Alignment = Element.ALIGN_CENTER;                               
+                                c.Alignment = Element.ALIGN_CENTER;
+                                t.Alignment = Element.ALIGN_LEFT;
+                                pdfDoc.Open();
+                                pdfDoc.Add(p);                              
+                                pdfDoc.Add(c);
+                                pdfDoc.Add(y1);
+                                pdfDoc.Add(t);
+                                pdfDoc.Add(pdfTable);
+                                pdfDoc.Close();
+                                stream.Close();
+                            }
+
+                            MessageBox.Show("Data Exported Successfully !!!", "Info");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error :" + ex.Message);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("No Record To Export !!!", "Info");
+            }
+        }
     }
 }

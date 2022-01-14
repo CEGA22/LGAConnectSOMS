@@ -471,7 +471,7 @@ namespace LGAConnectSOMS
             this.btnPaymentRecords.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPaymentRecords.Font = new System.Drawing.Font("Tw Cen MT", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPaymentRecords.ForeColor = System.Drawing.Color.White;
-            this.btnPaymentRecords.Image = global::LGAConnectSOMS.Properties.Resources.credit_card;
+            this.btnPaymentRecords.Image = global::LGAConnectSOMS.Properties.Resources.Payment_Records;
             this.btnPaymentRecords.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnPaymentRecords.Location = new System.Drawing.Point(0, 647);
             this.btnPaymentRecords.Name = "btnPaymentRecords";

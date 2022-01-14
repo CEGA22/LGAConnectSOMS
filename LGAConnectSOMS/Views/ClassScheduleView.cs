@@ -1,4 +1,6 @@
-﻿using LGAConnectSOMS.Models;
+﻿using iTextSharp.text;
+using iTextSharp.text.pdf;
+using LGAConnectSOMS.Models;
 using LGAConnectSOMS.Properties;
 using LGAConnectSOMS.Services;
 using System;
@@ -6,6 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -55,6 +58,7 @@ namespace LGAConnectSOMS.Views
 
         public async void LoadData()
         {
+            btnDeleteClassSchedule.Hide();
             DateTime todaysDate = DateTime.Now;
             var weekday = todaysDate.DayOfWeek.ToString();
             await ClassSchedules(weekday);
@@ -94,7 +98,12 @@ namespace LGAConnectSOMS.Views
             schedulelist = schedules.ToList();
             ClassScheduleDataGridView.DataSource = schedulelist;
             ClassScheduleDataGridView.Columns[0].Visible = false;
-            ClassScheduleDataGridView.Columns[7].Visible = false;
+            ClassScheduleDataGridView.Columns[1].Visible = false;
+            ClassScheduleDataGridView.Columns[2].Visible = false;
+            ClassScheduleDataGridView.Columns[3].Visible = false;
+            ClassScheduleDataGridView.Columns[10].Visible = false;
+            ClassScheduleDataGridView.Columns[11].Visible = false;
+            ClassScheduleDataGridView.AllowUserToAddRows = false;
             if (weekday == "Entire Week")
             {
                 schedulelist = schedules.ToList();
@@ -114,7 +123,7 @@ namespace LGAConnectSOMS.Views
                 FreeSchedulePanel.Size = new System.Drawing.Size(736, 478);
                 FreeSchedule.Text = "No Schedule For Today";
                 FreeSchedule.AutoSize = true;
-                FreeSchedule.Font = new Font("TW Cen MT", 24);
+                FreeSchedule.Font = new System.Drawing.Font("TW Cen MT", 24);
                 FreeSchedulePicture.Image = LGAConnectSOMS.Properties.Resources.FreeSchedule;
                 FreeSchedulePicture.SizeMode = PictureBoxSizeMode.Zoom;
                 FreeSchedule.Location = new System.Drawing.Point(200, 200);
@@ -142,17 +151,17 @@ namespace LGAConnectSOMS.Views
                     LinePanel.AutoSize = true;
                     LinePanel.BackColor = Color.White;
                     PictureBox pictureBox = new PictureBox();
-                    Subject.Font = new Font("TW Cen MT", 16);
-                    Teacher.Font = new Font("TW Cen MT", 16);
-                    StartTimeEndTime.Font = new Font("TW Cen MT", 15);
+                    Subject.Font = new System.Drawing.Font("TW Cen MT", 16);
+                    Teacher.Font = new System.Drawing.Font("TW Cen MT", 16);
+                    StartTimeEndTime.Font = new System.Drawing.Font("TW Cen MT", 15);
                     WeekDay.AutoSize = true;
                     WeekDay.ForeColor = Color.White;
                     WeekDay.Text = classSchedule.WeekDay;
-                    WeekDay.Font = new Font("TW Cen MT", 14);
+                    WeekDay.Font = new System.Drawing.Font("TW Cen MT", 14);
                     GradeLevelText.AutoSize = true;
                     GradeLevelText.ForeColor = Color.White;
                     GradeLevelText.Text = classSchedule.WeekDay;
-                    GradeLevelText.Font = new Font("TW Cen MT", 14);
+                    GradeLevelText.Font = new System.Drawing.Font("TW Cen MT", 14);
                     GradeLevelText.Location = new System.Drawing.Point(95, 50);
                     WeekDay.Location = new System.Drawing.Point(500, 20);
                     StartTimeEndTime.AutoSize = true;
@@ -515,44 +524,239 @@ namespace LGAConnectSOMS.Views
         }
 
         public string weekday;
+        public string weekdayverification;
         public bool IsSuccess;
+        List<ClassSchedule> listofweekdays = new List<ClassSchedule>();
+        List<ClassSchedule> verificationS = new List<ClassSchedule>();
         private async void btnAddClassSchedule_Click(object sender, EventArgs e)
         {
-            //var selectedGradeLevel = (string)cmbGradeLevels.SelectedItem;
-            //var selectedSection = cmbSections.SelectedItem;
-            //var selectedteacher = (string)cmbFaculty.SelectedItem;
-            //var selectedSubject = cmbSubjects.SelectedItem;
-            //var gradeLevelId = gradeLevelSections.First(x => x.GradeLevels.Equals(selectedGradeLevel) && x.SectionName.Equals(selectedSection)).GradeLevel;
-            //var subjectid = subjects.First(x => x.SubjectName.Equals(selectedSubject) && x.GradeLevel == gradeLevelId).GradeLevel;
-            //var teacherid = _schoolAccounts.First(x => x.Fullname == selectedteacher).id;
-
             MessageBoxButtons buttons = MessageBoxButtons.OK;
+            if (editclassschedule == 0)
+            {
+                if (!string.IsNullOrEmpty(cmbStartTime.Text) && !string.IsNullOrEmpty(cmbEndTime.Text) && !string.IsNullOrEmpty(cmbDays.Text))
+                {
+                    if (cmbDays.Text == "Custom" && string.IsNullOrEmpty(cmbCustomDays.Text))
+                    {
+                        MessageBox.Show("Please fill in all fields!", "Error", buttons, MessageBoxIcon.Information);
+                        return;
+                    }
+                    if (cmbDays.Text == "Custom")
+                    {
+                        var verfification = schedule.Where(x => x.FullName.Equals(cmbFaculty.Text) && x.Subject.Equals(cmbSubjects.Text) && x.StartTime == cmbStartTime.Text && x.EndTime == cmbEndTime.Text && x.WeekDay.Equals(cmbCustomDays.Text) && x.GradeLevelSection.Equals(cmbGradeLevels.Text));
 
+                        if (verfification.Any())
+                        {
+                            MessageBox.Show("Already sched");
+                        }
+
+                        else
+                        {
+                            var verfificationtime = schedule.Where(x => x.StartTime == cmbStartTime.Text && x.EndTime == cmbEndTime.Text && x.WeekDay.Equals(cmbCustomDays.Text));
+                            if (verfificationtime.Any())
+                            {
+                                MessageBox.Show("Time scheduled already occupied. Please select other time schedule");
+                            }
+
+                            else
+                            {
+                                CreateClassSchedule();
+                            }
+                        }
+                    }
+
+                    else
+                    {
+                        for (int i = 0; i <= 5; i++)
+                        {
+                            if (i == 0)
+                            {
+                                weekdayverification = "Monday";
+                                verificationS = schedule.Where(x => x.FullName.Equals(cmbFaculty.Text) && x.Subject.Equals(cmbSubjects.Text) && x.StartTime == cmbStartTime.Text && x.EndTime == cmbEndTime.Text && x.WeekDay.Equals(weekdayverification)).ToList();
+                                listofweekdays.AddRange(verificationS);
+                            }
+
+                            else if (i == 1)
+                            {
+                                weekdayverification = "Tuesday";
+                                verificationS = schedule.Where(x => x.FullName.Equals(cmbFaculty.Text) && x.Subject.Equals(cmbSubjects.Text) && x.StartTime == cmbStartTime.Text && x.EndTime == cmbEndTime.Text && x.WeekDay.Equals(weekdayverification)).ToList();
+                                listofweekdays.AddRange(verificationS);
+                            }
+
+                            else if (i == 2)
+                            {
+                                weekdayverification = "Wednesday";
+                                verificationS = schedule.Where(x => x.FullName.Equals(cmbFaculty.Text) && x.Subject.Equals(cmbSubjects.Text) && x.StartTime == cmbStartTime.Text && x.EndTime == cmbEndTime.Text && x.WeekDay.Equals(weekdayverification)).ToList();
+                                listofweekdays.AddRange(verificationS);
+                            }
+
+                            else if (i == 3)
+                            {
+                                weekdayverification = "Thursday";
+                                verificationS = schedule.Where(x => x.FullName.Equals(cmbFaculty.Text) && x.Subject.Equals(cmbSubjects.Text) && x.StartTime == cmbStartTime.Text && x.EndTime == cmbEndTime.Text && x.WeekDay.Equals(weekdayverification)).ToList();
+                                listofweekdays.AddRange(verificationS);
+                            }
+
+                            else if (i == 4)
+                            {
+                                weekdayverification = "Friday";
+                                verificationS = schedule.Where(x => x.FullName.Equals(cmbFaculty.Text) && x.Subject.Equals(cmbSubjects.Text) && x.StartTime == cmbStartTime.Text && x.EndTime == cmbEndTime.Text && x.WeekDay.Equals(weekdayverification)).ToList();
+                                listofweekdays.AddRange(verificationS);
+                            }
+                            else if (i == 5)
+                            {
+                                if (listofweekdays.Count == 5)
+                                {
+                                    MessageBox.Show("Conflict");
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Not");
+                                    var verfificationtime = schedule.Where(x => x.StartTime == cmbStartTime.Text && x.EndTime == cmbEndTime.Text);
+                                    if (verfificationtime.Any())
+                                    {
+                                        MessageBox.Show("Time scheduled already occupied. Please select other time schedule");
+                                    }
+                                    else
+                                    {
+                                        CreateClassSchedule();
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please fill in all fields!", "Error", buttons, MessageBoxIcon.Information);
+                }
+            }
+
+            else
+            {
+                if (!string.IsNullOrEmpty(cmbStartTime.Text) && !string.IsNullOrEmpty(cmbEndTime.Text) && !string.IsNullOrEmpty(cmbDays.Text))
+                {
+                    if (cmbDays.Text == "Custom" && string.IsNullOrEmpty(cmbCustomDays.Text))
+                    {
+                        MessageBox.Show("Please fill in all fields!", "Error", buttons, MessageBoxIcon.Information);
+                        return;
+                    }
+                    if (cmbDays.Text == "Custom")
+                    {
+                        var verfification = schedule.Where(x => x.FullName.Equals(cmbFaculty.Text) && x.Subject.Equals(cmbSubjects.Text) && x.StartTime == cmbStartTime.Text && x.EndTime == cmbEndTime.Text && x.WeekDay.Equals(cmbCustomDays.Text) && x.GradeLevelSection.Equals(cmbGradeLevels.Text));
+
+                        if (verfification.Any())
+                        {
+                            MessageBox.Show("Already sched");
+                        }
+
+                        else
+                        {
+                            var verfificationtime = schedule.Where(x => x.StartTime == cmbStartTime.Text && x.EndTime == cmbEndTime.Text && x.WeekDay.Equals(cmbCustomDays.Text));
+                            if (verfificationtime.Any())
+                            {
+                                MessageBox.Show("Time scheduled already occupied. Please select other time schedule");
+                            }
+
+                            else
+                            {
+                                UpdateClassSchedule();
+                                editclassschedule = 0;
+                                btnDeleteClassSchedule.Hide();
+                            }
+                        }
+                    }
+
+                    else
+                    {
+                        for (int i = 0; i <= 5; i++)
+                        {
+                            if (i == 0)
+                            {
+                                weekdayverification = "Monday";
+                                verificationS = schedule.Where(x => x.FullName.Equals(cmbFaculty.Text) && x.Subject.Equals(cmbSubjects.Text) && x.StartTime == cmbStartTime.Text && x.EndTime == cmbEndTime.Text && x.WeekDay.Equals(weekdayverification)).ToList();
+                                listofweekdays.AddRange(verificationS);
+                            }
+
+                            else if (i == 1)
+                            {
+                                weekdayverification = "Tuesday";
+                                verificationS = schedule.Where(x => x.FullName.Equals(cmbFaculty.Text) && x.Subject.Equals(cmbSubjects.Text) && x.StartTime == cmbStartTime.Text && x.EndTime == cmbEndTime.Text && x.WeekDay.Equals(weekdayverification)).ToList();
+                                listofweekdays.AddRange(verificationS);
+                            }
+
+                            else if (i == 2)
+                            {
+                                weekdayverification = "Wednesday";
+                                verificationS = schedule.Where(x => x.FullName.Equals(cmbFaculty.Text) && x.Subject.Equals(cmbSubjects.Text) && x.StartTime == cmbStartTime.Text && x.EndTime == cmbEndTime.Text && x.WeekDay.Equals(weekdayverification)).ToList();
+                                listofweekdays.AddRange(verificationS);
+                            }
+
+                            else if (i == 3)
+                            {
+                                weekdayverification = "Thursday";
+                                verificationS = schedule.Where(x => x.FullName.Equals(cmbFaculty.Text) && x.Subject.Equals(cmbSubjects.Text) && x.StartTime == cmbStartTime.Text && x.EndTime == cmbEndTime.Text && x.WeekDay.Equals(weekdayverification)).ToList();
+                                listofweekdays.AddRange(verificationS);
+                            }
+
+                            else if (i == 4)
+                            {
+                                weekdayverification = "Friday";
+                                verificationS = schedule.Where(x => x.FullName.Equals(cmbFaculty.Text) && x.Subject.Equals(cmbSubjects.Text) && x.StartTime == cmbStartTime.Text && x.EndTime == cmbEndTime.Text && x.WeekDay.Equals(weekdayverification)).ToList();
+                                listofweekdays.AddRange(verificationS);
+                            }
+                            else if (i == 5)
+                            {
+                                if (listofweekdays.Count == 5)
+                                {
+                                    MessageBox.Show("Conflict");
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Not");
+                                    var verfificationtime = schedule.Where(x => x.StartTime == cmbStartTime.Text && x.EndTime == cmbEndTime.Text);
+                                    if (verfificationtime.Any())
+                                    {
+                                        MessageBox.Show("Time scheduled already occupied. Please select other time schedule");
+                                    }
+                                    else
+                                    {
+                                        UpdateClassSchedule();
+                                        editclassschedule = 0;
+                                        btnDeleteClassSchedule.Hide();
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please fill in all fields!", "Error", buttons, MessageBoxIcon.Information);
+                }
+            }
+            
+        }
+
+        public async void CreateClassSchedule()
+        {
+            MessageBoxButtons buttons = MessageBoxButtons.OK;
             var subjectid = _selectedSubjects.SubjectId;
             var teacherid = _selectedFaculty.Id;
             var gradeLevelId = _selectedGradeLevel.GradeLevelID;
 
-            if (!string.IsNullOrEmpty(cmbStartTime.Text) && !string.IsNullOrEmpty(cmbEndTime.Text) && !string.IsNullOrEmpty(cmbDays.Text))
+            var starttime = Convert.ToDateTime(cmbStartTime.Text);
+            var endtime = Convert.ToDateTime(cmbEndTime.Text);
+            var startday = starttime.ToString("HH:mm:ss");
+            var endday = endtime.ToString("HH:mm:ss");
+
+            ClassScheduleService classScheduleService = new ClassScheduleService();
+
+            if (cmbDays.Text == "Custom")
             {
-                if (cmbDays.Text == "Custom" && string.IsNullOrEmpty(cmbCustomDays.Text))
+                weekday = cmbCustomDays.Text;
+                try
                 {
-                    MessageBox.Show("Please fill in all fields!", "Error", buttons, MessageBoxIcon.Information);
-                    return;
-                }
-
-                var starttime = Convert.ToDateTime(cmbStartTime.Text);
-                var endtime = Convert.ToDateTime(cmbEndTime.Text);
-                var startday = starttime.ToString("HH:mm:ss");
-                var endday = endtime.ToString("HH:mm:ss");
-
-                ClassScheduleService classScheduleService = new ClassScheduleService();
-
-                if (cmbDays.Text == "Custom")
-                {
-                    weekday = cmbCustomDays.Text;
-                    try
-                    {
-                        IsSuccess = await classScheduleService.CreateClassScheduleRequest(new List<ClassScheduleRequest>
+                    IsSuccess = await classScheduleService.CreateClassScheduleRequest(new List<ClassScheduleRequest>
                     {
                         new ClassScheduleRequest
                         {
@@ -564,60 +768,122 @@ namespace LGAConnectSOMS.Views
                             WeekDay = weekday
                         }
                     });
-                    }
-                    catch (Exception x)
-                    {
-                        MessageBox.Show(x.Message);
-                    }
+                }
+                catch (Exception x)
+                {
+                    MessageBox.Show(x.Message);
+                }
 
-                    if (IsSuccess)
-                    {
-                        _selectedSchedule = null;
-                        string message = "Added new class schedule Successfully";
-                        string title = "LGA Connect SOMS Class Schedule";
-                        MessageBox.Show(message, title, buttons, MessageBoxIcon.Information);
+                if (IsSuccess)
+                {
+                    _selectedSchedule = null;
+                    string message = "Added new class schedule Successfully";
+                    string title = "LGA Connect SOMS Class Schedule";
+                    MessageBox.Show(message, title, buttons, MessageBoxIcon.Information);
 
-                        tabControl1.SelectedIndex = 1;
+                    tabControl1.SelectedIndex = 1;
 
-                        await ClassSchedules(label1.Text);
-                    }
-
-                    else
-                    {
-                        string message = "Added class schedule Unsucessfull";
-                        string title = "Error";
-                        MessageBox.Show(message, title, buttons, MessageBoxIcon.Error);
-                    }
+                    await ClassSchedules(label1.Text);
                 }
 
                 else
                 {
-                    var itemsToSave = new List<ClassScheduleRequest>();
+                    string message = "Added class schedule Unsucessfull";
+                    string title = "Error";
+                    MessageBox.Show(message, title, buttons, MessageBoxIcon.Error);
+                }
+            }
 
-                    for (int i = 0; i <= 4; i++)
+            else
+            {
+                var itemsToSave = new List<ClassScheduleRequest>();
+
+                for (int i = 0; i <= 4; i++)
+                {
+                    if (i == 0)
                     {
-                        if (i == 0)
-                        {
-                            weekday = "Monday";
-                        }
-                        else if (i == 1)
-                        {
-                            weekday = "Tuesday";
-                        }
-                        else if (i == 2)
-                        {
-                            weekday = "Wednesday";
-                        }
-                        else if (i == 3)
-                        {
-                            weekday = "Thursday";
-                        }
-                        else if (i == 4)
-                        {
-                            weekday = "Friday";
-                        }
+                        weekday = "Monday";
+                    }
+                    else if (i == 1)
+                    {
+                        weekday = "Tuesday";
+                    }
+                    else if (i == 2)
+                    {
+                        weekday = "Wednesday";
+                    }
+                    else if (i == 3)
+                    {
+                        weekday = "Thursday";
+                    }
+                    else if (i == 4)
+                    {
+                        weekday = "Friday";
+                    }
 
-                        itemsToSave.Add(new ClassScheduleRequest
+                    itemsToSave.Add(new ClassScheduleRequest
+                    {
+                        Subject = subjectid,
+                        StartTime = TimeSpan.Parse(startday),
+                        EndTime = TimeSpan.Parse(endday),
+                        TeacherID = teacherid,
+                        GradeLevel = gradeLevelId,
+                        WeekDay = weekday
+                    });
+                }
+
+                try
+                {
+                    IsSuccess = await classScheduleService.CreateClassScheduleRequest(itemsToSave);
+                }
+                catch (Exception x)
+                {
+                    MessageBox.Show(x.Message);
+                }
+
+                if (IsSuccess)
+                {
+                    _selectedSchedule = null;
+                    string message = "Added new class schedule Successfully";
+                    string title = "LGA Connect SOMS Class Schedule";
+                    MessageBox.Show(message, title, buttons, MessageBoxIcon.Information);
+
+                    tabControl1.SelectedIndex = 1;
+
+                    await ClassSchedules(label1.Text);
+                }
+
+                else
+                {
+                    string message = "Added class schedule Unsucessfull";
+                    string title = "Error";
+                    MessageBox.Show(message, title, buttons, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        public async void UpdateClassSchedule()
+        {
+            MessageBoxButtons buttons = MessageBoxButtons.OK;
+            var subjectid = _selectedSubjects.SubjectId;
+            var teacherid = _selectedFaculty.Id;
+            var gradeLevelId = _selectedGradeLevel.GradeLevelID;
+
+            var starttime = Convert.ToDateTime(cmbStartTime.Text);
+            var endtime = Convert.ToDateTime(cmbEndTime.Text);
+            var startday = starttime.ToString("HH:mm:ss");
+            var endday = endtime.ToString("HH:mm:ss");
+
+            ClassScheduleService classScheduleService = new ClassScheduleService();
+
+            if (cmbDays.Text == "Custom")
+            {
+                weekday = cmbCustomDays.Text;
+                try
+                {
+                    IsSuccess = await classScheduleService.UpdateClassScheduleRequest(new List<ClassScheduleRequest>
+                    {
+                        new ClassScheduleRequest
                         {
                             Subject = subjectid,
                             StartTime = TimeSpan.Parse(startday),
@@ -625,43 +891,99 @@ namespace LGAConnectSOMS.Views
                             TeacherID = teacherid,
                             GradeLevel = gradeLevelId,
                             WeekDay = weekday
-                        });
-                    }
-
-                    try
-                    {
-                        IsSuccess = await classScheduleService.CreateClassScheduleRequest(itemsToSave);
-                    }
-                    catch (Exception x)
-                    {
-                        MessageBox.Show(x.Message);
-                    }
-
-                    if (IsSuccess)
-                    {
-                        _selectedSchedule = null;
-                        string message = "Added new class schedule Successfully";
-                        string title = "LGA Connect SOMS Class Schedule";
-                        MessageBox.Show(message, title, buttons, MessageBoxIcon.Information);
-
-                        tabControl1.SelectedIndex = 1;
-
-                        await ClassSchedules(label1.Text);
-                    }
-
-                    else
-                    {
-                        string message = "Added class schedule Unsucessfull";
-                        string title = "Error";
-                        MessageBox.Show(message, title, buttons, MessageBoxIcon.Error);
-                    }
+                        }
+                    });
+                }
+                catch (Exception x)
+                {
+                    MessageBox.Show(x.Message);
                 }
 
+                if (IsSuccess)
+                {
+                    _selectedSchedule = null;
+                    string message = "Updated class schedule Successfully";
+                    string title = "LGA Connect SOMS Class Schedule";
+                    MessageBox.Show(message, title, buttons, MessageBoxIcon.Information);
 
+                    tabControl1.SelectedIndex = 1;
+
+                    await ClassSchedules(label1.Text);
+                }
+
+                else
+                {
+                    string message = "Update class schedule Unsucessfull";
+                    string title = "Error";
+                    MessageBox.Show(message, title, buttons, MessageBoxIcon.Error);
+                }
             }
+
             else
             {
-                MessageBox.Show("Please fill in all fields!", "Error", buttons, MessageBoxIcon.Information);
+                var itemsToSave = new List<ClassScheduleRequest>();
+
+                for (int i = 0; i <= 4; i++)
+                {
+                    if (i == 0)
+                    {
+                        weekday = "Monday";
+                    }
+                    else if (i == 1)
+                    {
+                        weekday = "Tuesday";
+                    }
+                    else if (i == 2)
+                    {
+                        weekday = "Wednesday";
+                    }
+                    else if (i == 3)
+                    {
+                        weekday = "Thursday";
+                    }
+                    else if (i == 4)
+                    {
+                        weekday = "Friday";
+                    }
+
+                    itemsToSave.Add(new ClassScheduleRequest
+                    {
+                        Subject = subjectid,
+                        StartTime = TimeSpan.Parse(startday),
+                        EndTime = TimeSpan.Parse(endday),
+                        TeacherID = teacherid,
+                        GradeLevel = gradeLevelId,
+                        WeekDay = weekday
+                    });
+                }
+
+                try
+                {
+                    IsSuccess = await classScheduleService.UpdateClassScheduleRequest(itemsToSave);
+                }
+                catch (Exception x)
+                {
+                    MessageBox.Show(x.Message);
+                }
+
+                if (IsSuccess)
+                {
+                    _selectedSchedule = null;
+                    string message = "Updated class schedule Successfully";
+                    string title = "LGA Connect SOMS Class Schedule";
+                    MessageBox.Show(message, title, buttons, MessageBoxIcon.Information);
+
+                    tabControl1.SelectedIndex = 1;
+
+                    await ClassSchedules(label1.Text);
+                }
+
+                else
+                {
+                    string message = "Update class schedule Unsucessfull";
+                    string title = "Error";
+                    MessageBox.Show(message, title, buttons, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -773,8 +1095,11 @@ namespace LGAConnectSOMS.Views
             editClassScheduleView.ShowDialog();
         }
 
+        public int editclassschedule = 0;
         private void btnEditSchedule_Click(object sender, EventArgs e)
         {
+            editclassschedule = 1;
+            btnDeleteClassSchedule.Show();
             if (ClassScheduleDataGridView.SelectedRows.Count > 0)
             {
 
@@ -814,6 +1139,136 @@ namespace LGAConnectSOMS.Views
         private void tabPage3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnExportToPDF_Click(object sender, EventArgs e)
+        {
+            var classSchedulelistWithoutid = schedule.Select(x => new { x.FullName, x.GradeLevelSection, x.SectionName, x.Subject, x.WeekDay, x.StartTime, x.EndTime }).ToList();
+
+            DataGridView pdfclassschedule = new DataGridView();           
+            pdfclassschedule.Hide();
+            this.Controls.Add(pdfclassschedule);
+            pdfclassschedule.DataSource = classSchedulelistWithoutid.ToList();
+            if (pdfclassschedule.Rows.Count > 0)
+            {    
+                var datetime = DateTime.Now.ToString("yyyy");
+                var schoolYearEnd = int.Parse(datetime) + 1;
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Filter = "PDF (*.pdf)|*.pdf";
+                sfd.FileName = "Ladder of Gems Academy Class Schedule.pdf";
+                bool fileError = false;
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    if (File.Exists(sfd.FileName))
+                    {
+                        try
+                        {
+                            File.Delete(sfd.FileName);
+                        }
+                        catch (IOException ex)
+                        {
+                            fileError = true;
+                            MessageBox.Show("It wasn't possible to write the data to the disk." + ex.Message);
+                        }
+                    }
+                    if (!fileError)
+                    {
+                        try
+                        {
+                            PdfPTable pdfTable = new PdfPTable(pdfclassschedule.Columns.Count);
+                            pdfTable.DefaultCell.Padding = 3;
+                            pdfTable.SpacingBefore = 30;
+                            pdfTable.WidthPercentage = 100;
+                            pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
+
+                            foreach (DataGridViewColumn column in pdfclassschedule.Columns)
+                            {
+                                PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText));
+                                pdfTable.AddCell(cell);
+                            }
+
+                            foreach (DataGridViewRow row in pdfclassschedule.Rows)
+                            {
+                                foreach (DataGridViewCell cell in row.Cells)
+                                {
+                                    pdfTable.AddCell(Convert.ToString(cell.Value));
+                                }
+                            }
+
+                            using (FileStream stream = new FileStream(sfd.FileName, FileMode.Create))
+                            {
+
+                                Document pdfDoc = new Document(PageSize.LEGAL_LANDSCAPE.Rotate());
+                                PdfWriter.GetInstance(pdfDoc, stream);
+                                Paragraph p = new Paragraph("Ladder of Gems Academy, Inc.");
+                                Paragraph a = new Paragraph("Class Schedule");
+                                Paragraph y1 = new Paragraph(datetime + " - " + schoolYearEnd);
+                                p.Alignment = Element.ALIGN_CENTER;
+                                a.Alignment = Element.ALIGN_CENTER;
+                                y1.Alignment = Element.ALIGN_CENTER;
+                                pdfDoc.Open();
+                                pdfDoc.Add(p);
+                                pdfDoc.Add(a);
+                                pdfDoc.Add(y1);
+                                pdfDoc.Add(pdfTable);
+                                pdfDoc.Close();
+                                stream.Close();
+                            }
+
+                            MessageBox.Show("Data Exported Successfully !!!", "Info");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error :" + ex.Message);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("No Record To Export !!!", "Info");
+            }
+        }
+
+        private async void btnDeleteClassSchedule_Click(object sender, EventArgs e)
+        {
+            var subjectid = _selectedSubjects.SubjectId;
+            var teacherid = _selectedFaculty.Id;
+            var gradeLevelId = _selectedGradeLevel.GradeLevelID;
+
+            try
+            {               
+                string message = "Are you sure you want to delete this schedule?";
+                string title = "LGA Connect SOMS Student Account";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                {
+                    ClassScheduleService classScheduleService = new ClassScheduleService();
+                    var IsSuccess = await classScheduleService.DeleteClassScheduleRequest(teacherid,subjectid,gradeLevelId);
+                    if (IsSuccess)
+                    {
+                        MessageBox.Show("Delete class schedule Successfully");
+                        btnDeleteClassSchedule.Hide();
+                        tabControl1.SelectedIndex = 1;
+
+                        await ClassSchedules(label1.Text);
+                    }
+
+                    else
+                    {
+                        MessageBox.Show("Delete class schedule Not Successfull");
+                    }
+                }
+                else if (result == DialogResult.No)
+                {
+
+                }
+            }
+            catch (Exception x)
+            {
+
+            }
         }
     }
 }

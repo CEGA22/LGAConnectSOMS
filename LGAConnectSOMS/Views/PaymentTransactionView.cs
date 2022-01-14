@@ -30,72 +30,114 @@ namespace LGAConnectSOMS.Views
         {
             StudentBalanceService studentService = new StudentBalanceService();
             studentaccount = await studentService.GetStudentBalance();
-            var studentbalancelist = studentaccount.Select(x => x.StudentNumber);
-        }
+            var studentbalancelist = studentaccount.Select(x => x.StudentNumber);          
+            var datetime = DateTime.Now.ToString("yyyy");
+            for (int year = 2015; year <= DateTime.UtcNow.Year; ++year)
+            {
+               TransactionDate.MinDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            }
 
-        private void btnClose_MouseEnter(object sender, EventArgs e)
-        {
-            //btnClose.BackColor = Color.FromArgb(240, 52, 52);
-            //btnClose.Image = LGAConnectSOMS.Properties.Resources.close_button;
-        }
 
-        private void btnClose_MouseLeave(object sender, EventArgs e)
-        {
-            //btnClose.BackColor = Color.Transparent;
-            //btnClose.Image = LGAConnectSOMS.Properties.Resources.CloseBlack;
         }
-
+   
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-          
+      
         private async void btnAddTransactionRecord_Click(object sender, EventArgs e)
         {
-            //DateTime dateTime = DateTime.Now.Date.AddHours(12).AddMinutes(14);
-            DateTime dateTime = DateTime.Now;
-            DateTime other = DateTime.SpecifyKind(dateTime, DateTimeKind.Utc);            
-            var studentnumber = txtStudentNumber.Text;
-            var studentid = studentaccount.First(x => x.StudentNumber == studentnumber).id;
-            var studentbalance = studentaccount.First(x => x.StudentNumber == studentnumber).Balance;
-            int amount = int.Parse(txtAmount.Text);
-            var remainingbalance =  studentbalance - amount;         
-
-            try
+            if(txtStudentNumber.Text == "")
             {
-                TransactionHistoryService transactionHistoryService = new TransactionHistoryService();
-                var IsSuccess = await transactionHistoryService.CreateStudentRequest(new TransactionHistory
-                {
-                    Studentid = studentid,
-                    Amount = amount,
-                    Note = Note.Text, 
-                    TransactionDate = other,
-                    Balance = remainingbalance
-                });
+                string message = "Please enter student number";
+                string title = "LGA Connect SOMS";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Error);
+                if (result == DialogResult.OK) { }
+            }
 
-                if (IsSuccess)
-                {
-                    string Successmessage = "Transaction complete";
-                    string Successtitle = "LGA Connect SOMS Payment History";
-                    MessageBoxButtons Successbuttons = MessageBoxButtons.OK;
+            else if(txtAmount.Text == "")
+            {
+                string message = "Please enter amount";
+                string title = "LGA Connect SOMS";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Error);
+                if (result == DialogResult.OK) { }
+            }
 
-                    DialogResult Successresult = MessageBox.Show(Successmessage, Successtitle, Successbuttons, MessageBoxIcon.Information);
-                    if (Successresult == DialogResult.OK)
-                    {                       
-                        this.Hide();
+            else if(txtReferenceNumber.Text == "")
+            {
+                string message = "Please enter reference number";
+                string title = "LGA Connect SOMS";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Error);
+                if (result == DialogResult.OK) { }
+            }
+
+            else
+            {
+                DateTime dateTime = DateTime.Now;
+                DateTime other = DateTime.SpecifyKind(dateTime, DateTimeKind.Utc);
+                DateTime daterecorded = DateTime.SpecifyKind(TransactionDate.Value, DateTimeKind.Utc);
+                var studentnumber = txtStudentNumber.Text;
+                var studentid = studentaccount.Where(x => x.StudentNumber == studentnumber).ToList();
+                var balance = studentaccount.Where(x => x.StudentNumber == studentnumber).ToList();
+                int amount = int.Parse(txtAmount.Text);
+
+
+                if (studentid.Any())
+                {
+                    var ID = studentid.First(x => x.StudentNumber == studentnumber).id;
+                    var studentbalance = studentaccount.First(x => x.StudentNumber == studentnumber).Balance;
+                    var remainingbalance = studentbalance - amount;
+                    try
+                    {
+                        TransactionHistoryService transactionHistoryService = new TransactionHistoryService();
+                        var IsSuccess = await transactionHistoryService.CreateStudentRequest(new TransactionHistory
+                        {
+                            ReferenceNumber = txtReferenceNumber.Text,
+                            Studentid = ID,
+                            Amount = amount,
+                            TransactionDate = other,
+                            DateRecorded = daterecorded,
+                            Note = Note.Text,                            
+                            Balance = remainingbalance
+                        });
+
+                        if (IsSuccess)
+                        {
+                            string Successmessage = "Transaction complete";
+                            string Successtitle = "LGA Connect SOMS Payment History";
+                            MessageBoxButtons Successbuttons = MessageBoxButtons.OK;
+
+                            DialogResult Successresult = MessageBox.Show(Successmessage, Successtitle, Successbuttons, MessageBoxIcon.Information);
+                            if (Successresult == DialogResult.OK)
+                            {
+                                this.Hide();
+                            }
+                        }
+
+                        else
+                        {
+                            MessageBox.Show("Transaction failed");
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+
+                        MessageBox.Show(ex.Message);
                     }
                 }
 
                 else
                 {
-                    MessageBox.Show("Transaction failed");
-                }                       
-               
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message);
+                    string message = "Student number doesn't exist";
+                    string title = "LGA Connect SOMS";
+                    MessageBoxButtons buttons = MessageBoxButtons.OK;
+                    DialogResult result = MessageBox.Show(message, title, buttons, MessageBoxIcon.Error);
+                    if (result == DialogResult.OK) { }
+                }
             }
         }
 
@@ -114,6 +156,11 @@ namespace LGAConnectSOMS.Views
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
+        }
+
+        private void TransactionDate_Keypress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
         }
     }
 }

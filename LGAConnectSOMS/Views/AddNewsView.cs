@@ -38,6 +38,7 @@ namespace LGAConnectSOMS.Views
             NewsDateTimePicker.MinDate = dt1 = new DateTime(2015, 01, 1);
             NewsDateTimePicker.MaxDate = DateTime.Today.AddYears(1);
             NewsDateTimePicker.Format = DateTimePickerFormat.Short;
+            NewsDateTimePicker.MinDate = DateTime.Now;
         }
 
         //Buttons Forecolor and background Styles

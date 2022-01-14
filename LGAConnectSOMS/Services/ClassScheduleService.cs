@@ -45,5 +45,21 @@ namespace LGAConnectSOMS.Services
             var content = await apiGateway.CreateClassScheduleRequest(request);
             return JsonConvert.DeserializeObject<bool>(content);
         }
+
+        public async Task<bool> UpdateClassScheduleRequest(IEnumerable<ClassScheduleRequest> request)
+        {
+            var apiGateway = new ClassScheduleGateway();
+            var content = await apiGateway.UpdateClassScheduleRequest(request);
+            return JsonConvert.DeserializeObject<bool>(content);
+        }
+
+        public async Task<bool> DeleteClassScheduleRequest(int teacherId, int subjectId, int gradeLevel)
+        {
+            var apiGateway = new ClassScheduleGateway();
+            var content = await apiGateway.DeleteClassScheduleRequest(teacherId, subjectId,gradeLevel);
+            return JsonConvert.DeserializeObject<bool>(content);
+        }
+
+
     }
 }

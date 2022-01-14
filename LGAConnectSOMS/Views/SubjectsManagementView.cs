@@ -47,6 +47,7 @@ namespace LGAConnectSOMS.Views
             MaximizeIcon();
             _schoolAccountService = new SchoolAccountService();
             _subjectsService = new SubjectsService();
+
         }
 
         #region Methods
@@ -54,6 +55,25 @@ namespace LGAConnectSOMS.Views
         private async Task PreparePageDataSources()
         {
             await FetchFacultyRecord();
+            await FetchUnHanldedSubjects();
+        }
+
+        public IEnumerable<UnHandledSubjects> subjectsUnHandled = new List<UnHandledSubjects>();
+        public async Task FetchUnHanldedSubjects()
+        {
+            try
+            {
+                SubjectsService subjectsService = new SubjectsService();
+                subjectsUnHandled = await subjectsService.GetAllUnHandledSubjectsHandled();
+                var UnHandled = subjectsUnHandled.OrderBy(o => o.GradeLevel).ThenBy(o => o.SubjectName).ToList();
+                UnHandledDataGridView.Invoke((MethodInvoker)(() => UnHandledDataGridView.DataSource = UnHandled));
+                UnHandledDataGridView.CurrentCell = null;
+            }
+            catch (Exception e)
+            {
+
+                throw;
+            }
         }
 
         private async Task FetchFacultyRecord()
@@ -550,7 +570,7 @@ namespace LGAConnectSOMS.Views
                 btnRemoveSubjectsHandled.Invoke((MethodInvoker)(() => btnRemoveSubjectsHandled.Visible = _sectionsHandled.Any()));
                 lblSubjectsHandledLoading.Invoke((MethodInvoker)(() => lblSubjectsHandledLoading.Visible = false));
                 lblSubjectsHandledLoading.Invoke((MethodInvoker)(() => lblSubjectsHandledLoading.Text = "Loading... Please wait..."));
-
+                await FetchUnHanldedSubjects();
                 tmrSaveResult.Start();
             }
         }

@@ -40,6 +40,11 @@ namespace LGAConnectSOMS.Views
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SubjectsManagementView));
             this.lblDisplayResult = new System.Windows.Forms.Label();
             this.btnRemoveSubjectsHandled = new System.Windows.Forms.Button();
@@ -67,9 +72,11 @@ namespace LGAConnectSOMS.Views
             this.btnMaximize = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.UnHandledDataGridView = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dtSubjectsHandled)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtSubjects)).BeginInit();
             this.DragWindowsPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UnHandledDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // lblDisplayResult
@@ -470,12 +477,63 @@ namespace LGAConnectSOMS.Views
             this.panel1.Size = new System.Drawing.Size(1276, 3);
             this.panel1.TabIndex = 176;
             // 
+            // UnHandledDataGridView
+            // 
+            this.UnHandledDataGridView.AllowUserToAddRows = false;
+            this.UnHandledDataGridView.AllowUserToResizeColumns = false;
+            this.UnHandledDataGridView.AllowUserToResizeRows = false;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
+            this.UnHandledDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
+            this.UnHandledDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.UnHandledDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.UnHandledDataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.UnHandledDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(246)))), ((int)(((byte)(143)))));
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.UnHandledDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            this.UnHandledDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.UnHandledDataGridView.Cursor = System.Windows.Forms.Cursors.Arrow;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(242)))), ((int)(((byte)(245)))));
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.UnHandledDataGridView.DefaultCellStyle = dataGridViewCellStyle13;
+            this.UnHandledDataGridView.EnableHeadersVisualStyles = false;
+            this.UnHandledDataGridView.Location = new System.Drawing.Point(115, 365);
+            this.UnHandledDataGridView.MultiSelect = false;
+            this.UnHandledDataGridView.Name = "UnHandledDataGridView";
+            this.UnHandledDataGridView.ReadOnly = true;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.UnHandledDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            this.UnHandledDataGridView.RowHeadersVisible = false;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UnHandledDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle15;
+            this.UnHandledDataGridView.Size = new System.Drawing.Size(300, 294);
+            this.UnHandledDataGridView.TabIndex = 177;
+            // 
             // SubjectsManagementView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
             this.ClientSize = new System.Drawing.Size(1300, 700);
+            this.Controls.Add(this.UnHandledDataGridView);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblDisplayResult);
             this.Controls.Add(this.btnRemoveSubjectsHandled);
@@ -505,6 +563,7 @@ namespace LGAConnectSOMS.Views
             ((System.ComponentModel.ISupportInitialize)(this.dtSubjectsHandled)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtSubjects)).EndInit();
             this.DragWindowsPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.UnHandledDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -538,5 +597,6 @@ namespace LGAConnectSOMS.Views
         private System.Windows.Forms.Button btnMaximize;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Panel panel1;
+        public System.Windows.Forms.DataGridView UnHandledDataGridView;
     }
 }

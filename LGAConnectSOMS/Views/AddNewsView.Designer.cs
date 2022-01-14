@@ -259,7 +259,7 @@ namespace LGAConnectSOMS.Views
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddNewsView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AddNewsView";
+            this.Text = "AddNewsView";          
             ((System.ComponentModel.ISupportInitialize)(this.ContentPhotoPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

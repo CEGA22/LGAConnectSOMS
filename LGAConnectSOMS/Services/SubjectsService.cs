@@ -38,6 +38,13 @@ namespace LGAConnectSOMS.Services
             return content;
         }
 
+        public async Task<IEnumerable<UnHandledSubjects>> GetAllUnHandledSubjectsHandled()
+        {
+            var apiGateway = new SubjectsGateway();
+            var content = await apiGateway.GetAllUnHandledSubjectsHandled();
+            return content;
+        }
+
         public async Task<bool> SaveSubjectsHandled(SubjectsHandledRequest request)
         {
             var apiGateway = new SubjectsGateway();
