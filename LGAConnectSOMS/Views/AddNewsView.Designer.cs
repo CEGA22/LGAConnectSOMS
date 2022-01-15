@@ -45,7 +45,10 @@ namespace LGAConnectSOMS.Views
             this.btnClose = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             this.NewsDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.PanelLoadingPublishNews = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ContentPhotoPictureBox)).BeginInit();
+            this.PanelLoadingPublishNews.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnUpdatePhoto
@@ -229,10 +232,33 @@ namespace LGAConnectSOMS.Views
             // 
             this.NewsDateTimePicker.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.NewsDateTimePicker.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NewsDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.NewsDateTimePicker.Location = new System.Drawing.Point(381, 143);
             this.NewsDateTimePicker.Name = "NewsDateTimePicker";
             this.NewsDateTimePicker.Size = new System.Drawing.Size(200, 25);
             this.NewsDateTimePicker.TabIndex = 94;
+            // 
+            // PanelLoadingPublishNews
+            // 
+            this.PanelLoadingPublishNews.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.PanelLoadingPublishNews.BackColor = System.Drawing.Color.White;
+            this.PanelLoadingPublishNews.Controls.Add(this.label1);
+            this.PanelLoadingPublishNews.Location = new System.Drawing.Point(461, 300);
+            this.PanelLoadingPublishNews.Name = "PanelLoadingPublishNews";
+            this.PanelLoadingPublishNews.Size = new System.Drawing.Size(378, 100);
+            this.PanelLoadingPublishNews.TabIndex = 95;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Tw Cen MT", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label1.Location = new System.Drawing.Point(12, 36);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(354, 24);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "please wait this may take a few minutes";
             // 
             // AddNewsView
             // 
@@ -240,6 +266,7 @@ namespace LGAConnectSOMS.Views
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
             this.ClientSize = new System.Drawing.Size(1300, 700);
+            this.Controls.Add(this.PanelLoadingPublishNews);
             this.Controls.Add(this.NewsDateTimePicker);
             this.Controls.Add(this.BtnUpdatePhoto);
             this.Controls.Add(this.BtnSave);
@@ -259,8 +286,10 @@ namespace LGAConnectSOMS.Views
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddNewsView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AddNewsView";          
+            this.Text = "AddNewsView";
             ((System.ComponentModel.ISupportInitialize)(this.ContentPhotoPictureBox)).EndInit();
+            this.PanelLoadingPublishNews.ResumeLayout(false);
+            this.PanelLoadingPublishNews.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -283,5 +312,7 @@ namespace LGAConnectSOMS.Views
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.DateTimePicker NewsDateTimePicker;
+        private System.Windows.Forms.Panel PanelLoadingPublishNews;
+        private System.Windows.Forms.Label label1;
     }
 }

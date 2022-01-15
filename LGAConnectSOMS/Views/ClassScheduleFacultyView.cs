@@ -34,9 +34,11 @@ namespace LGAConnectSOMS.Views
 
         public async void loadData()
         {
+            btnExportToPDF.Hide();
             DateTime todaysDate = DateTime.Now;
             var weekday = todaysDate.DayOfWeek.ToString();
             await ClassSchedulesFaculty(weekday);
+           
         }
 
 
@@ -564,6 +566,7 @@ namespace LGAConnectSOMS.Views
             ClassDaysPanel.Hide();
             ClassSchedulePanel.Controls.Clear();
             await ClassSchedulesFaculty(label1.Text);
+            btnExportToPDF.Hide();
         }
 
         private async void lblTuesday_Click(object sender, EventArgs e)
@@ -572,6 +575,7 @@ namespace LGAConnectSOMS.Views
             ClassDaysPanel.Hide();
             ClassSchedulePanel.Controls.Clear();
             await ClassSchedulesFaculty(label1.Text);
+            btnExportToPDF.Hide();
         }
 
         private async void lblWednesday_Click(object sender, EventArgs e)
@@ -580,6 +584,7 @@ namespace LGAConnectSOMS.Views
             ClassDaysPanel.Hide();
             ClassSchedulePanel.Controls.Clear();
             await ClassSchedulesFaculty(label1.Text);
+            btnExportToPDF.Hide();
         }
 
         private async void lblThursday_Click(object sender, EventArgs e)
@@ -588,6 +593,7 @@ namespace LGAConnectSOMS.Views
             ClassDaysPanel.Hide();
             ClassSchedulePanel.Controls.Clear();
             await ClassSchedulesFaculty(label1.Text);
+            btnExportToPDF.Hide();
         }
 
         private async void lblFriday_Click(object sender, EventArgs e)
@@ -596,6 +602,7 @@ namespace LGAConnectSOMS.Views
             ClassDaysPanel.Hide();
             ClassSchedulePanel.Controls.Clear();
             await ClassSchedulesFaculty(label1.Text);
+            btnExportToPDF.Hide();
         }
 
         private async void lblSaturday_Click(object sender, EventArgs e)
@@ -604,6 +611,7 @@ namespace LGAConnectSOMS.Views
             ClassDaysPanel.Hide();
             ClassSchedulePanel.Controls.Clear();
             await ClassSchedulesFaculty(label1.Text);
+            btnExportToPDF.Hide();
         }
 
         private async void lblSunday_Click(object sender, EventArgs e)
@@ -612,6 +620,7 @@ namespace LGAConnectSOMS.Views
             ClassDaysPanel.Hide();
             ClassSchedulePanel.Controls.Clear();
             await ClassSchedulesFaculty(label1.Text);
+            btnExportToPDF.Hide();
         }
 
         private async void lblEntireWeek_Click(object sender, EventArgs e)
@@ -621,6 +630,7 @@ namespace LGAConnectSOMS.Views
             ClassSchedulePanel.Controls.Clear();
             await ClassSchedulesFaculty(label1.Text);
             label1.Text = "Entire Week";
+            btnExportToPDF.Show();
         }
 
         private void btnExportToPDF_Click(object sender, EventArgs e)
@@ -702,7 +712,13 @@ namespace LGAConnectSOMS.Views
                                 stream.Close();
                             }
 
-                            MessageBox.Show("Data Exported Successfully !!!", "Info");
+                            string Successmessage = "Class Schedule successfully save as pdf file";
+                            string Successtitle = "LGA Connect SOMS Class Schedule";
+                            MessageBoxButtons Successbuttons = MessageBoxButtons.OK;
+
+                            DialogResult Successresult = MessageBox.Show(Successmessage, Successtitle, Successbuttons, MessageBoxIcon.Information);
+                            if (Successresult == DialogResult.OK)
+                            { }
                         }
                         catch (Exception ex)
                         {

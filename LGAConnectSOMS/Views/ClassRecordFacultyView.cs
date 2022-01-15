@@ -3397,7 +3397,13 @@ namespace LGAConnectSOMS.Views
                                 stream.Close();
                             }
 
-                            MessageBox.Show("Data Exported Successfully !!!", "Info");
+                            string Successmessage = "Class Record successfully save as pdf file";
+                            string Successtitle = "LGA Connect SOMS Class Record";
+                            MessageBoxButtons Successbuttons = MessageBoxButtons.OK;
+
+                            DialogResult Successresult = MessageBox.Show(Successmessage, Successtitle, Successbuttons, MessageBoxIcon.Information);
+                            if (Successresult == DialogResult.OK)
+                            { }
                         }
                         catch (Exception ex)
                         {
@@ -3408,7 +3414,7 @@ namespace LGAConnectSOMS.Views
             }
             else
             {
-                MessageBox.Show("No Record To Export !!!", "Info");
+                MessageBox.Show("No Record To Export !!!", "LGA Connect SOMS");
             }
         }
 

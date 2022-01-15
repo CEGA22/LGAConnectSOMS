@@ -181,7 +181,7 @@ namespace LGAConnectSOMS.Views
             // 
             this.TransactionDate.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.TransactionDate.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TransactionDate.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.TransactionDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.TransactionDate.Location = new System.Drawing.Point(263, 250);
             this.TransactionDate.Name = "TransactionDate";
             this.TransactionDate.Size = new System.Drawing.Size(233, 25);

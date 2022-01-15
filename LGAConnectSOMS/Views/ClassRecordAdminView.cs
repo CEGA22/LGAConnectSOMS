@@ -75,7 +75,7 @@ namespace LGAConnectSOMS.Views
 
         private async void LoadData()
         {
-            
+            txtPasswordSize();
             btnAddGradeLevel.Hide();
             LoadYear();
             int yearcount = cmbSYStart.Items.Count;
@@ -97,6 +97,12 @@ namespace LGAConnectSOMS.Views
             CBSection.SelectedIndex = -1;
             GradeLevelDataGridView.CurrentCell = null;
             GradeLevelSectionDataGridView.CurrentCell = null;          
+        }
+
+        public void txtPasswordSize()
+        {
+            txtPassword.Size = new System.Drawing.Size(233, 32);
+            lblShowHide.Hide();
         }
 
         //Generate studentnumber and password
@@ -882,6 +888,35 @@ namespace LGAConnectSOMS.Views
         private void txtMobileNumber_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+            if (txtPassword.Text == string.Empty)
+            {
+                txtPasswordSize();
+            }
+
+            else
+            {
+                txtPassword.Size = new System.Drawing.Size(192,32);
+                lblShowHide.Show();              
+            }
+        }
+
+        private void lblShowHide_Click(object sender, EventArgs e)
+        {
+            if (lblShowHide.Text == "Show")
+            {
+                lblShowHide.Text = "Hide";
+                txtPassword.UseSystemPasswordChar = true;
+            }
+
+            else
+            {
+                txtPassword.UseSystemPasswordChar = false;
+                lblShowHide.Text = "Show";
+            }
         }
     }
     }

@@ -70,6 +70,7 @@ namespace LGAConnectSOMS.Views
             this.txtParentsname = new System.Windows.Forms.TextBox();
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.dtBirthday = new System.Windows.Forms.DateTimePicker();
+            this.lblShowHide = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.StudentProfilePicturebox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -278,9 +279,11 @@ namespace LGAConnectSOMS.Views
             this.txtPassword.Location = new System.Drawing.Point(399, 376);
             this.txtPassword.Multiline = true;
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(233, 32);
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(192, 32);
             this.txtPassword.TabIndex = 31;
             this.txtPassword.TabStop = false;
+            this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
             // 
             // lblSchoolYearStart
             // 
@@ -511,12 +514,26 @@ namespace LGAConnectSOMS.Views
             this.dtBirthday.Size = new System.Drawing.Size(200, 25);
             this.dtBirthday.TabIndex = 73;
             // 
+            // lblShowHide
+            // 
+            this.lblShowHide.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblShowHide.AutoSize = true;
+            this.lblShowHide.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblShowHide.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblShowHide.Location = new System.Drawing.Point(597, 382);
+            this.lblShowHide.Name = "lblShowHide";
+            this.lblShowHide.Size = new System.Drawing.Size(43, 19);
+            this.lblShowHide.TabIndex = 74;
+            this.lblShowHide.Text = "Show";
+            this.lblShowHide.Click += new System.EventHandler(this.lblShowHide_Click);
+            // 
             // EditStudentDetailsView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
             this.ClientSize = new System.Drawing.Size(1466, 647);
+            this.Controls.Add(this.lblShowHide);
             this.Controls.Add(this.dtBirthday);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtEmail);
@@ -610,5 +627,6 @@ namespace LGAConnectSOMS.Views
         public System.Windows.Forms.TextBox txtParentsname;
         public System.Windows.Forms.TextBox txtAddress;
         public System.Windows.Forms.DateTimePicker dtBirthday;
+        private System.Windows.Forms.Label lblShowHide;
     }
 }

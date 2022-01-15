@@ -172,6 +172,7 @@ namespace LGAConnectSOMS.Views
             this.label2.Size = new System.Drawing.Size(44, 19);
             this.label2.TabIndex = 69;
             this.label2.Text = "Date:";
+            this.label2.Visible = false;
             // 
             // rtContent
             // 
@@ -249,6 +250,7 @@ namespace LGAConnectSOMS.Views
             this.NewsDateTimePicker.Name = "NewsDateTimePicker";
             this.NewsDateTimePicker.Size = new System.Drawing.Size(200, 25);
             this.NewsDateTimePicker.TabIndex = 95;
+            this.NewsDateTimePicker.Visible = false;
             // 
             // button1
             // 

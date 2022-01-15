@@ -157,9 +157,11 @@ namespace LGAConnectSOMS.Views
             }
         }
 
+        public DateTime currentdate;
         private void BtnEditNews_Click(object sender, EventArgs e)
         {
             this.SaveWindowPosition();
+            currentdate = Convert.ToDateTime(btnDate.Text);
             EditAddNewsView editAddNewsView = new EditAddNewsView();
             editAddNewsView.txtID.Text = lblID.Text;
             editAddNewsView.txtTitle.Text = lblTitle.Text;

@@ -31,11 +31,13 @@ namespace LGAConnectSOMS.Views
             StudentBalanceService studentService = new StudentBalanceService();
             studentaccount = await studentService.GetStudentBalance();
             var studentbalancelist = studentaccount.Select(x => x.StudentNumber);          
-            var datetime = DateTime.Now.ToString("yyyy");
+            var datetime = DateTime.Now.ToString("yyyy");   
             for (int year = 2015; year <= DateTime.UtcNow.Year; ++year)
             {
                TransactionDate.MinDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
             }
+
+            TransactionDate.CustomFormat = "MM/dd/yyyy HH:mm:ss";
 
 
         }
@@ -160,7 +162,7 @@ namespace LGAConnectSOMS.Views
 
         private void TransactionDate_Keypress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = true;
+            e.Handled = false;
         }
     }
 }

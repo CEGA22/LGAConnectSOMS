@@ -59,6 +59,7 @@ namespace LGAConnectSOMS.Views
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtAddress = new System.Windows.Forms.TextBox();
+            this.lblShowHide = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.FacultyPicturebox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -139,9 +140,11 @@ namespace LGAConnectSOMS.Views
             this.txtPassword.Location = new System.Drawing.Point(417, 366);
             this.txtPassword.Multiline = true;
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(233, 32);
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(193, 32);
             this.txtPassword.TabIndex = 77;
             this.txtPassword.TabStop = false;
+            this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
             // 
             // lblStudentNumber
             // 
@@ -393,12 +396,25 @@ namespace LGAConnectSOMS.Views
             this.txtAddress.TabIndex = 86;
             this.txtAddress.TabStop = false;
             // 
+            // lblShowHide
+            // 
+            this.lblShowHide.AutoSize = true;
+            this.lblShowHide.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblShowHide.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblShowHide.Location = new System.Drawing.Point(616, 371);
+            this.lblShowHide.Name = "lblShowHide";
+            this.lblShowHide.Size = new System.Drawing.Size(43, 19);
+            this.lblShowHide.TabIndex = 106;
+            this.lblShowHide.Text = "Show";
+            this.lblShowHide.Click += new System.EventHandler(this.lblShowHide_Click);
+            // 
             // EditSchoolFacultyAccountDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
             this.ClientSize = new System.Drawing.Size(1093, 647);
+            this.Controls.Add(this.lblShowHide);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.dtBirthday);
@@ -433,6 +449,7 @@ namespace LGAConnectSOMS.Views
             this.Name = "EditSchoolFacultyAccountDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "EditSchoolFacultyAccountDetails";
+            this.Load += new System.EventHandler(this.EditSchoolFacultyAccountDetails_Load);
             ((System.ComponentModel.ISupportInitialize)(this.FacultyPicturebox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -471,5 +488,6 @@ namespace LGAConnectSOMS.Views
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
         public System.Windows.Forms.TextBox txtAddress;
+        private System.Windows.Forms.Label lblShowHide;
     }
 }

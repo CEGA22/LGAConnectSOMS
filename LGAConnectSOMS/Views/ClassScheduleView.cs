@@ -542,11 +542,16 @@ namespace LGAConnectSOMS.Views
                     }
                     if (cmbDays.Text == "Custom")
                     {
-                        var verfification = schedule.Where(x => x.FullName.Equals(cmbFaculty.Text) && x.Subject.Equals(cmbSubjects.Text) && x.StartTime == cmbStartTime.Text && x.EndTime == cmbEndTime.Text && x.WeekDay.Equals(cmbCustomDays.Text) && x.GradeLevelSection.Equals(cmbGradeLevels.Text));
+                        var verfification = schedule.Where(x => x.FullName.Equals(cmbFaculty.Text) && x.Subject.Equals(cmbSubjects.Text) && x.StartTime == cmbStartTime.Text && x.EndTime == cmbEndTime.Text && x.GradeLevelSection.Equals(cmbGradeLevels.Text));
 
                         if (verfification.Any())
                         {
-                            MessageBox.Show("Already sched");
+                            string message = "The schedule for this subject is already been scheduled.";
+                            string title = "LGA Connect SOMS";
+                            MessageBoxButtons buttonss = MessageBoxButtons.OK;
+                            DialogResult result = MessageBox.Show(message, title, buttonss, MessageBoxIcon.Error);
+                            if (result == DialogResult.OK)
+                            { }
                         }
 
                         else
@@ -554,7 +559,12 @@ namespace LGAConnectSOMS.Views
                             var verfificationtime = schedule.Where(x => x.StartTime == cmbStartTime.Text && x.EndTime == cmbEndTime.Text && x.WeekDay.Equals(cmbCustomDays.Text));
                             if (verfificationtime.Any())
                             {
-                                MessageBox.Show("Time scheduled already occupied. Please select other time schedule");
+                                string message = "Time scheduled already occupied. Please select other time schedule";
+                                string title = "LGA Connect SOMS";
+                                MessageBoxButtons buttonss = MessageBoxButtons.OK;
+                                DialogResult result = MessageBox.Show(message, title, buttonss, MessageBoxIcon.Error);
+                                if (result == DialogResult.OK)
+                                { }                               
                             }
 
                             else
@@ -606,15 +616,24 @@ namespace LGAConnectSOMS.Views
                             {
                                 if (listofweekdays.Count == 5)
                                 {
-                                    MessageBox.Show("Conflict");
+                                    string message = "The schedule for this subject is already been scheduled.";
+                                    string title = "LGA Connect SOMS";
+                                    MessageBoxButtons buttonss = MessageBoxButtons.OK;
+                                    DialogResult result = MessageBox.Show(message, title, buttonss, MessageBoxIcon.Error);
+                                    if (result == DialogResult.OK)
+                                    { }                                    
                                 }
                                 else
-                                {
-                                    MessageBox.Show("Not");
-                                    var verfificationtime = schedule.Where(x => x.StartTime == cmbStartTime.Text && x.EndTime == cmbEndTime.Text);
+                                {                                   
+                                    var verfificationtime = schedule.Where(x => x.StartTime == cmbStartTime.Text && x.EndTime == cmbEndTime.Text && x.GradeLevelSection.Equals(cmbGradeLevels.Text));
                                     if (verfificationtime.Any())
                                     {
-                                        MessageBox.Show("Time scheduled already occupied. Please select other time schedule");
+                                        string message = "Time scheduled already occupied. Please select other time schedule";
+                                        string title = "LGA Connect SOMS";
+                                        MessageBoxButtons buttonss = MessageBoxButtons.OK;
+                                        DialogResult result = MessageBox.Show(message, title, buttonss, MessageBoxIcon.Error);
+                                        if (result == DialogResult.OK)
+                                        { }                                      
                                     }
                                     else
                                     {
@@ -651,7 +670,7 @@ namespace LGAConnectSOMS.Views
 
                         else
                         {
-                            var verfificationtime = schedule.Where(x => x.StartTime == cmbStartTime.Text && x.EndTime == cmbEndTime.Text && x.WeekDay.Equals(cmbCustomDays.Text));
+                            var verfificationtime = schedule.Where(x => x.StartTime == cmbStartTime.Text && x.EndTime == cmbEndTime.Text && x.WeekDay.Equals(cmbCustomDays.Text) && x.GradeLevelSection.Equals(cmbGradeLevels.Text));
                             if (verfificationtime.Any())
                             {
                                 MessageBox.Show("Time scheduled already occupied. Please select other time schedule");
@@ -708,15 +727,28 @@ namespace LGAConnectSOMS.Views
                             {
                                 if (listofweekdays.Count == 5)
                                 {
-                                    MessageBox.Show("Conflict");
+                                    string message = "The schedule for this subject is already been scheduled.";
+                                    string title = "LGA Connect SOMS";
+                                    MessageBoxButtons buttonss = MessageBoxButtons.OK;
+                                    DialogResult result = MessageBox.Show(message, title, buttonss, MessageBoxIcon.Error);
+                                    if (result == DialogResult.OK)
+                                    {
+
+                                    }                                  
                                 }
                                 else
-                                {
-                                    MessageBox.Show("Not");
+                                {                                  
                                     var verfificationtime = schedule.Where(x => x.StartTime == cmbStartTime.Text && x.EndTime == cmbEndTime.Text);
                                     if (verfificationtime.Any())
                                     {
-                                        MessageBox.Show("Time scheduled already occupied. Please select other time schedule");
+                                        string message = "Time scheduled already occupied. Please select other time schedule";
+                                        string title = "LGA Connect SOMS";
+                                        MessageBoxButtons buttonsss = MessageBoxButtons.OK;
+                                        DialogResult result = MessageBox.Show(message, title, buttonsss, MessageBoxIcon.Error);
+                                        if (result == DialogResult.OK)
+                                        {
+
+                                        }                                   
                                     }
                                     else
                                     {
@@ -1215,7 +1247,13 @@ namespace LGAConnectSOMS.Views
                                 stream.Close();
                             }
 
-                            MessageBox.Show("Data Exported Successfully !!!", "Info");
+                            string Successmessage = "Class Schedule successfully save as pdf file";
+                            string Successtitle = "LGA Connect SOMS Class Schedule";
+                            MessageBoxButtons Successbuttons = MessageBoxButtons.OK;
+
+                            DialogResult Successresult = MessageBox.Show(Successmessage, Successtitle, Successbuttons, MessageBoxIcon.Information);
+                            if (Successresult == DialogResult.OK)
+                            {  }                           
                         }
                         catch (Exception ex)
                         {
@@ -1226,7 +1264,7 @@ namespace LGAConnectSOMS.Views
             }
             else
             {
-                MessageBox.Show("No Record To Export !!!", "Info");
+                MessageBox.Show("No Record To Export", "LGA Connect SOMS");
             }
         }
 

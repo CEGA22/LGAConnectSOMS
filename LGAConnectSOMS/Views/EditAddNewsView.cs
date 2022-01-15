@@ -21,7 +21,7 @@ namespace LGAConnectSOMS.Views
             InitializeComponent();
             this.RestoreWindowPosition();
             MaximizeIcon();
-            CalendarEditingControl();
+            CalendarEditingControl();            
         }
 
         //NavigationToOtherForm       
@@ -55,8 +55,6 @@ namespace LGAConnectSOMS.Views
             var studentNumber = "00" + newmonthanddate + "2021";
 
         }
-
-
 
         //Buttons Forecolor and background Styles
 
@@ -195,7 +193,7 @@ namespace LGAConnectSOMS.Views
         private async void BtnSave_Click(object sender, EventArgs e)
         {
             var dateonly = NewsDateTimePicker.Value.ToShortDateString();
-            if (txtTitle.Text == "" || NewsDateTimePicker.Text == "" || rtContent.Text == "" || ContentPhotoPictureBox.Image == null)
+            if (txtTitle.Text == "" || rtContent.Text == "" || ContentPhotoPictureBox.Image == null)
             {
                 string message = "Please Fill in All Fields!";
                 string title = "LGA Connect SOMS";
@@ -208,8 +206,7 @@ namespace LGAConnectSOMS.Views
             }
 
             else
-            {
-               
+            {               
                 try
                 {
                     var id = int.Parse(txtID.Text);
@@ -285,6 +282,7 @@ namespace LGAConnectSOMS.Views
                         {                           
                             ManageNewsView manageNewsView = new ManageNewsView();
                             manageNewsView.Show();
+                            this.SaveWindowPosition();
                             this.Hide();
                         }                                                                      
                     }

@@ -26,40 +26,63 @@ namespace LGAConnectSOMS.Views
         //Load
         private void FacultyAdminRecords_Load(object sender, EventArgs e)
         {
-            
+
             lblLoading.Hide();
             this.RestoreWindowPosition();
             MaximizeIcon();
-            LoadData();           
+            LoadData();
         }
 
         private async void LoadData()
-        {           
+        {
+            txtPasswordSize();
             lblLoading.Show();
             txtAdminLastname.Enabled = false;
-            txtSearchFaculty.Enabled = false;           
+            txtSearchFaculty.Enabled = false;
             await DisplayFacultyRecordData();
             await DisplayAdminRecordData();
             RandomAdminNumber();
-            RandomFacultyNumber();
-            lblLoading.Hide();          
+            //RandomFacultyNumber();
+            lblLoading.Hide();
+        }
+
+        public void txtPasswordSize()
+        {
+            txtPassword.Size = new System.Drawing.Size(233, 32);
+            txtFacultyPassword.Size = new System.Drawing.Size(233, 32);
+            lblShowHide.Hide();
+            lblShowHideFaculty.Hide();
         }
 
         private readonly Random _random = new Random();
-        List<int> AdminnumberList = new List<int>();     
+        List<int> AdminnumberList = new List<int>();
         StringBuilder concatenatedString = new StringBuilder();
         private readonly Random facultyRandom = new Random();
         List<int> FacultynumberList = new List<int>();
         StringBuilder concatenatedStringFaculty = new StringBuilder();
-
+        int num = 0;
         public void RandomAdminNumber()
-        {            
+        {
+            while (num != 2)
+            {
                 var result = verification();
                 var students = schoolAccounts.ToList();
                 var results = schoolAccounts.Where(x => x.schoolNumber.ToString().Contains(result)).ToList();
                 if (!results.Any())
-                {                  
-                  txtTeacherNumber.Text = result;            
+                {
+                    if (num == 0)
+                    {
+                        txtTeacherNumber.Text = result;
+                        AdminnumberList.Clear();
+                        concatenatedString.Clear();
+                        num++;
+                    }
+
+                    else if (num == 1)
+                    {
+                        txtFacultyTeacherNumber.Text = result;
+                        num = 2;
+                    }
                 }
 
                 else
@@ -68,67 +91,70 @@ namespace LGAConnectSOMS.Views
                     concatenatedString.Clear();
                     RandomAdminNumber();
                 }
+            }
+               
         }
 
         public string verification()
-        {
-            var num1 = 0;
-            var num2 = 0;
-            AdminnumberList.Add(num1);
-            AdminnumberList.Add(num2);
-            for (int i = 1; i <= 8; i++)
-            {
-                int num = _random.Next(10);
-                var AdminNumber = num;
-                AdminnumberList.Add(AdminNumber);
-            }
+        {                   
+                var num1 = 0;
+                var num2 = 0;
+                AdminnumberList.Add(num1);
+                AdminnumberList.Add(num2);
+                for (int i = 1; i <= 8; i++)
+                {
+                    int num = _random.Next(10);
+                    var AdminNumber = num;
+                    AdminnumberList.Add(AdminNumber);
+                }
 
-            foreach (int password in AdminnumberList)
-            {
-                concatenatedString.Append(password);
-            }
+                foreach (int password in AdminnumberList)
+                {
+                    concatenatedString.Append(password);
 
+                }
+            
             return concatenatedString.ToString();
         }
 
-        public void RandomFacultyNumber()
-        {
-            var result = verificationFaculty();
-            var students = schoolAccounts.ToList();
-            var results = schoolAccounts.Where(x => x.schoolNumber.ToString().Contains(result)).ToList();
-            if (!results.Any())
-            {
-                txtFacultyTeacherNumber.Text = result;
-            }
+        //public void RandomFacultyNumber()
+        //{
+        //    var result = verificationFaculty();
+        //    var students = schoolAccounts.ToList();
+        //    var results = schoolAccounts.Where(x => x.schoolNumber.ToString().Contains(result)).ToList();
+        //    if (!results.Any())
+        //    {
+        //        txtFacultyTeacherNumber.Text = result;
+        //    }
 
-            else
-            {
-                FacultynumberList.Clear();
-                concatenatedStringFaculty.Clear();
-                RandomFacultyNumber();
-            }
-        }
+        //    else
+        //    {
+        //        FacultynumberList.Clear();
+        //        concatenatedStringFaculty.Clear();
+        //        RandomFacultyNumber();
+        //    }
+        //}
 
-        public string verificationFaculty()
-        {
-            var num1 = 0;
-            var num2 = 0;
-            FacultynumberList.Add(num1);
-            FacultynumberList.Add(num2);
-            for (int i = 1; i <= 8; i++)
-            {
-                int num = facultyRandom.Next(10);
-                var FacultyNumber = num;
-                FacultynumberList.Add(FacultyNumber);
-            }
+        //public string verificationFaculty()
+        //{
+        //    var num1 = 0;
+        //    var num2 = 0;
+        //    FacultynumberList.Add(num1);
+        //    FacultynumberList.Add(num2);
+        //    for (int i = 1; i <= 8; i++)
+        //    {
+        //        int num = facultyRandom.Next(10);
+        //        var FacultyNumber = num;
+        //        FacultynumberList.Add(FacultyNumber);
+        //    }
 
-            foreach (int password in FacultynumberList)
-            {
-                concatenatedStringFaculty.Append(password);
-            }
+        //    foreach (int password in FacultynumberList)
+        //    {
+        //        concatenatedStringFaculty.Append(password);
+        //    }
 
-            return concatenatedStringFaculty.ToString();
-        }
+        //    return concatenatedStringFaculty.ToString();
+        //}
 
         //private readonly Random _randomFaculty = new Random();
         //List<int> FacultynumberList = new List<int>();
@@ -805,6 +831,70 @@ namespace LGAConnectSOMS.Views
             //txtStudentNumber.Text = studentNumber;
             var lastname = txtFacultyLastname.Text;
             txtFacultyPassword.Text = lastname + newmonthanddate + year;
+        }
+
+        private void lblShowHide_Click(object sender, EventArgs e)
+        {
+            if (lblShowHide.Text == "Show")
+            {
+                lblShowHide.Text = "Hide";             
+                txtPassword.UseSystemPasswordChar = true;
+            }
+
+            else
+            {
+                txtPassword.UseSystemPasswordChar = false;
+                lblShowHide.Text = "Show";               
+            }
+        }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+            if (txtPassword.Text == string.Empty)
+            {
+                txtPassword.Size = new System.Drawing.Size(233, 32);
+                txtFacultyPassword.Size = new System.Drawing.Size(233, 32);
+                lblShowHide.Hide();
+                lblShowHideFaculty.Hide();
+            }
+
+            else
+            {
+                txtPassword.Size = new System.Drawing.Size(192, 32);
+                txtFacultyPassword.Size = new System.Drawing.Size(192, 32);
+                lblShowHide.Show();
+                lblShowHideFaculty.Show();
+            }
+        }
+
+        private void txtFacultyPassword_TextChanged(object sender, EventArgs e)
+        {
+            if (txtFacultyPassword.Text == string.Empty)
+            {             
+                txtFacultyPassword.Size = new System.Drawing.Size(233, 32);
+                lblShowHideFaculty.Hide();
+            }
+
+            else
+            {               
+                txtFacultyPassword.Size = new System.Drawing.Size(192, 32);              
+                lblShowHideFaculty.Show();
+            }
+        }
+
+        private void lblShowHideFaculty_Click(object sender, EventArgs e)
+        {
+            if (lblShowHideFaculty.Text == "Show")
+            {              
+                lblShowHideFaculty.Text = "Hide";
+                txtFacultyPassword.UseSystemPasswordChar = true;
+            }
+
+            else
+            {
+                txtFacultyPassword.UseSystemPasswordChar = false;           
+                lblShowHideFaculty.Text = "Show";
+            }
         }
     }
 }

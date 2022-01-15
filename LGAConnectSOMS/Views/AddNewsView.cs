@@ -22,6 +22,7 @@ namespace LGAConnectSOMS.Views
             RestoreWindowPosition();
             MaximizeIcon();
             CalendarEditingControl();
+            PanelLoadingPublishNews.Hide();
         }
         //Load    
         private void btnBack_Click_1(object sender, EventArgs e)
@@ -188,7 +189,8 @@ namespace LGAConnectSOMS.Views
             else
             {
                 try
-                {                  
+                {
+                    PanelLoadingPublishNews.Show();
                     var image = ContentPhotoPictureBox.Image;
                     NewsAndAnnouncementsService newsAndAnnouncementsService = new NewsAndAnnouncementsService();
                     var IsSucess = await newsAndAnnouncementsService.CreateNewsAndAnnouncements(new NewsAndAnnouncements
@@ -202,6 +204,7 @@ namespace LGAConnectSOMS.Views
 
                     if (IsSucess)
                     {
+                        PanelLoadingPublishNews.Hide();
                         string Successmessage = "Publish Article Successfully";
                         string Successtitle = "LGA Connect SOMS News and Announcements";
                         MessageBoxButtons Successbuttons = MessageBoxButtons.OK;
@@ -216,6 +219,7 @@ namespace LGAConnectSOMS.Views
 
                     else
                     {
+                        PanelLoadingPublishNews.Hide();
                         MessageBox.Show("Publish Article Not Successfull");
                     }
 

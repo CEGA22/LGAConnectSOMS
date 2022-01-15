@@ -148,5 +148,47 @@ namespace LGAConnectSOMS.Views
             cbGender.Text = "";
             FacultyPicturebox.Image = null;
         }
+
+        public void txtPasswordSize()
+        {
+            txtPassword.Size = new System.Drawing.Size(193, 32);
+            lblShowHide.Show();
+        }
+
+        private void lblShowHide_Click(object sender, EventArgs e)
+        {
+            if (lblShowHide.Text == "Show")
+            {
+                lblShowHide.Text = "Hide";
+                txtPassword.UseSystemPasswordChar = true;
+            }
+
+            else
+            {
+                txtPassword.UseSystemPasswordChar = false;
+                lblShowHide.Text = "Show";
+
+            }
+        }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+            if (txtPassword.Text == string.Empty)
+            {
+                txtPassword.Size = new System.Drawing.Size(233, 32);
+                lblShowHide.Hide();
+            }
+
+            else
+            {
+                txtPassword.Size = new System.Drawing.Size(192, 32);
+                lblShowHide.Show();
+            }
+        }
+
+        private void EditSchoolFacultyAccountDetails_Load(object sender, EventArgs e)
+        {
+            txtPasswordSize();
+        }
     }
 }
