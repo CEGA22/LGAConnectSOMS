@@ -49,7 +49,7 @@ namespace LGAConnectSOMS.Views
         public async Task DisplayTransactionHistory()
         {
             TransactionHistoryService transactionHistoryService = new TransactionHistoryService();
-            var transactionhistorylist = await transactionHistoryService.GetTransactionHistory();
+            var transactionhistorylist = await transactionHistoryService.GetTransactionHistory();           
             TransactionHistoryDataGridView.DataSource = transactionhistorylist;
             TransactionHistoryDataGridView.Columns[9].Visible = false;
             TransactionHistoryDataGridView.Columns[11].Visible = false;

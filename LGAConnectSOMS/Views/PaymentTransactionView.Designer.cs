@@ -51,11 +51,11 @@ namespace LGAConnectSOMS.Views
             this.txtAmount.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtAmount.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAmount.Location = new System.Drawing.Point(263, 187);
+            this.txtAmount.MaxLength = 5;
             this.txtAmount.Multiline = true;
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.Size = new System.Drawing.Size(233, 32);
             this.txtAmount.TabIndex = 61;
-            this.txtAmount.TabStop = false;
             this.txtAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAmount_KeyPress);
             // 
             // lblPassword
@@ -74,11 +74,11 @@ namespace LGAConnectSOMS.Views
             this.txtStudentNumber.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtStudentNumber.Font = new System.Drawing.Font("Tw Cen MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtStudentNumber.Location = new System.Drawing.Point(263, 129);
+            this.txtStudentNumber.MaxLength = 10;
             this.txtStudentNumber.Multiline = true;
             this.txtStudentNumber.Name = "txtStudentNumber";
             this.txtStudentNumber.Size = new System.Drawing.Size(233, 32);
             this.txtStudentNumber.TabIndex = 59;
-            this.txtStudentNumber.TabStop = false;
             this.txtStudentNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStudentNumber_KeyPress);
             // 
             // lblStudentNumber
@@ -197,7 +197,6 @@ namespace LGAConnectSOMS.Views
             this.txtReferenceNumber.Name = "txtReferenceNumber";
             this.txtReferenceNumber.Size = new System.Drawing.Size(233, 32);
             this.txtReferenceNumber.TabIndex = 97;
-            this.txtReferenceNumber.TabStop = false;
             // 
             // label3
             // 

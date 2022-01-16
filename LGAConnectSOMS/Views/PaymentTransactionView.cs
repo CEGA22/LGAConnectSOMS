@@ -100,8 +100,8 @@ namespace LGAConnectSOMS.Views
                             ReferenceNumber = txtReferenceNumber.Text,
                             Studentid = ID,
                             Amount = amount,
-                            TransactionDate = other,
-                            DateRecorded = daterecorded,
+                            TransactionDate = daterecorded,
+                            DateRecorded = other,
                             Note = Note.Text,                            
                             Balance = remainingbalance
                         });

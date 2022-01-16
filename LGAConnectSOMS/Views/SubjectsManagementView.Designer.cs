@@ -484,9 +484,7 @@ namespace LGAConnectSOMS.Views
             this.UnHandledDataGridView.AllowUserToResizeRows = false;
             dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(219)))), ((int)(((byte)(250)))));
             this.UnHandledDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
-            this.UnHandledDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.UnHandledDataGridView.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.UnHandledDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.UnHandledDataGridView.BackgroundColor = System.Drawing.SystemColors.Control;
             this.UnHandledDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
