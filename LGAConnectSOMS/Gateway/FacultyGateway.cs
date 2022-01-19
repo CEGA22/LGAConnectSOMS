@@ -11,7 +11,7 @@ namespace LGAConnectSOMS.Gateway
 {
     public class FacultyGateway
     {
-        static string BaseUrl = "http://cega07-001-site1.gtempurl.com/api/lga";
+        static string BaseUrl = "http://fate09-001-site1.itempurl.com/api/lga";
 
         public async Task<IEnumerable<FacultySubjects>> GetFacultySubjects(int ID)
         {

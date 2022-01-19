@@ -12,7 +12,7 @@ namespace LGAConnectSOMS.Gateway
     public class StudentRequestGateway
     {
        
-        static string BaseUrl = "http://cega07-001-site1.gtempurl.com/api/lga/student";
+        static string BaseUrl = "http://fate09-001-site1.itempurl.com/api/lga/student";
 
         public async Task<string> CreateStudentRequest(StudentRequest request)
         {

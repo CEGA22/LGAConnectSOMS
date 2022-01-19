@@ -11,7 +11,7 @@ namespace LGAConnectSOMS.Gateway
 {
     public class StudentBalanceGateway
     {
-        static string BaseUrl = "http://cega07-001-site1.gtempurl.com/api/lga/studentBalance";
+        static string BaseUrl = "http://fate09-001-site1.itempurl.com/api/lga/studentBalance";
 
         public async Task<IEnumerable<StudentBalance>> GetStudentBalance()
         {

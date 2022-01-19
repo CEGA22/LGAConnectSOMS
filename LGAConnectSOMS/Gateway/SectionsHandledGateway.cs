@@ -11,7 +11,7 @@ namespace LGAConnectSOMS.Gateway
 {
     public class SectionsHandledGateway
     {
-        static string BaseUrl = "http://cega07-001-site1.gtempurl.com/api/lga/sectionsHandled";
+        static string BaseUrl = "http://fate09-001-site1.itempurl.com/api/lga/sectionsHandled";
 
         public async Task<IEnumerable<SectionsHandled>> GetSectionsHandled(int ID)
         {
