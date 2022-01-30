@@ -11,7 +11,7 @@ namespace LGAConnectSOMS.Gateway
 {
     public class NewsAndAnnouncementGateway
     {
-        static string BaseUrl = "http://fate09-001-site1.itempurl.com/api/lga/newsAndAnnouncements";
+        static string BaseUrl = "http://cega22-001-site1.ftempurl.com/api/lga/newsAndAnnouncements";
 
         public async Task<IEnumerable<NewsAndAnnouncements>> GetNewsAndAnnouncements()
         {

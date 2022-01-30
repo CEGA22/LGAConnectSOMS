@@ -10,7 +10,7 @@ namespace LGAConnectSOMS.Gateway
 {
     public class LoginGateway
     {
-        static string BaseUrl = "http://fate09-001-site1.itempurl.com/api/lga/account";
+        static string BaseUrl = "http://cega22-001-site1.ftempurl.com/api/lga/account";
 
         public async Task<string> AccountLogin(LoginRequest request)
         {

@@ -11,7 +11,7 @@ namespace LGAConnectSOMS.Gateway
 {
     public class PaymentSchemeGateway
     {
-        static string BaseUrl = "http://fate09-001-site1.itempurl.com/api/lga/paymentScheme";
+        static string BaseUrl = "http://cega22-001-site1.ftempurl.com/api/lga/paymentScheme";
 
         public async Task<IEnumerable<PaymentScheme>> GetPaymentScheme()
         {

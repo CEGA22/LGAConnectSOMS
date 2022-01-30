@@ -11,7 +11,7 @@ namespace LGAConnectSOMS.Gateway
 {
     public class SchoolAccountGateway
     {
-        static string BaseUrl = "http://fate09-001-site1.itempurl.com/api/lga/schoolAccount";
+        static string BaseUrl = "http://cega22-001-site1.ftempurl.com/api/lga/schoolAccount";
 
         public async Task<IEnumerable<SchoolAccount>> GetSchoolAccountDetails()
         {

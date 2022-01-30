@@ -11,7 +11,7 @@ namespace LGAConnectSOMS.Gateway
 {
     public class ClassRecordsGateway
     {
-        static string BaseUrl = "http://fate09-001-site1.itempurl.com/api/lga/classrecord";
+        static string BaseUrl = "http://cega22-001-site1.ftempurl.com/api/lga/classrecord";
 
         public async Task<IEnumerable<ClassRecords>> GetClassRecords(int ID)
         {
